@@ -48,7 +48,7 @@
             "Microsoft.CodeAnalysis.CSharp": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.0.1, )"
+              "version": "[4.1.0, )"
             },
             "NETStandard.Library": {
               "suppressParent": "All",
