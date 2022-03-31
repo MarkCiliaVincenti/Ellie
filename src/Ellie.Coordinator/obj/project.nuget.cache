@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "dgSpecHash": "oZD7tpII+Ps/IIi7s7ymIEZEknvuL3P1Y9+z1iUa/7AXjwgbIXQ7X3Im7IQohNpj0geDacUDdGZxl02whdAOBw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\JDRCa\\source\\repos\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\JDRCa\\.nuget\\packages\\google.protobuf\\3.19.2\\google.protobuf.3.19.2.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.aspnetcore\\2.44.0\\grpc.aspnetcore.2.44.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.aspnetcore.server\\2.44.0\\grpc.aspnetcore.server.2.44.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.aspnetcore.server.clientfactory\\2.44.0\\grpc.aspnetcore.server.clientfactory.2.44.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.core.api\\2.44.0\\grpc.core.api.2.44.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.net.client\\2.44.0\\grpc.net.client.2.44.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.net.clientfactory\\2.44.0\\grpc.net.clientfactory.2.44.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.net.common\\2.44.0\\grpc.net.common.2.44.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.tools\\2.44.0\\grpc.tools.2.44.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.configuration\\3.0.3\\microsoft.extensions.configuration.3.0.3.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.0.3\\microsoft.extensions.configuration.abstractions.3.0.3.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.0.3\\microsoft.extensions.configuration.binder.3.0.3.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.0.3\\microsoft.extensions.dependencyinjection.3.0.3.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.0.3\\microsoft.extensions.dependencyinjection.abstractions.3.0.3.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.http\\3.0.3\\microsoft.extensions.http.3.0.3.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.logging\\3.0.3\\microsoft.extensions.logging.3.0.3.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.0.3\\microsoft.extensions.logging.abstractions.3.0.3.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.options\\3.0.3\\microsoft.extensions.options.3.0.3.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.3\\microsoft.extensions.primitives.3.0.3.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\serilog.sinks.console\\4.0.1\\serilog.sinks.console.4.0.1.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\yamldotnet\\11.2.1\\yamldotnet.11.2.1.nupkg.sha512"
+  ],
+  "logs": []
+}

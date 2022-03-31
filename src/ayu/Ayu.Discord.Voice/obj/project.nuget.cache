@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "y0DDC65J+cCFPyzHsS5eGWzJx1v4Yt5rH8IFkKlyLj/TjfMeplz1Ln24x9+Oi0BUGO67KLY46i0a6+RiNvCLvw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\JDRCa\\source\\repos\\Ellie\\src\\ayu\\Ayu.Discord.Voice\\Ayu.Discord.Voice.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\JDRCa\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
