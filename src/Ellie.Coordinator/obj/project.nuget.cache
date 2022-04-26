@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fyOwn8cSHANvOIaYZjLALDG2sY4z5tUiVbPDfxG0O+3ZeDEkRpvaK+0mQF/MLW1QojcGIWURHwMNvEf3cfCQYA==",
+  "dgSpecHash": "bnWWa/EYvrbwbHAZTUhEC++JhqqFw2viuK9+UIqUYDo0Or7wjKD/Xs2q7QpXTgLtKdjFegz1PbqXMYOVodreeQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\JDRCa\\source\\repos\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,7 @@
     "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.0.3\\microsoft.extensions.logging.abstractions.3.0.3.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.options\\3.0.3\\microsoft.extensions.options.3.0.3.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.primitives\\3.0.3\\microsoft.extensions.primitives.3.0.3.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\serilog\\2.10.0\\serilog.2.10.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\serilog\\2.11.0\\serilog.2.11.0.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\serilog.sinks.console\\4.0.1\\serilog.sinks.console.4.0.1.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\yamldotnet\\11.2.1\\yamldotnet.11.2.1.nupkg.sha512"

@@ -204,7 +204,7 @@ namespace Ellie.Coordinator
                     _config.TotalShards),
                 EnvironmentVariables =
                 {
-                    {"NADEKOBOT_IS_COORDINATED", "1"}
+                    {"Ellie_IS_COORDINATED", "1"}
                 }
                 // CreateNoWindow = true,
                 // UseShellExecute = false,
