@@ -204,7 +204,7 @@ namespace Ellie.Coordinator
                     _config.TotalShards),
                 EnvironmentVariables =
                 {
-                    {"Ellie_IS_COORDINATED", "1"}
+                    {"ELLIE_IS_COORDINATED", "1"}
                 }
                 // CreateNoWindow = true,
                 // UseShellExecute = false,
