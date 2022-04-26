@@ -8,7 +8,7 @@ namespace Ellie.Plugin;
 /// Sneks get instantiated ONLY ONCE during the loading,
 /// and any snek commands will be executed on the same instance
 /// </summary>
-public abstract class Snek : IAsyncDisposable
+public abstract class Plugin : IAsyncDisposable
 {
     /// <summary>
     /// Name of the snek. Defaults to the lowercase class name
