@@ -1,4 +1,4 @@
-namespace Ellie.Plugin;
+namespace Ellie.Bird;
 
 /// <summary>
 /// Overridden to implement custom checks which commands have to pass in order to be executed.

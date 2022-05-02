@@ -1,4 +1,4 @@
-namespace Ellie.Plugin;
+namespace Ellie.Bird;
 
 /// <summary>
 /// Overridden to implement parsers for custom types 

@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using Serilog;
 
-namespace Ellie.Plugin;
+namespace Ellie.Bird;
 
 public class PluginStrings : IPluginStrings
 {
@@ -52,7 +52,7 @@ public class PluginStrings : IPluginStrings
         {
             if (cultureInfo.Name == _usCultureInfo.Name)
             {
-                Log.Warning("'{CommandName}' doesn't exist in 'en-US' command strings for one of the plugine",
+                Log.Warning("'{CommandName}' doesn't exist in 'en-US' command strings for one of the plugin",
                     commandName);
 
                 return new(null, null);
@@ -69,7 +69,7 @@ public class PluginStrings : IPluginStrings
     }
 
     public string? GetDescription(CultureInfo? locale = null)
-        => GetText("Plugin.description", locale ?? _usCultureInfo);
+        => GetText("plugin.description", locale ?? _usCultureInfo);
 
     public static PluginStrings CreateDefault(string basePath)
         => new PluginStrings(new LocalPluginStringsProvider(new(basePath)));

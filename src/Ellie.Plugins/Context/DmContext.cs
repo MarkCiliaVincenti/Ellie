@@ -1,6 +1,6 @@
 using Discord;
 
-namespace Ellie.Plugin;
+namespace Ellie.Bird;
 
 /// <summary>
 /// Commands which take this type as the first parameter can only be accesses in DMs

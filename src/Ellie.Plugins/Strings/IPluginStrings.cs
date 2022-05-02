@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace Ellie.Plugin;
+namespace Ellie.Bird;
 
 /// <summary>
 ///     Defines methods to retrieve and reload plugin strings

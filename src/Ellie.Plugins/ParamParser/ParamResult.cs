@@ -1,4 +1,4 @@
-namespace Ellie.Plugin;
+namespace Ellie.Bird;
 
 public readonly struct ParseResult<T>
 {

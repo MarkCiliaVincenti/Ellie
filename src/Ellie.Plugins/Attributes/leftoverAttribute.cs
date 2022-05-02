@@ -1,4 +1,4 @@
-namespace Ellie.Plugin;
+namespace Ellie.Bird;
 
 /// <summary>
 /// Marks the parameter to take 

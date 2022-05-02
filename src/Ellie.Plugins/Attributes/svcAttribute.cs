@@ -1,4 +1,4 @@
-namespace Ellie.Plugin;
+namespace Ellie.Bird;
 
 /// <summary>
 /// Marks the class as a service which can be used within the same Plugin

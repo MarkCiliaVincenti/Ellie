@@ -1,6 +1,6 @@
 ﻿using Discord;
 
-namespace Ellie.Plugin;
+namespace Ellie.Bird;
 
 /// <summary>
 /// The base class which will be loaded as a module into Ellie
@@ -8,7 +8,7 @@ namespace Ellie.Plugin;
 /// Sneks get instantiated ONLY ONCE during the loading,
 /// and any snek commands will be executed on the same instance
 /// </summary>
-public abstract class Plugin : IAsyncDisposable
+public abstract class Bird : IAsyncDisposable
 {
     /// <summary>
     /// Name of the snek. Defaults to the lowercase class name

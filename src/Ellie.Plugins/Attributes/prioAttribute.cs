@@ -1,4 +1,4 @@
-namespace Ellie.Plugin;
+namespace Ellie.Bird;
 
 /// <summary>
 /// Sets the priority of a command in case there are multiple commands with the same name but different parameters.

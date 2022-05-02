@@ -1,5 +1,5 @@
 ﻿using Discord;
-using Ellie.Plugin;
+using Ellie.Bird;
 
 namespace Ellie;
 
