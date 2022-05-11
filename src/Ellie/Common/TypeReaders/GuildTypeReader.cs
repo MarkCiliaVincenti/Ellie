@@ -1,0 +1,24 @@
+#nullable disable
+namespace Ellie.Common.TypeReaders;
+
+public sealed class GuildTypeReader : EllieTypeReader<IGuild>
+{
+    private readonly DiscordSocketClient _client;
+
+    public GuildTypeReader(DiscordSocketClient client)
+        => _client = client;
+
+    public override ValueTask<TypeReaderResult<IGuild>> ReadAsync(ICommandContext context, string input)
+    {
+        input = input.Trim().ToLowerInvariant();
+        var guilds = _client.Guilds;
+        IGuild guild = guilds.FirstOrDefault(g => g.Id.ToString().Trim().ToUpperInvariant() == input) // by id
+                       ?? guilds.FirstOrDefault(g => g.Name.Trim().ToLowerInvariant() == input); // by name
+
+        if (guild is not null)
+            return new(TypeReaderResult.FromSuccess(guild));
+
+        return new(
+            TypeReaderResult.FromError<IGuild>(CommandError.ParseFailed, "No guild by that name or Id found"));
+    }
+}
