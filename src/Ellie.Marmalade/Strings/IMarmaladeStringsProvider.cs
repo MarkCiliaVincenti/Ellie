@@ -3,7 +3,7 @@ namespace Ellie.Bird;
 /// <summary>
 ///     Implemeted by classes which provide localized strings in their own ways
 /// </summary>
-public interface IPluginStringsProvider
+public interface IMarmaladeStringsProvider
 {
     /// <summary>
     ///     Gets localized string

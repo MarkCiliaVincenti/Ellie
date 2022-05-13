@@ -1,12 +1,12 @@
 namespace Ellie.Bird;
 
-public class LocalPluginStringsProvider : IPluginStringsProvider
+public class LocalMarmaladeStringsProvider : IMarmaladeStringsProvider
 {
     private readonly StringsLoader _source;
     private IReadOnlyDictionary<string, IReadOnlyDictionary<string, string>> _responseStrings;
     private IReadOnlyDictionary<string, IReadOnlyDictionary<string, CommandStrings>> _commandStrings;
 
-    public LocalPluginStringsProvider(StringsLoader source)
+    public LocalMarmaladeStringsProvider(StringsLoader source)
     {
         _source = source;
         _responseStrings = _source.GetResponseStrings();

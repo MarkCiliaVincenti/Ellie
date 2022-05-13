@@ -3,16 +3,16 @@ using Serilog;
 
 namespace Ellie.Bird;
 
-public class PluginStrings : IPluginStrings
+public class MarmaladeStrings : IMarmaladeStrings
 {
     /// <summary>
     ///     Used as failsafe in case response key doesn't exist in the selected or default language.
     /// </summary>
     private readonly CultureInfo _usCultureInfo = new("en-US");
 
-    private readonly IPluginStringsProvider _stringsProvider;
+    private readonly IMarmaladeStringsProvider _stringsProvider;
 
-    public PluginStrings(IPluginStringsProvider stringsProvider)
+    public MarmaladeStrings(IMarmaladeStringsProvider stringsProvider)
     {
         _stringsProvider = stringsProvider;
     }
@@ -71,8 +71,8 @@ public class PluginStrings : IPluginStrings
     public string? GetDescription(CultureInfo? locale = null)
         => GetText("plugin.description", locale ?? _usCultureInfo);
 
-    public static PluginStrings CreateDefault(string basePath)
-        => new PluginStrings(new LocalPluginStringsProvider(new(basePath)));
+    public static MarmaladeStrings CreateDefault(string basePath)
+        => new MarmaladeStrings(new LocalMarmaladeStringsProvider(new(basePath)));
 
     public void Reload()
         => _stringsProvider.Reload();

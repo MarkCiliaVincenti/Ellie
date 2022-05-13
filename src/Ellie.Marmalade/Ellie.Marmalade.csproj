@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <LangVersion>preview</LangVersion>
     <EnablePreviewFeatures>true</EnablePreviewFeatures>
-    <RootNamespace>Ellie.Plugins</RootNamespace>
+    <RootNamespace>Ellie.Marmalade</RootNamespace>
 
     <Authors>EllieBotDevs</Authors>
     <Version>1.0.2</Version>

@@ -1,7 +1,7 @@
 namespace Ellie.Bird;
 
 /// <summary>
-/// Marks a method as a snek command
+/// Marks a method as a bird command
 /// </summary>
 [AttributeUsage(AttributeTargets.Method)]
 public class cmdAttribute : Attribute

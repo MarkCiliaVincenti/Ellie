@@ -26,7 +26,7 @@ public abstract class AnyContext
     /// <summary>
     /// Provides access to strings used by this medusa
     /// </summary>
-    public abstract IPluginStrings Strings { get; }
+    public abstract IMarmaladeStrings Strings { get; }
 
     /// <summary>
     /// Gets a formatted localized string using a key and arguments which should be formatted in
