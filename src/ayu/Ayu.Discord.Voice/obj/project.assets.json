@@ -11,7 +11,7 @@
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
-      "Serilog/2.10.0": {
+      "Serilog/2.11.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Serilog.dll": {}
@@ -59,10 +59,10 @@
         "packageIcon.png"
       ]
     },
-    "Serilog/2.10.0": {
-      "sha512": "+QX0hmf37a0/OZLxM3wL7V6/ADvC1XihXN4Kq/p6d8lCPfgkRdiuhbWlMaFjR9Av0dy5F0+MBeDmDdRZN/YwQA==",
+    "Serilog/2.11.0": {
+      "sha512": "ysv+hBzTul6Dp+Hvm10FlhJO3yMQcFKSAleus+LpiIzvNstpeV4Z7gGuIZ1OPNfIMulSHOjmLuGAEDKzpnV8ZQ==",
       "type": "package",
-      "path": "serilog/2.10.0",
+      "path": "serilog/2.11.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -71,6 +71,8 @@
         "lib/net45/Serilog.xml",
         "lib/net46/Serilog.dll",
         "lib/net46/Serilog.xml",
+        "lib/net5.0/Serilog.dll",
+        "lib/net5.0/Serilog.xml",
         "lib/netstandard1.0/Serilog.dll",
         "lib/netstandard1.0/Serilog.xml",
         "lib/netstandard1.3/Serilog.dll",
@@ -79,7 +81,7 @@
         "lib/netstandard2.0/Serilog.xml",
         "lib/netstandard2.1/Serilog.dll",
         "lib/netstandard2.1/Serilog.xml",
-        "serilog.2.10.0.nupkg.sha512",
+        "serilog.2.11.0.nupkg.sha512",
         "serilog.nuspec"
       ]
     },
@@ -114,12 +116,13 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
       "Newtonsoft.Json >= 13.0.1",
-      "Serilog >= 2.10.0",
+      "Serilog >= 2.11.0",
       "System.Threading.Channels >= 6.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JDRCa\\.nuget\\packages\\": {}
+    "C:\\Users\\JDRCa\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.2",
@@ -130,8 +133,12 @@
       "packagesPath": "C:\\Users\\JDRCa\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\JDRCa\\source\\repos\\Ellie\\src\\ayu\\Ayu.Discord.Voice\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\JDRCa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -139,7 +146,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.pkg.github.com/EmotionChild/index.json": {}
       },
       "frameworks": {
         "netstandard2.1": {
@@ -163,7 +171,7 @@
           },
           "Serilog": {
             "target": "Package",
-            "version": "[2.10.0, )"
+            "version": "[2.11.0, )"
           },
           "System.Threading.Channels": {
             "target": "Package",
@@ -185,7 +193,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

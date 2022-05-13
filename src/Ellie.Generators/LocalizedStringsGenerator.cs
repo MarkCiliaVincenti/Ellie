@@ -55,13 +55,14 @@ namespace Ellie.Generators
             using (var stringWriter = new StringWriter())
             using (var sw = new IndentedTextWriter(stringWriter))
             {
-                sw.WriteLine("namespace Ellie;");
+                sw.WriteLine("namespace NadekoBot;");
                 sw.WriteLine();
 
                 sw.WriteLine("public static class strs");
                 sw.WriteLine("{");
                 sw.Indent++;
 
+                var typedParamStrings = new List<string>(10);
                 foreach (var field in fields)
                 {
                     var matches = Regex.Matches(field.Value, @"{(?<num>\d)[}:]");
@@ -71,20 +72,30 @@ namespace Ellie.Generators
                         max = Math.Max(max, int.Parse(match.Groups["num"].Value) + 1);
                     }
 
-                    List<string> typedParamStrings = new List<string>();
-                    var paramStrings = string.Empty;
+                    typedParamStrings.Clear();
+                    var typeParams = new string[max];
+                    var passedParamString = string.Empty;
                     for (var i = 0; i < max; i++)
                     {
-                        typedParamStrings.Add($"object p{i}");
-                        paramStrings += $", p{i}";
+                        typedParamStrings.Add($"in T{i} p{i}");
+                        passedParamString += $", p{i}";
+                        typeParams[i] = $"T{i}";
                     }
 
-
                     var sig = string.Empty;
+                    var typeParamStr = string.Empty;
                     if (max > 0)
+                    {
                         sig = $"({string.Join(", ", typedParamStrings)})";
+                        typeParamStr = $"<{string.Join(", ", typeParams)}>";
+                    }
 
-                    sw.WriteLine($"public static LocStr {field.Name}{sig} => new LocStr(\"{field.Name}\"{paramStrings});");
+                    sw.WriteLine("public static LocStr {0}{1}{2} => new LocStr(\"{3}\"{4});",
+                        field.Name,
+                        typeParamStr,
+                        sig,
+                        field.Name,
+                        passedParamString);
                 }
 
                 sw.Indent--;

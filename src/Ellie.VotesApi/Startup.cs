@@ -24,7 +24,7 @@ namespace Ellie.VotesApi
             services.AddSingleton<IVotesCache, FileVotesCache>();
             services.AddSwaggerGen(static c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "NadekoBot.VotesApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ellie.VotesApi", Version = "v1" });
             });
 
             services
@@ -52,7 +52,7 @@ namespace Ellie.VotesApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(static c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NadekoBot.VotesApi v1"));
+                app.UseSwaggerUI(static c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ellie.VotesApi v1"));
             }
 
             app.UseHttpsRedirection();
