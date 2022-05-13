@@ -90,7 +90,7 @@
   
     <ItemGroup>
         <ProjectReference Include="..\ayu\Ayu.Discord.Voice\Ayu.Discord.Voice.csproj" />
-        <ProjectReference Include="..\Ellie.Plugins\Ellie.Plugins.csproj" />
+        <ProjectReference Include="..\Ellie.Marmalade\Ellie.Marmalade.csproj" />
         <ProjectReference Include="..\Ellie.Generators\Ellie.Generators.csproj" OutputItemType="Analyzer" />
     </ItemGroup>
 

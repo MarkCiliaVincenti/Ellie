@@ -26,7 +26,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.Generators", "src\Ell
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.VotesApi", "src\Ellie.VotesApi\Ellie.VotesApi.csproj", "{3CA2022E-A5A8-4A6B-91DC-992DADD11E8B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.Plugins", "src\Ellie.Plugins\Ellie.Plugins.csproj", "{C47C25BF-13D8-4872-8806-68CF6FB83149}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.Marmalade", "src\Ellie.Marmalade\Ellie.Marmalade.csproj", "{C47C25BF-13D8-4872-8806-68CF6FB83149}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
