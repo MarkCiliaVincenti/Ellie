@@ -7,6 +7,8 @@
     <LangVersion>preview</LangVersion>
     <EnablePreviewFeatures>true</EnablePreviewFeatures>
     <RootNamespace>Ellie.Marmalade</RootNamespace>
+    <PackageId>Ellie.Marmalade</PackageId>
+    <RepositoryUrl>https://github.com/EmotionChild/Ellie</RepositoryUrl>
 
     <Authors>EllieBotDevs</Authors>
     <Version>1.0.2</Version>

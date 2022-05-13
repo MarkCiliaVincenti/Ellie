@@ -1,5 +1,10 @@
 #Manually added files
 
+# marmalade stuff
+!src/Ellie/data/marmalades/marmalade.yml
+src/Ellie/data/marmalades/**
+nuget.config
+
 command_errors*.txt
 output/
 src/Ellie/output
