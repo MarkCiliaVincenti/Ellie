@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "McKbXXfT3CPdFOfMq6YbatorwfNdwJIXBKbBsa08pfUu6zp5i/Ty81wC9j7u3HMmQYOIn2UaKm4PKwxBbl93Qg==",
+  "dgSpecHash": "x2Dxr3YhgVgW3Y466+Yy8xiekchWFS7VdaT9lZU2LCpUCWmS87neRlvMmUi5lBleNaTdZar93iO1NNiZGiFe/g==",
   "success": true,
   "projectFilePath": "C:\\Users\\JDRCa\\source\\repos\\Ellie\\src\\Ellie.Generators\\Ellie.Generators.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.codeanalysis.common\\4.1.0\\microsoft.codeanalysis.common.4.1.0.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.1.0\\microsoft.codeanalysis.csharp.4.1.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.codeanalysis.common\\4.2.0\\microsoft.codeanalysis.common.4.2.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.codeanalysis.csharp\\4.2.0\\microsoft.codeanalysis.csharp.4.2.0.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
@@ -15,8 +15,8 @@
     "C:\\Users\\JDRCa\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\system.reflection.metadata\\5.0.0\\system.reflection.metadata.5.0.0.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\system.text.encoding.codepages\\6.0.0\\system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
   ],
   "logs": []
