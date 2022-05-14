@@ -11,11 +11,11 @@
     <RepositoryUrl>https://github.com/EmotionChild/Ellie</RepositoryUrl>
 
     <Authors>EllieBotDevs</Authors>
-    <Version>1.0.2</Version>
+    <Version>2.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Discord.Net.Core" Version="3.5.0" />
+    <PackageReference Include="Discord.Net.Core" Version="3.6.1" />
     <PackageReference Include="Serilog" Version="2.10.0" />
     <PackageReference Include="YamlDotNet" Version="11.2.1" />
   </ItemGroup>
