@@ -1,7 +1,7 @@
 namespace Ellie.Bird;
 
 /// <summary>
-/// Marks a method as a bird command
+/// Marks a method as a canary command
 /// </summary>
 [AttributeUsage(AttributeTargets.Method)]
 public class cmdAttribute : Attribute

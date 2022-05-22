@@ -4,14 +4,14 @@ namespace Ellie.Bird;
 
 /// <summary>
 /// The base class which will be loaded as a module into Ellie
-/// Any user-defined snek has to inherit from this class.
-/// Sneks get instantiated ONLY ONCE during the loading,
-/// and any snek commands will be executed on the same instance
+/// Any user-defined canary has to inherit from this class.
+/// Canaries get instantiated ONLY ONCE during the loading,
+/// and any canary commands will be executed on the same instance
 /// </summary>
-public abstract class Bird : IAsyncDisposable
+public abstract class Canary : IAsyncDisposable
 {
     /// <summary>
-    /// Name of the snek. Defaults to the lowercase class name
+    /// Name of the canary. Defaults to the lowercase class name
     /// </summary>
     public virtual string Name
         => GetType().Name.ToLowerInvariant();
@@ -25,14 +25,14 @@ public abstract class Bird : IAsyncDisposable
         => string.Empty;
 
     /// <summary>
-    /// Executed once this snek has been instantiated and before any command is executed.
+    /// Executed once this canary has been instantiated and before any command is executed.
     /// </summary>
     /// <returns>A <see cref="ValueTask"/> representing completion</returns>
     public virtual ValueTask InitializeAsync()
         => default;
 
     /// <summary>
-    /// Override to cleanup any resources or references which might hold this snek in memory
+    /// Override to cleanup any resources or references which might hold this canary in memory
     /// </summary>
     /// <returns></returns>
     public virtual ValueTask DisposeAsync()
@@ -83,8 +83,8 @@ public abstract class Bird : IAsyncDisposable
     /// <summary>
     /// This method is called after the command was found but not executed,
     /// and can be used to prevent the command's execution.
-    /// The command information doesn't have to be from this snek as this method
-    /// will be called when *any* command from any module or snek was found.
+    /// The command information doesn't have to be from this canary as this method
+    /// will be called when *any* command from any module or canary was found.
     /// You can choose to prevent the execution of the command by returning "true" value.
     /// <para>Execution order:</para>
     /// <para>
@@ -95,7 +95,7 @@ public abstract class Bird : IAsyncDisposable
     /// </para>
     /// </summary>
     /// <param name="context">Command context</param>
-    /// <param name="moduleName">Name of the snek or module from which the command originates</param>
+    /// <param name="moduleName">Name of the canary or module from which the command originates</param>
     /// <param name="commandName">Name of the command which is about to be executed</param>
     /// <returns>A <see cref="ValueTask"/> representing whether the execution should be blocked</returns>
     public virtual ValueTask<bool> ExecPreCommandAsync(
@@ -106,7 +106,7 @@ public abstract class Bird : IAsyncDisposable
         => default;
 
     /// <summary>
-    /// This method is called after the command was succesfully executed.
+    /// This method is called after the command was successfully executed.
     /// If this method was called, then <see cref="ExecOnNoCommandAsync"/> will not be executed
     /// <para>Execution order:</para>
     /// <para>

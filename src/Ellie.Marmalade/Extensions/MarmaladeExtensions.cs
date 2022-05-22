@@ -3,7 +3,7 @@ using Ellie.Bird;
 
 namespace Ellie;
 
-public static class PluginExtensions
+public static class MarmaladeExtensions
 {
     public static Task<IUserMessage> EmbedAsync(this IMessageChannel ch, IEmbedBuilder embed, string msg = "")
         => ch.SendMessageAsync(msg,
