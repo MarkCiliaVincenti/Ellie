@@ -1,26 +1,26 @@
 using Ellie.Common.Configs;
 
-namespace Ellie.Plugin;
+namespace Ellie.Marmalade;
 
-public sealed class PluginConfigService : ConfigServiceBase<PluginConfig>, IPluginConfigService
+public sealed class MarmaladeConfigService : ConfigServiceBase<MarmaladeConfig>, IMarmaladeConfigService
 {
-    private const string FILE_PATH = "data/plugins/plugin.yml";
-    private static readonly TypedKey<PluginConfig> _changeKey = new("config.plugin.updated");
+    private const string FILE_PATH = "data/plugins/marmalade.yml";
+    private static readonly TypedKey<MarmaladeConfig> _changeKey = new("config.marmalade.updated");
 
     public override string Name
-        => "plugin";
+        => "marmalade";
 
-    public PluginConfigService(
+    public MarmaladeConfigService(
         IConfigSeria serializer,
         IPubSub pubSub)
         : base(FILE_PATH, serializer, pubSub, _changeKey)
     {
     }
 
-    public IReadOnlyCollection<string> GetLoadedPlugins()
+    public IReadOnlyCollection<string> GetLoadedMarmalades()
         => Data.Loaded?.ToList() ?? new List<string>();
 
-    public void AddLoadedPlugin(string name)
+    public void AddLoadedMarmalade(string name)
     {
         name = name.Trim().ToLowerInvariant();
 
@@ -34,7 +34,7 @@ public sealed class PluginConfigService : ConfigServiceBase<PluginConfig>, IPlug
         });
     }
 
-    public void RemoveLoadedPlugin(string name)
+    public void RemoveLoadedMarmalade(string name)
     {
         name = name.Trim().ToLowerInvariant();
 

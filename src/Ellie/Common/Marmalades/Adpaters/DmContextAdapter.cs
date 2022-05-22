@@ -2,18 +2,18 @@ using Microsoft.Extensions.DependencyInjection;
 
 public sealed class DmContextAdapter : DmContext
 {
-    public override IPluginStrings Strings { get; }
+    public override IMarmaladeStrings Strings { get; }
     public override IDMChannel Channel { get; }
     public override IUserMessage Message { get; }
     public override IUser User
         => Message.Author;
-
+    
     private readonly IServiceProvider _services;
     private readonly Lazy<IEmbedBuilderService> _ebs;
     private readonly Lazy<IBotStrings> _botStrings;
     private readonly Lazy<ILocalization> _localization;
 
-    public DmContextAdapter(ICommandContext ctx, IPluginStrings strings, IServiceProvider services)
+    public DmContextAdapter(ICommandContext ctx, IMarmaladeStrings strings, IServiceProvider services)
     {
         if (ctx is not { Channel: IDMChannel ch })
         {
@@ -26,8 +26,8 @@ public sealed class DmContextAdapter : DmContext
 
         Channel = ch;
         Message = ctx.Message;
-
-
+        
+        
         _ebs = new(_services.GetRequiredService<IEmbedBuilderService>());
         _botStrings = new(_services.GetRequiredService<IBotStrings>);
         _localization = new(_services.GetRequiredService<ILocalization>());
@@ -42,7 +42,7 @@ public sealed class DmContextAdapter : DmContext
         var output = Strings.GetText(key, cultureInfo, args ?? Array.Empty<object>());
         if (!string.IsNullOrWhiteSpace(output))
             return output;
-
+        
         return _botStrings.Value.GetText(key, cultureInfo, args);
     }
 }

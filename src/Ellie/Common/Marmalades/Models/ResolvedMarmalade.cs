@@ -1,12 +1,12 @@
 using System.Collections.Immutable;
 
-namespace Ellie.Plugin;
+namespace Ellie.Marmalade;
 
-public sealed record ResolvedPlugin(
-    WeakReference<PluginAssemblyLoadContext> LoadContext,
+public sealed record ResolvedMarmalade(
+    WeakReference<MarmaladeAssemblyLoadContext> LoadContext,
     IImmutableList<ModuleInfo> ModuleInfos,
-    IImmutableList<BirdInfo> BirdInfos,
-    IPluginStrings Strings,
+    IImmutableList<CanaryInfo> BirdInfos,
+    IMarmaladeStrings Strings,
     Dictionary<Type, TypeReader> TypeReaders,
     IReadOnlyCollection<ICustomBehavior> Execs)
 {

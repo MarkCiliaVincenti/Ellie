@@ -2,14 +2,14 @@ using Microsoft.VisualBasic;
 using System.Reflection;
 using CommandStrings = Ellie.Bird.CommandStrings;
 
-namespace Ellie.Plugin;
+namespace Ellie.Marmalade;
 
-public sealed class BirdCommandData
+public sealed class CanaryCommandData
 {
-    public BirdCommandData(
+    public CanaryCommandData(
         IReadOnlyCollection<string> aliases,
         MethodInfo methodInfo,
-        Bird module,
+        Canary module,
         FilterAttribute[] filters,
         CommandContextType contextType,
         IReadOnlyList<Type> injectedParams,
@@ -32,7 +32,7 @@ public sealed class BirdCommandData
 
     public IReadOnlyCollection<string> Aliases { get; }
     public MethodInfo MethodInfo { get; set; }
-    public Bird Module { get; set; }
+    public Canary Module { get; set; }
     public FilterAttribute[] Filters { get; set; }
     public CommandContextType ContextType { get; }
     public IReadOnlyList<Type> InjectedParams { get; }

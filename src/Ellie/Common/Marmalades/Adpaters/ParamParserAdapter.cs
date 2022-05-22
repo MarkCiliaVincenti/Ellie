@@ -1,11 +1,11 @@
 public sealed class ParamParserAdapter<T> : TypeReader
 {
     private readonly ParamParser<T> _parser;
-    private readonly IPluginStrings _strings;
+    private readonly IMarmaladeStrings _strings;
     private readonly IServiceProvider _services;
 
     public ParamParserAdapter(ParamParser<T> parser,
-        IPluginStrings strings,
+        IMarmaladeStrings strings,
         IServiceProvider services)
     {
         _parser = parser;

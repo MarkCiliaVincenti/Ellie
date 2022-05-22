@@ -1,15 +1,15 @@
 using System.Reflection;
 using System.Runtime.Loader;
 
-namespace Ellie.Plugin;
+namespace Ellie.Marmalade;
 
-public sealed class PluginAssemblyLoadContext : AssemblyLoadContext
+public sealed class MarmaladeAssemblyLoadContext : AssemblyLoadContext
 {
     private readonly AssemblyDependencyResolver _depResolver;
 
-    public PluginAssemblyLoadContext(string pluginPath) : base(isCollectible: true)
+    public MarmaladeAssemblyLoadContext(string marmaladePath) : base(isCollectible: true)
     {
-        _depResolver = new(pluginPath);
+        _depResolver = new(marmaladePath);
     }
 
     protected override Assembly? Load(AssemblyName assemblyName)

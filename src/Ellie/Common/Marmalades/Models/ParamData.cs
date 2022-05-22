@@ -1,4 +1,4 @@
-namespace Ellie.Plugin;
+namespace Ellie.Marmalade;
 
 public sealed record ParamData(
     Type Type,

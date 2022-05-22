@@ -7,40 +7,40 @@ using System.Globalization;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace Ellie.Plugin;
+namespace Ellie.Marmalade;
 
 // ReSharper disable RedundantAssignment
-public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, INService
+public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExecutor, INService
 {
     private readonly CommandService _cmdService;
     private readonly IServiceProvider _botServices;
     private readonly IBehaviorHandler _behHandler;
     private readonly IPubSub _pubSub;
-    private readonly IPluginConfigService _pluginConfig;
+    private readonly IMarmaladeConfigService _marmaladeConfig;
 
-    private readonly ConcurrentDictionary<string, ResolvedPlugin> _resolved = new();
+    private readonly ConcurrentDictionary<string, ResolvedMarmalade> _resolved = new();
 #pragma warning disable IDE0090 // Use 'new(...)'
     private readonly SemaphoreSlim _lock = new SemaphoreSlim(1, 1);
 #pragma warning restore IDE0090 // Use 'new(...)'
 
-    private readonly TypedKey<string> _loadKey = new("plugin:load");
-    private readonly TypedKey<string> _unloadKey = new("plugin:unload");
+    private readonly TypedKey<string> _loadKey = new("marmalade:load");
+    private readonly TypedKey<string> _unloadKey = new("marmalade:unload");
 
-    private readonly TypedKey<bool> _stringsReload = new("plugin:reload_strings");
+    private readonly TypedKey<bool> _stringsReload = new("marmalade:reload_strings");
 
-    private const string BASE_DIR = "data/plugins";
+    private const string BASE_DIR = "data/marmalades";
 
-    public PluginLoaderService(CommandService cmdService,
+    public MarmaladeLoaderService(CommandService cmdService,
         IServiceProvider botServices,
         IBehaviorHandler behHandler,
         IPubSub pubSub,
-        IPluginConfigService pluginConfig)
+        IMarmaladeConfigService marmaladeConfig)
     {
         _cmdService = cmdService;
         _botServices = botServices;
         _behHandler = behHandler;
         _pubSub = pubSub;
-        _pluginConfig = pluginConfig;
+        _marmaladeConfig = marmaladeConfig;
 
         // has to be done this way to support this feature on sharded bots
         _pubSub.Sub(_loadKey, async name => await InternalLoadAsync(name));
@@ -49,7 +49,7 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
         _pubSub.Sub(_stringsReload, async _ => await ReloadStringsInternal(name));
     }
 
-    public IReadOnlyCollection<string> GetAllPlugins()
+    public IReadOnlyCollection<string> GetAllMarmalades()
     {
         if (!Directory.Exists(BASE_DIR))
             return Array.Empty<string>();
@@ -60,36 +60,36 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public IReadOnlyCollection<PluginStats> GetLoadedPlugin(CultureInfo? culture)
+    public IReadOnlyCollection<MarmaladeStats> GetLoadedMarmalade(CultureInfo? culture)
     {
-        var toReturn = new List<PluginStats>(_resolved.Count);
+        var toReturn = new List<MarmaladeStats>(_resolved.Count);
         foreach (var (name, resolvedData) in _resolved)
         {
-            var Birds = new List<BirdStats>(resolvedData.BirdInfos.Count);
+            var Canaries = new List<CanaryStats>(resolvedData.CanaryInfo.Count);
 
-            foreach (var birdInfos in resolvedData.BirdInfos.Concat(resolvedData.BirdInfos.SelectMany(x => x.Subbirds)))
+            foreach (var canaryInfos in resolvedData.CanaryInfo.Concat(resolvedData.CanaryInfo.SelectMany(x => x.Subcanaries)))
             {
-                var commands = new List<BirdCommandStats>();
+                var commands = new List<CanaryCommandStats>();
 
-                foreach (var command in birdInfos.Commands)
+                foreach (var command in canaryInfos.Commands)
                 {
-                    commands.Add(new BirdCommandStats(command.Aliases.First()));
+                    commands.Add(new CanaryCommandStats(command.Aliases.First()));
                 }
 
-                birds.Add(new BirdStats(birdInfos.Name, commands));
+                canaries.Add(new CanaryStats(canaryInfos.Name, commands));
             }
 
-            toReturn.Add(new PluginStats(name, resolvedData.Strings.GetDescription(culture), birds));
+            toReturn.Add(new MarmaladeStats(name, resolvedData.Strings.GetDescription(culture), canaries));
         }
         return toReturn;
     }
 
     public async Task OnReadyAsync()
     {
-        foreach (var name in _pluginConfig.GetLoadedPlugins())
+        foreach (var name in _marmaladeConfig.GetLoadedMarmalades())
         {
             var result = await InternalLoadAsync(name);
-            if (result != PluginLoadResult.Success)
+            if (result != MarmaladeLoadResult.Success)
                 Log.Warning("Unable to load '{MedusaName}' medusa", name);
             else
                 Log.Warning("Loaded medusa '{MedusaName}'", name);
@@ -97,41 +97,41 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public async Task<PluginLoadResult> LoadPluginAsync(string pluginName)
+    public async Task<MarmaladeLoadResult> LoadMarmaladeAsync(string marmaladeName)
     {
         // try loading on this shard first to see if it works
-        var res = await InternalLoadAsync(pluginName);
-        if (res == PluginLoadResult.Success)
+        var res = await InternalLoadAsync(marmaladeName);
+        if (res == MarmaladeLoadResult.Success)
         {
-            // if it does publish it so that other shards can load the plugin too
+            // if it does publish it so that other shards can load the marmalade too
             // this method will be ran twice on this shard but it doesn't matter as 
             // the second attempt will be ignored
-            await _pubSub.Pub(_loadKey, pluginName);
+            await _pubSub.Pub(_loadKey, marmaladeName);
         }
 
         return res;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public async Task<PluginUnloadResult> UnloadPluginAsync(string pluginName)
+    public async Task<MarmaladeUnloadResult> UnloadMarmaladeAsync(string marmaladeName)
     {
-        var res = await InternalUnloadAsync(pluginName);
-        if (res == PluginUnloadResult.Success)
+        var res = await InternalUnloadAsync(marmaladeName);
+        if (res == MarmaladeUnloadResult.Success)
         {
-            await _pubSub.Pub(_unloadKey, pluginName);
+            await _pubSub.Pub(_unloadKey, marmaladeName);
         }
 
         return res;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public string[] GetCommandExampleArgs(string pluginName, string commandName, CultureInfo culture)
+    public string[] GetCommandExampleArgs(string marmaladeName, string commandName, CultureInfo culture)
     {
-        if (!_resolved.TryGetValue(pluginName, out var data))
+        if (!_resolved.TryGetValue(marmaladeName, out var data))
             return Array.Empty<string>();
 
         return data.Strings.GetCommandStrings(commandName, culture).Args
-               ?? data.BirdInfos
+               ?? data.CanaryInfos
                       .SelectMany(x => x.Commands)
                       .FirstOrDefault(x => x.Aliases.Any(alias
                           => alias.Equals(commandName, StringComparison.InvariantCultureIgnoreCase)))
@@ -166,13 +166,13 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public string GetCommandDescription(string pluginName, string commandName, CultureInfo culture)
+    public string GetCommandDescription(string marmaladeName, string commandName, CultureInfo culture)
     {
-        if (!_resolved.TryGetValue(pluginName, out var data))
+        if (!_resolved.TryGetValue(marmaladeName, out var data))
             return string.Empty;
 
         return data.Strings.GetCommandStrings(commandName, culture).Desc
-               ?? data.BirdInfos
+               ?? data.CanaryInfos
                       .SelectMany(x => x.Commands)
                       .FirstOrDefault(x => x.Aliases.Any(alias
                           => alias.Equals(commandName, StringComparison.InvariantCultureIgnoreCase)))
@@ -182,10 +182,10 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private async ValueTask<PluginLoadResult> InternalLoadAsync(string name)
+    private async ValueTask<MarmaladeLoadResult> InternalLoadAsync(string name)
     {
         if (_resolved.ContainsKey(name))
-            return PluginLoadResult.AlreadyLoaded;
+            return MarmaladeLoadResult.AlreadyLoaded;
 
         var safeName = Uri.EscapeDataString(name);
         name = name.ToLowerInvariant();
@@ -195,7 +195,7 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
         {
             if (LoadAssemblyInternal(safeName,
                     out var ctx,
-                    out var BirdData,
+                    out var CanaryData,
                     out var services,
                     out var strings,
                     out var typeReaders))
@@ -204,13 +204,13 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
 
                 LoadTypeReadersInternal(typeReaders);
 
-                foreach (var point in birdData)
+                foreach (var point in canaryData)
                 {
                     try
                     {
-                        // initialize bird and subbirds
+                        // initialize canary and subcanaries
                         await point.Instance.InitializeAsync();
-                        foreach (var sub in point.Subbirds)
+                        foreach (var sub in point.Subcanaries)
                         {
                             await sub.Instance.InitializeAsync();
                         }
@@ -221,17 +221,17 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
                     catch (Exception ex)
                     {
                         Log.Warning(ex,
-                            "Error loading bird {BirdName}",
+                            "Error loading canary {CanaryName}",
                             point.Name);
                     }
                 }
 
-                var execs = GetExecsInternal(birdData, strings, services);
+                var execs = GetExecsInternal(canaryData, strings, services);
                 await _behHandler.AddRangeAsync(execs);
 
                 _resolved[name] = new(LoadContext: ctx,
                     ModuleInfos: moduleInfos.ToImmutableArray(),
-                    BirdInfos: birdData.ToImmutableArray(),
+                    CanaryInfos: canaryData.ToImmutableArray(),
                     strings,
                     typeReaders,
                     execs)
@@ -241,20 +241,20 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
 
 
                 services = null;
-                _pluginConfig.AddLoadedPlugin(safeName);
-                return PluginLoadResult.Success;
+                _marmaladeConfig.AddLoadedMarmalde(safeName);
+                return MarmaladeLoadResult.Success;
             }
 
-            return PluginLoadResult.Empty;
+            return MarmaladeLoadResult.Empty;
         }
         catch (Exception ex) when (ex is FileNotFoundException or BadImageFormatException)
         {
-            return PluginLoadResult.NotFound;
+            return MarmaladeLoadResult.NotFound;
         }
         catch (Exception ex)
         {
             Log.Error(ex, "An error occurred loading a medusa");
-            return PluginLoadResult.UnknownError;
+            return MarmaladeLoadResult.UnknownError;
         }
         finally
         {
@@ -263,14 +263,14 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private IReadOnlyCollection<ICustomBehavior> GetExecsInternal(IReadOnlyCollection<BirdInfo> birdData, IPluginStrings strings, IServiceProvider services)
+    private IReadOnlyCollection<ICustomBehavior> GetExecsInternal(IReadOnlyCollection<CanaryInfo> canaryData, IMarmaladeStrings strings, IServiceProvider services)
     {
         var behs = new List<ICustomBehavior>();
-        foreach (var bird in birdData)
+        foreach (var canary in canaryData)
         {
-            behs.Add(new BehaviorAdapter(new(bird.Instance), strings, services));
+            behs.Add(new BehaviorAdapter(new(canary.Instance), strings, services));
 
-            foreach (var sub in bird.Subbirds)
+            foreach (var sub in canary.Subcanaries)
             {
                 behs.Add(new BehaviorAdapter(new(sub.Instance), strings, services));
             }
@@ -308,20 +308,20 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     [MethodImpl(MethodImplOptions.NoInlining)]
     private bool LoadAssemblyInternal(
         string safeName,
-        [NotNullWhen(true)] out WeakReference<PluginAssemblyLoadContext>? ctxWr,
-        [NotNullWhen(true)] out IReadOnlyCollection<BirdInfo>? birdData,
+        [NotNullWhen(true)] out WeakReference<MarmaladeAssemblyLoadContext>? ctxWr,
+        [NotNullWhen(true)] out IReadOnlyCollection<CanaryInfo>? canaryData,
         out IServiceProvider services,
-        out IPluginStrings strings,
+        out IMarmaladeStrings strings,
         out Dictionary<Type, TypeReader> typeReaders)
     {
         ctxWr = null;
-        birdData = null;
+        canaryData = null;
 
         var path = $"{BASE_DIR}/{safeName}/{safeName}.dll";
-        strings = PluginStrings.CreateDefault($"{BASE_DIR}/{safeName}");
-        var ctx = new PluginAssemblyLoadContext(Path.GetDirectoryName(path)!);
+        strings = MarmaladeStrings.CreateDefault($"{BASE_DIR}/{safeName}");
+        var ctx = new MarmaladeAssemblyLoadContext(Path.GetDirectoryName(path)!);
         var a = ctx.LoadFromAssemblyPath(Path.GetFullPath(path));
-        var sis = LoadBirdsFromAssembly(a, out services);
+        var sis = LoadCanarysFromAssembly(a, out services);
         typeReaders = LoadTypeReadersFromAssembly(a, strings, services);
 
         if (sis.Count == 0)
@@ -330,7 +330,7 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
         }
 
         ctxWr = new(ctx);
-        birdData = sis;
+        canaryData = sis;
 
         return true;
     }
@@ -340,7 +340,7 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     [MethodImpl(MethodImplOptions.NoInlining)]
     private Dictionary<Type, TypeReader> LoadTypeReadersFromAssembly(
         Assembly assembly,
-        IPluginStrings strings,
+        IMarmaladeStrings strings,
         IServiceProvider services)
     {
         var paramParsers = assembly.GetExportedTypes()
@@ -367,10 +367,10 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private async Task<ModuleInfo> LoadModuleInternalAsync(string birdName, BirdInfo birdInfo, IPluginStrings strings, IServiceProvider services)
+    private async Task<ModuleInfo> LoadModuleInternalAsync(string canaryName, CanaryInfo canaryInfo, IMarmaladeStrings strings, IServiceProvider services)
     {
-        var module = await _cmdService.CreateModuleAsync(birdInfo.Instance.Prefix,
-            CreateModuleFactory(birdName, birdInfo, strings, services));
+        var module = await _cmdService.CreateModuleAsync(canaryInfo.Instance.Prefix,
+            CreateModuleFactory(canaryName, canaryInfo, strings, services));
 
         return module;
     }
@@ -378,31 +378,31 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     [MethodImpl(MethodImplOptions.NoInlining)]
     private Action<ModuleBuilder> CreateModuleFactory(
         string medusaName,
-        BirdInfo birdInfo,
-        IPluginStrings strings,
-        IServiceProvider pluginServices)
+        CanaryInfo canaryInfo,
+        IMarmaladeStrings strings,
+        IServiceProvider marmaladeServices)
         => mb =>
         {
-            var m = mb.WithName(birdInfo.Name);
+            var m = mb.WithName(canaryInfo.Name);
 
-            foreach (var cmd in birdInfo.Commands)
+            foreach (var cmd in canaryInfo.Commands)
             {
                 m.AddCommand(cmd.Aliases.First(),
                     CreateCallback(cmd.ContextType,
-                        new(birdInfo),
+                        new(canaryInfo),
                         new(cmd),
-                        new(pluginServices),
+                        new(marmaladeServices),
                         strings),
                     CreateCommandFactory(medusaName, cmd));
             }
 
-            foreach (var subInfo in birdInfo.Subbirds)
-                m.AddModule(subInfo.Instance.Prefix, CreateModuleFactory(medusaName, subInfo, strings, pluginServices));
+            foreach (var subInfo in canaryInfo.Subcanaries)
+                m.AddModule(subInfo.Instance.Prefix, CreateModuleFactory(medusaName, subInfo, strings, marmaladeServices));
         };
 
     private static readonly RequireContextAttribute _reqGuild = new RequireContextAttribute(ContextType.Guild);
     private static readonly RequireContextAttribute _reqDm = new RequireContextAttribute(ContextType.DM);
-    private Action<CommandBuilder> CreateCommandFactory(string pluginName, BirdCommandData cmd)
+    private Action<CommandBuilder> CreateCommandFactory(string marmaladeName, CanaryCommandData cmd)
         => (cb) =>
         {
             cb.AddAliases(cmd.Aliases.Skip(1).ToArray());
@@ -416,7 +416,7 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
 
             // using summary to save method name
             // method name is used to retrieve desc/usages
-            cb.WithRemarks($"plugin///{pluginName}");
+            cb.WithRemarks($"marmalade///{marmaladeName}");
             cb.WithSummary(cmd.MethodInfo.Name.ToLowerInvariant());
 
             foreach (var param in cmd.Parameters)
@@ -436,17 +436,17 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     [MethodImpl(MethodImplOptions.NoInlining)]
     private Func<ICommandContext, object[], IServiceProvider, CommandInfo, Task> CreateCallback(
         CommandContextType contextType,
-        WeakReference<BirdInfo> birdDataWr,
-        WeakReference<BirdCommandData> birdCommandDataWr,
+        WeakReference<CanaryInfo> canaryDataWr,
+        WeakReference<CanaryCommandData> canaryCommandDataWr,
         WeakReference<IServiceProvider> medusaServicesWr,
-        IPluginStrings strings)
+        IMarmaladeStrings strings)
         => async (context, parameters, svcs, _) =>
         {
-            if (!birdCommandDataWr.TryGetTarget(out var cmdData)
-                || !birdDataWr.TryGetTarget(out var birdData)
+            if (!canaryCommandDataWr.TryGetTarget(out var cmdData)
+                || !canaryDataWr.TryGetTarget(out var canaryData)
                 || !medusaServicesWr.TryGetTarget(out var medusaServices))
             {
-                Log.Warning("Attempted to run an unloaded bird's command");
+                Log.Warning("Attempted to run an unloaded canary's command");
                 return;
             }
 
@@ -459,15 +459,15 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
                     || (methodInfo.ReturnType.IsGenericType
                         && methodInfo.ReturnType.GetGenericTypeDefinition() == typeof(Task<>)))
                 {
-                    await (Task)methodInfo.Invoke(birdData.Instance, paramObjs)!;
+                    await (Task)methodInfo.Invoke(canaryData.Instance, paramObjs)!;
                 }
                 else if (methodInfo.ReturnType == typeof(ValueTask))
                 {
-                    await ((ValueTask)methodInfo.Invoke(birdData.Instance, paramObjs)!).AsTask();
+                    await ((ValueTask)methodInfo.Invoke(canaryData.Instance, paramObjs)!).AsTask();
                 }
                 else // if (methodInfo.ReturnType == typeof(void))
                 {
-                    methodInfo.Invoke(birdData.Instance, paramObjs);
+                    methodInfo.Invoke(canaryData.Instance, paramObjs);
                 }
             }
             finally
@@ -475,7 +475,7 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
                 paramObjs = null;
                 cmdData = null;
 
-                birdData = null;
+                canaryData = null;
                 medusaServices = null;
             }
         };
@@ -483,12 +483,12 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     [MethodImpl(MethodImplOptions.NoInlining)]
     private static object[] ParamObjs(
         CommandContextType contextType,
-        BirdCommandData cmdData,
+        CanaryCommandData cmdData,
         object[] parameters,
         ICommandContext context,
         IServiceProvider svcs,
         IServiceProvider svcProvider,
-        IPluginStrings strings)
+        IMarmaladeStrings strings)
     {
         var extraParams = contextType == CommandContextType.Unspecified ? 0 : 1;
         extraParams += cmdData.InjectedParams.Count;
@@ -525,11 +525,11 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private async Task<PluginUnloadResult> InternalUnloadAsync(string name)
+    private async Task<MarmaladeUnloadResult> InternalUnloadAsync(string name)
     {
         name = name.ToLowerInvariant();
         if (!_resolved.Remove(name, out var lsi))
-            return PluginUnloadResult.NotLoaded;
+            return MarmaladeUnloadResult.NotLoaded;
 
         await _lock.WaitAsync();
         try
@@ -543,7 +543,7 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
 
             await _behHandler.RemoveRangeAsync(lsi.Execs);
 
-            await DisposeBirdInstances(lsi);
+            await DisposeCanaryInstances(lsi);
 
             var lc = lsi.LoadContext;
 
@@ -553,10 +553,10 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
             lsi.Services = null!;
             lsi = null;
 
-            _pluginConfig.RemoveLoadedPlugin(name);
+            _marmaladeConfig.RemoveLoadedMarmalade(name);
             return UnloadInternal(lc)
-                ? PluginUnloadResult.Success
-                : PluginUnloadResult.PossiblyUnable;
+                ? MarmaladeUnloadResult.Success
+                : MarmaladeUnloadResult.PossiblyUnable;
         }
         finally
         {
@@ -573,14 +573,14 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private async Task DisposeBirdInstances(ResolvedPlugin plugin)
+    private async Task DisposeCanaryInstances(ResolvedMarmalade marmalade)
     {
-        foreach (var si in plugin.BirdInfos)
+        foreach (var si in marmalade.CanaryInfos)
         {
             try
             {
                 await si.Instance.DisposeAsync();
-                foreach (var sub in si.Subbirds)
+                foreach (var sub in si.Subcanarys)
                 {
                     await sub.Instance.DisposeAsync();
                 }
@@ -588,16 +588,16 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
             catch (Exception ex)
             {
                 Log.Warning(ex,
-                    "Failed cleanup of Bird {BirdName}. This plugin might not unload correctly",
+                    "Failed cleanup of Canary {CanaryName}. This marmalade might not unload correctly",
                     si.Instance.Name);
             }
         }
 
-        // plugins = null;
+        // marmalades = null;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private bool UnloadInternal(WeakReference<PluginAssemblyLoadContext> lsi)
+    private bool UnloadInternal(WeakReference<MarmaladeAssemblyLoadContext> lsi)
     {
         UnloadContext(lsi);
         GcCleanup();
@@ -606,7 +606,7 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private void UnloadContext(WeakReference<PluginAssemblyLoadContext> lsiLoadContext)
+    private void UnloadContext(WeakReference<MarmaladeAssemblyLoadContext> lsiLoadContext)
     {
         if (lsiLoadContext.TryGetTarget(out var ctx))
             ctx.Unload();
@@ -624,10 +624,10 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
         }
     }
 
-    private static readonly Type _birdType = typeof(Bird);
+    private static readonly Type _canaryType = typeof(Canary);
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private IServiceProvider LoadPluginServicesInternal(Assembly a)
+    private IServiceProvider LoadMarmaladeServicesInternal(Assembly a)
         => new ServiceCollection()
            .Scan(x => x.FromAssemblies(a)
                        .AddClasses(static x => x.WithAttribute<svcAttribute>(x => x.Lifetime == Lifetime.Transient))
@@ -640,22 +640,22 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
 
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public IReadOnlyCollection<BirdInfo> LoadBirdsFromAssembly(Assembly a, out IServiceProvider services)
+    public IReadOnlyCollection<CanaryInfo> LoadCanariesFromAssembly(Assembly a, out IServiceProvider services)
     {
-        var pluginServices = LoadPluginServicesInternal(a);
-        services = new PluginServiceProvider(_botServices, pluginServices);
+        var marmaladeServices = LoadMarmaladeServicesInternal(a);
+        services = new MarmaladeServiceProvider(_botServices, MarmaladeServices);
 
         // find all types in teh assembly
         var types = a.GetExportedTypes();
-        // bird is always a public non abstract class
+        // canary is always a public non abstract class
         var classes = types.Where(static x => x.IsClass
                                               && (x.IsNestedPublic || x.IsPublic)
                                               && !x.IsAbstract
-                                              && x.BaseType == _birdType
-                                              && (x.DeclaringType is null || x.DeclaringType.IsAssignableTo(_birdType)))
+                                              && x.BaseType == _canaryType
+                                              && (x.DeclaringType is null || x.DeclaringType.IsAssignableTo(_canaryType)))
                            .ToList();
 
-        var topModules = new Dictionary<Type, BirdInfo>();
+        var topModules = new Dictionary<Type, CanaryInfo>();
 
         foreach (var cl in classes)
         {
@@ -689,27 +689,27 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private BirdInfo GetModuleData(Type type, IServiceProvider services, BirdInfo? parentData = null)
+    private CanaryInfo GetModuleData(Type type, IServiceProvider services, CanaryInfo? parentData = null)
     {
         var filters = type.GetCustomAttributes<FilterAttribute>(true)
                           .ToArray();
 
-        var instance = (Bird)ActivatorUtilities.CreateInstance(services, type);
+        var instance = (Canary)ActivatorUtilities.CreateInstance(services, type);
 
-        var module = new BirdInfo(instance.Name,
+        var module = new CanaryInfo(instance.Name,
             parentData,
             instance,
             GetCommands(instance, type),
             filters);
 
         if (parentData is not null)
-            parentData.Subbirds.Add(module);
+            parentData.Subcanaries.Add(module);
 
         return module;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private IReadOnlyCollection<BirdCommandData> GetCommands(Bird instance, Type type)
+    private IReadOnlyCollection<CanaryCommandData> GetCommands(Canary instance, Type type)
     {
         var methodInfos = type
                           .GetMethods(BindingFlags.Instance
@@ -751,7 +751,7 @@ public sealed class PluginLoaderService : IPluginLoaderService, IReadyExecutor, 
                           });
 
 
-        var cmds = new List<BirdCommandData>();
+        var cmds = new List<CanaryCommandData>();
         foreach (var method in methodInfos)
         {
             var filters = method.GetCustomAttributes<FilterAttribute>().ToArray();
@@ -861,7 +861,7 @@ ParamName: {pi.Name}
 ParamType: {pi.ParameterType.Name}";
 }
 
-public enum PluginLoadResult
+public enum MarmaladeLoadResult
 {
     Success,
     NotFound,
@@ -870,7 +870,7 @@ public enum PluginLoadResult
     UnknownError,
 }
 
-public enum PluginUnloadResult
+public enum MarmaladeUnloadResult
 {
     Success,
     NotLoaded,

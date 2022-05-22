@@ -1,13 +1,13 @@
 using System.Runtime.CompilerServices;
 
-namespace Ellie.Plugin;
+namespace Ellie.Marmalade;
 
-public class PluginServiceProvider : IServiceProvider
+public class MarmaladeServiceProvider : IServiceProvider
 {
     private readonly IServiceProvider _ellieServices;
     private readonly IServiceProvider _pluginServices;
 
-    public PluginServiceProvider(IServiceProvider ellieServices, IServiceProvider pluginServices)
+    public MarmaladeServiceProvider(IServiceProvider ellieServices, IServiceProvider pluginServices)
     {
         _ellieServices = ellieServices;
         _pluginServices = pluginServices;

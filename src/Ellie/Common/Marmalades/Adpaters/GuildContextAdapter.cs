@@ -8,7 +8,7 @@ public sealed class GuildContextAdapter : GuildContext
     private readonly Lazy<IBotStrings> _botStrings;
     private readonly Lazy<ILocalization> _localization;
 
-    public override IPluginStrings Strings { get; }
+    public override IMarmaladeStrings Strings { get; }
     public override IGuild Guild { get; }
     public override ITextChannel Channel { get; }
     public override IUserMessage Message
@@ -19,7 +19,7 @@ public sealed class GuildContextAdapter : GuildContext
     public override IEmbedBuilder Embed()
         => _ebs.Value.Create();
 
-    public GuildContextAdapter(ICommandContext ctx, IPluginStrings strings, IServiceProvider services)
+    public GuildContextAdapter(ICommandContext ctx, IMarmaladeStrings strings, IServiceProvider services)
     {
         if (ctx.Guild is not IGuild guild || ctx.Channel is not ITextChannel channel)
         {
