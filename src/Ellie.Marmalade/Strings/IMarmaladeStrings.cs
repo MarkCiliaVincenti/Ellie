@@ -3,7 +3,7 @@ using System.Globalization;
 namespace Ellie.Bird;
 
 /// <summary>
-///     Defines methods to retrieve and reload plugin strings
+///     Defines methods to retrieve and reload marmalade strings
 /// </summary>
 public interface IMarmaladeStrings
 {

@@ -1,7 +1,7 @@
 namespace Ellie.Bird;
 
 /// <summary>
-/// Marks the class as a service which can be used within the same Plugin
+/// Marks the class as a service which can be used within the same Marmalade
 /// </summary>
 [AttributeUsage(AttributeTargets.Class)]
 public class svcAttribute : Attribute

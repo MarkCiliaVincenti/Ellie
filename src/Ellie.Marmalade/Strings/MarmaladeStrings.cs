@@ -52,7 +52,7 @@ public class MarmaladeStrings : IMarmaladeStrings
         {
             if (cultureInfo.Name == _usCultureInfo.Name)
             {
-                Log.Warning("'{CommandName}' doesn't exist in 'en-US' command strings for one of the plugin",
+                Log.Warning("'{CommandName}' doesn't exist in 'en-US' command strings for one of the marmalade",
                     commandName);
 
                 return new(null, null);
@@ -69,7 +69,7 @@ public class MarmaladeStrings : IMarmaladeStrings
     }
 
     public string? GetDescription(CultureInfo? locale = null)
-        => GetText("plugin.description", locale ?? _usCultureInfo);
+        => GetText("marmalade.description", locale ?? _usCultureInfo);
 
     public static MarmaladeStrings CreateDefault(string basePath)
         => new MarmaladeStrings(new LocalMarmaladeStringsProvider(new(basePath)));
