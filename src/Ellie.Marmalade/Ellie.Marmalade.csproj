@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/EmotionChild/Ellie</RepositoryUrl>
 
     <Authors>EllieBotDevs</Authors>
-    <Version>2.0.2</Version>
+    <Version>2.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
