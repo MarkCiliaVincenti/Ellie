@@ -4,7 +4,7 @@
 global using Serilog;
 global using Humanizer;
 
-// nadekobot
+// ellie
 global using Ellie;
 global using Ellie.Services;
 global using Ellie.Common;
