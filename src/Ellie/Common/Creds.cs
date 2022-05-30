@@ -93,7 +93,7 @@ Linux default
     cmd: dotnet
     args: ""Ellie.dll -- {0}""
 Windows default
-    cmd: Nadeko.exe
+    cmd: Ellie.exe
     args: {0}")]
     public RestartConfig RestartCommand { get; set; }
 

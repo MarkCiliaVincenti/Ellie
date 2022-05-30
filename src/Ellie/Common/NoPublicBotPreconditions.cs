@@ -12,7 +12,7 @@ public sealed class NoPublicBotAttribute : PreconditionAttribute
         CommandInfo command,
         IServiceProvider services)
     {
-#if GLOBAL_NADEKO
+#if GLOBAL_ELLIE
         return Task.FromResult(PreconditionResult.FromError("Not available on the public bot. To learn how to selfhost a private bot, click [here](https://docs.elliebot.net/)."));
 #else
         return Task.FromResult(PreconditionResult.FromSuccess());
