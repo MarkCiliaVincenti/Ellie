@@ -2,7 +2,7 @@
 using System.Globalization;
 using MessageType = Ellie.Extensions.MessageType;
 
-// Resharper disable InconsistentNaming
+// ReSharper disable InconsistentNaming
 
 namespace Ellie.Modules;
 
@@ -30,15 +30,15 @@ public abstract class EllieModule : ModuleBase
 
     protected string GetText(in LocStr data)
         => Strings.GetText(data, Culture);
-
+    
     public Task<IUserMessage> SendErrorAsync(
         string title,
         string error,
         string url = null,
-        string footer = null,
+        string footer = null, 
         EllieInteraction inter = null)
         => ctx.Channel.SendErrorAsync(_eb, title, error, url, footer);
-
+    
     public Task<IUserMessage> SendConfirmAsync(
         string title,
         string text,
@@ -54,7 +54,7 @@ public abstract class EllieModule : ModuleBase
     public Task<IUserMessage> SendPendingAsync(string text, EllieInteraction inter = null)
         => ctx.Channel.SendAsync(_eb, text, MessageType.Pending, inter);
 
-
+    
     // localized normal
     public Task<IUserMessage> ErrorLocalizedAsync(LocStr str, EllieInteraction inter = null)
         => SendErrorAsync(GetText(str), inter);
