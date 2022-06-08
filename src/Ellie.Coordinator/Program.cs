@@ -17,4 +17,4 @@ static IHostBuilder CreateHostBuilder(string[] args) =>
 LogSetup.SetupLogger("coord");
 Log.Information("Starting coordinator... Pid: {ProcessId}", Environment.ProcessId);
 
-CreateHostBuilder(args).Build().Run()
+CreateHostBuilder(args).Build().Run();
