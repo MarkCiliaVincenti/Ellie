@@ -114,7 +114,7 @@ public partial class Administration
         [Cmd]
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.Administrator)]
-        [NadekoOptions(typeof(WarnExpireOptions))]
+        [EllieOptions(typeof(WarnExpireOptions))]
         [Priority(1)]
         public async partial Task WarnExpire()
         {
@@ -129,7 +129,7 @@ public partial class Administration
         [Cmd]
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.Administrator)]
-        [NadekoOptions(typeof(WarnExpireOptions))]
+        [EllieOptions(typeof(WarnExpireOptions))]
         [Priority(2)]
         public async partial Task WarnExpire(int days, params string[] args)
         {

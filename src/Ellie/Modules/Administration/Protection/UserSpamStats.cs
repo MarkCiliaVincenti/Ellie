@@ -1,5 +1,5 @@
 #nullable disable
-namespace NadekoBot.Modules.Administration;
+namespace Ellie.Modules.Administration;
 
 public sealed class UserSpamStats
 {

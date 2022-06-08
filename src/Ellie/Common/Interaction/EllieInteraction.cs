@@ -1,4 +1,4 @@
-namespace Ellie;
+﻿namespace Ellie;
 
 public abstract class EllieInteraction
 {
@@ -53,7 +53,7 @@ public abstract class EllieInteraction
         _ = Task.Run(async () =>
         {
             await ExecuteOnActionAsync(smc);
-
+            
             // this should only be a thing on single-response buttons
             _interactionCompletedSource.TrySetResult(true);
 

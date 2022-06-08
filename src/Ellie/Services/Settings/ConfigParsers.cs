@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using SixLabors.ImageSharp.PixelFormats;
 using System.Globalization;
 

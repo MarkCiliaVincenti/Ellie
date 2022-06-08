@@ -1,6 +1,6 @@
-using Microsoft.VisualBasic;
+﻿using Microsoft.VisualBasic;
 using System.Reflection;
-using CommandStrings = Ellie.Bird.CommandStrings;
+using CommandStrings = Ellie.Marmalade.CommandStrings;
 
 namespace Ellie.Marmalade;
 

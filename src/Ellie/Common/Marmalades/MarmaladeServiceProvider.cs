@@ -1,16 +1,16 @@
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 
 namespace Ellie.Marmalade;
 
 public class MarmaladeServiceProvider : IServiceProvider
 {
     private readonly IServiceProvider _ellieServices;
-    private readonly IServiceProvider _pluginServices;
+    private readonly IServiceProvider _marmaladeServices;
 
-    public MarmaladeServiceProvider(IServiceProvider ellieServices, IServiceProvider pluginServices)
+    public MarmaladeServiceProvider(IServiceProvider ellieServices, IServiceProvider marmaladeServices)
     {
         _ellieServices = ellieServices;
-        _pluginServices = pluginServices;
+        _marmaladeServices = marmaladeServices;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -19,6 +19,6 @@ public class MarmaladeServiceProvider : IServiceProvider
         if (!serviceType.Assembly.IsCollectible)
             return _ellieServices.GetService(serviceType);
 
-        return _pluginServices.GetService(serviceType);
+        return _marmaladeServices.GetService(serviceType);
     }
 }

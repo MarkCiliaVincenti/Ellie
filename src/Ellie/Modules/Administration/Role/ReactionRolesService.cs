@@ -1,11 +1,11 @@
 ﻿#nullable disable
 using LinqToDB;
 using LinqToDB.EntityFrameworkCore;
-using NadekoBot.Common.ModuleBehaviors;
-using NadekoBot.Modules.Xp.Extensions;
-using NadekoBot.Services.Database.Models;
+using Ellie.Common.ModuleBehaviors;
+using Ellie.Modules.Xp.Extensions;
+using Ellie.Services.Database.Models;
 
-namespace NadekoBot.Modules.Administration.Services;
+namespace Ellie.Modules.Administration.Services;
 
 public sealed class ReactionRolesService : IReadyExecutor, INService, IReactionRoleService
 {

@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using SixLabors.Fonts;
 
 namespace Ellie.Services;

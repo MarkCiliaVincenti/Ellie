@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using Ellie.Modules.EllieExpressions;
 
 namespace Ellie.Common.TypeReaders;

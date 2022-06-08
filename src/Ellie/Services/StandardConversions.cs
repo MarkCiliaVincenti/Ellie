@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 namespace Ellie.Services;
 
 public static class StandardConversions

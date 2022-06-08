@@ -1,12 +1,12 @@
 ﻿#nullable disable
-using NadekoBot.Modules.Administration.Services;
+using Ellie.Modules.Administration.Services;
 
-namespace NadekoBot.Modules.Administration;
+namespace Ellie.Modules.Administration;
 
 public partial class Administration
 {
     [Group]
-    public partial class PruneCommands : NadekoModule<PruneService>
+    public partial class PruneCommands : EllieModule<PruneService>
     {
         private static readonly TimeSpan _twoWeeks = TimeSpan.FromDays(14);
 

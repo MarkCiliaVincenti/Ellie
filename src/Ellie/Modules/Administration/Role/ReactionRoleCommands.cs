@@ -1,10 +1,10 @@
-﻿using NadekoBot.Modules.Administration.Services;
+﻿using Ellie.Modules.Administration.Services;
 
-namespace NadekoBot.Modules.Administration;
+namespace Ellie.Modules.Administration;
 
 public partial class Administration
 {
-    public partial class ReactionRoleCommands : NadekoModule
+    public partial class ReactionRoleCommands : EllieModule
     {
         private readonly IReactionRoleService _rero;
 

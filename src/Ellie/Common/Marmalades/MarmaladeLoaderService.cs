@@ -1,4 +1,4 @@
-using Discord.Commands.Builders;
+﻿using Discord.Commands.Builders;
 using Microsoft.Extensions.DependencyInjection;
 using Ellie.Common.ModuleBehaviors;
 using System.Collections.Immutable;
@@ -17,18 +17,16 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
     private readonly IBehaviorHandler _behHandler;
     private readonly IPubSub _pubSub;
     private readonly IMarmaladeConfigService _marmaladeConfig;
-
+    
     private readonly ConcurrentDictionary<string, ResolvedMarmalade> _resolved = new();
-#pragma warning disable IDE0090 // Use 'new(...)'
     private readonly SemaphoreSlim _lock = new SemaphoreSlim(1, 1);
-#pragma warning restore IDE0090 // Use 'new(...)'
 
     private readonly TypedKey<string> _loadKey = new("marmalade:load");
     private readonly TypedKey<string> _unloadKey = new("marmalade:unload");
-
+    
     private readonly TypedKey<bool> _stringsReload = new("marmalade:reload_strings");
 
-    private const string BASE_DIR = "data/marmalades";
+    private const string BASE_DIR = "data/marmalade";
 
     public MarmaladeLoaderService(CommandService cmdService,
         IServiceProvider botServices,
@@ -41,12 +39,12 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
         _behHandler = behHandler;
         _pubSub = pubSub;
         _marmaladeConfig = marmaladeConfig;
-
+        
         // has to be done this way to support this feature on sharded bots
         _pubSub.Sub(_loadKey, async name => await InternalLoadAsync(name));
         _pubSub.Sub(_unloadKey, async name => await InternalUnloadAsync(name));
 
-        _pubSub.Sub(_stringsReload, async _ => await ReloadStringsInternal(name));
+        _pubSub.Sub(_stringsReload, async _ => await ReloadStringsInternal());
     }
 
     public IReadOnlyCollection<string> GetAllMarmalades()
@@ -60,14 +58,14 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public IReadOnlyCollection<MarmaladeStats> GetLoadedMarmalade(CultureInfo? culture)
+    public IReadOnlyCollection<MarmaladeStats> GetLoadedMarmalades(CultureInfo? culture)
     {
         var toReturn = new List<MarmaladeStats>(_resolved.Count);
         foreach (var (name, resolvedData) in _resolved)
         {
-            var Canaries = new List<CanaryStats>(resolvedData.CanaryInfo.Count);
+            var canaries = new List<CanaryStats>(resolvedData.CanaryInfos.Count);
 
-            foreach (var canaryInfos in resolvedData.CanaryInfo.Concat(resolvedData.CanaryInfo.SelectMany(x => x.Subcanaries)))
+            foreach (var canaryInfos in resolvedData.CanaryInfos.Concat(resolvedData.CanaryInfos.SelectMany(x => x.Subcanaries)))
             {
                 var commands = new List<CanaryCommandStats>();
 
@@ -75,7 +73,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                 {
                     commands.Add(new CanaryCommandStats(command.Aliases.First()));
                 }
-
+                
                 canaries.Add(new CanaryStats(canaryInfos.Name, commands));
             }
 
@@ -89,10 +87,10 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
         foreach (var name in _marmaladeConfig.GetLoadedMarmalades())
         {
             var result = await InternalLoadAsync(name);
-            if (result != MarmaladeLoadResult.Success)
-                Log.Warning("Unable to load '{MedusaName}' medusa", name);
-            else
-                Log.Warning("Loaded medusa '{MedusaName}'", name);
+            if(result != MarmaladeLoadResult.Success)
+                Log.Warning("Unable to load '{MarmaladeName}' marmalade", name);
+            else 
+                Log.Warning("Loaded marmalade '{MarmaladeName}'", name);
         }
     }
 
@@ -111,7 +109,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
 
         return res;
     }
-
+    
     [MethodImpl(MethodImplOptions.NoInlining)]
     public async Task<MarmaladeUnloadResult> UnloadMarmaladeAsync(string marmaladeName)
     {
@@ -151,7 +149,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
             resolved.Strings.Reload();
         }
     }
-
+    
     private async Task ReloadStringsInternal()
     {
         await _lock.WaitAsync();
@@ -180,13 +178,13 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                       .Desc
                ?? string.Empty;
     }
-
+    
     [MethodImpl(MethodImplOptions.NoInlining)]
     private async ValueTask<MarmaladeLoadResult> InternalLoadAsync(string name)
     {
         if (_resolved.ContainsKey(name))
             return MarmaladeLoadResult.AlreadyLoaded;
-
+        
         var safeName = Uri.EscapeDataString(name);
         name = name.ToLowerInvariant();
 
@@ -195,7 +193,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
         {
             if (LoadAssemblyInternal(safeName,
                     out var ctx,
-                    out var CanaryData,
+                    out var canaryData,
                     out var services,
                     out var strings,
                     out var typeReaders))
@@ -221,7 +219,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                     catch (Exception ex)
                     {
                         Log.Warning(ex,
-                            "Error loading canary {CanaryName}",
+                            "Error loading canaries {CanaryName}",
                             point.Name);
                     }
                 }
@@ -239,9 +237,9 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                     Services = services
                 };
 
-
+                
                 services = null;
-                _marmaladeConfig.AddLoadedMarmalde(safeName);
+                _marmaladeConfig.AddLoadedMarmalade(safeName);
                 return MarmaladeLoadResult.Success;
             }
 
@@ -253,7 +251,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
         }
         catch (Exception ex)
         {
-            Log.Error(ex, "An error occurred loading a medusa");
+            Log.Error(ex, "An error occurred loading a marmalade");
             return MarmaladeLoadResult.UnknownError;
         }
         finally
@@ -276,7 +274,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
             }
         }
 
-
+        
         return behs;
     }
 
@@ -292,13 +290,13 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                 notAddedTypeReaders.Add(type);
                 continue;
             }
-
+    
             _cmdService.AddTypeReader(type, typeReader);
         }
-
+    
         // remove the ones that were not added
         // to prevent them from being unloaded later
-        // as they didn't come from this medusa
+        // as they didn't come from this marmalade
         foreach (var toRemove in notAddedTypeReaders)
         {
             typeReaders.Remove(toRemove);
@@ -316,12 +314,12 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
     {
         ctxWr = null;
         canaryData = null;
-
+        
         var path = $"{BASE_DIR}/{safeName}/{safeName}.dll";
         strings = MarmaladeStrings.CreateDefault($"{BASE_DIR}/{safeName}");
         var ctx = new MarmaladeAssemblyLoadContext(Path.GetDirectoryName(path)!);
         var a = ctx.LoadFromAssemblyPath(Path.GetFullPath(path));
-        var sis = LoadCanarysFromAssembly(a, out services);
+        var sis = LoadCanariesFromAssembly(a, out services);
         typeReaders = LoadTypeReadersFromAssembly(a, strings, services);
 
         if (sis.Count == 0)
@@ -331,12 +329,12 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
 
         ctxWr = new(ctx);
         canaryData = sis;
-
+        
         return true;
     }
 
     private static readonly Type _paramParserType = typeof(ParamParser<>);
-
+    
     [MethodImpl(MethodImplOptions.NoInlining)]
     private Dictionary<Type, TypeReader> LoadTypeReadersFromAssembly(
         Assembly assembly,
@@ -359,7 +357,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
             var typeReaderInstance = (TypeReader)Activator.CreateInstance(
                 typeof(ParamParserAdapter<>).MakeGenericType(targetType),
                 args: new[] { parserObj, strings, services })!;
-
+            
             typeReaders.Add(targetType, typeReaderInstance);
         }
 
@@ -367,17 +365,17 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private async Task<ModuleInfo> LoadModuleInternalAsync(string canaryName, CanaryInfo canaryInfo, IMarmaladeStrings strings, IServiceProvider services)
+    private async Task<ModuleInfo> LoadModuleInternalAsync(string marmaladeName, CanaryInfo canaryInfo, IMarmaladeStrings strings, IServiceProvider services)
     {
         var module = await _cmdService.CreateModuleAsync(canaryInfo.Instance.Prefix,
-            CreateModuleFactory(canaryName, canaryInfo, strings, services));
-
+            CreateModuleFactory(marmaladeName, canaryInfo, strings, services));
+        
         return module;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
     private Action<ModuleBuilder> CreateModuleFactory(
-        string medusaName,
+        string marmaladeName,
         CanaryInfo canaryInfo,
         IMarmaladeStrings strings,
         IServiceProvider marmaladeServices)
@@ -393,11 +391,11 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                         new(cmd),
                         new(marmaladeServices),
                         strings),
-                    CreateCommandFactory(medusaName, cmd));
+                    CreateCommandFactory(marmaladeName, cmd));
             }
 
             foreach (var subInfo in canaryInfo.Subcanaries)
-                m.AddModule(subInfo.Instance.Prefix, CreateModuleFactory(medusaName, subInfo, strings, marmaladeServices));
+                m.AddModule(subInfo.Instance.Prefix, CreateModuleFactory(marmaladeName, subInfo, strings, marmaladeServices));
         };
 
     private static readonly RequireContextAttribute _reqGuild = new RequireContextAttribute(ContextType.Guild);
@@ -413,12 +411,12 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                 cb.AddPrecondition(_reqDm);
 
             cb.WithPriority(cmd.Priority);
-
+            
             // using summary to save method name
             // method name is used to retrieve desc/usages
             cb.WithRemarks($"marmalade///{marmaladeName}");
             cb.WithSummary(cmd.MethodInfo.Name.ToLowerInvariant());
-
+            
             foreach (var param in cmd.Parameters)
             {
                 cb.AddParameter(param.Name, param.Type, CreateParamFactory(param));
@@ -438,19 +436,19 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
         CommandContextType contextType,
         WeakReference<CanaryInfo> canaryDataWr,
         WeakReference<CanaryCommandData> canaryCommandDataWr,
-        WeakReference<IServiceProvider> medusaServicesWr,
+        WeakReference<IServiceProvider> marmaladeServicesWr,
         IMarmaladeStrings strings)
         => async (context, parameters, svcs, _) =>
         {
             if (!canaryCommandDataWr.TryGetTarget(out var cmdData)
                 || !canaryDataWr.TryGetTarget(out var canaryData)
-                || !medusaServicesWr.TryGetTarget(out var medusaServices))
+                || !marmaladeServicesWr.TryGetTarget(out var marmaladeServices))
             {
                 Log.Warning("Attempted to run an unloaded canary's command");
                 return;
             }
-
-            var paramObjs = ParamObjs(contextType, cmdData, parameters, context, svcs, medusaServices, strings);
+                
+            var paramObjs = ParamObjs(contextType, cmdData, parameters, context, svcs, marmaladeServices, strings);
 
             try
             {
@@ -474,9 +472,9 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
             {
                 paramObjs = null;
                 cmdData = null;
-
+                
                 canaryData = null;
-                medusaServices = null;
+                marmaladeServices = null;
             }
         };
 
@@ -520,7 +518,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
 
         for (var i = 0; i < parameters.Length; i++)
             paramObjs[startAt + i] = parameters[i];
-
+        
         return paramObjs;
     }
 
@@ -542,7 +540,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
             }
 
             await _behHandler.RemoveRangeAsync(lsi.Execs);
-
+            
             await DisposeCanaryInstances(lsi);
 
             var lc = lsi.LoadContext;
@@ -552,7 +550,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
             // due to how async works
             lsi.Services = null!;
             lsi = null;
-
+            
             _marmaladeConfig.RemoveLoadedMarmalade(name);
             return UnloadInternal(lc)
                 ? MarmaladeUnloadResult.Success
@@ -580,10 +578,10 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
             try
             {
                 await si.Instance.DisposeAsync();
-                foreach (var sub in si.Subcanarys)
+                foreach (var sub in si.Subcanaries)
                 {
                     await sub.Instance.DisposeAsync();
-                }
+                }  
             }
             catch (Exception ex)
             {
@@ -593,7 +591,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
             }
         }
 
-        // marmalades = null;
+        // marmaladee = null;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -608,10 +606,10 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
     [MethodImpl(MethodImplOptions.NoInlining)]
     private void UnloadContext(WeakReference<MarmaladeAssemblyLoadContext> lsiLoadContext)
     {
-        if (lsiLoadContext.TryGetTarget(out var ctx))
+        if(lsiLoadContext.TryGetTarget(out var ctx))
             ctx.Unload();
     }
-
+    
     private void GcCleanup()
     {
         // cleanup
@@ -643,8 +641,8 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
     public IReadOnlyCollection<CanaryInfo> LoadCanariesFromAssembly(Assembly a, out IServiceProvider services)
     {
         var marmaladeServices = LoadMarmaladeServicesInternal(a);
-        services = new MarmaladeServiceProvider(_botServices, MarmaladeServices);
-
+        services = new MarmaladeServiceProvider(_botServices, marmaladeServices);
+        
         // find all types in teh assembly
         var types = a.GetExportedTypes();
         // canary is always a public non abstract class
@@ -656,12 +654,12 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                            .ToList();
 
         var topModules = new Dictionary<Type, CanaryInfo>();
-
+        
         foreach (var cl in classes)
         {
             if (cl.DeclaringType is not null)
                 continue;
-
+            
             // get module data, and add it to the topModules dictionary
             var module = GetModuleData(cl, services);
             topModules.Add(cl, module);
@@ -681,21 +679,21 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                     dt.Name);
                 continue;
             }
-
+            
             GetModuleData(c, services, parentData);
         }
 
         return topModules.Values.ToArray();
     }
-
+    
     [MethodImpl(MethodImplOptions.NoInlining)]
     private CanaryInfo GetModuleData(Type type, IServiceProvider services, CanaryInfo? parentData = null)
     {
         var filters = type.GetCustomAttributes<FilterAttribute>(true)
                           .ToArray();
-
+        
         var instance = (Canary)ActivatorUtilities.CreateInstance(services, type);
-
+        
         var module = new CanaryInfo(instance.Name,
             parentData,
             instance,
@@ -717,7 +715,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                                       | BindingFlags.Public)
                           .Where(static x =>
                           {
-                              if (x.GetCustomAttribute<cmdAttribute>(true) is null)
+                              if(x.GetCustomAttribute<cmdAttribute>(true) is null)
                                   return false;
 
                               if (x.ReturnType.IsGenericType)
@@ -725,14 +723,14 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                                   var genericType = x.ReturnType.GetGenericTypeDefinition();
                                   if (genericType == typeof(Task<>))
                                       return true;
-
+                              
                                   // if (genericType == typeof(ValueTask<>))
                                   //     return true;
 
                                   Log.Warning("Method {MethodName} has an invalid return type: {ReturnType}",
                                       x.Name,
                                       x.ReturnType);
-
+                                  
                                   return false;
                               }
 
@@ -749,8 +747,8 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
 
                               return succ;
                           });
-
-
+        
+        
         var cmds = new List<CanaryCommandData>();
         foreach (var method in methodInfos)
         {
@@ -785,14 +783,14 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                         throw new ArgumentException($"IContext parameter has to be first. {GetErrorPath(method, pi)}");
 
                     canInject = true;
-
+                    
                     if (paramType.IsAssignableTo(typeof(GuildContext)))
                         cmdContext = CommandContextType.Guild;
                     else if (paramType.IsAssignableTo(typeof(DmContext)))
                         cmdContext = CommandContextType.Dm;
                     else
                         cmdContext = CommandContextType.Any;
-
+                    
                     continue;
                 }
 
@@ -802,7 +800,7 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                         throw new ArgumentException($"Parameters marked as [Injected] have to come after IContext");
 
                     canInject = true;
-
+                    
                     diParams.Add(paramType);
                     continue;
                 }
@@ -832,11 +830,11 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
             }
 
 
-            var cmdAttribute = method.GetCustomAttribute<cmdAttribute>()!;
+            var cmdAttribute = method.GetCustomAttribute<cmdAttribute>()!; 
             var aliases = cmdAttribute.Aliases;
             if (aliases.Length == 0)
                 aliases = new[] { method.Name.ToLowerInvariant() };
-
+            
             cmds.Add(new(
                 aliases,
                 method,

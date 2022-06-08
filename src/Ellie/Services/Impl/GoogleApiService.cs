@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using Google;
 using Google.Apis.Customsearch.v1;
 using Google.Apis.Services;
@@ -17,7 +17,7 @@ public class GoogleApiService : IGoogleApiService, INService
 
     private static readonly Regex
         _plRegex = new("(?:youtu\\.be\\/|list=)(?<id>[\\da-zA-Z\\-_]*)", RegexOptions.Compiled);
-    
+
     public IReadOnlyDictionary<string, string> Languages { get; } = new Dictionary<string, string>
     {
         { "afrikaans", "af" },
@@ -154,11 +154,11 @@ public class GoogleApiService : IGoogleApiService, INService
     private readonly YouTubeService _yt;
     private readonly UrlshortenerService _sh;
     private readonly CustomsearchService _cs;
-    
+
     //private readonly Regex YtVideoIdRegex = new Regex(@"(?:youtube\.com\/\S*(?:(?:\/e(?:mbed))?\/|watch\?(?:\S*?&?v\=))|youtu\.be\/)(?<id>[a-zA-Z0-9_-]{6,11})", RegexOptions.Compiled);
     private readonly IBotCredentials _creds;
     private readonly IHttpClientFactory _httpFactory;
-    
+
     public GoogleApiService(IBotCredentials creds, IHttpClientFactory factory)
     {
         _creds = creds;

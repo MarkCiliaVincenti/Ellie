@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using StackExchange.Redis;
 
 namespace Ellie.Services;
@@ -8,7 +8,7 @@ public interface IDataCache
     ConnectionMultiplexer Redis { get; }
     IImageCache LocalImages { get; }
     ILocalDataCache LocalData { get; }
-    
+
     Task<(bool Success, byte[] Data)> TryGetImageDataAsync(Uri key);
     Task<(bool Success, string Data)> TryGetAnimeDataAsync(string key);
     Task<(bool Success, string Data)> TryGetNovelDataAsync(string key);

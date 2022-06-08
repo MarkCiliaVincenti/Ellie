@@ -1,4 +1,4 @@
-public sealed class ParamParserAdapter<T> : TypeReader
+﻿public sealed class ParamParserAdapter<T> : TypeReader
 {
     private readonly ParamParser<T> _parser;
     private readonly IMarmaladeStrings _strings;
@@ -21,12 +21,12 @@ public sealed class ParamParserAdapter<T> : TypeReader
         var medusaContext = ContextAdapterFactory.CreateNew(context,
             _strings,
             _services);
-
+        
         var result = await _parser.TryParseAsync(medusaContext, input);
-
-        if (result.IsSuccess)
+        
+        if(result.IsSuccess)
             return Discord.Commands.TypeReaderResult.FromSuccess(result.Data);
-
+        
         return Discord.Commands.TypeReaderResult.FromError(CommandError.Unsuccessful, "Invalid input");
     }
 }

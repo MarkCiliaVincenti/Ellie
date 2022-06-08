@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using LinqToDB.Common;
 using LinqToDB.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

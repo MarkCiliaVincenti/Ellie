@@ -29,9 +29,9 @@ and copy the hex code fo your selected color (marked as #)")]
 Allowed values: Simple, Normal, None")]
     public ConsoleOutputType ConsoleOutputType { get; set; }
 
-    //         [Comment(@"For what kind of updates will the bot check.
-    // Allowed values: Release, Commit, None")]
-    //         public UpdateCheckType CheckForUpdates { get; set; }
+//         [Comment(@"For what kind of updates will the bot check.
+// Allowed values: Release, Commit, None")]
+//         public UpdateCheckType CheckForUpdates { get; set; }
 
     // [Comment(@"How often will the bot check for updates, in hours")]
     // public int CheckUpdateInterval { get; set; }
@@ -105,12 +105,12 @@ See RotatingStatuses submodule in Administration.")]
     },
     {
       ""name"": ""List of all Commands"",
-      ""value"": ""https://commands.elliebot.net"",
+      ""value"": ""https://nadeko.bot/commands"",
       ""inline"": false
     },
     {
-      ""name"": ""Ellie Support Server"",
-      ""value"": ""https://discord.gg/SVQVzJq "",
+      ""name"": ""Nadeko Support Server"",
+      ""value"": ""https://discord.nadeko.bot/ "",
       ""inline"": true
     }
   ]
@@ -130,11 +130,11 @@ See RotatingStatuses submodule in Administration.")]
         };
     }
 
-    //         [Comment(@"Whether the prefix will be a suffix, or prefix.
-    // For example, if your prefix is ! you will run a command called 'cash' by typing either
-    // '!cash @Someone' if your prefixIsSuffix: false or
-    // 'cash @Someone!' if your prefixIsSuffix: true")]
-    //         public bool PrefixIsSuffix { get; set; }
+//         [Comment(@"Whether the prefix will be a suffix, or prefix.
+// For example, if your prefix is ! you will run a command called 'cash' by typing either
+// '!cash @Someone' if your prefixIsSuffix: false or
+// 'cash @Someone!' if your prefixIsSuffix: true")]
+//         public bool PrefixIsSuffix { get; set; }
 
     // public string Prefixed(string text) => PrefixIsSuffix
     //     ? text + Prefix

@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Ellie.Services;
 
-public static class BotStringExtensions
+public static class BotStringsExtensions
 {
     // this one is for pipe fun, see PipeExtensions.cs
     public static string GetText(this IBotStrings strings, in LocStr str, in ulong guildId)

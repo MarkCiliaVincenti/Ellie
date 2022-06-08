@@ -1,7 +1,7 @@
 #nullable disable
-using NadekoBot.Services.Database.Models;
+using Ellie.Services.Database.Models;
 
-namespace NadekoBot.Modules.Administration;
+namespace Ellie.Modules.Administration;
 
 public enum ProtectionType
 {

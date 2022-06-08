@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 #pragma warning disable
 // License MIT
 // Source: https://github.com/i3arnon/ConcurrentHashSet
@@ -782,11 +782,11 @@ public sealed class ConcurrentHashSet<T> : IReadOnlyCollection<T>, ICollection<T
     {
         var buckets = tables.Buckets;
         for (var i = 0; i < buckets.Length; i++)
-            for (var current = buckets[i]; current is not null; current = current.Next)
-            {
-                array[index] = current.Item;
-                index++; //this should never flow, CopyToItems is only called when there's no overflow risk
-            }
+        for (var current = buckets[i]; current is not null; current = current.Next)
+        {
+            array[index] = current.Item;
+            index++; //this should never flow, CopyToItems is only called when there's no overflow risk
+        }
     }
 
     private sealed class Tables

@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using System.Globalization;
 using MessageType = Ellie.Extensions.MessageType;
 

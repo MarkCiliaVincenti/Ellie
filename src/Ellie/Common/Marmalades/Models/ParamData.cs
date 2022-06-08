@@ -1,4 +1,4 @@
-namespace Ellie.Marmalade;
+﻿namespace Ellie.Marmalade;
 
 public sealed record ParamData(
     Type Type,

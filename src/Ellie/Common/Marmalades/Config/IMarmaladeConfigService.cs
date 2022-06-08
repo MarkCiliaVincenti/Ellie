@@ -1,8 +1,8 @@
-namespace Ellie.Marmalade;
+﻿namespace Ellie.Marmalade;
 
 public interface IMarmaladeConfigService
 {
-    IReadOnlyCollection<string> GetLoadedMarmalade();
-    void AddLoadedMarmalade(string name);
-    void RemoveLoadedMarmalade(string name);
+    IReadOnlyCollection<string> GetLoadedMarmalades();
+    void AddLoadedMarmalades(string name);
+    void RemoveLoadedMarmalades(string name);
 }

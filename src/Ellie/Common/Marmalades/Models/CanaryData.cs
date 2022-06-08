@@ -1,4 +1,4 @@
-namespace Ellie.Marmalade;
+﻿namespace Ellie.Marmalade;
 
 public sealed record CanaryInfo(
     string Name,
@@ -7,5 +7,5 @@ public sealed record CanaryInfo(
     IReadOnlyCollection<CanaryCommandData> Commands,
     IReadOnlyCollection<FilterAttribute> Filters)
 {
-    public List<CanaryInfo> SubBirds { get; set; } = new();
+    public List<CanaryInfo> Subcanaries { get; set; } = new();
 }

@@ -1,10 +1,10 @@
 ﻿#nullable disable
 using Microsoft.EntityFrameworkCore;
-using NadekoBot.Db;
-using NadekoBot.Services.Database.Models;
+using Ellie.Db;
+using Ellie.Services.Database.Models;
 using System.Threading.Channels;
 
-namespace NadekoBot.Modules.Administration.Services;
+namespace Ellie.Modules.Administration.Services;
 
 public class ProtectionService : INService
 {

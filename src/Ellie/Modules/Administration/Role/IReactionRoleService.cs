@@ -1,8 +1,8 @@
 ﻿#nullable disable
-using NadekoBot.Services.Database.Models;
+using Ellie.Services.Database.Models;
 using System.Collections;
 
-namespace NadekoBot.Modules.Administration.Services;
+namespace Ellie.Modules.Administration.Services;
 
 public interface IReactionRoleService
 {

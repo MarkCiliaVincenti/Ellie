@@ -10,7 +10,7 @@ global using Ellie.Services;
 global using Ellie.Common;
 global using Ellie.Common.Attributes;
 global using Ellie.Extensions;
-global using Ellie.Bird;
+global using Ellie.Marmalade;
 
 // discord
 global using Discord;

@@ -1,16 +1,16 @@
 ﻿#nullable disable
-using NadekoBot.Modules.Administration.Services;
-using NadekoBot.Services.Database.Models;
+using Ellie.Modules.Administration.Services;
+using Ellie.Services.Database.Models;
 using SixLabors.ImageSharp.PixelFormats;
 using System.Net;
 using Color = SixLabors.ImageSharp.Color;
 
-namespace NadekoBot.Modules.Administration;
+namespace Ellie.Modules.Administration;
 
 
 public partial class Administration
 {
-    public partial class RoleCommands : NadekoModule
+    public partial class RoleCommands : EllieModule
     {
         public enum Exclude { Excl }
 

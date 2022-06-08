@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using System.Diagnostics.CodeAnalysis;
 
 namespace Ellie.Common;
@@ -13,7 +13,7 @@ public sealed class NoPublicBotAttribute : PreconditionAttribute
         IServiceProvider services)
     {
 #if GLOBAL_ELLIE
-        return Task.FromResult(PreconditionResult.FromError("Not available on the public bot. To learn how to selfhost a private bot, click [here](https://docs.elliebot.net/)."));
+        return Task.FromResult(PreconditionResult.FromError("Not available on the public bot. To learn how to selfhost a private bot, click [here](https://doce.elliebot.net)."));
 #else
         return Task.FromResult(PreconditionResult.FromSuccess());
 #endif
@@ -26,5 +26,5 @@ public sealed class NoPublicBotAttribute : PreconditionAttribute
 [AttributeUsage(AttributeTargets.Class)]
 public class DontAddToIocContainerAttribute : Attribute
 {
-
+    
 }

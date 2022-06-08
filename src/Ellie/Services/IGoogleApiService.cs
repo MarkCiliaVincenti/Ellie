@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using Google.Apis.Customsearch.v1.Data;
 
 namespace Ellie.Services;

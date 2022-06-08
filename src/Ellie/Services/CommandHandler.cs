@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using Ellie.Common.Configs;
 using Ellie.Common.ModuleBehaviors;
 using Ellie.Db;
@@ -217,7 +217,7 @@ public class CommandHandler : INService, IReadyExecutor
         {
             try
             {
-#if !GLOBAL_ELLIE
+#if !GLOBAL_NADEKO
                 // track how many messagges each user is sending
                 UserMessagesSent.AddOrUpdate(usrMsg.Author.Id, 1, (_, old) => ++old);
 #endif

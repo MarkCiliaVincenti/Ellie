@@ -1,4 +1,4 @@
-namespace Ellie;
+﻿namespace Ellie;
 
 public sealed class EllieActionInteraction : EllieOwnInteraction
 {

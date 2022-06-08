@@ -14,7 +14,7 @@ public sealed class Creds : IBotCredentials
     [Comment(@"List of Ids of the users who have bot owner permissions
 **DO NOT ADD PEOPLE YOU DON'T TRUST**")]
     public ICollection<ulong> OwnerIds { get; set; }
-
+    
     [Comment("Keep this on 'true' unless you're sure your bot shouldn't use privileged intents or you're waiting to be accepted")]
     public bool UsePrivilegedIntents { get; set; }
 
@@ -22,13 +22,13 @@ public sealed class Creds : IBotCredentials
 Leave at 1 if you don't know what you're doing.")]
     public int TotalShards { get; set; }
 
-    [Comment(
+    [Comment(   
         @"Login to https://console.cloud.google.com, create a new project, go to APIs & Services -> Library -> YouTube Data API and enable it.
 Then, go to APIs and Services -> Credentials and click Create credentials -> API key.
 Used only for Youtube Data Api (at the moment).")]
     public string GoogleApiKey { get; set; }
 
-    [Comment(@"Settings for voting system for discordbots. Meant for use on global Ellie.")]
+    [Comment(@"Settings for voting system for discordbots. Meant for use on global Nadeko.")]
     public VotesSettings Votes { get; set; }
 
     [Comment(@"Patreon auto reward system settings.
@@ -66,10 +66,10 @@ Used only for .time command")]
     [Comment(@"https://pro.coinmarketcap.com/account/ api key. There is a free plan for personal use.
 Used for cryptocurrency related commands.")]
     public string CoinmarketcapApiKey { get; set; }
-
-    //     [Comment(@"https://polygon.io/dashboard/api-keys api key. Free plan allows for 5 queries per minute.
-    // Used for stocks related commands.")]
-    //     public string PolygonIoApiKey { get; set; }
+    
+//     [Comment(@"https://polygon.io/dashboard/api-keys api key. Free plan allows for 5 queries per minute.
+// Used for stocks related commands.")]
+//     public string PolygonIoApiKey { get; set; }
 
     [Comment(@"Api key used for Osu related commands. Obtain this key at https://osu.ppy.sh/p/api")]
     public string OsuApiKey { get; set; }
@@ -113,7 +113,7 @@ Windows default
         Db = new()
         {
             Type = "sqlite",
-            ConnectionString = "Data Source=data/EllieBot.db"
+            ConnectionString = "Data Source=data/Ellie.db"
         };
 
         CoordinatorUrl = "http://localhost:3442";
@@ -131,8 +131,8 @@ Default is ""sqlite""")]
         [Comment(@"Database connection string.
 You MUST change this if you're not using ""sqlite"" type.
 Default is ""Data Source=data/Ellie.db""
-Example for mysql: ""Server=localhost;Port=3306;Uid=root;Pwd=my_super_secret_mysql_password;Database=ellie""
-Example for postgresql: ""Server=localhost;Port=5432;User Id=postgres;Password=my_super_secret_postgres_password;Database=ellie;""")]
+Example for mysql: ""Server=localhost;Port=3306;Uid=root;Pwd=my_super_secret_mysql_password;Database=nadeko""
+Example for postgresql: ""Server=localhost;Port=5432;User Id=postgres;Password=my_super_secret_postgres_password;Database=nadeko;""")]
         public string ConnectionString { get; set; }
     }
 

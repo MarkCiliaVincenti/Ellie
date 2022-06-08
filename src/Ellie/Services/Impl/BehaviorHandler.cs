@@ -8,7 +8,7 @@ namespace Ellie.Services;
 public sealed class BehaviorHandler : IBehaviorHandler, INService
 {
     private readonly IServiceProvider _services;
-
+    
     private IReadOnlyCollection<IExecNoCommand> noCommandExecs;
     private IReadOnlyCollection<IExecPreCommand> preCommandExecs;
     private IReadOnlyCollection<IExecOnMessage> onMessageExecs;
@@ -41,7 +41,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, INService
             {
                 if (_customExecs.Contains(exe))
                     continue;
-                
+
                 _customExecs.Add(exe);
             }
         }
@@ -50,7 +50,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, INService
             _customLock.Release();
         }
     }
-
+    
     public async Task<bool> AddAsync(ICustomBehavior behavior)
     {
         await _customLock.WaitAsync();
@@ -58,7 +58,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, INService
         {
             if (_customExecs.Contains(behavior))
                 return false;
-            
+
             _customExecs.Add(behavior);
             return true;
         }
@@ -67,7 +67,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, INService
             _customLock.Release();
         }
     }
-
+    
     public async Task<bool> RemoveAsync(ICustomBehavior behavior)
     {
         await _customLock.WaitAsync();
@@ -80,13 +80,13 @@ public sealed class BehaviorHandler : IBehaviorHandler, INService
             _customLock.Release();
         }
     }
-
+    
     public async Task RemoveRangeAsync(IEnumerable<ICustomBehavior> behs)
     {
         await _customLock.WaitAsync();
         try
         {
-            foreach (var beh in behs)
+            foreach(var beh in behs)
                 _customExecs.Remove(beh);
         }
         finally
@@ -96,7 +96,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, INService
     }
 
     #endregion
-
+    
     #region Running
 
     public async Task<bool> RunExecOnMessageAsync(SocketGuild guild, IUserMessage usrMsg)
@@ -299,6 +299,6 @@ public sealed class BehaviorHandler : IBehaviorHandler, INService
             }
         }
     }
-
+    
     #endregion
 }

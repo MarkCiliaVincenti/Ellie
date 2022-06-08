@@ -1,4 +1,4 @@
-namespace Ellie;
+﻿namespace Ellie;
 
 /// <summary>
 /// Builder class for EllieInteractions
@@ -7,7 +7,7 @@ public class EllieInteractionBuilder
 {
     private EllieInteractionData? iData;
     private Func<SocketMessageComponent, Task>? action;
-    // private bool isOwn
+    // private bool isOwn;
 
     public EllieInteractionBuilder WithData<T>(in T data)
         where T : EllieInteractionData

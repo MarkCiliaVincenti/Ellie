@@ -1,4 +1,4 @@
-﻿using Ellie.Services.Currency;
+using Ellie.Services.Currency;
 
 #nullable disable
 namespace Ellie.Services;
@@ -12,7 +12,7 @@ public interface ICurrencyService
         long amount,
         TxData txData,
         CurrencyType type = CurrencyType.Default);
-    
+
     Task RemoveBulkAsync(
         IReadOnlyCollection<ulong> userIds,
         long amount,

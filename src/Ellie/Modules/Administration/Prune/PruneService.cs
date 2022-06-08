@@ -1,5 +1,5 @@
 ﻿#nullable disable
-namespace NadekoBot.Modules.Administration.Services;
+namespace Ellie.Modules.Administration.Services;
 
 public class PruneService : INService
 {

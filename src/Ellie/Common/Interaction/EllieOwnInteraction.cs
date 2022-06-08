@@ -1,7 +1,7 @@
-namespace Ellie;
+﻿namespace Ellie;
 
 /// <summary>
-/// Interation which only the author can use
+/// Interaction which only the author can use
 /// </summary>
 public abstract class EllieOwnInteraction : EllieInteraction
 {

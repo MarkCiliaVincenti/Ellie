@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 using System.Text;

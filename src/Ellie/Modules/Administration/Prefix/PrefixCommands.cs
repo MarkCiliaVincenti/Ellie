@@ -1,22 +1,22 @@
 ﻿#nullable disable
-namespace NadekoBot.Modules.Administration;
+namespace Ellie.Modules.Administration;
 
 public partial class Administration
 {
     [Group]
-    public partial class PrefixCommands : NadekoModule
+    public partial class PrefixCommands : EllieModule
     {
         public enum Set
         {
             Set
         }
 
-        [Cmd]
+        [cmd]
         [Priority(1)]
         public async partial Task Prefix()
             => await ReplyConfirmLocalizedAsync(strs.prefix_current(Format.Code(_cmdHandler.GetPrefix(ctx.Guild))));
 
-        [Cmd]
+        [cmd]
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.Administrator)]
         [Priority(0)]
@@ -38,7 +38,7 @@ public partial class Administration
             await ReplyConfirmLocalizedAsync(strs.prefix_new(Format.Code(oldPrefix), Format.Code(newPrefix)));
         }
 
-        [Cmd]
+        [cmd]
         [OwnerOnly]
         public async partial Task DefPrefix([Leftover] string toSet = null)
         {

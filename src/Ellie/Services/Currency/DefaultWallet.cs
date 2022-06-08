@@ -1,4 +1,4 @@
-﻿using LinqToDB;
+using LinqToDB;
 using LinqToDB.EntityFrameworkCore;
 using Ellie.Services.Database;
 using Ellie.Services.Database.Models;

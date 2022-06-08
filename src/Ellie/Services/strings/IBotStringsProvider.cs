@@ -1,19 +1,19 @@
-﻿#nullable disable
+#nullable disable
 namespace Ellie.Services;
 
 /// <summary>
 ///     Implemented by classes which provide localized strings in their own ways
 /// </summary>
-public class IBotStringsProvider
+public interface IBotStringsProvider
 {
     /// <summary>
     ///     Gets localized string
     /// </summary>
-    /// <param name="LocalName">Language name</param>
+    /// <param name="localeName">Language name</param>
     /// <param name="key">String key</param>
     /// <returns>Localized string</returns>
     string GetText(string localeName, string key);
-    
+
     /// <summary>
     ///     Reloads string cache
     /// </summary>

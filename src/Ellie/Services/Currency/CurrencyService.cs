@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using LinqToDB;
 using Ellie.Services.Currency;
 
@@ -18,7 +18,7 @@ public class CurrencyService : ICurrencyService, INService
 
         throw new ArgumentOutOfRangeException(nameof(type));
     }
-    
+
     public async Task AddBulkAsync(
         IReadOnlyCollection<ulong> userIds,
         long amount,

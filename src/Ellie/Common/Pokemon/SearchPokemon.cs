@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Ellie.Common.Pokemon;
 
-public class SeachPokemon
+public class SearchPokemon
 {
     [JsonProperty("num")]
     public int Id { get; set; }

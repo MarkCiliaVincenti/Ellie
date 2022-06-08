@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -14,7 +14,7 @@ public abstract record SmartText
 
     public bool IsEmbedArray
         => this is SmartEmbedTextArray;
-
+    
     public static SmartText operator +(SmartText text, string input)
         => text switch
         {
@@ -76,7 +76,7 @@ public abstract record SmartText
                 obj.NormalizeFields();
                 return obj;
             }
-
+            
             return new SmartPlainText(input);
         }
         catch

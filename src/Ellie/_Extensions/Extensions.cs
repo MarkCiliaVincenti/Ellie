@@ -85,8 +85,8 @@ public static class Extensions
         if (cmd.Remarks?.StartsWith("marmalade///") ?? false)
         {
             // command method name is kept in Summary
-            // medusa///<medusa-name-here> is kept in remarks
-            // this way I can find the name of the medusa, and then name of the command for which
+            // marmalade///<marmalade-name-here> is kept in remarks
+            // this way I can find the name of the marmalade, and then name of the command for which
             // the description should be loaded
             var marmaladeName = cmd.Remarks.Split("///")[1];
             description = marmalade.GetCommandDescription(marmaladeName, cmd.Summary, culture);
@@ -110,8 +110,8 @@ public static class Extensions
         if (cmd.Remarks?.StartsWith("marmalade///") ?? false)
         {
             // command method name is kept in Summary
-            // medusa///<medusa-name-here> is kept in remarks
-            // this way I can find the name of the medusa,
+            // marmalade///<marmalade-name-here> is kept in remarks
+            // this way I can find the name of the marmalade,
             // and command for which data should be loaded
             var marmaladeName = cmd.Remarks.Split("///")[1];
             args = marmalade.GetCommandExampleArgs(marmaladeName, cmd.Summary, culture);

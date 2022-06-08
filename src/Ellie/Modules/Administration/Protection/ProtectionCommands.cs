@@ -1,14 +1,14 @@
 ﻿#nullable disable
-using NadekoBot.Common.TypeReaders.Models;
-using NadekoBot.Modules.Administration.Services;
-using NadekoBot.Services.Database.Models;
+using Ellie.Common.TypeReaders.Models;
+using Ellie.Modules.Administration.Services;
+using Ellie.Services.Database.Models;
 
-namespace NadekoBot.Modules.Administration;
+namespace Ellie.Modules.Administration;
 
 public partial class Administration
 {
     [Group]
-    public partial class ProtectionCommands : NadekoModule<ProtectionService>
+    public partial class ProtectionCommands : EllieModule<ProtectionService>
     {
         [Cmd]
         [RequireContext(ContextType.Guild)]

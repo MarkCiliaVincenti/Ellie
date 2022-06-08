@@ -113,13 +113,13 @@ public sealed class RedisImagesCache : IImageCache, IReadyExecutor
                             Heads =
                                 oldData.Coins.Heads.Length == 1
                                 && oldData.Coins.Heads[0].ToString()
-                                == "https://ellie.nyc3.digitaloceanspaces.com/other/coins/heads.png"
-                                    ? new[] { new Uri("https://cdn.elliebot.net/coins/heads3.png") }
+                                == "https://nadeko-pictures.nyc3.digitaloceanspaces.com/other/coins/heads.png"
+                                    ? new[] { new Uri("https://cdn.nadeko.bot/coins/heads3.png") }
                                     : oldData.Coins.Heads,
                             Tails = oldData.Coins.Tails.Length == 1
                                     && oldData.Coins.Tails[0].ToString()
-                                    == "https://ellie.nyc3.digitaloceanspaces.com/other/coins/tails.png"
-                                ? new[] { new Uri("https://cdn.elliebot.net/coins/tails3.png") }
+                                    == "https://nadeko-pictures.nyc3.digitaloceanspaces.com/other/coins/tails.png"
+                                ? new[] { new Uri("https://cdn.nadeko.bot/coins/tails3.png") }
                                 : oldData.Coins.Tails
                         },
                     Dice = oldData.Dice.Map(x => x.ToNewCdn()),
@@ -137,12 +137,12 @@ public sealed class RedisImagesCache : IImageCache, IReadyExecutor
                     },
                     Slots = new()
                     {
-                        Bg = new("https://cdn.elliebot.net/slots/slots_bg.png"),
+                        Bg = new("https://cdn.nadeko.bot/slots/slots_bg.png"),
                         Emojis = new[]
                         {
-                            "https://cdn.elliebot.net/slots/0.png", "https://cdn.elliebot.net/slots/1.png",
-                            "https://cdn.elliebot.net/slots/2.png", "https://cdn.elliebot.net/slots/3.png",
-                            "https://cdn.elliebot.net/slots/4.png", "https://cdn.elliebot.net/slots/5.png"
+                            "https://cdn.nadeko.bot/slots/0.png", "https://cdn.nadeko.bot/slots/1.png",
+                            "https://cdn.nadeko.bot/slots/2.png", "https://cdn.nadeko.bot/slots/3.png",
+                            "https://cdn.nadeko.bot/slots/4.png", "https://cdn.nadeko.bot/slots/5.png"
                         }.Map(x => new Uri(x))
                     },
                     Xp = new()

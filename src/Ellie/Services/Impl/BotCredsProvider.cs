@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Primitives;
 using Ellie.Common.Yml;
