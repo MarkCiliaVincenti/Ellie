@@ -7,9 +7,9 @@ public sealed class MarmaladeAssemblyLoadContext : AssemblyLoadContext
 {
     private readonly AssemblyDependencyResolver _depResolver;
 
-    public MarmaladeAssemblyLoadContext(string pluginPath) : base(isCollectible: true)
+    public MarmaladeAssemblyLoadContext(string marmaladePath) : base(isCollectible: true)
     {
-        _depResolver = new(pluginPath);
+        _depResolver = new(marmaladePath);
     }
 
     protected override Assembly? Load(AssemblyName assemblyName)

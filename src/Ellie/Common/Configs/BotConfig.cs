@@ -105,12 +105,12 @@ See RotatingStatuses submodule in Administration.")]
     },
     {
       ""name"": ""List of all Commands"",
-      ""value"": ""https://nadeko.bot/commands"",
+      ""value"": ""https://commands.elliebot.net"",
       ""inline"": false
     },
     {
-      ""name"": ""Nadeko Support Server"",
-      ""value"": ""https://discord.nadeko.bot/ "",
+      ""name"": ""Ellie Support Server"",
+      ""value"": ""https://discord.gg/SVQVzJq "",
       ""inline"": true
     }
   ]
