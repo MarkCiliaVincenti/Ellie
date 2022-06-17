@@ -838,7 +838,7 @@ public partial class Administration
                                                                .Build());
         }
 
-        public class WarnExpireOptions : INadekoCommandOptions
+        public class WarnExpireOptions : IEllieCommandOptions
         {
             [Option('d', "delete", Default = false, HelpText = "Delete warnings instead of clearing them.")]
             public bool Delete { get; set; } = false;
