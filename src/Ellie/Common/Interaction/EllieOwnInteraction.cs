@@ -3,11 +3,11 @@
 /// <summary>
 /// Interaction which only the author can use
 /// </summary>
-public abstract class EllieOwnInteraction : EllieInteraction
+public abstract class EllieButtonOwnInteraction : EllieButtonInteraction
 {
     protected readonly ulong _authorId;
 
-    protected EllieOwnInteraction(DiscordSocketClient client, ulong authorId) : base(client)
+    protected EllieButtonOwnInteraction(DiscordSocketClient client, ulong authorId) : base(client)
         => _authorId = authorId;
 
     protected override ValueTask<bool> Validate(SocketMessageComponent smc)

@@ -1,23 +1,24 @@
 ﻿namespace Ellie;
 
-public abstract class EllieInteraction
+public abstract class EllieButtonInteraction
 {
     // improvements:
-    //  - state in OnAction
-    //  - configurable delay
-    //  - 
-    public abstract string Name { get; }
-    public abstract IEmote Emote { get; }
+    // - state in OnAction
+    // - configurable delay
+    // -
+    protected abstract string Name { get; }
+    protected abstract IEmote Emote { get; }
+    protected virtual string? Text { get; } = null;
 
-    protected readonly DiscordSocketClient _client;
+    public DiscordSocketClient Client { get; }
 
     protected readonly TaskCompletionSource<bool> _interactionCompletedSource;
 
     protected IUserMessage message = null!;
 
-    protected EllieInteraction(DiscordSocketClient client)
+    protected EllieButtonInteraction(DiscordSocketClient client)
     {
-        _client = client;
+        Client = client;
         _interactionCompletedSource = new(TaskCreationOptions.RunContinuationsAsynchronously);
     }
 
@@ -25,9 +26,9 @@ public abstract class EllieInteraction
     {
         message = msg;
 
-        _client.InteractionCreated += OnInteraction;
+        Client.InteractionCreated += OnInteraction;
         await Task.WhenAny(Task.Delay(10_000), _interactionCompletedSource.Task);
-        _client.InteractionCreated -= OnInteraction;
+        Client.InteractionCreated -= OnInteraction;
 
         await msg.ModifyAsync(m => m.Components = new ComponentBuilder().Build());
     }
@@ -53,7 +54,7 @@ public abstract class EllieInteraction
         _ = Task.Run(async () =>
         {
             await ExecuteOnActionAsync(smc);
-            
+
             // this should only be a thing on single-response buttons
             _interactionCompletedSource.TrySetResult(true);
 
@@ -65,13 +66,18 @@ public abstract class EllieInteraction
     }
 
 
-    public MessageComponent CreateComponent()
+    public virtual MessageComponent CreateComponent()
     {
         var comp = new ComponentBuilder()
-            .WithButton(new ButtonBuilder(style: ButtonStyle.Secondary, emote: Emote, customId: Name));
+            .WithButton(GetButtonBuilder());
 
         return comp.Build();
     }
 
+    public ButtonBuilder GetButtonBuilder()
+        => new ButtonBuilder(style: ButtonStyle.Secondary, emote: Emote, customId: Name, label: Text);
+
     public abstract Task ExecuteOnActionAsync(SocketMessageComponent smc);
 }
+
+// this all makes no sense ...

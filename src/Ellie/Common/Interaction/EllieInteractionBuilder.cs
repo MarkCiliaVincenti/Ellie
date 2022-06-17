@@ -16,10 +16,11 @@ public class EllieInteractionBuilder
         return this;
     }
 
-    // public EllieOwnInteractionBuiler WithIsOwn(bool isOwn = true)
+    // public EllieOwnInteractionBuilder WithIsOwn(bool isOwn = true)
     // {
     //     this.isOwn = isOwn;
     //     return this;
+
     // }
     
     public EllieInteractionBuilder WithAction(in Func<SocketMessageComponent, Task> fn)
@@ -28,7 +29,7 @@ public class EllieInteractionBuilder
         return this;
     }
 
-    public EllieActionInteraction Build(DiscordSocketClient client, ulong userId)
+    public EllieButtonActionInteraction Build(DiscordSocketClient client, ulong userId)
     {
         if (iData is null)
             throw new InvalidOperationException("You have to specify the data before building the interaction");
