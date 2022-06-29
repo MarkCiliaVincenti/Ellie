@@ -15,17 +15,17 @@ public sealed record SmartEmbedTextArray : SmartText
             return Array.Empty<EmbedBuilder>();
 
         return Embeds
-               .Where(x => x.IsValid)
-               .Select(em => em.GetEmbed())
-               .ToArray();
+            .Where(x => x.IsValid)
+            .Select(em => em.GetEmbed())
+            .ToArray();
     }
 
     public void NormalizeFields()
     {
         if (Embeds is null)
             return;
-
-        foreach (var eb in Embeds)
+        
+        foreach(var eb in Embeds)
             eb.NormalizeFields();
     }
 }

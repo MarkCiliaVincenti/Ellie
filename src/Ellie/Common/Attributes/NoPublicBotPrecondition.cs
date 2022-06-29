@@ -32,7 +32,7 @@ public sealed class OnlyPublicBotAttribute : PreconditionAttribute
 #if GLOBAL_ELLIE || DEBUG
         return Task.FromResult(PreconditionResult.FromSuccess());
 #else
-        return Task.FromResult(PreconditionResult.FromError("Only available on the public bot"))
+        return Task.FromResult(PreconditionResult.FromError("Only available on the public bot."));
 #endif
     }
 }

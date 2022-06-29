@@ -1,4 +1,4 @@
-﻿namespace Ellie.Common;
+﻿namespace NadekoBot.Common;
 
 public abstract class EInteraction
 {

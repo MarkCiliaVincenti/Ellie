@@ -12,7 +12,7 @@ namespace Ellie.Common.Configs;
 public sealed partial class BotConfig : ICloneable<BotConfig>
 {
     [Comment(@"DO NOT CHANGE")]
-    public int Version { get; set; } = 2;
+    public int Version { get; set; } = 3;
 
     [Comment(@"Most commands, when executed, have a small colored line
 next to the response. The color depends whether the command
@@ -110,7 +110,7 @@ See RotatingStatuses submodule in Administration.")]
     },
     {
       ""name"": ""Ellie Support Server"",
-      ""value"": ""https://discord.gg/SVQVzJq "",
+      ""value"": ""https://discord.gg/SVQVzJq/ "",
       ""inline"": true
     }
   ]

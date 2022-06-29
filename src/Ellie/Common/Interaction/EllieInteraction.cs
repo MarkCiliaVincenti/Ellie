@@ -3,9 +3,9 @@
 public abstract class EllieButtonInteraction
 {
     // improvements:
-    // - state in OnAction
-    // - configurable delay
-    // -
+    //  - state in OnAction
+    //  - configurable delay
+    //  - 
     protected abstract string Name { get; }
     protected abstract IEmote Emote { get; }
     protected virtual string? Text { get; } = null;
@@ -54,7 +54,7 @@ public abstract class EllieButtonInteraction
         _ = Task.Run(async () =>
         {
             await ExecuteOnActionAsync(smc);
-
+            
             // this should only be a thing on single-response buttons
             _interactionCompletedSource.TrySetResult(true);
 
@@ -80,4 +80,4 @@ public abstract class EllieButtonInteraction
     public abstract Task ExecuteOnActionAsync(SocketMessageComponent smc);
 }
 
-// this all makes no sense ...
+// this is all so wrong ...

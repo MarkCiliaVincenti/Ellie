@@ -16,11 +16,11 @@ public class EllieInteractionBuilder
         return this;
     }
 
-    // public EllieOwnInteractionBuilder WithIsOwn(bool isOwn = true)
+    // public EllieOwnInteractionBuiler WithIsOwn(bool isOwn = true)
     // {
     //     this.isOwn = isOwn;
     //     return this;
-
+    
     // }
     
     public EllieInteractionBuilder WithAction(in Func<SocketMessageComponent, Task> fn)

@@ -38,7 +38,7 @@ public sealed class QueueRunner
         while (true)
         {
             var func = await _channel.Reader.ReadAsync(cancel);
-
+            
             try
             {
                 await func();
@@ -56,7 +56,7 @@ public sealed class QueueRunner
             }
         }
     }
-
+    
     public ValueTask Enqueue(Func<Task> action)
         => _channel.Writer.WriteAsync(action);
 }
