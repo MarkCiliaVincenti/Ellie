@@ -1,4 +1,4 @@
-﻿using Ellie.Common.Yml;
+using Ellie.Common.Yml;
 using Newtonsoft.Json;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -89,7 +89,7 @@ public static class StringExtensions
     public static async Task<Stream> ToStream(this string str)
     {
         var ms = new MemoryStream();
-        await using var sw = new StreamWriter(ms);
+        var sw = new StreamWriter(ms);
         await sw.WriteAsync(str);
         await sw.FlushAsync();
         ms.Position = 0;

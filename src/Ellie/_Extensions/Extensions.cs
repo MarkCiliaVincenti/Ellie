@@ -1,5 +1,6 @@
-﻿using Humanizer.Localisation;
+using Humanizer.Localisation;
 using Ellie.Marmalade;
+using System.Diagnostics;
 using System.Globalization;
 using System.Net.Http.Headers;
 using System.Text.Json;
@@ -11,16 +12,16 @@ public static class Extensions
 {
     private static readonly Regex _urlRegex =
         new(@"^(https?|ftp)://(?<path>[^\s/$.?#].[^\s]*)$", RegexOptions.Compiled);
-    
+
     public static IEmbedBuilder WithAuthor(this IEmbedBuilder eb, IUser author)
         => eb.WithAuthor(author.ToString()!, author.RealAvatarUrl().ToString());
-    
+
     public static Task EditAsync(this IUserMessage msg, SmartText text)
         => text switch
         {
             SmartEmbedText set => msg.ModifyAsync(x =>
             {
-                x.Embed = set.GetEmbed().Build();
+                x.Embed = set.IsValid ? set.GetEmbed().Build() : null;
                 x.Content = set.PlainText?.SanitizeMentions() ?? "";
             }),
             SmartEmbedTextArray set => msg.ModifyAsync(x =>
@@ -36,8 +37,9 @@ public static class Extensions
             _ => throw new ArgumentOutOfRangeException(nameof(text))
         };
 
-    public static List<ulong> GetGuildIds(this DiscordSocketClient client)
-        => client.Guilds.Select(x => x.Id).ToList();
+    public static ulong[] GetGuildIds(this DiscordSocketClient client)
+        => client.Guilds
+                 .Map(x => x.Id);
 
     /// <summary>
     ///     Generates a string in the format HHH:mm if timespan is &gt;= 2m.
@@ -47,7 +49,7 @@ public static class Extensions
     /// <returns>Formatted duration string</returns>
     public static string ToPrettyStringHm(this TimeSpan span)
         => span.Humanize(2, minUnit: TimeUnit.Second);
-    
+
     public static bool TryGetUrlPath(this string input, out string path)
     {
         var match = _urlRegex.Match(input);
@@ -63,8 +65,8 @@ public static class Extensions
 
     public static IEmote ToIEmote(this string emojiStr)
         => Emote.TryParse(emojiStr, out var maybeEmote) ? maybeEmote : new Emoji(emojiStr);
-    
-    
+
+
     /// <summary>
     ///     First 10 characters of teh bot token.
     /// </summary>
@@ -77,7 +79,7 @@ public static class Extensions
     public static string RealSummary(
         this CommandInfo cmd,
         IBotStrings strings,
-        IMarmaladeLoaderService marmalade,
+        IMarmaladeLoaderService marmalades,
         CultureInfo culture,
         string prefix)
     {
@@ -89,20 +91,20 @@ public static class Extensions
             // this way I can find the name of the marmalade, and then name of the command for which
             // the description should be loaded
             var marmaladeName = cmd.Remarks.Split("///")[1];
-            description = marmalade.GetCommandDescription(marmaladeName, cmd.Summary, culture);
+            description = marmalades.GetCommandDescription(marmaladeName, cmd.Summary, culture);
         }
         else
         {
             description = strings.GetCommandStrings(cmd.Summary, culture).Desc;
         }
-
+        
         return string.Format(description, prefix);
     }
-    
+
     public static string[] RealRemarksArr(
         this CommandInfo cmd,
         IBotStrings strings,
-        IMarmaladeLoaderService marmalade,
+        IMarmaladeLoaderService marmalades,
         CultureInfo culture,
         string prefix)
     {
@@ -114,7 +116,7 @@ public static class Extensions
             // this way I can find the name of the marmalade,
             // and command for which data should be loaded
             var marmaladeName = cmd.Remarks.Split("///")[1];
-            args = marmalade.GetCommandExampleArgs(marmaladeName, cmd.Summary, culture);
+            args = marmalades.GetCommandExampleArgs(marmaladeName, cmd.Summary, culture);
         }
         else
         {
@@ -179,6 +181,9 @@ public static class Extensions
         return module;
     }
 
+    public static string GetGroupName(this ModuleInfo module)
+        => module.Name.Replace("Commands", "", StringComparison.InvariantCulture);
+
     public static async Task<IEnumerable<IGuildUser>> GetMembersAsync(this IRole role)
     {
         var users = await role.Guild.GetUsersAsync(CacheMode.CacheOnly);
@@ -214,4 +219,10 @@ public static class Extensions
         => msg.Content.Headers.ContentLength is long length
             ? length
             : long.MaxValue;
+
+    public static void Lap(this Stopwatch sw, string checkpoint)
+    {
+        Log.Information("Checkpoint {CheckPoint}: {Time}ms", checkpoint, sw.Elapsed.TotalMilliseconds);
+        sw.Restart();
+    }
 }

@@ -1,8 +1,8 @@
-﻿using System.Buffers;
+using System.Buffers;
 
 namespace Ellie.Extensions;
 
-// made for expressions because they almost never go added
+// made for expressions because they almost never get added
 // and they get looped through constantly
 public static class ArrayExtensions
 {
@@ -20,7 +20,7 @@ public static class ArrayExtensions
         newExprs[input.Length] = added;
         return newExprs;
     }
-    
+
     /// <summary>
     ///     Creates a new array by applying the specified function to every element in the input array
     /// </summary>
@@ -32,7 +32,7 @@ public static class ArrayExtensions
     public static TOut[] Map<TIn, TOut>(this TIn[] arr, Func<TIn, TOut> f)
         => Array.ConvertAll(arr, x => f(x));
 
-    public static IReadOnlyCollection<TOut> Map<TIn, TOut>(this IReadOnlyCollection<TIn> col, Func<TIn, TOut> f)
+    public static TOut[] Map<TIn, TOut>(this IReadOnlyCollection<TIn> col, Func<TIn, TOut> f)
     {
         var toReturn = new TOut[col.Count];
         

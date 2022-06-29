@@ -36,7 +36,7 @@ public static class SocketMessageComponentExtensions
         => text switch
         {
             SmartEmbedText set => smc.RespondAsync(set.PlainText,
-                set.GetEmbed().Build(),
+                set.IsValid ? set.GetEmbed().Build() : null,
                 sanitizeAll: sanitizeAll,
                 ephemeral: ephemeral),
             SmartPlainText st => smc.RespondAsync(st.Text,
@@ -54,7 +54,7 @@ public static class SocketMessageComponentExtensions
         IEmbedBuilder? embed,
         string plainText = "",
         IReadOnlyCollection<IEmbedBuilder>? embeds = null,
-        EllieInteraction? inter = null,
+        EllieButtonInteraction? inter = null,
         bool ephemeral = false)
         => smc.RespondAsync(plainText,
             embed: embed?.Build(),
@@ -66,7 +66,7 @@ public static class SocketMessageComponentExtensions
         string text,
         MessageType type,
         bool ephemeral = false,
-        EllieInteraction? inter = null)
+        EllieButtonInteraction? inter = null)
     {
         var builder = eb.Create().WithDescription(text);
 

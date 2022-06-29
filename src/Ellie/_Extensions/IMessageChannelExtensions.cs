@@ -1,4 +1,4 @@
-﻿namespace Ellie.Extensions;
+namespace Ellie.Extensions;
 
 public static class MessageChannelExtensions
 {
@@ -30,7 +30,7 @@ public static class MessageChannelExtensions
     public static async Task<IUserMessage> SendAsync(
         this IMessageChannel channel,
         string? plainText,
-        EllieInteraction? inter,
+        EllieButtonInteraction? inter,
         Embed? embed = null,
         IReadOnlyCollection<Embed>? embeds = null,
         bool sanitizeAll = false)
@@ -54,7 +54,7 @@ public static class MessageChannelExtensions
         => text switch
         {
             SmartEmbedText set => channel.SendAsync(set.PlainText,
-                set.GetEmbed().Build(),
+                set.IsValid ? set.GetEmbed().Build() : null,
                 sanitizeAll: sanitizeAll),
             SmartPlainText st => channel.SendAsync(st.Text,
                 default(Embed),
@@ -69,7 +69,7 @@ public static class MessageChannelExtensions
         IEmbedBuilder? embed,
         string plainText = "",
         IReadOnlyCollection<IEmbedBuilder>? embeds = null,
-        EllieInteraction? inter = null)
+        EllieButtonInteraction? inter = null)
         => ch.SendAsync(plainText,
             inter,
             embed: embed?.Build(),
@@ -80,7 +80,7 @@ public static class MessageChannelExtensions
         IEmbedBuilderService eb,
         string text,
         MessageType type,
-        EllieInteraction? inter = null)
+        EllieButtonInteraction? inter = null)
     {
         var builder = eb.Create().WithDescription(text);
 
@@ -106,12 +106,14 @@ public static class MessageChannelExtensions
         this IMessageChannel ch,
         IEmbedBuilderService eb,
         MessageType type,
-        string title,
+        string? title,
         string text,
         string? url = null,
         string? footer = null)
     {
-        var embed = eb.Create().WithDescription(text).WithTitle(title);
+        var embed = eb.Create()
+                      .WithDescription(text)
+                      .WithTitle(title);
 
         if (url is not null && Uri.IsWellFormedUriString(url, UriKind.Absolute))
             embed.WithUrl(url);
@@ -135,7 +137,7 @@ public static class MessageChannelExtensions
     public static Task<IUserMessage> SendConfirmAsync(
         this IMessageChannel ch,
         IEmbedBuilderService eb,
-        string title,
+        string? title,
         string text,
         string? url = null,
         string? footer = null)

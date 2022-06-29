@@ -1,4 +1,4 @@
-﻿using Ellie.Common.Collections;
+using Ellie.Common.Collections;
 using Ellie.Services.Database.Models;
 using System.Security.Cryptography;
 
