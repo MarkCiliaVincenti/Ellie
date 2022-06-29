@@ -3,6 +3,6 @@
 public interface IMarmaladeConfigService
 {
     IReadOnlyCollection<string> GetLoadedMarmalades();
-    void AddLoadedMarmalades(string name);
-    void RemoveLoadedMarmalades(string name);
+    void AddLoadedMarmalade(string name);
+    void RemoveLoadedMarmalade(string name);
 }

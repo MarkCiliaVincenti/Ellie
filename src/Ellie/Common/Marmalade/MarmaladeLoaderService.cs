@@ -19,7 +19,9 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
     private readonly IMarmaladeConfigService _marmaladeConfig;
     
     private readonly ConcurrentDictionary<string, ResolvedMarmalade> _resolved = new();
+#pragma warning disable IDE0090 // Use 'new(...)'
     private readonly SemaphoreSlim _lock = new SemaphoreSlim(1, 1);
+#pragma warning restore IDE0090 // Use 'new(...)'
 
     private readonly TypedKey<string> _loadKey = new("marmalade:load");
     private readonly TypedKey<string> _unloadKey = new("marmalade:unload");
@@ -398,8 +400,12 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
                 m.AddModule(subInfo.Instance.Prefix, CreateModuleFactory(marmaladeName, subInfo, strings, marmaladeServices));
         };
 
+#pragma warning disable IDE0090 // Use 'new(...)'
     private static readonly RequireContextAttribute _reqGuild = new RequireContextAttribute(ContextType.Guild);
+#pragma warning restore IDE0090 // Use 'new(...)'
+#pragma warning disable IDE0090 // Use 'new(...)'
     private static readonly RequireContextAttribute _reqDm = new RequireContextAttribute(ContextType.DM);
+#pragma warning restore IDE0090 // Use 'new(...)'
     private Action<CommandBuilder> CreateCommandFactory(string marmaladeName, CanaryCommandData cmd)
         => (cb) =>
         {
