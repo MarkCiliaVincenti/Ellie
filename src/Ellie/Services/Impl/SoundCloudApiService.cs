@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Ellie.Services;
 
-public class SoundCloudApiService : INService
+public class SoundCloudApiService : IEService
 {
     private readonly IHttpClientFactory _httpFactory;
 

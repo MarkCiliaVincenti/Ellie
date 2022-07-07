@@ -5,9 +5,9 @@ using System.Diagnostics;
 
 namespace Ellie.Services;
 
-public sealed class StatsService : IStatsService, IReadyExecutor, INService
+public sealed class StatsService : IStatsService, IReadyExecutor, IEService
 {
-    public const string BOT_VERSION = "4.1.7";
+    public const string BOT_VERSION = "4.2.15";
 
     public string Author
         => "Emotion#6522";

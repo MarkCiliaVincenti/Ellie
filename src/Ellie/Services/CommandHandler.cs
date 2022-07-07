@@ -8,7 +8,7 @@ using PreconditionResult = Discord.Commands.PreconditionResult;
 
 namespace Ellie.Services;
 
-public class CommandHandler : INService, IReadyExecutor
+public class CommandHandler : IEService, IReadyExecutor
 {
     private const int GLOBAL_COMMANDS_COOLDOWN = 750;
 
@@ -217,7 +217,7 @@ public class CommandHandler : INService, IReadyExecutor
         {
             try
             {
-#if !GLOBAL_NADEKO
+#if !GLOBAL_ELLIE
                 // track how many messagges each user is sending
                 UserMessagesSent.AddOrUpdate(usrMsg.Author.Id, 1, (_, old) => ++old);
 #endif

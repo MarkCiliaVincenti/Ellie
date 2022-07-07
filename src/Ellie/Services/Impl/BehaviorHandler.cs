@@ -5,7 +5,7 @@ using Ellie.Common.ModuleBehaviors;
 namespace Ellie.Services;
 
 // should be renamed to handler as it's not only executing
-public sealed class BehaviorHandler : IBehaviorHandler, INService
+public sealed class BehaviorHandler : IBehaviorHandler, IEService
 {
     private readonly IServiceProvider _services;
     

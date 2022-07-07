@@ -3,7 +3,7 @@ using SixLabors.Fonts;
 
 namespace Ellie.Services;
 
-public class FontProvider : INService
+public class FontProvider : IEService
 {
     public FontFamily DottyFont { get; }
 

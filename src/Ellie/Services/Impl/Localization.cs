@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace Ellie.Services;
 
-public class Localization : ILocalization, INService
+public class Localization : ILocalization, IEService
 {
     private static readonly Dictionary<string, CommandData> _commandData =
         JsonConvert.DeserializeObject<Dictionary<string, CommandData>>(

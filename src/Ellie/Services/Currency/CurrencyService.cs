@@ -4,7 +4,7 @@ using Ellie.Services.Currency;
 
 namespace Ellie.Services;
 
-public class CurrencyService : ICurrencyService, INService
+public class CurrencyService : ICurrencyService, IEService
 {
     private readonly DbService _db;
 

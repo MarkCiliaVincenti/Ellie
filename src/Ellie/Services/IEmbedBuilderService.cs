@@ -9,7 +9,7 @@ public interface IEmbedBuilderService
     IEmbedBuilder Create(EmbedBuilder eb);
 }
 
-public class EmbedBuilderService : IEmbedBuilderService, INService
+public class EmbedBuilderService : IEmbedBuilderService, IEService
 {
     private readonly BotConfigService _botConfigService;
 

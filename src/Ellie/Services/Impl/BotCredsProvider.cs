@@ -37,8 +37,15 @@ public sealed class BotCredsProvider : IBotCredsProvider
     public BotCredsProvider(int? totalShards = null)
     {
         _totalShards = totalShards;
-        if (!File.Exists(CredsExamplePath))
-            File.WriteAllText(CredsExamplePath, Yaml.Serializer.Serialize(_creds));
+        try
+        {
+            if (!File.Exists(CredsExamplePath))
+                File.WriteAllText(CredsExamplePath, Yaml.Serializer.Serialize(_creds));
+        }
+        catch
+        {
+            // this can fail in docker containers
+        }
 
         MigrateCredentials();
 
@@ -96,8 +103,10 @@ public sealed class BotCredsProvider : IBotCredsProvider
             if (string.IsNullOrWhiteSpace(_creds.RedisOptions))
                 _creds.RedisOptions = "127.0.0.1,syncTimeout=3000";
 
-            if (string.IsNullOrWhiteSpace(_creds.CoinmarketcapApiKey))
-                _creds.CoinmarketcapApiKey = "e79ec505-0913-439d-ae07-069e296a6079";
+            // replace the old generated key with the shared key
+            if (string.IsNullOrWhiteSpace(_creds.CoinmarketcapApiKey)
+                || _creds.CoinmarketcapApiKey.StartsWith("e79ec505-0913"))
+                _creds.CoinmarketcapApiKey = "3077537c-7dfb-4d97-9a60-56fc9a9f5035";
 
             _creds.TotalShards = _totalShards ?? _creds.TotalShards;
         }
@@ -112,8 +121,6 @@ public sealed class BotCredsProvider : IBotCredsProvider
 
         ymlData = Yaml.Serializer.Serialize(creds);
         File.WriteAllText(CREDS_FILE_NAME, ymlData);
-
-        Reload();
     }
     
     private string OldCredsJsonPath
@@ -165,14 +172,20 @@ public sealed class BotCredsProvider : IBotCredsProvider
         if (File.Exists(CREDS_FILE_NAME))
         {
             var creds = Yaml.Deserializer.Deserialize<Creds>(File.ReadAllText(CREDS_FILE_NAME));
-            if (creds.Version <= 4)
+            if (creds.Version <= 5)
             {
-                creds.Version = 5;
+                creds.Version = 6;
+                creds.BotCache = BotCacheImplemenation.Redis;
                 File.WriteAllText(CREDS_FILE_NAME, Yaml.Serializer.Serialize(creds));
             }
         }
     }
 
     public IBotCredentials GetCreds()
-        => _creds;
+    {
+        lock (_reloadLock)
+        {
+            return _creds;
+        }
+    }
 }

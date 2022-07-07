@@ -4,7 +4,7 @@ using System.Collections.Immutable;
 
 namespace Ellie.Services;
 
-public class StartingGuildsService : IEnumerable<ulong>, INService
+public class StartingGuildsService : IEnumerable<ulong>, IEService
 {
     private readonly ImmutableList<ulong> _guilds;
 
