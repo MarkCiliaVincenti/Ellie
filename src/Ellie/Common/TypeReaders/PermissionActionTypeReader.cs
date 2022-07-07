@@ -1,7 +1,7 @@
 ﻿#nullable disable
 using Ellie.Common.TypeReaders.Models;
 
-namespace NadekoBot.Common.TypeReaders;
+namespace Ellie.Common.TypeReaders;
 
 /// <summary>
 ///     Used instead of bool for more flexible keywords for true/false only in the permission module

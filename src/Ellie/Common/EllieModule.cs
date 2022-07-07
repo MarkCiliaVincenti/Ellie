@@ -67,13 +67,13 @@ public abstract class EllieModule : ModuleBase
 
     // localized replies
     public Task<IUserMessage> ReplyErrorLocalizedAsync(LocStr str, EllieButtonInteraction inter = null)
-        => SendErrorAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}");
+        => SendErrorAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}", inter);
 
     public Task<IUserMessage> ReplyPendingLocalizedAsync(LocStr str, EllieButtonInteraction inter = null)
-        => SendPendingAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}");
+        => SendPendingAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}", inter);
 
     public Task<IUserMessage> ReplyConfirmLocalizedAsync(LocStr str, EllieButtonInteraction inter = null)
-        => SendConfirmAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}");
+        => SendConfirmAsync($"{Format.Bold(ctx.User.ToString())} {GetText(str)}", inter);
 
     public async Task<bool> PromptUserConfirmAsync(IEmbedBuilder embed)
     {
