@@ -88,7 +88,7 @@ namespace Ellie.Coordinator
                     lock (locker)
                     {
                         var shardIds = Enumerable.Range(0, 1) // shard 0 is always first
-                            .Append((int)((117523346618318850 >> 22) % _config.TotalShards)) // then ellie server shard
+                            .Append((int)((117523346618318850 >> 22) % _config.TotalShards)) // then nadeko server shard
                             .Concat(Enumerable.Range(1, _config.TotalShards - 1)
                                 .OrderBy(_ => _rng.Next())) // then all other shards in a random order
                             .Distinct()
@@ -286,7 +286,7 @@ namespace Ellie.Coordinator
                 for (var shardId = 0; shardId < _shardStatuses.Length; shardId++)
                 {
                     var status = _shardStatuses[shardId];
-                    if (status.Process is { } p)
+                    if (status.Process is Process p)
                     {
                         try { p.Kill(); } catch { }
                         try { p.Dispose(); } catch { }
@@ -367,7 +367,7 @@ namespace Ellie.Coordinator
                         }
                         catch (Exception ex)
                         {
-                            Log.Warning(ex, "Process for shard {ShardId} is not running", shardId);
+                            Log.Warning(ex, "Process for shard {ShardId} is not runnning", shardId);
                         }
                     }
 
