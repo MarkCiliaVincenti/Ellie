@@ -132,8 +132,8 @@ public class CmdAttribute : System.Attribute
 
         foreach (var method in model.Methods)
         {
-            tw.WriteLine("[NadekoCommand]");
-            tw.WriteLine("[NadekoDescription]");
+            tw.WriteLine("[EllieCommand]");
+            tw.WriteLine("[EllieDescription]");
             tw.WriteLine("[Aliases]");
             tw.WriteLine($"public partial {method.ReturnType} {method.MethodName}({string.Join(", ", method.Params)});");
         }
@@ -326,7 +326,7 @@ public class CmdAttribute : System.Attribute
                 if (symbol is not IMethodSymbol attSymbol)
                     continue;
 
-                if (attSymbol.ContainingType.ToDisplayString() == "NadekoBot.Common.CmdAttribute")
+                if (attSymbol.ContainingType.ToDisplayString() == "Ellie.Common.CmdAttribute")
                     return methodDecl;
             }
         }
