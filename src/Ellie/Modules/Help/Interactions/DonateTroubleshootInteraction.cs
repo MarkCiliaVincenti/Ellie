@@ -1,6 +1,6 @@
 ﻿namespace Ellie.Modules.Help;
 
-public class DonateTroubleshootInteraction : NInteraction
+public class DonateTroubleshootInteraction : EInteraction
 {
     protected override EllieInteractionData Data
         => new EllieInteractionData(new Emoji("❓"), "donate:troubleshoot", "Troubleshoot");

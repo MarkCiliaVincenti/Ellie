@@ -1,6 +1,6 @@
 ﻿namespace Ellie.Modules.Help;
 
-public class DonateSelfhostingInteraction : NInteraction
+public class DonateSelfhostingInteraction : EInteraction
 {
     protected override EllieInteractionData Data
         => new EllieInteractionData(new Emoji("🖥️"), "donate:selfhosting", "Selfhosting");
