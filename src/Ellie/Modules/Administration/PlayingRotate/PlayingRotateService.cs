@@ -5,7 +5,7 @@ using Ellie.Services.Database.Models;
 
 namespace Ellie.Modules.Administration.Services;
 
-public sealed class PlayingRotateService : INService, IReadyExecutor
+public sealed class PlayingRotateService : IEService, IReadyExecutor
 {
     private readonly BotConfigService _bss;
     private readonly SelfService _selfService;

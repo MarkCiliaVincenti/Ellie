@@ -8,7 +8,7 @@ using System.Threading.Channels;
 
 namespace Ellie.Modules.Administration.Services;
 
-public sealed class AutoAssignRoleService : INService
+public sealed class AutoAssignRoleService : IEService
 {
     private readonly DiscordSocketClient _client;
     private readonly DbService _db;

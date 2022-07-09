@@ -5,7 +5,7 @@ using Ellie.Services.Database.Models;
 
 namespace Ellie.Modules.Administration.Services;
 
-public class AdministrationService : INService
+public class AdministrationService : IEService
 {
     public ConcurrentHashSet<ulong> DeleteMessagesOnCommand { get; }
     public ConcurrentDictionary<ulong, bool> DeleteMessagesOnCommandChannels { get; }

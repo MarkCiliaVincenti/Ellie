@@ -6,7 +6,7 @@ namespace Ellie.Modules.Administration;
 public partial class Administration
 {
     [Group]
-    public partial class TimeZoneCommands : EllieModule<GuildTimezoneService>
+    public partial class TimeZoneCommands : NadekoModule<GuildTimezoneService>
     {
         [Cmd]
         [RequireContext(ContextType.Guild)]

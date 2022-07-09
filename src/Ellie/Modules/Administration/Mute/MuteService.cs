@@ -12,7 +12,7 @@ public enum MuteType
     All
 }
 
-public class MuteService : INService
+public class MuteService : IEService
 {
     public enum TimerType { Mute, Ban, AddRole }
 

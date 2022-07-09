@@ -3,7 +3,7 @@ using Ellie.Db;
 
 namespace Ellie.Modules.Administration.Services;
 
-public class GameVoiceChannelService : INService
+public class GameVoiceChannelService : IEService
 {
     public ConcurrentHashSet<ulong> GameVoiceChannels { get; }
 

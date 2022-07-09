@@ -4,7 +4,7 @@ using Ellie.Services.Database.Models;
 
 namespace Ellie.Modules.Administration.Services;
 
-public class GuildTimezoneService : INService
+public class GuildTimezoneService : IEService
 {
     public static ConcurrentDictionary<ulong, GuildTimezoneService> AllServices { get; } = new();
     private readonly ConcurrentDictionary<ulong, TimeZoneInfo> _timezones;

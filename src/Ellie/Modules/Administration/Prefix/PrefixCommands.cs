@@ -11,12 +11,12 @@ public partial class Administration
             Set
         }
 
-        [cmd]
+        [Cmd]
         [Priority(1)]
         public async partial Task Prefix()
             => await ReplyConfirmLocalizedAsync(strs.prefix_current(Format.Code(_cmdHandler.GetPrefix(ctx.Guild))));
 
-        [cmd]
+        [Cmd]
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.Administrator)]
         [Priority(0)]
@@ -38,7 +38,7 @@ public partial class Administration
             await ReplyConfirmLocalizedAsync(strs.prefix_new(Format.Code(oldPrefix), Format.Code(newPrefix)));
         }
 
-        [cmd]
+        [Cmd]
         [OwnerOnly]
         public async partial Task DefPrefix([Leftover] string toSet = null)
         {

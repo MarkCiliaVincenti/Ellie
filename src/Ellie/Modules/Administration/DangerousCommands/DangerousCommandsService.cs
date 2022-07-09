@@ -7,7 +7,7 @@ using Ellie.Services.Database.Models;
 
 namespace Ellie.Modules.Administration.Services;
 
-public class DangerousCommandsService : INService
+public class DangerousCommandsService : IEService
 {
     private readonly DbService _db;
 
@@ -23,6 +23,8 @@ public class DangerousCommandsService : INService
             // IsClubAdmin = false,
             TotalXp = 0
         });
+
+        await ctx.UserXpStats.DeleteAsync();
         await ctx.ClubApplicants.DeleteAsync();
         await ctx.ClubBans.DeleteAsync();
         await ctx.Clubs.DeleteAsync();

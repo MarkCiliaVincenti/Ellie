@@ -5,7 +5,7 @@ using System.Threading.Channels;
 
 namespace Ellie.Services;
 
-public class GreetService : INService, IReadyExecutor
+public class GreetService : IEService, IReadyExecutor
 {
     public bool GroupGreets
         => _bss.Data.GroupGreets;
@@ -259,7 +259,8 @@ public class GreetService : INService, IReadyExecutor
                     Description = pt.Text
                 };
             }
-            else if (text is SmartEmbedText set)
+            
+            if (text is SmartEmbedText set)
             {
                 text = set with
                 {

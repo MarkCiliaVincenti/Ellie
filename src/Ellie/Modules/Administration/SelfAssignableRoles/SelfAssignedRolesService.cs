@@ -6,7 +6,7 @@ using Ellie.Services.Database.Models;
 
 namespace Ellie.Modules.Administration.Services;
 
-public class SelfAssignedRolesService : INService
+public class SelfAssignedRolesService : IEService
 {
     public enum AssignResult
     {

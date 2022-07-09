@@ -114,7 +114,7 @@ public partial class Administration
         [Cmd]
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.Administrator)]
-        [EllieOptions(typeof(WarnExpireOptions))]
+        [NadekoOptions(typeof(WarnExpireOptions))]
         [Priority(1)]
         public async partial Task WarnExpire()
         {
@@ -129,7 +129,7 @@ public partial class Administration
         [Cmd]
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.Administrator)]
-        [EllieOptions(typeof(WarnExpireOptions))]
+        [NadekoOptions(typeof(WarnExpireOptions))]
         [Priority(2)]
         public async partial Task WarnExpire(int days, params string[] args)
         {
@@ -341,7 +341,8 @@ public partial class Administration
         public async partial Task WarnPunish(int number, PunishmentAction punish, StoopidTime time = null)
         {
             // this should never happen. Addrole has its own method with higher priority
-            if (punish == PunishmentAction.AddRole)
+            // also disallow warn punishment for getting warned
+            if (punish is PunishmentAction.AddRole or PunishmentAction.Warn)
                 return;
 
             var success = _service.WarnPunish(ctx.Guild.Id, number, punish, time);
@@ -838,7 +839,7 @@ public partial class Administration
                                                                .Build());
         }
 
-        public class WarnExpireOptions : IEllieCommandOptions
+        public class WarnExpireOptions : INadekoCommandOptions
         {
             [Option('d', "delete", Default = false, HelpText = "Delete warnings instead of clearing them.")]
             public bool Delete { get; set; } = false;

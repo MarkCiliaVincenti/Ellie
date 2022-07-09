@@ -10,13 +10,15 @@ using Newtonsoft.Json;
 
 namespace Ellie.Modules.Administration.Services;
 
-public class UserPunishService : INService, IReadyExecutor
+public class UserPunishService : IEService, IReadyExecutor
 {
     private readonly MuteService _mute;
     private readonly DbService _db;
     private readonly BlacklistService _blacklistService;
     private readonly BotConfigService _bcs;
     private readonly DiscordSocketClient _client;
+
+    public event Func<Warning, Task> OnUserWarned = static delegate { return Task.CompletedTask; };
 
     public UserPunishService(
         MuteService mute,
@@ -92,6 +94,8 @@ public class UserPunishService : INService, IReadyExecutor
 
             await uow.SaveChangesAsync();
         }
+
+        _ = OnUserWarned(warn);
 
         var totalCount = previousCount + weight;
         
@@ -185,6 +189,9 @@ public class UserPunishService : INService, IReadyExecutor
                         guild.Id);
                 }
 
+                break;
+            case PunishmentAction.Warn:
+                await Warn(guild, user.Id, mod, 1, reason);
                 break;
         }
     }

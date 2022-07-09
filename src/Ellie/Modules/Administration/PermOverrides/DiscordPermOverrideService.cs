@@ -5,7 +5,7 @@ using Ellie.Services.Database.Models;
 
 namespace Ellie.Modules.Administration.Services;
 
-public class DiscordPermOverrideService : INService, IExecPreCommand
+public class DiscordPermOverrideService : IEService, IExecPreCommand
 {
     public int Priority { get; } = int.MaxValue;
     private readonly DbService _db;

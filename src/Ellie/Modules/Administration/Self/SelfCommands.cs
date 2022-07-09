@@ -1,5 +1,5 @@
 #nullable disable
-using Ellie.Marmalade;
+using Nadeko.Medusa;
 using Ellie.Modules.Administration.Services;
 using Ellie.Services.Database.Models;
 
@@ -20,19 +20,19 @@ public partial class Administration
 
         private readonly DiscordSocketClient _client;
         private readonly IBotStrings _strings;
-        private readonly IMarmaladeLoaderService _marmaladeLoader;
+        private readonly IMedusaLoaderService _medusaLoader;
         private readonly ICoordinator _coord;
 
         public SelfCommands(
             DiscordSocketClient client,
             IBotStrings strings,
             ICoordinator coord,
-            IMarmaladeLoaderService marmaladeLoader)
+            IMedusaLoaderService medusaLoader)
         {
             _client = client;
             _strings = strings;
             _coord = coord;
-            _marmaladeLoader = marmaladeLoader;
+            _medusaLoader = medusaLoader;
         }
 
         [Cmd]
@@ -335,6 +335,7 @@ public partial class Administration
         {
             try
             {
+                await _client.SetStatusAsync(UserStatus.DoNotDisturb);
                 await ReplyConfirmLocalizedAsync(strs.shutting_down);
             }
             catch
@@ -498,14 +499,6 @@ public partial class Administration
             }
 
             await ReplyConfirmLocalizedAsync(strs.message_sent);
-        }
-
-        [Cmd]
-        [OwnerOnly]
-        public async partial Task ImagesReload()
-        {
-            await _service.ReloadImagesAsync();
-            await ReplyConfirmLocalizedAsync(strs.images_loading);
         }
 
         [Cmd]

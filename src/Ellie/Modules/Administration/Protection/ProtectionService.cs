@@ -6,7 +6,7 @@ using System.Threading.Channels;
 
 namespace Ellie.Modules.Administration.Services;
 
-public class ProtectionService : INService
+public class ProtectionService : IEService
 {
     public event Func<PunishmentAction, ProtectionType, IGuildUser[], Task> OnAntiProtectionTriggered = delegate
     {
