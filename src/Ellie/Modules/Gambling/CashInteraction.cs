@@ -1,7 +1,7 @@
 ﻿#nullable disable
 namespace Ellie.Modules.Gambling;
 
-public class CashInteraction : NInteraction
+public class CashInteraction : EInteraction
 {
     protected override EllieInteractionData Data
         => new EllieInteractionData(new Emoji("🏦"), "cash:bank_show_balance");

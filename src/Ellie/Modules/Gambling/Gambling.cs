@@ -114,7 +114,7 @@ public partial class Gambling : GamblingModule<GamblingService>
         PrettyName = "Timely"
     };
 
-    public class RemindMeInteraction : NInteraction
+    public class RemindMeInteraction : EInteraction
     {
         public RemindMeInteraction(
             [NotNull] DiscordSocketClient client,
