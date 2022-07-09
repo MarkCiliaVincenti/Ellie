@@ -4,9 +4,11 @@ using Ellie.Common.Configs;
 using Ellie.Common.ModuleBehaviors;
 using Ellie.Db;
 using Ellie.Modules.Administration;
+using Ellie.Modules.Utility;
 using Ellie.Services.Database.Models;
 using System.Collections.Immutable;
 using System.Diagnostics;
+using System.Net;
 using System.Reflection;
 using RunMode = Discord.Commands.RunMode;
 
@@ -50,9 +52,9 @@ public sealed class Bot
             50;
 #endif
 
-        if(!_creds.UsePrivilegedIntents)
+        if (!_creds.UsePrivilegedIntents)
             Log.Warning("You are not using privileged intents. Some features will not work properly");
-        
+
         Client = new(new()
         {
             MessageCacheSize = messageCacheSize,
@@ -68,6 +70,7 @@ public sealed class Bot
                 : GatewayIntents.AllUnprivileged,
             LogGatewayIntentWarnings = false,
             FormatUsersInBidirectionalUnicode = false,
+            DefaultRetryMode = RetryMode.AlwaysRetry ^ RetryMode.RetryRatelimit
         });
 
         _commandService = new(new()
@@ -100,20 +103,20 @@ public sealed class Bot
         var svcs = new ServiceCollection().AddTransient(_ => _credsProvider.GetCreds()) // bot creds
                                           .AddSingleton(_credsProvider)
                                           .AddSingleton(_db) // database
-                                          .AddRedis(_creds.RedisOptions) // redis
                                           .AddSingleton(Client) // discord socket client
                                           .AddSingleton(_commandService)
                                           // .AddSingleton(_interactionService)
                                           .AddSingleton(this)
                                           .AddSingleton<ISeria, JsonSeria>()
-                                          .AddSingleton<IPubSub, RedisPubSub>()
                                           .AddSingleton<IConfigSeria, YamlSeria>()
-                                          .AddBotStringsServices(_creds.TotalShards)
                                           .AddConfigServices()
                                           .AddConfigMigrators()
                                           .AddMemoryCache()
                                           // music
-                                          .AddMusic();
+                                          .AddMusic()
+                                          // cache
+                                          .AddCache(_creds);
+
         // admin
 #if GLOBAL_ELLIE
         svcs.AddSingleton<ILogCommandService, DummyLogCommandService>();
@@ -126,6 +129,12 @@ public sealed class Bot
                 AllowAutoRedirect = false
             });
 
+        svcs.AddHttpClient("google:search")
+            .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler()
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            });
+
         if (Environment.GetEnvironmentVariable("ELLIE_IS_COORDINATED") != "1")
             svcs.AddSingleton<ICoordinator, SingleProcessCoordinator>();
         else
@@ -135,17 +144,10 @@ public sealed class Bot
                 .AddSingleton<IReadyExecutor>(x => x.GetRequiredService<RemoteGrpcCoordinator>());
         }
 
-        svcs.AddSingleton<RedisLocalDataCache>()
-            .AddSingleton<ILocalDataCache>(x => x.GetRequiredService<RedisLocalDataCache>())
-            .AddSingleton<RedisImagesCache>()
-            .AddSingleton<IImageCache>(x => x.GetRequiredService<RedisImagesCache>())
-            .AddSingleton<IReadyExecutor>(x => x.GetRequiredService<RedisImagesCache>())
-            .AddSingleton<IDataCache, RedisCache>();
-
         svcs.Scan(scan => scan.FromAssemblyOf<IReadyExecutor>()
                               .AddClasses(classes => classes.AssignableToAny(
                                       // services
-                                      typeof(INService),
+                                      typeof(IEService),
 
                                       // behaviours
                                       typeof(IExecOnMessage),
@@ -154,7 +156,7 @@ public sealed class Bot
                                       typeof(IExecPostCommand),
                                       typeof(IExecNoCommand))
                                                 .WithoutAttribute<DontAddToIocContainerAttribute>()
-#if GLOBAL_ELLIE
+#if GLOBAL_NADEKO
                                                 .WithoutAttribute<NoPublicBotAttribute>()
 #endif
                               )
@@ -164,6 +166,7 @@ public sealed class Bot
         //initialize Services
         Services = svcs.BuildServiceProvider();
         Services.GetRequiredService<IBehaviorHandler>().Initialize();
+        Services.GetRequiredService<CurrencyRewardService>();
 
         if (Client.ShardId == 0)
             ApplyConfigMigrations();
@@ -171,7 +174,7 @@ public sealed class Bot
         _ = LoadTypeReaders(typeof(Bot).Assembly);
 
         sw.Stop();
-        Log.Information( "All services loaded in {ServiceLoadTime:F2}s", sw.Elapsed.TotalSeconds);
+        Log.Information("All services loaded in {ServiceLoadTime:F2}s", sw.Elapsed.TotalSeconds);
     }
 
     private void ApplyConfigMigrations()
@@ -251,13 +254,14 @@ public sealed class Bot
             LoginErrorHandler.Handle(ex);
             Helpers.ReadErrorAndExit(4);
         }
-        
+
         await clientReady.Task.ConfigureAwait(false);
         Client.Ready -= SetClientReady;
-        
+
         Client.JoinedGuild += Client_JoinedGuild;
         Client.LeftGuild += Client_LeftGuild;
 
+        // _ = Client.SetStatusAsync(UserStatus.Online);
         Log.Information("Shard {ShardId} logged in", Client.ShardId);
     }
 
@@ -287,7 +291,7 @@ public sealed class Bot
     {
         if (ShardId == 0)
             await _db.SetupAsync();
-        
+
         var sw = Stopwatch.StartNew();
 
         await LoginAsync(_creds.Token);
@@ -351,7 +355,7 @@ Login failed.
 
 *** Please enable privileged intents ***
 
-Certain Ellie features require Discord's privileged gateway intents.
+Certain Nadeko features require Discord's privileged gateway intents.
 These include greeting and goodbye messages, as well as creating the Owner message channels for DM forwarding.
 
 How to enable privileged intents:
@@ -365,11 +369,11 @@ Read this only if your bot is in 100 or more servers:
 
 You'll need to apply to use the intents with Discord, but for small selfhosts, all that is required is enabling the intents in the developer portal.
 Yes, this is a new thing from Discord, as of October 2020. No, there's nothing we can do about it. Yes, we're aware it worked before.
-While waiting for your bot to be accepted, you can change the 'usePrivilegedIntents' inside your creds.yml to 'false', although this will break many of the Ellie's features");
+While waiting for your bot to be accepted, you can change the 'usePrivilegedIntents' inside your creds.yml to 'false', although this will break many of the nadeko's features");
             return Task.CompletedTask;
         }
-        
-#if GLOBAL_ELLIE || DEBUG
+
+#if GLOBAL_NADEKO || DEBUG
         if (arg.Exception is not null)
             Log.Warning(arg.Exception, "{ErrorSource} | {ErrorMessage}", arg.Source, arg.Message);
         else
