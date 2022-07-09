@@ -156,7 +156,7 @@ public sealed class Bot
                                       typeof(IExecPostCommand),
                                       typeof(IExecNoCommand))
                                                 .WithoutAttribute<DontAddToIocContainerAttribute>()
-#if GLOBAL_NADEKO
+#if GLOBAL_ELLIE
                                                 .WithoutAttribute<NoPublicBotAttribute>()
 #endif
                               )
@@ -355,7 +355,7 @@ Login failed.
 
 *** Please enable privileged intents ***
 
-Certain Nadeko features require Discord's privileged gateway intents.
+Certain Ellie features require Discord's privileged gateway intents.
 These include greeting and goodbye messages, as well as creating the Owner message channels for DM forwarding.
 
 How to enable privileged intents:
@@ -369,11 +369,11 @@ Read this only if your bot is in 100 or more servers:
 
 You'll need to apply to use the intents with Discord, but for small selfhosts, all that is required is enabling the intents in the developer portal.
 Yes, this is a new thing from Discord, as of October 2020. No, there's nothing we can do about it. Yes, we're aware it worked before.
-While waiting for your bot to be accepted, you can change the 'usePrivilegedIntents' inside your creds.yml to 'false', although this will break many of the nadeko's features");
+While waiting for your bot to be accepted, you can change the 'usePrivilegedIntents' inside your creds.yml to 'false', although this will break many of the Ellie's features");
             return Task.CompletedTask;
         }
 
-#if GLOBAL_NADEKO || DEBUG
+#if GLOBAL_ELLIE || DEBUG
         if (arg.Exception is not null)
             Log.Warning(arg.Exception, "{ErrorSource} | {ErrorMessage}", arg.Source, arg.Message);
         else
