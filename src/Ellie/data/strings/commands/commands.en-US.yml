@@ -34,9 +34,9 @@ greetmsg:
   desc: |-
     Sets a new join announcement message which will be shown in the server's channel.
     Type `%user.mention%` if you want to mention the new member.   
-    Full list of placeholders can be found here <https://docs.elliebot.net/placeholders/>
+    Full list of placeholders can be found here <https://docs.elliebot.net/v4/placeholders/>
     Using it with no message will show the current greet message.  
-    You can use embed json from <https://eb.elliebot.net/> instead of a regular text, if you want the message to be embedded.
+    You can use embed json from <https://eb.elliebot.net> instead of a regular text, if you want the message to be embedded.
   args:
     - "Welcome, %user.mention%."
 bye:
@@ -47,9 +47,9 @@ byemsg:
   desc: |-
     Sets a new leave announcement message. 
     Type `%user.mention%` if you want to show the name the user who left. 
-    Full list of placeholders can be found here <https://docs.elliebot.net/placeholders/>  
+    Full list of placeholders can be found here <https://docs.elliebot.net/v4/placeholders/>  
     Using this command with no message will show the current bye message. 
-    You can use embed json from <https://eb.elliebot.net/> instead of a regular text, if you want the message to be embedded.
+    You can use embed json from <https://eb.elliebot.net> instead of a regular text, if you want the message to be embedded.
   args:
     - "%user.mention% has left."
 byedel:
@@ -84,9 +84,9 @@ boostmsg:
   desc: |-
     Sets a new boost announcement message. 
     Type `%user.mention%` if you want to show the name the user who left. 
-    Full list of placeholders can be found here <https://docs.elliebot.net/placeholders/>
+    Full list of placeholders can be found here <https://docs.elliebot.net/v4/placeholders/>
     Using this command with no message will show the current boost message. 
-    You can use embed json from <https://eb.elliebot.net/> instead of a regular text, if you want the message to be embedded.
+    You can use embed json from <https://eb.elliebot.net> instead of a regular text, if you want the message to be embedded.
   args:
     - "%user.mention% has boosted the server!!!"
 boostdel:
@@ -193,7 +193,7 @@ iamnot:
   args:
     - "Gamer"
 expradd:
-  desc: "Add a expression with a trigger and a response. Running this command in server requires the Administration permission. Running this command in DM is Bot Owner only and adds a new global expression. Guide here: <http://docs.elliebot.net/custom-reactions/>"
+  desc: "Add an expression with a trigger and a response. Running this command in server requires the Administration permission. Running this command in DM is Bot Owner only and adds a new global expression. Guide here: <https://docs.elliebot.net/v4/custom-reactions/>"
   args:
     - "\"hello\" Hi there %user.mention%"
 exprlist:
@@ -217,7 +217,7 @@ exprdelete:
   args:
     - "5"
 exprclear:
-  desc: "Deletes all expressions on this server."
+  desc: "Deletes all expression on this server."
   args:
     - ""
 fwclear:
@@ -238,7 +238,7 @@ autoassignrole:
     - ""
     - "RoleName"
 leave:
-  desc: "Makes Ellie leave the server. Either server name or server ID is required."
+  desc: "Makes Nadeko leave the server. Either server name or server ID is required."
   args:
     - "123123123331"
 slowmode:
@@ -278,7 +278,7 @@ rolehoist:
   desc: "Toggles whether this role is displayed in the sidebar or not. The role you specify has to be lower in the role hierarchy than your highest role."
   args:
     - "Guests"
-    - "\"Space Wizards\""
+    - "Space Wizards"
 createrole:
   desc: "Creates a role with a given name."
   args:
@@ -354,7 +354,7 @@ setchanlname:
   args:
     - "NewName"
 prune:
-  desc: "`{0}prune` removes all Ellie's messages in the last 100 messages. `{0}prune X` removes last `X` number of messages from the channel (up to 100). `{0}prune @Someone` removes all Someone's messages in the last 100 messages. `{0}prune @Someone X` removes last `X` number of 'Someone's' messages in the channel. You can use the `-s` / `--safe` parameter at the end to only prune messages that are not pinned."
+  desc: "`{0}prune` removes all Nadeko's messages in the last 100 messages. `{0}prune X` removes last `X` number of messages from the channel (up to 100). `{0}prune @Someone` removes all Someone's messages in the last 100 messages. `{0}prune @Someone X` removes last `X` number of 'Someone's' messages in the channel. You can use the `-s` / `--safe` parameter at the end to only prune messages that are not pinned."
   args:
     - ""
     - "-s"
@@ -380,7 +380,7 @@ setnick:
 setavatar:
   desc: "Sets a new avatar image for the Ellie. Parameter is a direct link to an image."
   args:
-    - "http://i.imgur.com/xTG3a1I.jpg"
+    - "https://i.imgur.com/xTG3a1I.jpg"
 setgame:
   desc: "Sets the bots game status to either Playing, Listening, or Watching."
   args:
@@ -439,7 +439,7 @@ checkperms:
     - "me"
     - "bot"
 stats:
-  desc: "Shows some basic stats for Ellie."
+  desc: "Shows some basic stats for Nadeko."
   args:
     - ""
 userid:
@@ -578,7 +578,9 @@ serverblacklist:
     - ""
     - "2"
 cmdcooldown:
-  desc: "Sets a cooldown per user for a command or a expression. Set it to 0 to remove the cooldown."
+  desc: "Sets a cooldown, in seconds, for a command or an expression which will be applied per user. 
+   Set it to 0 to remove the cooldown.
+   Supports a special command `cleverbot:response` which can be used limit how often users can talk to cleverbot"
   args:
     - ".h 5"
     - ".pat 30"
@@ -599,9 +601,12 @@ quoteshow:
   args:
     - "123"
 quotesearch:
-  desc: "Shows a random quote for a keyword that contains any text specified in the search."
+  desc: "Shows a random quote given a search query. Partially matches in several ways: 1) Only content of any quote, 2) only by author, 3) keyword and content, 3) or keyword and author"
   args:
-    - "keyword text"
+    - "\"find this long text\""
+    - "AuthorName" 
+    - "keyword some text"
+    - "keyword AuthorName"
 quoteid:
   desc: "Displays the quote with the specified ID number. Quote ID numbers can be found by typing `{0}liqu [num]` where `[num]` is a number of a page which contains 15 quotes."
   args:
@@ -758,7 +763,7 @@ choose:
   args:
     - "Get up;Sleep;Sleep more"
 rps:
-  desc: "Play a game of Rocket-Paperclip-Scissors with Ellie. You can bet on it. Multiplier is the same as on betflip."
+  desc: "Play a game of Rocket-Paperclip-Scissors with Nadeko. You can bet on it. Multiplier is the same as on betflip."
   args:
     - "r 100"
     - "scissors"
@@ -1040,11 +1045,11 @@ urbandict:
   args:
     - "Pineapple"
 catfact:
-  desc: "Shows a random catfact from <http://catfacts-api.appspot.com/api/facts>"
+  desc: "Shows a random catfact from <https://catfacts-api.appspot.com/api/facts>"
   args:
     - ""
 yomama:
-  desc: "Shows a random joke from <http://api.yomomma.info/>"
+  desc: "Shows a random joke from <https://api.yomomma.info/>"
   args:
     - ""
 randjoke:
@@ -1159,7 +1164,7 @@ delallquotes:
   args:
     - "kek"
 greetdmmsg:
-  desc: "Sets a new join announcement message which will be sent to the user who joined. Type `%user.mention%` if you want to mention the new member. Using it with no message will show the current DM greet message. You can use embed json from <https://eb.elliebot.net> instead of a regular text, if you want the message to be embedded."
+  desc: "Sets a new join announcement message which will be sent to the user who joined. Type `%user.mention%` if you want to mention the new member. Using it with no message will show the current DM greet message. You can use embed json from <https://eb.nadeko.bot> instead of a regular text, if you want the message to be embedded."
   args:
     - "Welcome to the server, %user.mention%"
 cash:
@@ -1264,12 +1269,12 @@ konachan:
   args:
     - "yuri"
 muterole:
-  desc: "Sets a name of the role which will be assigned to people who should be muted. Provide no arguments to see currently set mute role. Default is ellie-mute."
+  desc: "Sets a name of the role which will be assigned to people who should be muted. Provide no arguments to see currently set mute role. Default is nadeko-mute."
   args:
     - ""
     - "Silenced"
 adsarm:
-  desc: "Toggles the automatic deletion of the user's message and Ellie's confirmations for `{0}iam` and `{0}iamn` commands."
+  desc: "Toggles the automatic deletion of the user's message and Nadeko's confirmations for `{0}iam` and `{0}iamn` commands."
   args:
     - ""
 setstream:
@@ -1331,7 +1336,7 @@ listservers:
   args:
     - "3"
 cleverbot:
-  desc: "Toggles cleverbot session. When enabled, the bot will reply to messages starting with bot mention in the server. expressions starting with %bot.mention% won't work if cleverbot is enabled."
+  desc: "Toggles cleverbot session. When enabled, the bot will reply to messages starting with bot mention in the server. Expressions starting with %bot.mention% won't work if cleverbot is enabled."
   args:
     - ""
 shorten:
@@ -1421,7 +1426,7 @@ antispamignore:
   args:
     - ""
 eventstart:
-  desc: "Starts one of the events seen on public ellie. Events: `reaction`, `gamestatus`"
+  desc: "Starts one of the events seen on public nadeko. Events: `reaction`, `gamestatus`"
   args:
     - "reaction"
     - "reaction -d 1 -a 50 --pot-size 1500"
@@ -1434,7 +1439,7 @@ slottest:
   args:
     - "1000"
 slot:
-  desc: "Play Ellie slots. 1 second cooldown per user."
+  desc: "Play Nadeko slots. 1 second cooldown per user."
   args:
     - "5"
 affinity:
@@ -1494,10 +1499,6 @@ musicquality:
     - ""
     - "High"
     - "Low"
-imagesreload:
-  desc: "Reloads images bot is using. Safe to use even when bot is being used heavily."
-  args:
-    - ""
 stringsreload:
   desc: "Reloads localized bot strings."
   args:
@@ -1545,7 +1546,7 @@ rategirl:
   args:
     - "@SomeGurl"
 exprreact:
-  desc: "Sets or resets reactions (up to 3) which will be added to the response message of the CustomReaction with the specified ID. Provide no emojis to reset."
+  desc: "Sets or resets reactions (up to 3) which will be added to the response message of the Expression with the specified ID. Provide no emojis to reset."
   args:
     - "59 \U0001F44D \U0001F44E "
     - "59 <a:nFlower:408963839191941120>"
@@ -1592,7 +1593,7 @@ aliaslist:
     - ""
     - "3"
 alias:
-  desc: "Create a custom alias for a certain Ellie command. Provide no alias to remove the existing one."
+  desc: "Create a custom alias for a certain Nadeko command. Provide no alias to remove the existing one."
   args:
     - "allin {0}bf all h"
     - "\"linux thingy\" >loonix Spyware Windows"
@@ -2167,34 +2168,34 @@ deleteemptyservers:
   desc: "Deletes all servers in which the bot is the only member."
   args:
     - ""
-medusaload:
+marmaladeload:
   desc: |- 
-    Loads a medusa with the specified name from the data/medusae/ folder.
-    Provide no name to see the list of loadable medusae.
-    Read about the medusa system [here](https://docs.elliebot.net/)
+    Loads a marmalade with the specified name from the data/marmalades/ folder.
+    Provide no name to see the list of loadable marmalades.
+    Read about the marmalade system [here](https://docs.elliebot.net/)
   args:
-    - "mycoolmedusa"
+    - "mycoolmarmalade"
     - ""
-medusaunload:
+marmaladeunload:
   desc: |-
-    Unloads the previously loaded medusa.
-    Provide no name to see the list of unloadable medusae. 
-    Read about the medusa system [here](https://docs.elliebot.net/)
+    Unloads the previously loaded marmalade.
+    Provide no name to see the list of unloadable marmalades. 
+    Read about the marmalade system [here](https://docs.elliebot.net/)
   args:
-    - "mycoolmedusa"
+    - "mycoolmarmalade"
     - ""
-medusainfo:
+marmaladeinfo:
   desc: |-
-    Shows information about the specified medusa such as the author, name, description, list of sneks, number of commands etc.
-    Provide no name to see the basic information about all loaded medusae. 
-    Read about the medusa system [here](https://docs.elliebot.net/)
+    Shows information about the specified marmalade such as the author, name, description, list of sneks, number of commands etc.
+    Provide no name to see the basic information about all loaded marmalades. 
+    Read about the marmalade system [here](https://docs.elliebot.net/)
   args:
-    - "mycoolmedusa"
+    - "mycoolmarmalade"
     - ""
-medusalist: 
+marmaladelist: 
   desc: |-
-    Lists all loaded and unloaded medusae.
-    Read about the medusa system [here](https://docs.elliebot.net/)
+    Lists all loaded and unloaded marmalades.
+    Read about the marmalade system [here](https://docs.elliebot.net/)
   args:
     - ""
 bankdeposit:
@@ -2209,3 +2210,25 @@ bankbalance:
   desc: "Shows your current bank balance available for withdrawal."
   args:
     - ""
+patron:
+  desc: "Check your patronage status and command usage quota. Bot owners can check targeted user's patronage status."
+  args:
+    - ""
+patronmessage:
+  desc: "Sends a message to all patrons of the specified tier and higher. Supports embeds."
+  args:
+    - "x hello"
+eval:
+  desc: |- 
+    Execute arbitrary C# code and (optionally) return a result. Several namespaces are included by default.
+    Special variables available: 
+    `self` - Instance of the command group executing the command (this)
+    `guild` - Server in which the command is executed
+    `channel` - Channel in which the command is executed
+    `user` - User executing the command
+    `ctx` - Discord.Net command context
+    `services` - Nadeko's IServiceProvider
+  args:
+    - "123 / 4.5f"
+    - "await ctx.OkAsync();"
+    - 'await ctx.SendConfirmAsync("uwu");'
