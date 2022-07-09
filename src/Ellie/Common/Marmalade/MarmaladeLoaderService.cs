@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 namespace Ellie.Marmalade;
 
 // ReSharper disable RedundantAssignment
-public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExecutor, INService
+public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExecutor, IEService
 {
     private readonly CommandService _cmdService;
     private readonly IServiceProvider _botServices;
