@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using Ellie.Modules.Permissions.Services;
 using Ellie.Services.Database.Models;
 

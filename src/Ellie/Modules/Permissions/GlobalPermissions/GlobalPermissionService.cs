@@ -1,9 +1,9 @@
-﻿#nullable disable
+#nullable disable
 using Ellie.Common.ModuleBehaviors;
 
 namespace Ellie.Modules.Permissions.Services;
 
-public class GlobalPermissionService : IExecPreCommand, INService
+public class GlobalPermissionService : IExecPreCommand, IEService
 {
     public int Priority { get; } = 0;
 

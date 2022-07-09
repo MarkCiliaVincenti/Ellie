@@ -4,7 +4,7 @@ using Ellie.Services.Database.Models;
 
 namespace Ellie.Modules.Permissions.Services;
 
-public class CmdCdService : IExecPreCommand, INService
+public class CmdCdService : IExecPreCommand, IEService
 {
     public ConcurrentDictionary<ulong, ConcurrentHashSet<CommandCooldown>> CommandCooldowns { get; }
     public ConcurrentDictionary<ulong, ConcurrentHashSet<ActiveCooldown>> ActiveCooldowns { get; } = new();

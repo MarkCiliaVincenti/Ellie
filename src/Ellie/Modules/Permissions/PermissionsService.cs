@@ -7,7 +7,7 @@ using Ellie.Services.Database.Models;
 
 namespace Ellie.Modules.Permissions.Services;
 
-public class PermissionService : IExecPreCommand, INService
+public class PermissionService : IExecPreCommand, IEService
 {
     public int Priority { get; } = 0;
 
