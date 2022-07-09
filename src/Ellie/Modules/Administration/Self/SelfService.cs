@@ -6,7 +6,7 @@ using System.Collections.Immutable;
 
 namespace Ellie.Modules.Administration.Services;
 
-public sealed class SelfService : IExecNoCommand, IReadyExecutor, INService
+public sealed class SelfService : IExecNoCommand, IReadyExecutor, IEService
 {
     private readonly CommandHandler _cmdHandler;
     private readonly DbService _db;

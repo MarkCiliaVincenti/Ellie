@@ -293,7 +293,7 @@ public class MuteService : IEService
         if (guild is null)
             throw new ArgumentNullException(nameof(guild));
 
-        const string defaultMuteRoleName = "nadeko-mute";
+        const string defaultMuteRoleName = "Ellie-mute";
 
         var muteRoleName = GuildMuteRoles.GetOrAdd(guild.Id, defaultMuteRoleName);
 
