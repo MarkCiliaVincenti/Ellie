@@ -13,7 +13,7 @@ public static class EllieExpressionExtensions
     public static IEnumerable<EllieExpression> ForId(this DbSet<EllieExpression> exprs, ulong id)
         => exprs.AsNoTracking().AsQueryable().Where(x => x.GuildId == id).ToList();
 
-    public static EllieExpression GetByGuildIdAndInput(
+    public static EllieExpression GetByGuildIdInput(
         this DbSet<EllieExpression> exprs,
         ulong? guildId,
         string input)

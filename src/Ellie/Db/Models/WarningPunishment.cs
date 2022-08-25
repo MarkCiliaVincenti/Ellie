@@ -1,7 +1,7 @@
 ﻿#nullable disable
 namespace Ellie.Services.Database.Models;
 
-public class WarningPunishment
+public class WarningPunishment : DbEntity
 {
     public int Count { get; set; }
     public PunishmentAction Punishment { get; set; }

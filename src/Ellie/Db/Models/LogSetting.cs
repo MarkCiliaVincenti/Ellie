@@ -1,5 +1,5 @@
 ﻿#nullable disable
-using Ellie.Services.Database.Models;
+namespace Ellie.Services.Database.Models;
 
 public class LogSetting : DbEntity
 {
@@ -22,10 +22,10 @@ public class LogSetting : DbEntity
 
     public ulong? UserMutedId { get; set; }
 
-    // userpresence
+    //userpresence
     public ulong? LogUserPresenceId { get; set; }
 
-    // voicepresence
+    //voicepresence
 
     public ulong? LogVoicePresenceId { get; set; }
     public ulong? LogVoicePresenceTTSId { get; set; }

@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 namespace Ellie.Services.Database.Models;
 
 public class AntiRaidSetting : DbEntity
@@ -14,7 +14,7 @@ public class AntiRaidSetting : DbEntity
     ///     Duration of the punishment, in minutes. This works only for supported Actions, like:
     ///     Mute, Chatmute, Voicemute, etc...
     /// </summary>
-    public int PunishmentDuration { get; set; }
+    public int PunishDuration { get; set; }
 }
 
 public class AntiSpamSetting : DbEntity
@@ -49,7 +49,8 @@ public enum PunishmentAction
     ChatMute,
     VoiceMute,
     AddRole,
-    Warn
+    Warn,
+    TimeOut
 }
 
 public class AntiSpamIgnore : DbEntity

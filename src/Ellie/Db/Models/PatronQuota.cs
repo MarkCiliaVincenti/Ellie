@@ -37,7 +37,6 @@ public class PatronUser
     public DateTime ValidThru { get; set; }
 
     public PatronUser Clone()
-#pragma warning disable IDE0090 // Use 'new(...)'
         => new PatronUser()
         {
             UniquePlatformUserId = this.UniquePlatformUserId,
@@ -46,5 +45,4 @@ public class PatronUser
             LastCharge = this.LastCharge,
             ValidThru = this.ValidThru
         };
-#pragma warning restore IDE0090 // Use 'new(...)'
 }

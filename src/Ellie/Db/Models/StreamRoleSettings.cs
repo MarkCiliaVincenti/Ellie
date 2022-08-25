@@ -33,7 +33,7 @@ public class StreamRoleSettings : DbEntity
     public HashSet<StreamRoleWhitelistedUser> Whitelist { get; set; } = new();
 
     /// <summary>
-    ///     A collection of blacklisted users' IDs. Blacklisted users will never get the stream role.
+    ///     A collection of blacklisted users' IDs. Blacklisted useres will never get the stream role.
     /// </summary>
     public HashSet<StreamRoleBlacklistedUser> Blacklist { get; set; } = new();
 }

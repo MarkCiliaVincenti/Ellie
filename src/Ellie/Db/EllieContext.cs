@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Ellie.Db.Models;
@@ -27,7 +27,7 @@ public abstract class EllieContext : DbContext
     public DbSet<ClubApplicants> ClubApplicants { get; set; }
 
 
-    //logging
+    // logging
     public DbSet<LogSetting> LogSettings { get; set; }
     public DbSet<IgnoredVoicePresenceChannel> IgnoredVoicePresenceCHannels { get; set; }
     public DbSet<IgnoredLogItem> IgnoredLogChannels { get; set; }
@@ -65,8 +65,6 @@ public abstract class EllieContext : DbContext
     #region Mandatory Provider-Specific Values
 
     protected abstract string CurrencyTransactionOtherIdDefaultValue { get; }
-    protected abstract string DiscordUserLastXpGainDefaultValue { get; }
-    protected abstract string LastLevelUpDefaultValue { get; }
 
     #endregion
 
@@ -166,12 +164,6 @@ public abstract class EllieContext : DbContext
             du.Property(x => x.NotifyOnLevelUp)
               .HasDefaultValue(XpNotificationLocation.None);
 
-            du.Property(x => x.LastXpGain)
-              .HasDefaultValueSql(DiscordUserLastXpGainDefaultValue);
-
-            du.Property(x => x.LastLevelUp)
-              .HasDefaultValueSql(LastLevelUpDefaultValue);
-
             du.Property(x => x.TotalXp)
               .HasDefaultValue(0);
 
@@ -212,9 +204,6 @@ public abstract class EllieContext : DbContext
             x.GuildId
         })
            .IsUnique();
-
-        xps.Property(x => x.LastLevelUp)
-           .HasDefaultValueSql(LastLevelUpDefaultValue);
 
         xps.HasIndex(x => x.UserId);
         xps.HasIndex(x => x.GuildId);
@@ -452,6 +441,23 @@ public abstract class EllieContext : DbContext
                 x.Feature
             });
         });
+
+        #endregion
+
+        #region Xp Item Shop
+
+        modelBuilder.Entity<XpShopOwnedItem>(
+            x =>
+            {
+                // user can own only one of each item
+                x.HasIndex(model => new
+                {
+                    model.UserId,
+                    model.ItemType,
+                    model.ItemKey
+                })
+                    .IsUnique();
+            });
 
         #endregion
     }

@@ -1,5 +1,4 @@
 ﻿#nullable disable
-using Ellie.Common.Collections;
 using Ellie.Db.Models;
 
 namespace Ellie.Services.Database.Models;

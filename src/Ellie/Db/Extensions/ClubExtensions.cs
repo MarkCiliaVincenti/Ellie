@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 using Microsoft.EntityFrameworkCore;
 using Ellie.Db.Models;
 
