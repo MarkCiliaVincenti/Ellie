@@ -1,18 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "GYClgohKzC+GrXKKaaHq0HCd3rJNgSvW63j1IkJC0Hlj4dNI9mXoJ/PZaXKCCFT/vv7FAoeY3GKkdf1IXhJzRQ==",
+  "dgSpecHash": "G4IkdZW4Ww1mvKw9WW7eIhXxsBkyFljo0DjbiNnwoKvz3fG3fqDiT7jj1SLBS0N1/ylbe8WuapYWPYQORM9AYQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\JDRCa\\source\\repos\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JDRCa\\.nuget\\packages\\google.protobuf\\3.19.4\\google.protobuf.3.19.4.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.aspnetcore\\2.47.0\\grpc.aspnetcore.2.47.0.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.aspnetcore.server\\2.47.0\\grpc.aspnetcore.server.2.47.0.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.aspnetcore.server.clientfactory\\2.47.0\\grpc.aspnetcore.server.clientfactory.2.47.0.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.core.api\\2.47.0\\grpc.core.api.2.47.0.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.net.client\\2.47.0\\grpc.net.client.2.47.0.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.net.clientfactory\\2.47.0\\grpc.net.clientfactory.2.47.0.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.net.common\\2.47.0\\grpc.net.common.2.47.0.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.tools\\2.47.0\\grpc.tools.2.47.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.aspnetcore\\2.48.0\\grpc.aspnetcore.2.48.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.aspnetcore.server\\2.48.0\\grpc.aspnetcore.server.2.48.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.aspnetcore.server.clientfactory\\2.48.0\\grpc.aspnetcore.server.clientfactory.2.48.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.core.api\\2.48.0\\grpc.core.api.2.48.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.net.client\\2.48.0\\grpc.net.client.2.48.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.net.clientfactory\\2.48.0\\grpc.net.clientfactory.2.48.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.net.common\\2.48.0\\grpc.net.common.2.48.0.nupkg.sha512",
+    "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.tools\\2.48.0\\grpc.tools.2.48.0.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.configuration\\3.0.3\\microsoft.extensions.configuration.3.0.3.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.0.3\\microsoft.extensions.configuration.abstractions.3.0.3.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.extensions.configuration.binder\\3.0.3\\microsoft.extensions.configuration.binder.3.0.3.nupkg.sha512",
@@ -27,7 +27,7 @@
     "C:\\Users\\JDRCa\\.nuget\\packages\\serilog.sinks.console\\4.0.1\\serilog.sinks.console.4.0.1.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\serilog.sinks.file\\5.0.0\\serilog.sinks.file.5.0.0.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
-    "C:\\Users\\JDRCa\\.nuget\\packages\\yamldotnet\\11.2.1\\yamldotnet.11.2.1.nupkg.sha512"
+    "C:\\Users\\JDRCa\\.nuget\\packages\\yamldotnet\\12.0.0\\yamldotnet.12.0.0.nupkg.sha512"
   ],
   "logs": []
 }
