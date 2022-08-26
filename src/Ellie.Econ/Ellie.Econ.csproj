@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Ellie.Common\Ellise.Common.csproj" />
+    <ProjectReference Include="..\Ellise.Common\Ellise.Common.csproj" />
   </ItemGroup>
 
 </Project>
