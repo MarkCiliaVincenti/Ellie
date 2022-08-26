@@ -8,7 +8,8 @@ global using Humanizer;
 // ellie
 global using Ellie;
 global using Ellie.Services;
-global using Ellie.Common;
+global using Ellise.Common; // new project
+global using Ellie.Common; // old + ellie specific things
 global using Ellie.Common.Attributes;
 global using Ellie.Extensions;
 global using Ellie.Marmalade;
