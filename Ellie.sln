@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.VotesApi", "src\Ellie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.Marmalade", "src\Ellie.Marmalade\Ellie.Marmalade.csproj", "{C47C25BF-13D8-4872-8806-68CF6FB83149}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellise.Common", "src\Ellie.Common\Ellise.Common.csproj", "{3136DA3F-C2FC-475B-BF0B-6C9A7AB0A969}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellise.Common", "src\Ellise.Common\Ellise.Common.csproj", "{3136DA3F-C2FC-475B-BF0B-6C9A7AB0A969}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.Econ", "src\Ellie.Econ\Ellie.Econ.csproj", "{D2313E99-0905-4532-810A-2C907D1F0AF8}"
 EndProject
