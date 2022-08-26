@@ -1,1 +1,1 @@
-﻿global using Ellie.Common;
+﻿global using Ellise.Common;
