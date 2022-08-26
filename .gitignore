@@ -1,9 +1,12 @@
 #Manually added files
 
-# marmalade stuff
+src/Ellie/data/last_known_version.txt
+
+# medusa stuff
 !src/Ellie/data/marmalades/marmalade.yml
 src/Ellie/data/marmalades/**
-nuget.config
+
+# other
 
 command_errors*.txt
 output/
