@@ -79,7 +79,7 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         
-        <PackageReference Include="linq2db.EntityFrameworkCore" Version="6.8.0" />
+        <PackageReference Include="linq2db.EntityFrameworkCore" Version="6.9.0" />
         
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.8" />        
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.6" />
