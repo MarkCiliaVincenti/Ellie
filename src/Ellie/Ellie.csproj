@@ -90,7 +90,7 @@
         <!-- Used by .crypto command -->
         
         <!-- Used by stream notifications -->
-        <PackageReference Include="TwitchLib.Api" Version="3.6.1" />
+        <PackageReference Include="TwitchLib.Api" Version="3.7.0" />
         
         <!-- Uncomment to check for disposable issues -->
 <!--        <PackageReference Include="IDisposableAnalyzers" Version="4.0.2">-->
