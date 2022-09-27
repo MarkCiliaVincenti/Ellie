@@ -1,6 +1,4 @@
 ﻿#nullable disable
-using Ellie.Common.Collections;
-
 namespace Ellie.Services.Database.Models;
 
 public class Poll : DbEntity

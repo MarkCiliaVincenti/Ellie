@@ -6,7 +6,7 @@ using Ellie.Db.Models;
 using Ellie.Services.Database;
 using Ellie.Services.Database.Models;
 
-namespace NadekoBot.Db;
+namespace Ellie.Db;
 
 public class WaifuInfoStats
 {
@@ -82,12 +82,12 @@ public static class WaifuExtensions
         await ctx.WaifuInfo
                  .ToLinqToDBTable()
                  .InsertOrUpdateAsync(() => new()
-                     {
-                         AffinityId = null,
-                         ClaimerId = null,
-                         Price = 1,
-                         WaifuId = ctx.DiscordUser.Where(x => x.UserId == userId).Select(x => x.Id).First()
-                     },
+                 {
+                     AffinityId = null,
+                     ClaimerId = null,
+                     Price = 1,
+                     WaifuId = ctx.DiscordUser.Where(x => x.UserId == userId).Select(x => x.Id).First()
+                 },
                      _ => new(),
                      () => new()
                      {

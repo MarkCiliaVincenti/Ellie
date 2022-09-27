@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Ellie.Db.Models;
 
 namespace Ellie.Services.Database;
@@ -10,10 +10,6 @@ public sealed class MysqlContext : EllieContext
 
     protected override string CurrencyTransactionOtherIdDefaultValue
         => "NULL";
-    protected override string DiscordUserLastXpGainDefaultValue
-        => "(UTC_TIMESTAMP - INTERVAL 1 year)";
-    protected override string LastLevelUpDefaultValue
-        => "(UTC_TIMESTAMP)";
 
     public MysqlContext(string connStr = "Server=localhost", string version = "8.0")
     {
@@ -32,11 +28,11 @@ public sealed class MysqlContext : EllieContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
+
         // mysql is case insensitive by default
-        // we can set binary collation to change that
+        // we can set binary collection to change that
         modelBuilder.Entity<ClubInfo>()
-                    .Property(x => x.Name)
-                    .UseCollation("utf8mb4_bin");
+            .Property(x => x.Name)
+            .UseCollation("utf8mb4_bin");
     }
 }

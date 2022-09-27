@@ -3,6 +3,7 @@ using Ellie.Services.Database.Models;
 
 namespace Ellie.Db.Models;
 
+// FUTURE remove LastLevelUp from here and UserXpStats
 public class DiscordUser : DbEntity
 {
     public ulong UserId { get; set; }
@@ -15,8 +16,6 @@ public class DiscordUser : DbEntity
     public bool IsClubAdmin { get; set; }
 
     public long TotalXp { get; set; }
-    public DateTime LastLevelUp { get; set; } = DateTime.UtcNow;
-    public DateTime LastXpGain { get; set; } = DateTime.MinValue;
     public XpNotificationLocation NotifyOnLevelUp { get; set; }
 
     public long CurrencyAmount { get; set; }

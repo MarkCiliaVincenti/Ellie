@@ -4,9 +4,9 @@ namespace Ellie.Services.Database.Models;
 public enum ShopEntryType
 {
     Role,
-    
-    list
-    // Infinite_List,
+
+    List
+    //Infinite_List,
 }
 
 public class ShopEntry : DbEntity, IIndexed

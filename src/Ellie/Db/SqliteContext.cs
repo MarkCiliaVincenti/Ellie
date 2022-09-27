@@ -1,18 +1,14 @@
-﻿using Microsoft.Data.Sqlite;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ellie.Services.Database;
 
-public class SqliteContext : EllieContext
+public sealed class SqliteContext : EllieContext
 {
     private readonly string _connectionString;
 
     protected override string CurrencyTransactionOtherIdDefaultValue
         => "NULL";
-    protected override string DiscordUserLastXpGainDefaultValue
-        => "datetime('now', '-1 years')";
-    protected override string LastLevelUpDefaultValue
-        => "datetime('now')";
 
     public SqliteContext(string connectionString = "Data Source=data/Ellie.db", int commandTimeout = 60)
     {

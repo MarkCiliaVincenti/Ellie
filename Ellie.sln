@@ -10,6 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		CHANGELOG.md = CHANGELOG.md
 		LICENSE.md = LICENSE.md
 		README.md = README.md
+		.gitlab-ci.yml = .gitlab-ci.yml
+		Dockerfile = Dockerfile
+		NuGet.Config = NuGet.Config
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie", "src\Ellie\Ellie.csproj", "{48FDEC0E-53F7-43E8-95E5-5DA00EECF0E8}"
@@ -27,6 +30,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.VotesApi", "src\Ellie.VotesApi\Ellie.VotesApi.csproj", "{3CA2022E-A5A8-4A6B-91DC-992DADD11E8B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.Marmalade", "src\Ellie.Marmalade\Ellie.Marmalade.csproj", "{C47C25BF-13D8-4872-8806-68CF6FB83149}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellise.Common", "src\Ellise.Common\Ellise.Common.csproj", "{3136DA3F-C2FC-475B-BF0B-6C9A7AB0A969}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.Econ", "src\Ellie.Econ\Ellie.Econ.csproj", "{D2313E99-0905-4532-810A-2C907D1F0AF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +69,14 @@ Global
 		{C47C25BF-13D8-4872-8806-68CF6FB83149}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C47C25BF-13D8-4872-8806-68CF6FB83149}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C47C25BF-13D8-4872-8806-68CF6FB83149}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3136DA3F-C2FC-475B-BF0B-6C9A7AB0A969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3136DA3F-C2FC-475B-BF0B-6C9A7AB0A969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3136DA3F-C2FC-475B-BF0B-6C9A7AB0A969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3136DA3F-C2FC-475B-BF0B-6C9A7AB0A969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2313E99-0905-4532-810A-2C907D1F0AF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2313E99-0905-4532-810A-2C907D1F0AF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2313E99-0905-4532-810A-2C907D1F0AF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2313E99-0905-4532-810A-2C907D1F0AF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +90,8 @@ Global
 		{D6FBA9FE-F7EB-453C-A9C1-7A657210CB2C} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
 		{3CA2022E-A5A8-4A6B-91DC-992DADD11E8B} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
 		{C47C25BF-13D8-4872-8806-68CF6FB83149} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
+		{3136DA3F-C2FC-475B-BF0B-6C9A7AB0A969} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
+		{D2313E99-0905-4532-810A-2C907D1F0AF8} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2982516-2905-4B9D-BB8C-6D522824A260}

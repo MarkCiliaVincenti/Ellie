@@ -1,27 +1,27 @@
-﻿#nullable disable
+#nullable disable
 namespace Ellie.Services.Database.Models;
 
 public class AntiRaidSetting : DbEntity
 {
     public int GuildConfigId { get; set; }
     public GuildConfig GuildConfig { get; set; }
-    
+
     public int UserThreshold { get; set; }
     public int Seconds { get; set; }
     public PunishmentAction Action { get; set; }
-    
+
     /// <summary>
     ///     Duration of the punishment, in minutes. This works only for supported Actions, like:
-    ///     Mute, ChatMute, VoiceMute, etc...
+    ///     Mute, Chatmute, Voicemute, etc...
     /// </summary>
-    public int PunishmentDuration { get; set; }
+    public int PunishDuration { get; set; }
 }
 
 public class AntiSpamSetting : DbEntity
 {
     public int GuildConfigId { get; set; }
     public GuildConfig GuildConfig { get; set; }
-    
+
     public PunishmentAction Action { get; set; }
     public int MessageThreshold { get; set; } = 3;
     public int MuteTime { get; set; }
@@ -48,7 +48,9 @@ public enum PunishmentAction
     RemoveRoles,
     ChatMute,
     VoiceMute,
-    AddRole
+    AddRole,
+    Warn,
+    TimeOut
 }
 
 public class AntiSpamIgnore : DbEntity

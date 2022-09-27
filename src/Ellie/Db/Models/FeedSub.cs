@@ -5,7 +5,7 @@ public class FeedSub : DbEntity
 {
     public int GuildConfigId { get; set; }
     public GuildConfig GuildConfig { get; set; }
-    
+
     public ulong ChannelId { get; set; }
     public string Url { get; set; }
 

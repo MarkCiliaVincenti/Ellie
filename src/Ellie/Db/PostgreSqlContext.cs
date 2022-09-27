@@ -1,17 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ellie.Services.Database;
 
-public sealed class PostgreSqlContext : EllieContext 
+public sealed class PostgreSqlContext : EllieContext
 {
     private readonly string _connStr;
 
     protected override string CurrencyTransactionOtherIdDefaultValue
         => "NULL";
-    protected override string DiscordUserLastXpGainDefaultValue
-        => "timezone('utc', now()) - interval '-1 year'";
-    protected override string LastLevelUpDefaultValue
-        => "timezone('utc', now())";
 
     public PostgreSqlContext(string connStr = "Host=localhost")
     {
@@ -20,6 +16,8 @@ public sealed class PostgreSqlContext : EllieContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
         base.OnConfiguring(optionsBuilder);
         optionsBuilder
             .UseLowerCaseNamingConvention()
