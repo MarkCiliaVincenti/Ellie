@@ -38,7 +38,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Html2Markdown" Version="5.0.2.561" />
+        <PackageReference Include="Html2Markdown" Version="5.1.0.703" />
         <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="4.3.0" />
         
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
