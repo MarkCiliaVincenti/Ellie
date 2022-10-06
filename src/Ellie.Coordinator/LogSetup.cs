@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Text;
 using Serilog;
 using Serilog.Events;

@@ -1,4 +1,4 @@
-﻿#nullable disable
+﻿#nullable enable
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ namespace Ellie.Generators
     [Generator]
     public class LocalizedStringsGenerator : ISourceGenerator
     {
-        private const string LOC_STR_SOURCE = @"namespace Ellie
+        private const string LOC_STR_SOURCE = @"namespace NadekoBot
 {
     public readonly struct LocStr
     {
@@ -55,7 +55,7 @@ namespace Ellie.Generators
             using (var stringWriter = new StringWriter())
             using (var sw = new IndentedTextWriter(stringWriter))
             {
-                sw.WriteLine("namespace Ellie;");
+                sw.WriteLine("namespace NadekoBot;");
                 sw.WriteLine();
 
                 sw.WriteLine("public static class strs");
