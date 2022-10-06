@@ -1,12 +1,12 @@
-{
+﻿{
   "profiles": {
     "Ellie.Coordinator": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
+      "dotnetRunMessages": true,
       "launchBrowser": false,
-      "applicationUrl": "http://localhost:3442;https://localhost:3443",
+      "applicationUrl": "https://localhost:3442;http://localhost:3443",
       "environmentVariables": {
-        "ASPNETCORE_ENVIROMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
   }
