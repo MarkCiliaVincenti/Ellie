@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.Generators", "src\Ell
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ellie.VotesApi", "src\Ellie.VotesApi\Ellie.VotesApi.csproj", "{DCB4643B-ADED-4DE3-809A-A2B15917168C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ayu.Discord.Voice", "src\ayu\Ayu.Discord.Voice\Ayu.Discord.Voice.csproj", "{08A49DF4-6D3A-48AA-BA2E-98619BEE0252}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{DCB4643B-ADED-4DE3-809A-A2B15917168C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCB4643B-ADED-4DE3-809A-A2B15917168C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCB4643B-ADED-4DE3-809A-A2B15917168C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08A49DF4-6D3A-48AA-BA2E-98619BEE0252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A49DF4-6D3A-48AA-BA2E-98619BEE0252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A49DF4-6D3A-48AA-BA2E-98619BEE0252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A49DF4-6D3A-48AA-BA2E-98619BEE0252}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,6 +53,7 @@ Global
 		{08DF9372-A15C-41A7-A5EA-2AD09B48958B} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
 		{2BAD07D4-27BD-4480-AFFE-E34F8825B709} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
 		{DCB4643B-ADED-4DE3-809A-A2B15917168C} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
+		{08A49DF4-6D3A-48AA-BA2E-98619BEE0252} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2982516-2905-4B9D-BB8C-6D522824A260}
