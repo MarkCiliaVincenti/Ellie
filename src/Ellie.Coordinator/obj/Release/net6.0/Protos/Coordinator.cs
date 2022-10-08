@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace NadekoBot.Coordinator {
+namespace Ellie.Coordinator {
 
   /// <summary>Holder for reflection information generated from Protos/coordinator.proto</summary>
   public static partial class CoordinatorReflection {
@@ -24,69 +24,67 @@ namespace NadekoBot.Coordinator {
     static CoordinatorReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChhQcm90b3MvY29vcmRpbmF0b3IucHJvdG8SCW5hZGVrb2JvdBofZ29vZ2xl",
-            "L3Byb3RvYnVmL3RpbWVzdGFtcC5wcm90byJcChBIZWFydGJlYXRSZXF1ZXN0",
-            "Eg8KB3NoYXJkSWQYASABKAUSEgoKZ3VpbGRDb3VudBgCIAEoBRIjCgVzdGF0",
-            "ZRgDIAEoDjIULm5hZGVrb2JvdC5Db25uU3RhdGUiKgoOSGVhcnRiZWF0UmVw",
-            "bHkSGAoQZ3JhY2VmdWxJbW1pbmVudBgBIAEoCCI1ChNSZXN0YXJ0U2hhcmRS",
-            "ZXF1ZXN0Eg8KB3NoYXJkSWQYASABKAUSDQoFcXVldWUYAiABKAgiEwoRUmVz",
-            "dGFydFNoYXJkUmVwbHkiIAoOUmVzaGFyZFJlcXVlc3QSDgoGc2hhcmRzGAEg",
-            "ASgFIg4KDFJlc2hhcmRSZXBseSIPCg1SZWxvYWRSZXF1ZXN0Ig0KC1JlbG9h",
-            "ZFJlcGx5IiMKEEdldFN0YXR1c1JlcXVlc3QSDwoHc2hhcmRJZBgBIAEoBSLW",
-            "AQoOR2V0U3RhdHVzUmVwbHkSDwoHc2hhcmRJZBgBIAEoBRIjCgVzdGF0ZRgC",
-            "IAEoDjIULm5hZGVrb2JvdC5Db25uU3RhdGUSEgoKZ3VpbGRDb3VudBgDIAEo",
-            "BRIuCgpsYXN0VXBkYXRlGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVz",
-            "dGFtcBIbChNzY2hlZHVsZWRGb3JSZXN0YXJ0GAUgASgIEi0KCXN0YXJ0ZWRB",
-            "dBgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiFwoVR2V0QWxs",
-            "U3RhdHVzZXNSZXF1ZXN0IkIKE0dldEFsbFN0YXR1c2VzUmVwbHkSKwoIU3Rh",
-            "dHVzZXMYASADKAsyGS5uYWRla29ib3QuR2V0U3RhdHVzUmVwbHkiIQoRUmVz",
-            "dGFydEFsbFJlcXVlc3QSDAoEbnVrZRgBIAEoCCIRCg9SZXN0YXJ0QWxsUmVw",
-            "bHkiHgoKRGllUmVxdWVzdBIQCghncmFjZWZ1bBgBIAEoCCIKCghEaWVSZXBs",
-            "eSIWChRHZXRDb25maWdUZXh0UmVxdWVzdCInChJHZXRDb25maWdUZXh0UmVw",
-            "bHkSEQoJY29uZmlnWW1sGAEgASgJIikKFFNldENvbmZpZ1RleHRSZXF1ZXN0",
-            "EhEKCWNvbmZpZ1ltbBgBIAEoCSI0ChJTZXRDb25maWdUZXh0UmVwbHkSDwoH",
-            "c3VjY2VzcxgBIAEoCBINCgVlcnJvchgCIAEoCSo8CglDb25uU3RhdGUSEAoM",
-            "RGlzY29ubmVjdGVkEAASDgoKQ29ubmVjdGluZxABEg0KCUNvbm5lY3RlZBAC",
-            "MtcFCgtDb29yZGluYXRvchJDCglIZWFydGJlYXQSGy5uYWRla29ib3QuSGVh",
-            "cnRiZWF0UmVxdWVzdBoZLm5hZGVrb2JvdC5IZWFydGJlYXRSZXBseRJMCgxS",
-            "ZXN0YXJ0U2hhcmQSHi5uYWRla29ib3QuUmVzdGFydFNoYXJkUmVxdWVzdBoc",
-            "Lm5hZGVrb2JvdC5SZXN0YXJ0U2hhcmRSZXBseRI9CgdSZXNoYXJkEhkubmFk",
-            "ZWtvYm90LlJlc2hhcmRSZXF1ZXN0GhcubmFkZWtvYm90LlJlc2hhcmRSZXBs",
-            "eRI6CgZSZWxvYWQSGC5uYWRla29ib3QuUmVsb2FkUmVxdWVzdBoWLm5hZGVr",
-            "b2JvdC5SZWxvYWRSZXBseRJDCglHZXRTdGF0dXMSGy5uYWRla29ib3QuR2V0",
-            "U3RhdHVzUmVxdWVzdBoZLm5hZGVrb2JvdC5HZXRTdGF0dXNSZXBseRJSCg5H",
-            "ZXRBbGxTdGF0dXNlcxIgLm5hZGVrb2JvdC5HZXRBbGxTdGF0dXNlc1JlcXVl",
-            "c3QaHi5uYWRla29ib3QuR2V0QWxsU3RhdHVzZXNSZXBseRJMChBSZXN0YXJ0",
-            "QWxsU2hhcmRzEhwubmFkZWtvYm90LlJlc3RhcnRBbGxSZXF1ZXN0GhoubmFk",
-            "ZWtvYm90LlJlc3RhcnRBbGxSZXBseRIxCgNEaWUSFS5uYWRla29ib3QuRGll",
-            "UmVxdWVzdBoTLm5hZGVrb2JvdC5EaWVSZXBseRJPCg1TZXRDb25maWdUZXh0",
-            "Eh8ubmFkZWtvYm90LlNldENvbmZpZ1RleHRSZXF1ZXN0Gh0ubmFkZWtvYm90",
-            "LlNldENvbmZpZ1RleHRSZXBseRJPCg1HZXRDb25maWdUZXh0Eh8ubmFkZWtv",
-            "Ym90LkdldENvbmZpZ1RleHRSZXF1ZXN0Gh0ubmFkZWtvYm90LkdldENvbmZp",
-            "Z1RleHRSZXBseUIYqgIVTmFkZWtvQm90LkNvb3JkaW5hdG9yYgZwcm90bzM="));
+            "ChhQcm90b3MvY29vcmRpbmF0b3IucHJvdG8SBWVsbGllGh9nb29nbGUvcHJv",
+            "dG9idWYvdGltZXN0YW1wLnByb3RvIlgKEEhlYXJ0YmVhdFJlcXVlc3QSDwoH",
+            "c2hhcmRJZBgBIAEoBRISCgpndWlsZENvdW50GAIgASgFEh8KBXN0YXRlGAMg",
+            "ASgOMhAuZWxsaWUuQ29ublN0YXRlIioKDkhlYXJ0YmVhdFJlcGx5EhgKEGdy",
+            "YWNlZnVsSW1taW5lbnQYASABKAgiNQoTUmVzdGFydFNoYXJkUmVxdWVzdBIP",
+            "CgdzaGFyZElkGAEgASgFEg0KBXF1ZXVlGAIgASgIIhMKEVJlc3RhcnRTaGFy",
+            "ZFJlcGx5IiAKDlJlc2hhcmRSZXF1ZXN0Eg4KBnNoYXJkcxgBIAEoBSIOCgxS",
+            "ZXNoYXJkUmVwbHkiDwoNUmVsb2FkUmVxdWVzdCINCgtSZWxvYWRSZXBseSIj",
+            "ChBHZXRTdGF0dXNSZXF1ZXN0Eg8KB3NoYXJkSWQYASABKAUi0gEKDkdldFN0",
+            "YXR1c1JlcGx5Eg8KB3NoYXJkSWQYASABKAUSHwoFc3RhdGUYAiABKA4yEC5l",
+            "bGxpZS5Db25uU3RhdGUSEgoKZ3VpbGRDb3VudBgDIAEoBRIuCgpsYXN0VXBk",
+            "YXRlGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBIbChNzY2hl",
+            "ZHVsZWRGb3JSZXN0YXJ0GAUgASgIEi0KCXN0YXJ0ZWRBdBgGIAEoCzIaLmdv",
+            "b2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiFwoVR2V0QWxsU3RhdHVzZXNSZXF1",
+            "ZXN0Ij4KE0dldEFsbFN0YXR1c2VzUmVwbHkSJwoIU3RhdHVzZXMYASADKAsy",
+            "FS5lbGxpZS5HZXRTdGF0dXNSZXBseSIhChFSZXN0YXJ0QWxsUmVxdWVzdBIM",
+            "CgRudWtlGAEgASgIIhEKD1Jlc3RhcnRBbGxSZXBseSIeCgpEaWVSZXF1ZXN0",
+            "EhAKCGdyYWNlZnVsGAEgASgIIgoKCERpZVJlcGx5IhYKFEdldENvbmZpZ1Rl",
+            "eHRSZXF1ZXN0IicKEkdldENvbmZpZ1RleHRSZXBseRIRCgljb25maWdZbWwY",
+            "ASABKAkiKQoUU2V0Q29uZmlnVGV4dFJlcXVlc3QSEQoJY29uZmlnWW1sGAEg",
+            "ASgJIjQKElNldENvbmZpZ1RleHRSZXBseRIPCgdzdWNjZXNzGAEgASgIEg0K",
+            "BWVycm9yGAIgASgJKjwKCUNvbm5TdGF0ZRIQCgxEaXNjb25uZWN0ZWQQABIO",
+            "CgpDb25uZWN0aW5nEAESDQoJQ29ubmVjdGVkEAIyhwUKC0Nvb3JkaW5hdG9y",
+            "EjsKCUhlYXJ0YmVhdBIXLmVsbGllLkhlYXJ0YmVhdFJlcXVlc3QaFS5lbGxp",
+            "ZS5IZWFydGJlYXRSZXBseRJECgxSZXN0YXJ0U2hhcmQSGi5lbGxpZS5SZXN0",
+            "YXJ0U2hhcmRSZXF1ZXN0GhguZWxsaWUuUmVzdGFydFNoYXJkUmVwbHkSNQoH",
+            "UmVzaGFyZBIVLmVsbGllLlJlc2hhcmRSZXF1ZXN0GhMuZWxsaWUuUmVzaGFy",
+            "ZFJlcGx5EjIKBlJlbG9hZBIULmVsbGllLlJlbG9hZFJlcXVlc3QaEi5lbGxp",
+            "ZS5SZWxvYWRSZXBseRI7CglHZXRTdGF0dXMSFy5lbGxpZS5HZXRTdGF0dXNS",
+            "ZXF1ZXN0GhUuZWxsaWUuR2V0U3RhdHVzUmVwbHkSSgoOR2V0QWxsU3RhdHVz",
+            "ZXMSHC5lbGxpZS5HZXRBbGxTdGF0dXNlc1JlcXVlc3QaGi5lbGxpZS5HZXRB",
+            "bGxTdGF0dXNlc1JlcGx5EkQKEFJlc3RhcnRBbGxTaGFyZHMSGC5lbGxpZS5S",
+            "ZXN0YXJ0QWxsUmVxdWVzdBoWLmVsbGllLlJlc3RhcnRBbGxSZXBseRIpCgNE",
+            "aWUSES5lbGxpZS5EaWVSZXF1ZXN0Gg8uZWxsaWUuRGllUmVwbHkSRwoNU2V0",
+            "Q29uZmlnVGV4dBIbLmVsbGllLlNldENvbmZpZ1RleHRSZXF1ZXN0GhkuZWxs",
+            "aWUuU2V0Q29uZmlnVGV4dFJlcGx5EkcKDUdldENvbmZpZ1RleHQSGy5lbGxp",
+            "ZS5HZXRDb25maWdUZXh0UmVxdWVzdBoZLmVsbGllLkdldENvbmZpZ1RleHRS",
+            "ZXBseUIUqgIRRWxsaWUuQ29vcmRpbmF0b3JiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::NadekoBot.Coordinator.ConnState), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.HeartbeatRequest), global::NadekoBot.Coordinator.HeartbeatRequest.Parser, new[]{ "ShardId", "GuildCount", "State" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.HeartbeatReply), global::NadekoBot.Coordinator.HeartbeatReply.Parser, new[]{ "GracefulImminent" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.RestartShardRequest), global::NadekoBot.Coordinator.RestartShardRequest.Parser, new[]{ "ShardId", "Queue" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.RestartShardReply), global::NadekoBot.Coordinator.RestartShardReply.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.ReshardRequest), global::NadekoBot.Coordinator.ReshardRequest.Parser, new[]{ "Shards" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.ReshardReply), global::NadekoBot.Coordinator.ReshardReply.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.ReloadRequest), global::NadekoBot.Coordinator.ReloadRequest.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.ReloadReply), global::NadekoBot.Coordinator.ReloadReply.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.GetStatusRequest), global::NadekoBot.Coordinator.GetStatusRequest.Parser, new[]{ "ShardId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.GetStatusReply), global::NadekoBot.Coordinator.GetStatusReply.Parser, new[]{ "ShardId", "State", "GuildCount", "LastUpdate", "ScheduledForRestart", "StartedAt" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.GetAllStatusesRequest), global::NadekoBot.Coordinator.GetAllStatusesRequest.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.GetAllStatusesReply), global::NadekoBot.Coordinator.GetAllStatusesReply.Parser, new[]{ "Statuses" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.RestartAllRequest), global::NadekoBot.Coordinator.RestartAllRequest.Parser, new[]{ "Nuke" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.RestartAllReply), global::NadekoBot.Coordinator.RestartAllReply.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.DieRequest), global::NadekoBot.Coordinator.DieRequest.Parser, new[]{ "Graceful" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.DieReply), global::NadekoBot.Coordinator.DieReply.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.GetConfigTextRequest), global::NadekoBot.Coordinator.GetConfigTextRequest.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.GetConfigTextReply), global::NadekoBot.Coordinator.GetConfigTextReply.Parser, new[]{ "ConfigYml" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.SetConfigTextRequest), global::NadekoBot.Coordinator.SetConfigTextRequest.Parser, new[]{ "ConfigYml" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::NadekoBot.Coordinator.SetConfigTextReply), global::NadekoBot.Coordinator.SetConfigTextReply.Parser, new[]{ "Success", "Error" }, null, null, null, null)
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Ellie.Coordinator.ConnState), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.HeartbeatRequest), global::Ellie.Coordinator.HeartbeatRequest.Parser, new[]{ "ShardId", "GuildCount", "State" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.HeartbeatReply), global::Ellie.Coordinator.HeartbeatReply.Parser, new[]{ "GracefulImminent" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.RestartShardRequest), global::Ellie.Coordinator.RestartShardRequest.Parser, new[]{ "ShardId", "Queue" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.RestartShardReply), global::Ellie.Coordinator.RestartShardReply.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.ReshardRequest), global::Ellie.Coordinator.ReshardRequest.Parser, new[]{ "Shards" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.ReshardReply), global::Ellie.Coordinator.ReshardReply.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.ReloadRequest), global::Ellie.Coordinator.ReloadRequest.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.ReloadReply), global::Ellie.Coordinator.ReloadReply.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.GetStatusRequest), global::Ellie.Coordinator.GetStatusRequest.Parser, new[]{ "ShardId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.GetStatusReply), global::Ellie.Coordinator.GetStatusReply.Parser, new[]{ "ShardId", "State", "GuildCount", "LastUpdate", "ScheduledForRestart", "StartedAt" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.GetAllStatusesRequest), global::Ellie.Coordinator.GetAllStatusesRequest.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.GetAllStatusesReply), global::Ellie.Coordinator.GetAllStatusesReply.Parser, new[]{ "Statuses" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.RestartAllRequest), global::Ellie.Coordinator.RestartAllRequest.Parser, new[]{ "Nuke" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.RestartAllReply), global::Ellie.Coordinator.RestartAllReply.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.DieRequest), global::Ellie.Coordinator.DieRequest.Parser, new[]{ "Graceful" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.DieReply), global::Ellie.Coordinator.DieReply.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.GetConfigTextRequest), global::Ellie.Coordinator.GetConfigTextRequest.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.GetConfigTextReply), global::Ellie.Coordinator.GetConfigTextReply.Parser, new[]{ "ConfigYml" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.SetConfigTextRequest), global::Ellie.Coordinator.SetConfigTextRequest.Parser, new[]{ "ConfigYml" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Ellie.Coordinator.SetConfigTextReply), global::Ellie.Coordinator.SetConfigTextReply.Parser, new[]{ "Success", "Error" }, null, null, null, null)
           }));
     }
     #endregion
@@ -116,7 +114,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -174,10 +172,10 @@ namespace NadekoBot.Coordinator {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 3;
-    private global::NadekoBot.Coordinator.ConnState state_ = global::NadekoBot.Coordinator.ConnState.Disconnected;
+    private global::Ellie.Coordinator.ConnState state_ = global::Ellie.Coordinator.ConnState.Disconnected;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::NadekoBot.Coordinator.ConnState State {
+    public global::Ellie.Coordinator.ConnState State {
       get { return state_; }
       set {
         state_ = value;
@@ -211,7 +209,7 @@ namespace NadekoBot.Coordinator {
       int hash = 1;
       if (ShardId != 0) hash ^= ShardId.GetHashCode();
       if (GuildCount != 0) hash ^= GuildCount.GetHashCode();
-      if (State != global::NadekoBot.Coordinator.ConnState.Disconnected) hash ^= State.GetHashCode();
+      if (State != global::Ellie.Coordinator.ConnState.Disconnected) hash ^= State.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -238,7 +236,7 @@ namespace NadekoBot.Coordinator {
         output.WriteRawTag(16);
         output.WriteInt32(GuildCount);
       }
-      if (State != global::NadekoBot.Coordinator.ConnState.Disconnected) {
+      if (State != global::Ellie.Coordinator.ConnState.Disconnected) {
         output.WriteRawTag(24);
         output.WriteEnum((int) State);
       }
@@ -260,7 +258,7 @@ namespace NadekoBot.Coordinator {
         output.WriteRawTag(16);
         output.WriteInt32(GuildCount);
       }
-      if (State != global::NadekoBot.Coordinator.ConnState.Disconnected) {
+      if (State != global::Ellie.Coordinator.ConnState.Disconnected) {
         output.WriteRawTag(24);
         output.WriteEnum((int) State);
       }
@@ -280,7 +278,7 @@ namespace NadekoBot.Coordinator {
       if (GuildCount != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(GuildCount);
       }
-      if (State != global::NadekoBot.Coordinator.ConnState.Disconnected) {
+      if (State != global::Ellie.Coordinator.ConnState.Disconnected) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (_unknownFields != null) {
@@ -301,7 +299,7 @@ namespace NadekoBot.Coordinator {
       if (other.GuildCount != 0) {
         GuildCount = other.GuildCount;
       }
-      if (other.State != global::NadekoBot.Coordinator.ConnState.Disconnected) {
+      if (other.State != global::Ellie.Coordinator.ConnState.Disconnected) {
         State = other.State;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -328,7 +326,7 @@ namespace NadekoBot.Coordinator {
             break;
           }
           case 24: {
-            State = (global::NadekoBot.Coordinator.ConnState) input.ReadEnum();
+            State = (global::Ellie.Coordinator.ConnState) input.ReadEnum();
             break;
           }
         }
@@ -355,7 +353,7 @@ namespace NadekoBot.Coordinator {
             break;
           }
           case 24: {
-            State = (global::NadekoBot.Coordinator.ConnState) input.ReadEnum();
+            State = (global::Ellie.Coordinator.ConnState) input.ReadEnum();
             break;
           }
         }
@@ -379,7 +377,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -568,7 +566,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -797,7 +795,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -949,7 +947,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1138,7 +1136,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1290,7 +1288,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1442,7 +1440,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1594,7 +1592,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1783,7 +1781,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1832,10 +1830,10 @@ namespace NadekoBot.Coordinator {
 
     /// <summary>Field number for the "state" field.</summary>
     public const int StateFieldNumber = 2;
-    private global::NadekoBot.Coordinator.ConnState state_ = global::NadekoBot.Coordinator.ConnState.Disconnected;
+    private global::Ellie.Coordinator.ConnState state_ = global::Ellie.Coordinator.ConnState.Disconnected;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::NadekoBot.Coordinator.ConnState State {
+    public global::Ellie.Coordinator.ConnState State {
       get { return state_; }
       set {
         state_ = value;
@@ -1919,7 +1917,7 @@ namespace NadekoBot.Coordinator {
     public override int GetHashCode() {
       int hash = 1;
       if (ShardId != 0) hash ^= ShardId.GetHashCode();
-      if (State != global::NadekoBot.Coordinator.ConnState.Disconnected) hash ^= State.GetHashCode();
+      if (State != global::Ellie.Coordinator.ConnState.Disconnected) hash ^= State.GetHashCode();
       if (GuildCount != 0) hash ^= GuildCount.GetHashCode();
       if (lastUpdate_ != null) hash ^= LastUpdate.GetHashCode();
       if (ScheduledForRestart != false) hash ^= ScheduledForRestart.GetHashCode();
@@ -1946,7 +1944,7 @@ namespace NadekoBot.Coordinator {
         output.WriteRawTag(8);
         output.WriteInt32(ShardId);
       }
-      if (State != global::NadekoBot.Coordinator.ConnState.Disconnected) {
+      if (State != global::Ellie.Coordinator.ConnState.Disconnected) {
         output.WriteRawTag(16);
         output.WriteEnum((int) State);
       }
@@ -1980,7 +1978,7 @@ namespace NadekoBot.Coordinator {
         output.WriteRawTag(8);
         output.WriteInt32(ShardId);
       }
-      if (State != global::NadekoBot.Coordinator.ConnState.Disconnected) {
+      if (State != global::Ellie.Coordinator.ConnState.Disconnected) {
         output.WriteRawTag(16);
         output.WriteEnum((int) State);
       }
@@ -2013,7 +2011,7 @@ namespace NadekoBot.Coordinator {
       if (ShardId != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(ShardId);
       }
-      if (State != global::NadekoBot.Coordinator.ConnState.Disconnected) {
+      if (State != global::Ellie.Coordinator.ConnState.Disconnected) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) State);
       }
       if (GuildCount != 0) {
@@ -2043,7 +2041,7 @@ namespace NadekoBot.Coordinator {
       if (other.ShardId != 0) {
         ShardId = other.ShardId;
       }
-      if (other.State != global::NadekoBot.Coordinator.ConnState.Disconnected) {
+      if (other.State != global::Ellie.Coordinator.ConnState.Disconnected) {
         State = other.State;
       }
       if (other.GuildCount != 0) {
@@ -2084,7 +2082,7 @@ namespace NadekoBot.Coordinator {
             break;
           }
           case 16: {
-            State = (global::NadekoBot.Coordinator.ConnState) input.ReadEnum();
+            State = (global::Ellie.Coordinator.ConnState) input.ReadEnum();
             break;
           }
           case 24: {
@@ -2129,7 +2127,7 @@ namespace NadekoBot.Coordinator {
             break;
           }
           case 16: {
-            State = (global::NadekoBot.Coordinator.ConnState) input.ReadEnum();
+            State = (global::Ellie.Coordinator.ConnState) input.ReadEnum();
             break;
           }
           case 24: {
@@ -2175,7 +2173,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2327,7 +2325,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2359,12 +2357,12 @@ namespace NadekoBot.Coordinator {
 
     /// <summary>Field number for the "Statuses" field.</summary>
     public const int StatusesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::NadekoBot.Coordinator.GetStatusReply> _repeated_statuses_codec
-        = pb::FieldCodec.ForMessage(10, global::NadekoBot.Coordinator.GetStatusReply.Parser);
-    private readonly pbc::RepeatedField<global::NadekoBot.Coordinator.GetStatusReply> statuses_ = new pbc::RepeatedField<global::NadekoBot.Coordinator.GetStatusReply>();
+    private static readonly pb::FieldCodec<global::Ellie.Coordinator.GetStatusReply> _repeated_statuses_codec
+        = pb::FieldCodec.ForMessage(10, global::Ellie.Coordinator.GetStatusReply.Parser);
+    private readonly pbc::RepeatedField<global::Ellie.Coordinator.GetStatusReply> statuses_ = new pbc::RepeatedField<global::Ellie.Coordinator.GetStatusReply>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::NadekoBot.Coordinator.GetStatusReply> Statuses {
+    public pbc::RepeatedField<global::Ellie.Coordinator.GetStatusReply> Statuses {
       get { return statuses_; }
     }
 
@@ -2505,7 +2503,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2694,7 +2692,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2846,7 +2844,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3035,7 +3033,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3187,7 +3185,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3339,7 +3337,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3528,7 +3526,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[18]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3717,7 +3715,7 @@ namespace NadekoBot.Coordinator {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[19]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

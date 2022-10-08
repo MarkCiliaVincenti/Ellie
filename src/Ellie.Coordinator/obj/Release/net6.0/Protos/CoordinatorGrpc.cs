@@ -7,10 +7,10 @@
 
 using grpc = global::Grpc.Core;
 
-namespace NadekoBot.Coordinator {
+namespace Ellie.Coordinator {
   public static partial class Coordinator
   {
-    static readonly string __ServiceName = "nadekobot.Coordinator";
+    static readonly string __ServiceName = "ellie.Coordinator";
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
@@ -46,130 +46,130 @@ namespace NadekoBot.Coordinator {
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.HeartbeatRequest> __Marshaller_nadekobot_HeartbeatRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.HeartbeatRequest.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.HeartbeatRequest> __Marshaller_ellie_HeartbeatRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.HeartbeatRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.HeartbeatReply> __Marshaller_nadekobot_HeartbeatReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.HeartbeatReply.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.HeartbeatReply> __Marshaller_ellie_HeartbeatReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.HeartbeatReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.RestartShardRequest> __Marshaller_nadekobot_RestartShardRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.RestartShardRequest.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.RestartShardRequest> __Marshaller_ellie_RestartShardRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.RestartShardRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.RestartShardReply> __Marshaller_nadekobot_RestartShardReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.RestartShardReply.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.RestartShardReply> __Marshaller_ellie_RestartShardReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.RestartShardReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.ReshardRequest> __Marshaller_nadekobot_ReshardRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.ReshardRequest.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.ReshardRequest> __Marshaller_ellie_ReshardRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.ReshardRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.ReshardReply> __Marshaller_nadekobot_ReshardReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.ReshardReply.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.ReshardReply> __Marshaller_ellie_ReshardReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.ReshardReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.ReloadRequest> __Marshaller_nadekobot_ReloadRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.ReloadRequest.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.ReloadRequest> __Marshaller_ellie_ReloadRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.ReloadRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.ReloadReply> __Marshaller_nadekobot_ReloadReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.ReloadReply.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.ReloadReply> __Marshaller_ellie_ReloadReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.ReloadReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.GetStatusRequest> __Marshaller_nadekobot_GetStatusRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.GetStatusRequest.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.GetStatusRequest> __Marshaller_ellie_GetStatusRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.GetStatusRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.GetStatusReply> __Marshaller_nadekobot_GetStatusReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.GetStatusReply.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.GetStatusReply> __Marshaller_ellie_GetStatusReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.GetStatusReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.GetAllStatusesRequest> __Marshaller_nadekobot_GetAllStatusesRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.GetAllStatusesRequest.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.GetAllStatusesRequest> __Marshaller_ellie_GetAllStatusesRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.GetAllStatusesRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.GetAllStatusesReply> __Marshaller_nadekobot_GetAllStatusesReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.GetAllStatusesReply.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.GetAllStatusesReply> __Marshaller_ellie_GetAllStatusesReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.GetAllStatusesReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.RestartAllRequest> __Marshaller_nadekobot_RestartAllRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.RestartAllRequest.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.RestartAllRequest> __Marshaller_ellie_RestartAllRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.RestartAllRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.RestartAllReply> __Marshaller_nadekobot_RestartAllReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.RestartAllReply.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.RestartAllReply> __Marshaller_ellie_RestartAllReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.RestartAllReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.DieRequest> __Marshaller_nadekobot_DieRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.DieRequest.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.DieRequest> __Marshaller_ellie_DieRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.DieRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.DieReply> __Marshaller_nadekobot_DieReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.DieReply.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.DieReply> __Marshaller_ellie_DieReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.DieReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.SetConfigTextRequest> __Marshaller_nadekobot_SetConfigTextRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.SetConfigTextRequest.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.SetConfigTextRequest> __Marshaller_ellie_SetConfigTextRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.SetConfigTextRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.SetConfigTextReply> __Marshaller_nadekobot_SetConfigTextReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.SetConfigTextReply.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.SetConfigTextReply> __Marshaller_ellie_SetConfigTextReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.SetConfigTextReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.GetConfigTextRequest> __Marshaller_nadekobot_GetConfigTextRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.GetConfigTextRequest.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.GetConfigTextRequest> __Marshaller_ellie_GetConfigTextRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.GetConfigTextRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::NadekoBot.Coordinator.GetConfigTextReply> __Marshaller_nadekobot_GetConfigTextReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::NadekoBot.Coordinator.GetConfigTextReply.Parser));
+    static readonly grpc::Marshaller<global::Ellie.Coordinator.GetConfigTextReply> __Marshaller_ellie_GetConfigTextReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Ellie.Coordinator.GetConfigTextReply.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::NadekoBot.Coordinator.HeartbeatRequest, global::NadekoBot.Coordinator.HeartbeatReply> __Method_Heartbeat = new grpc::Method<global::NadekoBot.Coordinator.HeartbeatRequest, global::NadekoBot.Coordinator.HeartbeatReply>(
+    static readonly grpc::Method<global::Ellie.Coordinator.HeartbeatRequest, global::Ellie.Coordinator.HeartbeatReply> __Method_Heartbeat = new grpc::Method<global::Ellie.Coordinator.HeartbeatRequest, global::Ellie.Coordinator.HeartbeatReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "Heartbeat",
-        __Marshaller_nadekobot_HeartbeatRequest,
-        __Marshaller_nadekobot_HeartbeatReply);
+        __Marshaller_ellie_HeartbeatRequest,
+        __Marshaller_ellie_HeartbeatReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::NadekoBot.Coordinator.RestartShardRequest, global::NadekoBot.Coordinator.RestartShardReply> __Method_RestartShard = new grpc::Method<global::NadekoBot.Coordinator.RestartShardRequest, global::NadekoBot.Coordinator.RestartShardReply>(
+    static readonly grpc::Method<global::Ellie.Coordinator.RestartShardRequest, global::Ellie.Coordinator.RestartShardReply> __Method_RestartShard = new grpc::Method<global::Ellie.Coordinator.RestartShardRequest, global::Ellie.Coordinator.RestartShardReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "RestartShard",
-        __Marshaller_nadekobot_RestartShardRequest,
-        __Marshaller_nadekobot_RestartShardReply);
+        __Marshaller_ellie_RestartShardRequest,
+        __Marshaller_ellie_RestartShardReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::NadekoBot.Coordinator.ReshardRequest, global::NadekoBot.Coordinator.ReshardReply> __Method_Reshard = new grpc::Method<global::NadekoBot.Coordinator.ReshardRequest, global::NadekoBot.Coordinator.ReshardReply>(
+    static readonly grpc::Method<global::Ellie.Coordinator.ReshardRequest, global::Ellie.Coordinator.ReshardReply> __Method_Reshard = new grpc::Method<global::Ellie.Coordinator.ReshardRequest, global::Ellie.Coordinator.ReshardReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "Reshard",
-        __Marshaller_nadekobot_ReshardRequest,
-        __Marshaller_nadekobot_ReshardReply);
+        __Marshaller_ellie_ReshardRequest,
+        __Marshaller_ellie_ReshardReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::NadekoBot.Coordinator.ReloadRequest, global::NadekoBot.Coordinator.ReloadReply> __Method_Reload = new grpc::Method<global::NadekoBot.Coordinator.ReloadRequest, global::NadekoBot.Coordinator.ReloadReply>(
+    static readonly grpc::Method<global::Ellie.Coordinator.ReloadRequest, global::Ellie.Coordinator.ReloadReply> __Method_Reload = new grpc::Method<global::Ellie.Coordinator.ReloadRequest, global::Ellie.Coordinator.ReloadReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "Reload",
-        __Marshaller_nadekobot_ReloadRequest,
-        __Marshaller_nadekobot_ReloadReply);
+        __Marshaller_ellie_ReloadRequest,
+        __Marshaller_ellie_ReloadReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::NadekoBot.Coordinator.GetStatusRequest, global::NadekoBot.Coordinator.GetStatusReply> __Method_GetStatus = new grpc::Method<global::NadekoBot.Coordinator.GetStatusRequest, global::NadekoBot.Coordinator.GetStatusReply>(
+    static readonly grpc::Method<global::Ellie.Coordinator.GetStatusRequest, global::Ellie.Coordinator.GetStatusReply> __Method_GetStatus = new grpc::Method<global::Ellie.Coordinator.GetStatusRequest, global::Ellie.Coordinator.GetStatusReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetStatus",
-        __Marshaller_nadekobot_GetStatusRequest,
-        __Marshaller_nadekobot_GetStatusReply);
+        __Marshaller_ellie_GetStatusRequest,
+        __Marshaller_ellie_GetStatusReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::NadekoBot.Coordinator.GetAllStatusesRequest, global::NadekoBot.Coordinator.GetAllStatusesReply> __Method_GetAllStatuses = new grpc::Method<global::NadekoBot.Coordinator.GetAllStatusesRequest, global::NadekoBot.Coordinator.GetAllStatusesReply>(
+    static readonly grpc::Method<global::Ellie.Coordinator.GetAllStatusesRequest, global::Ellie.Coordinator.GetAllStatusesReply> __Method_GetAllStatuses = new grpc::Method<global::Ellie.Coordinator.GetAllStatusesRequest, global::Ellie.Coordinator.GetAllStatusesReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetAllStatuses",
-        __Marshaller_nadekobot_GetAllStatusesRequest,
-        __Marshaller_nadekobot_GetAllStatusesReply);
+        __Marshaller_ellie_GetAllStatusesRequest,
+        __Marshaller_ellie_GetAllStatusesReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::NadekoBot.Coordinator.RestartAllRequest, global::NadekoBot.Coordinator.RestartAllReply> __Method_RestartAllShards = new grpc::Method<global::NadekoBot.Coordinator.RestartAllRequest, global::NadekoBot.Coordinator.RestartAllReply>(
+    static readonly grpc::Method<global::Ellie.Coordinator.RestartAllRequest, global::Ellie.Coordinator.RestartAllReply> __Method_RestartAllShards = new grpc::Method<global::Ellie.Coordinator.RestartAllRequest, global::Ellie.Coordinator.RestartAllReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "RestartAllShards",
-        __Marshaller_nadekobot_RestartAllRequest,
-        __Marshaller_nadekobot_RestartAllReply);
+        __Marshaller_ellie_RestartAllRequest,
+        __Marshaller_ellie_RestartAllReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::NadekoBot.Coordinator.DieRequest, global::NadekoBot.Coordinator.DieReply> __Method_Die = new grpc::Method<global::NadekoBot.Coordinator.DieRequest, global::NadekoBot.Coordinator.DieReply>(
+    static readonly grpc::Method<global::Ellie.Coordinator.DieRequest, global::Ellie.Coordinator.DieReply> __Method_Die = new grpc::Method<global::Ellie.Coordinator.DieRequest, global::Ellie.Coordinator.DieReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "Die",
-        __Marshaller_nadekobot_DieRequest,
-        __Marshaller_nadekobot_DieReply);
+        __Marshaller_ellie_DieRequest,
+        __Marshaller_ellie_DieReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::NadekoBot.Coordinator.SetConfigTextRequest, global::NadekoBot.Coordinator.SetConfigTextReply> __Method_SetConfigText = new grpc::Method<global::NadekoBot.Coordinator.SetConfigTextRequest, global::NadekoBot.Coordinator.SetConfigTextReply>(
+    static readonly grpc::Method<global::Ellie.Coordinator.SetConfigTextRequest, global::Ellie.Coordinator.SetConfigTextReply> __Method_SetConfigText = new grpc::Method<global::Ellie.Coordinator.SetConfigTextRequest, global::Ellie.Coordinator.SetConfigTextReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "SetConfigText",
-        __Marshaller_nadekobot_SetConfigTextRequest,
-        __Marshaller_nadekobot_SetConfigTextReply);
+        __Marshaller_ellie_SetConfigTextRequest,
+        __Marshaller_ellie_SetConfigTextReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::NadekoBot.Coordinator.GetConfigTextRequest, global::NadekoBot.Coordinator.GetConfigTextReply> __Method_GetConfigText = new grpc::Method<global::NadekoBot.Coordinator.GetConfigTextRequest, global::NadekoBot.Coordinator.GetConfigTextReply>(
+    static readonly grpc::Method<global::Ellie.Coordinator.GetConfigTextRequest, global::Ellie.Coordinator.GetConfigTextReply> __Method_GetConfigText = new grpc::Method<global::Ellie.Coordinator.GetConfigTextRequest, global::Ellie.Coordinator.GetConfigTextReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetConfigText",
-        __Marshaller_nadekobot_GetConfigTextRequest,
-        __Marshaller_nadekobot_GetConfigTextReply);
+        __Marshaller_ellie_GetConfigTextRequest,
+        __Marshaller_ellie_GetConfigTextReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::NadekoBot.Coordinator.CoordinatorReflection.Descriptor.Services[0]; }
+      get { return global::Ellie.Coordinator.CoordinatorReflection.Descriptor.Services[0]; }
     }
 
     /// <summary>Base class for server-side implementations of Coordinator</summary>
@@ -183,7 +183,7 @@ namespace NadekoBot.Coordinator {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::NadekoBot.Coordinator.HeartbeatReply> Heartbeat(global::NadekoBot.Coordinator.HeartbeatRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Ellie.Coordinator.HeartbeatReply> Heartbeat(global::Ellie.Coordinator.HeartbeatRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -195,7 +195,7 @@ namespace NadekoBot.Coordinator {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::NadekoBot.Coordinator.RestartShardReply> RestartShard(global::NadekoBot.Coordinator.RestartShardRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Ellie.Coordinator.RestartShardReply> RestartShard(global::Ellie.Coordinator.RestartShardRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -207,7 +207,7 @@ namespace NadekoBot.Coordinator {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::NadekoBot.Coordinator.ReshardReply> Reshard(global::NadekoBot.Coordinator.ReshardRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Ellie.Coordinator.ReshardReply> Reshard(global::Ellie.Coordinator.ReshardRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -219,7 +219,7 @@ namespace NadekoBot.Coordinator {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::NadekoBot.Coordinator.ReloadReply> Reload(global::NadekoBot.Coordinator.ReloadRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Ellie.Coordinator.ReloadReply> Reload(global::Ellie.Coordinator.ReloadRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -231,7 +231,7 @@ namespace NadekoBot.Coordinator {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::NadekoBot.Coordinator.GetStatusReply> GetStatus(global::NadekoBot.Coordinator.GetStatusRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Ellie.Coordinator.GetStatusReply> GetStatus(global::Ellie.Coordinator.GetStatusRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -243,7 +243,7 @@ namespace NadekoBot.Coordinator {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::NadekoBot.Coordinator.GetAllStatusesReply> GetAllStatuses(global::NadekoBot.Coordinator.GetAllStatusesRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Ellie.Coordinator.GetAllStatusesReply> GetAllStatuses(global::Ellie.Coordinator.GetAllStatusesRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -256,7 +256,7 @@ namespace NadekoBot.Coordinator {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::NadekoBot.Coordinator.RestartAllReply> RestartAllShards(global::NadekoBot.Coordinator.RestartAllRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Ellie.Coordinator.RestartAllReply> RestartAllShards(global::Ellie.Coordinator.RestartAllRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -268,19 +268,19 @@ namespace NadekoBot.Coordinator {
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::NadekoBot.Coordinator.DieReply> Die(global::NadekoBot.Coordinator.DieRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Ellie.Coordinator.DieReply> Die(global::Ellie.Coordinator.DieRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::NadekoBot.Coordinator.SetConfigTextReply> SetConfigText(global::NadekoBot.Coordinator.SetConfigTextRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Ellie.Coordinator.SetConfigTextReply> SetConfigText(global::Ellie.Coordinator.SetConfigTextRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::NadekoBot.Coordinator.GetConfigTextReply> GetConfigText(global::NadekoBot.Coordinator.GetConfigTextRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Ellie.Coordinator.GetConfigTextReply> GetConfigText(global::Ellie.Coordinator.GetConfigTextRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -312,16 +312,16 @@ namespace NadekoBot.Coordinator {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public static void BindService(grpc::ServiceBinderBase serviceBinder, CoordinatorBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_Heartbeat, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NadekoBot.Coordinator.HeartbeatRequest, global::NadekoBot.Coordinator.HeartbeatReply>(serviceImpl.Heartbeat));
-      serviceBinder.AddMethod(__Method_RestartShard, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NadekoBot.Coordinator.RestartShardRequest, global::NadekoBot.Coordinator.RestartShardReply>(serviceImpl.RestartShard));
-      serviceBinder.AddMethod(__Method_Reshard, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NadekoBot.Coordinator.ReshardRequest, global::NadekoBot.Coordinator.ReshardReply>(serviceImpl.Reshard));
-      serviceBinder.AddMethod(__Method_Reload, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NadekoBot.Coordinator.ReloadRequest, global::NadekoBot.Coordinator.ReloadReply>(serviceImpl.Reload));
-      serviceBinder.AddMethod(__Method_GetStatus, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NadekoBot.Coordinator.GetStatusRequest, global::NadekoBot.Coordinator.GetStatusReply>(serviceImpl.GetStatus));
-      serviceBinder.AddMethod(__Method_GetAllStatuses, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NadekoBot.Coordinator.GetAllStatusesRequest, global::NadekoBot.Coordinator.GetAllStatusesReply>(serviceImpl.GetAllStatuses));
-      serviceBinder.AddMethod(__Method_RestartAllShards, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NadekoBot.Coordinator.RestartAllRequest, global::NadekoBot.Coordinator.RestartAllReply>(serviceImpl.RestartAllShards));
-      serviceBinder.AddMethod(__Method_Die, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NadekoBot.Coordinator.DieRequest, global::NadekoBot.Coordinator.DieReply>(serviceImpl.Die));
-      serviceBinder.AddMethod(__Method_SetConfigText, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NadekoBot.Coordinator.SetConfigTextRequest, global::NadekoBot.Coordinator.SetConfigTextReply>(serviceImpl.SetConfigText));
-      serviceBinder.AddMethod(__Method_GetConfigText, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::NadekoBot.Coordinator.GetConfigTextRequest, global::NadekoBot.Coordinator.GetConfigTextReply>(serviceImpl.GetConfigText));
+      serviceBinder.AddMethod(__Method_Heartbeat, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ellie.Coordinator.HeartbeatRequest, global::Ellie.Coordinator.HeartbeatReply>(serviceImpl.Heartbeat));
+      serviceBinder.AddMethod(__Method_RestartShard, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ellie.Coordinator.RestartShardRequest, global::Ellie.Coordinator.RestartShardReply>(serviceImpl.RestartShard));
+      serviceBinder.AddMethod(__Method_Reshard, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ellie.Coordinator.ReshardRequest, global::Ellie.Coordinator.ReshardReply>(serviceImpl.Reshard));
+      serviceBinder.AddMethod(__Method_Reload, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ellie.Coordinator.ReloadRequest, global::Ellie.Coordinator.ReloadReply>(serviceImpl.Reload));
+      serviceBinder.AddMethod(__Method_GetStatus, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ellie.Coordinator.GetStatusRequest, global::Ellie.Coordinator.GetStatusReply>(serviceImpl.GetStatus));
+      serviceBinder.AddMethod(__Method_GetAllStatuses, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ellie.Coordinator.GetAllStatusesRequest, global::Ellie.Coordinator.GetAllStatusesReply>(serviceImpl.GetAllStatuses));
+      serviceBinder.AddMethod(__Method_RestartAllShards, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ellie.Coordinator.RestartAllRequest, global::Ellie.Coordinator.RestartAllReply>(serviceImpl.RestartAllShards));
+      serviceBinder.AddMethod(__Method_Die, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ellie.Coordinator.DieRequest, global::Ellie.Coordinator.DieReply>(serviceImpl.Die));
+      serviceBinder.AddMethod(__Method_SetConfigText, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ellie.Coordinator.SetConfigTextRequest, global::Ellie.Coordinator.SetConfigTextReply>(serviceImpl.SetConfigText));
+      serviceBinder.AddMethod(__Method_GetConfigText, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Ellie.Coordinator.GetConfigTextRequest, global::Ellie.Coordinator.GetConfigTextReply>(serviceImpl.GetConfigText));
     }
 
   }
