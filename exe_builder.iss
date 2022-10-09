@@ -31,7 +31,7 @@ Uninstallable=no
 
 [Files]
 ;install 
-Source: "src\NadekoBot\bin\Release\{#platform}\{#target}\publish\*"; DestDir: "{app}\{#sysfolder}"; Permissions: users-full; Flags: recursesubdirs onlyifdoesntexist ignoreversion createallsubdirs; Excludes: "*.pdb, *.db"
+Source: "src\Ellie\bin\Release\{#platform}\{#target}\publish\*"; DestDir: "{app}\{#sysfolder}"; Permissions: users-full; Flags: recursesubdirs onlyifdoesntexist ignoreversion createallsubdirs; Excludes: "*.pdb, *.db"
 
 ;reinstall - i want to copy all files, but i don't want to overwrite any data files because users will lose their customization if they don't have a backup, 
 ;            and i don't want them to have to backup and then copy-merge into data folder themselves, or lose their currency images due to overwrite.
@@ -47,7 +47,7 @@ Name:"{app}\{#sysfolder}\config"; Permissions: everyone-modify
 Name:"{app}\{#sysfolder}"; Permissions: everyone-modify
 
 ; [Run]
-; Filename: "http://nadekobot.readthedocs.io/en/latest/jsons-explained/"; Flags: postinstall shellexec runasoriginaluser; Description: "Open setup guide"
+; Filename: "https://docs.elliebot.net"; Flags: postinstall shellexec runasoriginaluser; Description: "Open setup guide"
 ; Filename: "{app}\{#sysfolder}\creds.yml"; Flags: postinstall shellexec runasoriginaluser; Description: "Open creds file"
 
 [Icons]
