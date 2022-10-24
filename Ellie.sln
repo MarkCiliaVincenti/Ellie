@@ -26,7 +26,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.Marmalade", "src\Elli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellise.Common", "src\Ellise.Common\Ellise.Common.csproj", "{45D02814-33E1-446A-98B0-9001A7822DDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ellie.Econ", "src\Ellie.Econ\Ellie.Econ.csproj", "{4848F6F6-D7B9-4F21-9CF5-E3D07B6297A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ellie.Econ", "src\Ellie.Econ\Ellie.Econ.csproj", "{4848F6F6-D7B9-4F21-9CF5-E3D07B6297A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ellie", "src\Ellie\Ellie.csproj", "{72D2A1EF-96C6-467A-84E2-B9CC7956ED45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{4848F6F6-D7B9-4F21-9CF5-E3D07B6297A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4848F6F6-D7B9-4F21-9CF5-E3D07B6297A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4848F6F6-D7B9-4F21-9CF5-E3D07B6297A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72D2A1EF-96C6-467A-84E2-B9CC7956ED45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D2A1EF-96C6-467A-84E2-B9CC7956ED45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72D2A1EF-96C6-467A-84E2-B9CC7956ED45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72D2A1EF-96C6-467A-84E2-B9CC7956ED45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{9F591C50-0EBA-4DF8-A07D-7110CD891DF4} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
 		{45D02814-33E1-446A-98B0-9001A7822DDC} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
 		{4848F6F6-D7B9-4F21-9CF5-E3D07B6297A0} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
+		{72D2A1EF-96C6-467A-84E2-B9CC7956ED45} = {E58C60E7-F31F-4857-A23B-FD35260F6881}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2982516-2905-4B9D-BB8C-6D522824A260}
