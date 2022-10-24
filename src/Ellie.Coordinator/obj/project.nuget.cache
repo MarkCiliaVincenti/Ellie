@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GYClgohKzC+GrXKKaaHq0HCd3rJNgSvW63j1IkJC0Hlj4dNI9mXoJ/PZaXKCCFT/vv7FAoeY3GKkdf1IXhJzRQ==",
+  "dgSpecHash": "RjPEDX3J5MbrV7Pmrcbb3VPkc1KFSOHCl9s8NybQ8C4CAw1TSWwOeAdpu/WoyoPPo6AURofvDf1o4R9J8cTUkw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\JDRCa\\source\\repos\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
+  "projectFilePath": "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JDRCa\\.nuget\\packages\\google.protobuf\\3.19.4\\google.protobuf.3.19.4.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\grpc.aspnetcore\\2.47.0\\grpc.aspnetcore.2.47.0.nupkg.sha512",
