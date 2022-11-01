@@ -886,24 +886,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JDRCa\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\JDRCa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JDRCa\\Source\\Repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
+      "projectUniqueName": "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
       "projectName": "Ellie.Coordinator",
-      "projectPath": "C:\\Users\\JDRCa\\Source\\Repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
+      "projectPath": "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
       "packagesPath": "C:\\Users\\JDRCa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JDRCa\\Source\\Repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\obj\\",
+      "outputPath": "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\JDRCa\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -911,8 +906,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.pkg.github.com/EmotionChild/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
@@ -970,7 +964,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
