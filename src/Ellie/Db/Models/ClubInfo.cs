@@ -15,7 +15,7 @@ public class ClubInfo : DbEntity
     public int? OwnerId { get; set; }
     public DiscordUser Owner { get; set; }
 
-    public List<DiscordUser> Member { get; set; } = new();
+    public List<DiscordUser> Members { get; set; } = new();
     public List<ClubApplicants> Applicants { get; set; } = new();
     public List<ClubBans> Bans { get; set; } = new();
 
