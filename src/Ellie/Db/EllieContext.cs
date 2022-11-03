@@ -10,10 +10,11 @@ namespace Ellie.Services.Database;
 
 public abstract class EllieContext : DbContext
 {
-    public DbSet<Quote> Quotes { get; set; }
+    public DbSet<GuildConfig> GuildConfigs { get; set; }
 
+    public DbSet<Quote> Quotes { get; set; }
     public DbSet<Reminder> Reminders { get; set; }
-    public DbSet<SelfAssignedRole> SelfAssignedRoles { get; set; }
+    public DbSet<SelfAssignedRole> SelfAssignableRoles { get; set; }
     public DbSet<MusicPlaylist> MusicPlaylists { get; set; }
     public DbSet<EllieExpression> Expressions { get; set; }
     public DbSet<CurrencyTransaction> CurrencyTransactions { get; set; }
@@ -24,7 +25,6 @@ public abstract class EllieContext : DbContext
     public DbSet<ClubInfo> Clubs { get; set; }
     public DbSet<ClubBans> ClubBans { get; set; }
     public DbSet<ClubApplicants> ClubApplicants { get; set; }
-
 
 
     //logging
@@ -62,7 +62,7 @@ public abstract class EllieContext : DbContext
     public DbSet<StreamOnlineMessage> StreamOnlineMessages { get; set; }
 
 
-    #region Manditory Provider-Specific Values
+    #region Mandatory Provider-Specific Values
 
     protected abstract string CurrencyTransactionOtherIdDefaultValue { get; }
 
