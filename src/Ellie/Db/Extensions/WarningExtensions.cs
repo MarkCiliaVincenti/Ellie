@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Ellie.Services.Database.Models;
 
-namespace NadekoBot.Db;
+namespace Ellie.Db;
 
 public static class WarningExtensions
 {

@@ -10,7 +10,7 @@ public sealed class SqliteContext : EllieContext
     protected override string CurrencyTransactionOtherIdDefaultValue
         => "NULL";
 
-    public SqliteContext(string connectionString = "Data Source=data/NadekoBot.db", int commandTimeout = 60)
+    public SqliteContext(string connectionString = "Data Source=data/Ellie.db", int commandTimeout = 60)
     {
         _connectionString = connectionString;
         Database.SetCommandTimeout(commandTimeout);
