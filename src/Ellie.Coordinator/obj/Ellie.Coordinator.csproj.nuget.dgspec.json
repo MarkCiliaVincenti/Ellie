@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj": {}
+    "C:\\Users\\JDRCa\\source\\repos\\Emotions-stuff\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj": {
+    "C:\\Users\\JDRCa\\source\\repos\\Emotions-stuff\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
+        "projectUniqueName": "C:\\Users\\JDRCa\\source\\repos\\Emotions-stuff\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
         "projectName": "Ellie.Coordinator",
-        "projectPath": "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
+        "projectPath": "C:\\Users\\JDRCa\\source\\repos\\Emotions-stuff\\Ellie\\src\\Ellie.Coordinator\\Ellie.Coordinator.csproj",
         "packagesPath": "C:\\Users\\JDRCa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Coordinator\\obj\\",
+        "outputPath": "C:\\Users\\JDRCa\\source\\repos\\Emotions-stuff\\Ellie\\src\\Ellie.Coordinator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\JDRCa\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -80,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

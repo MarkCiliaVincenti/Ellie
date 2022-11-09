@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nGwFW8PFV1MvAXFYeCYjVIblI6SoxlpkcwWZiN28e5xC2yLmXDLYsTA3M3cduoWwZrXkQ+BL4x20Fh7o/4mo0g==",
+  "dgSpecHash": "xnbQN6sP3EB+JMYbiysI78is6bGyyw2xhiD/ivmJ05KB9ac0qEZhsXH0HyKjelpWFDSat2Etax6bkKbPS7+a/g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Generators\\Ellie.Generators.csproj",
+  "projectFilePath": "C:\\Users\\JDRCa\\source\\repos\\Emotions-stuff\\Ellie\\src\\Ellie.Generators\\Ellie.Generators.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",
     "C:\\Users\\JDRCa\\.nuget\\packages\\microsoft.codeanalysis.common\\4.0.1\\microsoft.codeanalysis.common.4.0.1.nupkg.sha512",

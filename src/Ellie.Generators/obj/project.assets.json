@@ -1070,11 +1070,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Generators\\Ellie.Generators.csproj",
+      "projectUniqueName": "C:\\Users\\JDRCa\\source\\repos\\Emotions-stuff\\Ellie\\src\\Ellie.Generators\\Ellie.Generators.csproj",
       "projectName": "Ellie.Generators",
-      "projectPath": "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Generators\\Ellie.Generators.csproj",
+      "projectPath": "C:\\Users\\JDRCa\\source\\repos\\Emotions-stuff\\Ellie\\src\\Ellie.Generators\\Ellie.Generators.csproj",
       "packagesPath": "C:\\Users\\JDRCa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\JDRCa\\source\\repos\\EmotionChild\\Ellie\\src\\Ellie.Generators\\obj\\",
+      "outputPath": "C:\\Users\\JDRCa\\source\\repos\\Emotions-stuff\\Ellie\\src\\Ellie.Generators\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\JDRCa\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1137,7 +1137,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
