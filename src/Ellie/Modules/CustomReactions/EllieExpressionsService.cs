@@ -141,7 +141,7 @@ public sealed class EllieExpressionsService : IExecOnMessage, IReadyExecutor
         ready = true;
     }
 
-    private NadekoExpression TryGetExpression(IUserMessage umsg)
+    private EllieExpression TryGetExpression(IUserMessage umsg)
     {
         if (!ready)
             return null;

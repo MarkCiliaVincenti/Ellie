@@ -1,4 +1,4 @@
-﻿namespace Ellie.Modules.NadekoExpressions;
+﻿namespace Ellie.Modules.EllieExpressions;
 
 public enum ExprField
 {

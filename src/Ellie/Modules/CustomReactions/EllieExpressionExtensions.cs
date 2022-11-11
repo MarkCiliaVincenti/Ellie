@@ -2,7 +2,7 @@
 using Ellie.Services.Database.Models;
 using System.Runtime.CompilerServices;
 
-namespace Ellie.Modules.NadekoExpressions;
+namespace Ellie.Modules.EllieExpressions;
 
 public static class EllieExpressionExtensions
 {

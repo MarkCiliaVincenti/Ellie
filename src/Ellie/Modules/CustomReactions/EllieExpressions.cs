@@ -1,6 +1,6 @@
 #nullable disable
 
-namespace Ellie.Modules.NadekoExpressions;
+namespace Ellie.Modules.EllieExpressions;
 
 [Name("Expressions")]
 public partial class EllieExpressions : EllieModule<EllieExpressionsService>

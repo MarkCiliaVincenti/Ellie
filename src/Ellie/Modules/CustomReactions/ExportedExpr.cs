@@ -2,7 +2,7 @@
 using Ellise.Common;
 using Ellie.Services.Database.Models;
 
-namespace Ellie.Modules.NadekoExpressions;
+namespace Ellie.Modules.EllieExpressions;
 
 public class ExportedExpr
 {
@@ -14,7 +14,7 @@ public class ExportedExpr
     public bool Ca { get; set; }
     public string[] React;
 
-    public static ExportedExpr FromModel(NadekoExpression cr)
+    public static ExportedExpr FromModel(EllieExpression cr)
         => new()
         {
             Res = cr.Response,
