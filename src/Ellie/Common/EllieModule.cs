@@ -136,7 +136,7 @@ public abstract class EllieModule : ModuleBase
     }
 }
 
-public abstract class NadekoModule<TService> : EllieModule
+public abstract class EllieModule<TService> : EllieModule
 {
     public TService _service { get; set; }
 }

@@ -3,7 +3,7 @@ using Ellie.Modules.Gambling.Services;
 
 namespace Ellie.Common.TypeReaders;
 
-public sealed class ShmartNumberTypeReader : NadekoTypeReader<ShmartNumber>
+public sealed class ShmartNumberTypeReader : EllieTypeReader<ShmartNumber>
 {
     private readonly BaseShmartInputAmountReader _tr;
 

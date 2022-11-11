@@ -1,9 +1,9 @@
 ﻿#nullable disable
-using Ellie.Modules.NadekoExpressions;
+using Ellie.Modules.EllieExpressions;
 
 namespace Ellie.Common.TypeReaders;
 
-public sealed class CommandTypeReader : NadekoTypeReader<CommandInfo>
+public sealed class CommandTypeReader : EllieTypeReader<CommandInfo>
 {
     private readonly CommandService _cmds;
     private readonly CommandHandler _handler;
@@ -31,13 +31,13 @@ public sealed class CommandTypeReader : NadekoTypeReader<CommandInfo>
     }
 }
 
-public sealed class CommandOrExprTypeReader : NadekoTypeReader<CommandOrExprInfo>
+public sealed class CommandOrExprTypeReader : EllieTypeReader<CommandOrExprInfo>
 {
     private readonly CommandService _cmds;
     private readonly CommandHandler _commandHandler;
-    private readonly NadekoExpressionsService _exprs;
+    private readonly EllieExpressionsService _exprs;
 
-    public CommandOrExprTypeReader(CommandService cmds, NadekoExpressionsService exprs, CommandHandler commandHandler)
+    public CommandOrExprTypeReader(CommandService cmds, EllieExpressionsService exprs, CommandHandler commandHandler)
     {
         _cmds = cmds;
         _exprs = exprs;

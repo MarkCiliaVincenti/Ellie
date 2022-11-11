@@ -124,7 +124,7 @@ public class ReplacementBuilder
 
     public ReplacementBuilder WithRngRegex()
     {
-        var rng = new NadekoRandom();
+        var rng = new EllieRandom();
         _regex.TryAdd(_rngRegex,
             match =>
             {

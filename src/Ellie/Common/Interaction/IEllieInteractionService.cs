@@ -2,7 +2,7 @@
 
 public interface IEllieInteractionService
 {
-    public NadekoInteraction Create<T>(
+    public EllieInteraction Create<T>(
         ulong userId,
         SimpleInteraction<T> inter);
 }

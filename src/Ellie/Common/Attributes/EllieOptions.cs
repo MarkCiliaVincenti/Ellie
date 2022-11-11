@@ -1,10 +1,10 @@
 namespace Ellie.Common.Attributes;
 
 [AttributeUsage(AttributeTargets.Method)]
-public sealed class NadekoOptionsAttribute : Attribute
+public sealed class EllieOptionsAttribute : Attribute
 {
     public Type OptionType { get; set; }
 
-    public NadekoOptionsAttribute(Type t)
+    public EllieOptionsAttribute(Type t)
         => OptionType = t;
 }
