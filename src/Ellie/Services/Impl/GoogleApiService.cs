@@ -162,7 +162,7 @@ public class GoogleApiService : IGoogleApiService, IEService
 
         var bcs = new BaseClientService.Initializer
         {
-            ApplicationName = "Nadeko Bot",
+            ApplicationName = "Ellie Bot",
             ApiKey = _creds.GetCreds().GoogleApiKey
         };
 

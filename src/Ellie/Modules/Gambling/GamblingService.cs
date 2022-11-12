@@ -130,7 +130,7 @@ public class GamblingService : IEService, IReadyExecutor
         }
     }
 
-    private static readonly TypedKey<EconomyResult> _ecoKey = new("nadeko:economy");
+    private static readonly TypedKey<EconomyResult> _ecoKey = new("ellie:economy");
 
     public async Task<EconomyResult> GetEconomyAsync()
     {

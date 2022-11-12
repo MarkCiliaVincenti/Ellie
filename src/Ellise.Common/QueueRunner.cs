@@ -3,7 +3,7 @@ using Serilog;
 
 namespace Ellise.Common;
 
-internal class QueueRunner
+public sealed class QueueRunner
 {
     private readonly Channel<Func<Task>> _channel;
     private readonly int _delayMs;

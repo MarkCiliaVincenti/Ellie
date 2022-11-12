@@ -18,11 +18,11 @@
         string input,
         IServiceProvider services)
     {
-        var medusaContext = ContextAdapterFactory.CreateNew(context,
+        var marmaladeContext = ContextAdapterFactory.CreateNew(context,
             _strings,
             _services);
         
-        var result = await _parser.TryParseAsync(medusaContext, input);
+        var result = await _parser.TryParseAsync(marmaladeContext, input);
         
         if(result.IsSuccess)
             return Discord.Commands.TypeReaderResult.FromSuccess(result.Data);

@@ -124,7 +124,7 @@ public partial class Marmalade : EllieModule<IMarmaladeLoaderService>
         await ctx.SendPaginatedConfirmAsync(0,
             page => _eb.Create(ctx)
                        .WithOkColor()
-                       .WithTitle(GetText(strs.list_of_medusae))
+                       .WithTitle(GetText(strs.list_of_marmalades))
                        .WithDescription(output.Skip(page * 10).Take(10).Join('\n')),
             output.Length,
             10);
@@ -132,7 +132,7 @@ public partial class Marmalade : EllieModule<IMarmaladeLoaderService>
 
     [Cmd]
     [OwnerOnly]
-    public async Task MedusaInfo(string? name = null)
+    public async Task MarmaladeInfo(string? name = null)
     {
         var marmalades = _service.GetLoadedMarmalades();
 

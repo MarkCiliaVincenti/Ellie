@@ -25,7 +25,7 @@ public partial class Gambling
         [Cmd]
         public async Task Roll()
         {
-            var rng = new NadekoRandom();
+            var rng = new EllieRandom();
             var gen = rng.Next(1, 101);
 
             var num1 = gen / 10;
@@ -78,7 +78,7 @@ public partial class Gambling
                 return;
             }
 
-            var rng = new NadekoRandom();
+            var rng = new EllieRandom();
 
             var dice = new List<Image<Rgba32>>(num);
             var values = new List<int>(num);
@@ -135,7 +135,7 @@ public partial class Gambling
                 && int.TryParse(match.Groups["n1"].ToString(), out var n1)
                 && n1 is > 0 and < 500)
             {
-                var rng = new NadekoRandom();
+                var rng = new EllieRandom();
 
                 var rolls = new List<char>();
 
@@ -152,7 +152,7 @@ public partial class Gambling
             }
             else if ((match = _dndRegex.Match(arg)).Length != 0)
             {
-                var rng = new NadekoRandom();
+                var rng = new EllieRandom();
                 if (int.TryParse(match.Groups["n1"].ToString(), out n1)
                     && int.TryParse(match.Groups["n2"].ToString(), out var n2)
                     && n1 <= 50
@@ -198,10 +198,10 @@ public partial class Gambling
                     return;
                 }
 
-                rolled = new NadekoRandom().Next(arr[0], arr[1] + 1);
+                rolled = new EllieRandom().Next(arr[0], arr[1] + 1);
             }
             else
-                rolled = new NadekoRandom().Next(0, int.Parse(range) + 1);
+                rolled = new EllieRandom().Next(0, int.Parse(range) + 1);
 
             await ReplyConfirmLocalizedAsync(strs.dice_rolled(Format.Bold(rolled.ToString())));
         }

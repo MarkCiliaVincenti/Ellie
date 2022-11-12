@@ -84,7 +84,7 @@ public partial class Games : EllieModule<GamesService>
 
     private GirlRating GetGirl(ulong uid)
     {
-        var rng = new NadekoRandom();
+        var rng = new EllieRandom();
 
         var roll = rng.Next(1, 1001);
 

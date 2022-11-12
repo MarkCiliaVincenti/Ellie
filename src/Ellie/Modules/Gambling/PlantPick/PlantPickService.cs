@@ -179,7 +179,7 @@ public class PlantPickService : IEService, IExecNoCommand
             {
                 var config = _gss.Data;
                 var lastGeneration = LastGenerations.GetOrAdd(channel.Id, DateTime.MinValue.ToBinary());
-                var rng = new NadekoRandom();
+                var rng = new EllieRandom();
 
                 if (DateTime.UtcNow - TimeSpan.FromSeconds(config.Generation.GenCooldown)
                     < DateTime.FromBinary(lastGeneration)) //recently generated in this channel, don't generate again
@@ -192,7 +192,7 @@ public class PlantPickService : IEService, IExecNoCommand
                     var dropAmountMax = config.Generation.MaxAmount;
 
                     if (dropAmountMax > dropAmount)
-                        dropAmount = new NadekoRandom().Next(dropAmount, dropAmountMax + 1);
+                        dropAmount = new EllieRandom().Next(dropAmount, dropAmountMax + 1);
 
                     if (dropAmount > 0)
                     {

@@ -83,7 +83,7 @@ public static class Extensions
         string prefix)
     {
         string description;
-        if (cmd.Remarks?.StartsWith("medusa///") ?? false)
+        if (cmd.Remarks?.StartsWith("marmalades///") ?? false)
         {
             // command method name is kept in Summary
             // marmalade///<marmalade-name-here> is kept in remarks
@@ -108,7 +108,7 @@ public static class Extensions
         string prefix)
     {
         string[] args;
-        if (cmd.Remarks?.StartsWith("medusa///") ?? false)
+        if (cmd.Remarks?.StartsWith("marmalades///") ?? false)
         {
             // command method name is kept in Summary
             // marmalade///<marmalade-name-here> is kept in remarks

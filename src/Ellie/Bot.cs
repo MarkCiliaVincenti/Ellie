@@ -130,7 +130,7 @@ public sealed class Bot
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             });
 
-        if (Environment.GetEnvironmentVariable("NADEKOBOT_IS_COORDINATED") != "1")
+        if (Environment.GetEnvironmentVariable("ELLIE_IS_COORDINATED") != "1")
             svcs.AddSingleton<ICoordinator, SingleProcessCoordinator>();
         else
         {
@@ -350,7 +350,7 @@ Login failed.
 
 *** Please enable privileged intents ***
 
-Certain Nadeko features require Discord's privileged gateway intents.
+Certain Ellie features require Discord's privileged gateway intents.
 These include greeting and goodbye messages, as well as creating the Owner message channels for DM forwarding.
 
 How to enable privileged intents:

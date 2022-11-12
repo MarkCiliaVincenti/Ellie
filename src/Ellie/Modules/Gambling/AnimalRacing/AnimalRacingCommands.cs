@@ -34,7 +34,7 @@ public partial class Gambling
 
         [Cmd]
         [RequireContext(ContextType.Guild)]
-        [NadekoOptionsAttribute(typeof(RaceOptions))]
+        [EllieOptionsAttribute(typeof(RaceOptions))]
         public Task Race(params string[] args)
         {
             var (options, _) = OptionsParser.ParseFrom(new RaceOptions(), args);

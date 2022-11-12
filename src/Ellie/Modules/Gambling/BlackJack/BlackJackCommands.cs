@@ -4,7 +4,7 @@ using Ellie.Modules.Gambling.Common;
 using Ellie.Modules.Gambling.Common.Blackjack;
 using Ellie.Modules.Gambling.Services;
 
-namespace NadekoBot.Modules.Gambling;
+namespace Ellie.Modules.Gambling;
 
 public partial class Gambling
 {

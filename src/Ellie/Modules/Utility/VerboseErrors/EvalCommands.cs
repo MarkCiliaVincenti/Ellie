@@ -36,10 +36,10 @@ public partial class Utility
                              .WithReferences(this.GetType().Assembly)
                              .WithImports(
                                  "System",
-                                 "NadekoBot",
-                                 "NadekoBot.Extensions",
+                                 "Ellie",
+                                 "Ellie.Extensions",
                                  "Microsoft.Extensions.DependencyInjection",
-                                 "NadekoBot.Common",
+                                 "Ellie.Common",
                                  "System.Text",
                                  "System.Text.Json"),
                 globalsType: typeof(EvalGlobals));

@@ -86,9 +86,9 @@ public class ChatterBotService : IExecOnMessage
 
         cleverbot = lazyCleverbot.Value;
 
-        var nadekoId = _client.CurrentUser.Id;
-        var normalMention = $"<@{nadekoId}> ";
-        var nickMention = $"<@!{nadekoId}> ";
+        var ellieId = _client.CurrentUser.Id;
+        var normalMention = $"<@{ellieId}> ";
+        var nickMention = $"<@!{ellieId}> ";
         string message;
         if (msg.Content.StartsWith(normalMention, StringComparison.InvariantCulture))
             message = msg.Content[normalMention.Length..].Trim();
@@ -165,7 +165,7 @@ public class ChatterBotService : IExecOnMessage
                         await channel.SendErrorAsync(_eb,
                             null!,
                             text:
-                            "In order to use the cleverbot feature, the owner of this server should be [Patron Tier X](https://patreon.com/join/nadekobot) on patreon.",
+                            "In order to use the cleverbot feature, the owner of this server should be [Patron Tier X](https://patreon.com/join/emotionchild) on patreon.",
                             footer:
                             "You may disable the cleverbot feature, and this message via '.cleverbot' command");
                         

@@ -62,13 +62,13 @@ public sealed class BotCredsProvider : IBotCredsProvider
         if (!File.Exists(CredsPath))
         {
             Log.Warning(
-                "{CredsPath} is missing. Attempting to load creds from environment variables prefixed with 'NadekoBot_'. Example is in {CredsExamplePath}",
+                "{CredsPath} is missing. Attempting to load creds from environment variables prefixed with 'Ellie_'. Example is in {CredsExamplePath}",
                 CredsPath,
                 CredsExamplePath);
         }
 
         _config = new ConfigurationBuilder().AddYamlFile(CredsPath, false, true)
-                                            .AddEnvironmentVariables("NadekoBot_")
+                                            .AddEnvironmentVariables("Ellie_")
                                             .Build();
 
         _changeToken = ChangeToken.OnChange(() => _config.GetReloadToken(), Reload);
@@ -97,14 +97,14 @@ public sealed class BotCredsProvider : IBotCredsProvider
                     _creds.RestartCommand = new()
                     {
                         Args = "dotnet",
-                        Cmd = "NadekoBot.dll -- {0}"
+                        Cmd = "Ellie.dll -- {0}"
                     };
                 }
                 else
                 {
                     _creds.RestartCommand = new()
                     {
-                        Args = "NadekoBot.exe",
+                        Args = "Ellie.exe",
                         Cmd = "{0}"
                     };
                 }

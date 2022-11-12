@@ -1,6 +1,6 @@
 ﻿namespace Ellie;
 
-public class EllieInteractionService : IEllieInteractionService, INService
+public class EllieInteractionService : IEllieInteractionService, IEService
 {
     private readonly DiscordSocketClient _client;
 

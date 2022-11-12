@@ -1237,7 +1237,7 @@ public class XpService : IEService, IReadyExecutor, IExecNoCommand
             if (template.Club.Icon.Show)
                 await DrawClubImage(img, stats);
 
-// #if GLOBAL_NADEKO
+// #if GLOBAL_ELLIE
             await DrawFrame(img, stats.User.UserId);
 // #endif
 
@@ -1268,7 +1268,7 @@ public class XpService : IEService, IReadyExecutor, IExecNoCommand
         return await _images.GetXpBackgroundImageAsync();
     }
 
-    // #if GLOBAL_NADEKO
+    // #if GLOBAL_ELLIE
     private async Task DrawFrame(Image<Rgba32> img, ulong userId)
     {
         var patron = await _ps.GetPatronAsync(userId);

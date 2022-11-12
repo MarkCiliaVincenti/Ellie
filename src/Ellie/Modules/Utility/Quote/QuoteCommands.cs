@@ -323,7 +323,7 @@ public partial class Utility
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.Administrator)]
         [Ratelimit(300)]
-#if GLOBAL_NADEKO
+#if GLOBAL_ELLIE
             [OwnerOnly]
 #endif
         public async Task QuotesImport([Leftover] string? input = null)

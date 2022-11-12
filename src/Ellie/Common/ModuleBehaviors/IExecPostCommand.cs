@@ -3,7 +3,7 @@ namespace Ellie.Common.ModuleBehaviors;
 /// <summary>
 /// This interface's method is executed after the command successfully finished execution.
 /// ***There is no support for this method in Ellie services.***
-/// It is only meant to be used in medusa system
+/// It is only meant to be used in marmalade system
 /// </summary>
 public interface IExecPostCommand
 {

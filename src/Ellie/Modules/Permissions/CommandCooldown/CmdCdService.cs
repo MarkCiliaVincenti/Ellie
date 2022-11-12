@@ -5,7 +5,7 @@ using Ellie.Db;
 
 namespace Ellie.Modules.Permissions.Services;
 
-public sealed class CmdCdService : IExecPreCommand, IReadyExecutor, INService
+public sealed class CmdCdService : IExecPreCommand, IReadyExecutor, IEService
 {
     private readonly DbService _db;
     private readonly ConcurrentDictionary<ulong, ConcurrentDictionary<string, int>> _settings = new();

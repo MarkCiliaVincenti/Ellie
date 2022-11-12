@@ -113,7 +113,7 @@ public class TypingGame
     public string GetRandomSentence()
     {
         if (_games.TypingArticles.Any())
-            return _games.TypingArticles[new NadekoRandom().Next(0, _games.TypingArticles.Count)].Text;
+            return _games.TypingArticles[new EllieRandom().Next(0, _games.TypingArticles.Count)].Text;
         return $"No typing articles found. Use {_prefix}typeadd command to add a new article for typing.";
     }
 

@@ -49,7 +49,7 @@ public sealed class ImageCache : IImageCache, IEService
         _cache = cache;
         _ic = ic;
         _httpFactory = httpFactory;
-        _rng = new NadekoRandom();
+        _rng = new EllieRandom();
     }
 
     private static TypedKey<byte[]> GetImageKey(Uri url)

@@ -25,7 +25,7 @@ public partial class Help : EllieModule<HelpService>
     private readonly IBotStrings _strings;
 
     private readonly AsyncLazy<ulong> _lazyClientId;
-    private readonly IMarmaladeLoaderService _marmalade;
+    private readonly IMarmaladeLoaderService _marmalades;
 
     public Help(
         GlobalPermissionService perms,
@@ -34,7 +34,7 @@ public partial class Help : EllieModule<HelpService>
         IServiceProvider services,
         DiscordSocketClient client,
         IBotStrings strings,
-        IMarmaladeLoaderService marmalade)
+        IMarmaladeLoaderService marmalades)
     {
         _cmds = cmds;
         _bss = bss;
@@ -42,7 +42,7 @@ public partial class Help : EllieModule<HelpService>
         _services = services;
         _client = client;
         _strings = strings;
-        _marmalade = marmalade;
+        _marmalades = marmalades;
 
         _lazyClientId = new(async () => (await _client.GetApplicationInfoAsync()).Id);
     }
@@ -130,8 +130,8 @@ public partial class Help : EllieModule<HelpService>
                 return strs.module_description_permissions;
             case "xp":
                 return strs.module_description_xp;
-            case "medusa":
-                return strs.module_description_medusa;
+            case "marmalade":
+                return strs.module_description_marmalade;
             default:
                 return strs.module_description_missing;
         }
@@ -275,7 +275,7 @@ public partial class Help : EllieModule<HelpService>
 
         foreach (var cmd in group.Commands)
         {
-            eb.AddField(prefix + cmd.Aliases.First(), cmd.RealSummary(_strings, _medusae, Culture, prefix));
+            eb.AddField(prefix + cmd.Aliases.First(), cmd.RealSummary(_strings, _marmalades, Culture, prefix));
         }
 
         await ctx.Channel.EmbedAsync(eb);
@@ -402,7 +402,7 @@ public partial class Help : EllieModule<HelpService>
                     BucketName = "ellie",
                     ContentType = "application/json",
                     ContentBody = uploadData,
-                    // either use a path provided in the argument or the default one for public nadeko, other/cmds.json
+                    // either use a path provided in the argument or the default one for public ellie, other/cmds.json
                     Key = $"cmds/{StatsService.BOT_VERSION}.json",
                     CannedACL = S3CannedACL.PublicRead
                 });
@@ -414,7 +414,7 @@ public partial class Help : EllieModule<HelpService>
             {
                 using var oldVersionObject = await dlClient.GetObjectAsync(new()
                 {
-                    BucketName = "nadeko-pictures",
+                    BucketName = "ellie-pictures",
                     Key = "cmds/versions.json"
                 });
 
@@ -445,7 +445,7 @@ public partial class Help : EllieModule<HelpService>
                     BucketName = "ellie",
                     ContentType = "application/json",
                     ContentBody = versionListString,
-                    // either use a path provided in the argument or the default one for public nadeko, other/cmds.json
+                    // either use a path provided in the argument or the default one for public ellie, other/cmds.json
                     Key = "cmds/versions.json",
                     CannedACL = S3CannedACL.PublicRead
                 });
@@ -498,7 +498,7 @@ public partial class Help : EllieModule<HelpService>
 
         eb
             .WithDescription("Ellie relies on donations to keep the servers, services and APIs running.\n"
-                             + "Donating will give you access to some exclusive features. You can read about them on the [patreon page](https://patreon.com/join/nadekobot)")
+                             + "Donating will give you access to some exclusive features. You can read about them on the [patreon page](https://patreon.com/join/emotionchild)")
             .AddField("Donation Instructions",
                 $@"
 🗒️ Before pledging it is recommended to open your DMs as Ellie will send you a welcome message with instructions after you pledge has been processed and confirmed.
@@ -527,7 +527,7 @@ Ellie will DM you the welcome instructions, and you may start using the patron-o
 `1.` Make sure your DMs are open to everyone. Maybe your pledge was processed successfully but the bot was unable to DM you. Use the `.patron` command to check your status.
 `2.` Make sure you've connected the CORRECT Discord account. Quite often users log in to different Discord accounts in their browser. You may also try disconnecting and reconnecting your account.
 `3.` Make sure your payment has been processed and not declined by Patreon.
-`4.` If any of the previous steps don't help, you can join the nadeko support server <https://elliebot.net/discord> and ask for help in the #support channel");
+`4.` If any of the previous steps don't help, you can join the ellie support server <https://elliebot.net/discord> and ask for help in the #support channel");
 
         try
         {

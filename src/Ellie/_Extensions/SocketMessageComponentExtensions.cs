@@ -56,7 +56,7 @@ public static class SocketMessageComponentExtensions
         IEmbedBuilder? embed,
         string plainText = "",
         IReadOnlyCollection<IEmbedBuilder>? embeds = null,
-        NadekoInteraction? inter = null,
+        EllieInteraction? inter = null,
         bool ephemeral = false)
         => smc.RespondAsync(plainText,
             embed: embed?.Build(),
@@ -69,7 +69,7 @@ public static class SocketMessageComponentExtensions
         string text,
         MessageType type,
         bool ephemeral = false,
-        NadekoInteraction? inter = null)
+        EllieInteraction? inter = null)
     {
         var builder = eb.Create().WithDescription(text);
 

@@ -237,7 +237,7 @@ public partial class Gambling : GamblingModule<GamblingService>
             return;
         }
 
-        var usr = membersArray[new NadekoRandom().Next(0, membersArray.Length)];
+        var usr = membersArray[new EllieRandom().Next(0, membersArray.Length)];
         await SendConfirmAsync("🎟 " + GetText(strs.raffled_user),
             $"**{usr.Username}#{usr.Discriminator}**",
             footer: $"ID: {usr.Id}");
@@ -256,7 +256,7 @@ public partial class Gambling : GamblingModule<GamblingService>
             return;
         }
 
-        var usr = membersArray[new NadekoRandom().Next(0, membersArray.Length)];
+        var usr = membersArray[new EllieRandom().Next(0, membersArray.Length)];
         await SendConfirmAsync("🎟 " + GetText(strs.raffled_user),
             $"**{usr.Username}#{usr.Discriminator}**",
             footer: $"ID: {usr.Id}");
@@ -710,13 +710,13 @@ public partial class Gambling : GamblingModule<GamblingService>
     }
 
     [Cmd]
-    [NadekoOptions(typeof(LbOpts))]
+    [EllieOptions(typeof(LbOpts))]
     [Priority(0)]
     public Task Leaderboard(params string[] args)
         => Leaderboard(1, args);
 
     [Cmd]
-    [NadekoOptions(typeof(LbOpts))]
+    [EllieOptions(typeof(LbOpts))]
     [Priority(1)]
     public async Task Leaderboard(int page = 1, params string[] args)
     {

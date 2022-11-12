@@ -18,7 +18,7 @@ public partial class Gambling
 
         [Cmd]
         [RequireContext(ContextType.Guild)]
-        [NadekoOptionsAttribute(typeof(EventOptions))]
+        [EllieOptionsAttribute(typeof(EventOptions))]
         [OwnerOnly]
         public async Task EventStart(CurrencyEvent.Type ev, params string[] options)
         {

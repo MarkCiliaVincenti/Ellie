@@ -4,11 +4,11 @@ namespace Ellie.Marmalade;
 
 public sealed class MarmaladeConfigService : ConfigServiceBase<MarmaladeConfig>, IMarmaladeConfigService
 {
-    private const string FILE_PATH = "data/marmalades/medusa.yml";
-    private static readonly TypedKey<MarmaladeConfig> _changeKey = new("config.medusa.updated");
+    private const string FILE_PATH = "data/marmalades/marmalade.yml";
+    private static readonly TypedKey<MarmaladeConfig> _changeKey = new("config.marmalade.updated");
 
     public override string Name
-        => "medusa";
+        => "marmalade";
 
     public MarmaladeConfigService(
         IConfigSeria serializer,
