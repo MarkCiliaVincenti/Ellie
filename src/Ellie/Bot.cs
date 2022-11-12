@@ -142,7 +142,7 @@ public sealed class Bot
         svcs.Scan(scan => scan.FromAssemblyOf<IReadyExecutor>()
                               .AddClasses(classes => classes.AssignableToAny(
                                       // services
-                                      typeof(INService),
+                                      typeof(IEService),
 
                                       // behaviours
                                       typeof(IExecOnMessage),
