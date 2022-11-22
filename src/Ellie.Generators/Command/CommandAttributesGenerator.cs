@@ -1,4 +1,4 @@
-// #nullable enable
+﻿// #nullable enable
 // using System;
 // using System.CodeDom.Compiler;
 // using System.Collections.Generic;
@@ -132,8 +132,8 @@
 //         
 //         foreach (var method in model.Methods)
 //         {
-//             tw.WriteLine("[EllieCommand]");
-//             tw.WriteLine("[EllieDescription]");
+//             tw.WriteLine("[NadekoCommand]");
+//             tw.WriteLine("[NadekoDescription]");
 //             tw.WriteLine("[Aliases]");
 //             tw.WriteLine($"public partial {method.ReturnType} {method.MethodName}({string.Join(", ", method.Params)});");
 //         }

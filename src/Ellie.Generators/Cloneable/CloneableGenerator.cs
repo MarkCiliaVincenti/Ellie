@@ -1,4 +1,4 @@
-// Code temporarily yeeted from
+﻿// Code temporarily yeeted from
 // https://github.com/mostmand/Cloneable/blob/master/Cloneable/CloneableGenerator.cs
 // because of NRT issue
 #nullable enable
@@ -180,7 +180,7 @@ namespace {namespaceName}
 }}";
         }
 
-        private IEnumerable<(string line, bool isCloneable)> GenerateFieldAssignmentsCode(INamedTypeSymbol classSymbol, bool isExplicit)
+        private IEnumerable<(string line, bool isCloneable)> GenerateFieldAssignmentsCode(INamedTypeSymbol classSymbol, bool isExplicit )
         {
             var fieldNames = GetCloneableProperties(classSymbol, isExplicit);
 
