@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <EnablePreviewFeatures>True</EnablePreviewFeatures>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.13.3" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ellise.Common\Ellise.Common.csproj" />
+    <ProjectReference Include="..\Ellie.Econ\Ellie.Econ.csproj" />
+    <ProjectReference Include="..\Ellie\Ellie.csproj" />
+  </ItemGroup>
+
+</Project>
