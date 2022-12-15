@@ -83,7 +83,7 @@ public static class Extensions
         string prefix)
     {
         string description;
-        if (cmd.Remarks?.StartsWith("marmalades///") ?? false)
+        if (cmd.Remarks?.StartsWith("marmalade///") ?? false)
         {
             // command method name is kept in Summary
             // marmalade///<marmalade-name-here> is kept in remarks
@@ -108,7 +108,7 @@ public static class Extensions
         string prefix)
     {
         string[] args;
-        if (cmd.Remarks?.StartsWith("marmalades///") ?? false)
+        if (cmd.Remarks?.StartsWith("marmalade///") ?? false)
         {
             // command method name is kept in Summary
             // marmalade///<marmalade-name-here> is kept in remarks
@@ -144,11 +144,11 @@ public static class Extensions
     public static IEmbedBuilder WithErrorColor(this IEmbedBuilder eb)
         => eb.WithColor(EmbedColor.Error);
 
-    public static IMessage DeleteAfter(this IUserMessage msg, int seconds, ILogCommandService? logService = null)
+    public static IMessage DeleteAfter(this IUserMessage msg, float seconds, ILogCommandService? logService = null)
     {
         Task.Run(async () =>
         {
-            await Task.Delay(seconds * 1000);
+            await Task.Delay((int)(seconds * 1000));
             if (logService is not null)
                 logService.AddDeleteIgnore(msg.Id);
 

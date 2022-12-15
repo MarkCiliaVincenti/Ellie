@@ -328,10 +328,12 @@ public static class MessageChannelExtensions
         await msg.ModifyAsync(mp => mp.Components = new ComponentBuilder().Build());
     }
 
-    private static readonly Emoji _okEmoji = new("✅");
-    private static readonly Emoji _warnEmoji = new("⚠️");
-    private static readonly Emoji _errorEmoji = new("❌");
-    
+#pragma warning disable IDE0090 // Use 'new(...)'
+    private static readonly Emoji _okEmoji = new Emoji("✅");
+    private static readonly Emoji _warnEmoji = new Emoji("⚠️");
+    private static readonly Emoji _errorEmoji = new Emoji("❌");
+#pragma warning restore IDE0090 // Use 'new(...)'
+
     public static Task ReactAsync(this ICommandContext ctx, MessageType type)
     {
         var emoji = type switch
