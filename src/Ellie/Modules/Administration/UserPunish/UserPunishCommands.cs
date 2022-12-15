@@ -114,7 +114,7 @@ public partial class Administration
         [Cmd]
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.Administrator)]
-        [EllieOptions(typeof(WarnExpireOptions))]
+        [NadekoOptions(typeof(WarnExpireOptions))]
         [Priority(1)]
         public async Task WarnExpire()
         {
@@ -129,7 +129,7 @@ public partial class Administration
         [Cmd]
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.Administrator)]
-        [EllieOptions(typeof(WarnExpireOptions))]
+        [NadekoOptions(typeof(WarnExpireOptions))]
         [Priority(2)]
         public async Task WarnExpire(int days, params string[] args)
         {
@@ -912,7 +912,7 @@ public partial class Administration
                                                                .Build());
         }
 
-        public class WarnExpireOptions : IEllieCommandOptions
+        public class WarnExpireOptions : INadekoCommandOptions
         {
             [Option('d', "delete", Default = false, HelpText = "Delete warnings instead of clearing them.")]
             public bool Delete { get; set; } = false;

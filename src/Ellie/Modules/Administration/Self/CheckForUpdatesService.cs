@@ -37,7 +37,7 @@ public sealed class CheckForUpdatesService : IEService, IReadyExecutor
             
             try
             {
-                const string URL = "https://cdn.Ellie.bot/cmds/versions.json";
+                const string URL = "https://cdn.nadeko.bot/cmds/versions.json";
                 using var http = _httpFactory.CreateClient();
                 var versions = await http.GetFromJsonAsync<string[]>(URL);
 
@@ -59,7 +59,7 @@ public sealed class CheckForUpdatesService : IEService, IReadyExecutor
                     UpdateLastKnownVersion(latestVersion);
                     
                     // pull changelog
-                    var changelog = await http.GetStringAsync("https://gitlab.com/Kwoth/Ellie/-/raw/v4/CHANGELOG.md");
+                    var changelog = await http.GetStringAsync("https://gitlab.com/Kwoth/nadekobot/-/raw/v4/CHANGELOG.md");
 
                     var thisVersionChangelog = GetVersionChangelog(latestVersion, changelog);
 
@@ -80,9 +80,9 @@ public sealed class CheckForUpdatesService : IEService, IReadyExecutor
 
                             var eb = _ebs.Create()
                                 .WithOkColor()
-                                .WithAuthor($"Ellie v{latestVersion} Released!")
+                                .WithAuthor($"NadekoBot v{latestVersion} Released!")
                                 .WithTitle("Changelog")
-                                .WithUrl("https://gitlab.com/Kwoth/Ellie/-/blob/v4/CHANGELOG.md")
+                                .WithUrl("https://gitlab.com/Kwoth/nadekobot/-/blob/v4/CHANGELOG.md")
                                 .WithDescription(thisVersionChangelog.TrimTo(4096))
                                 .WithFooter("You may disable these messages by typing '.conf bot checkforupdates false'");
 

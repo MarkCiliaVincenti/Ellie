@@ -9,8 +9,8 @@ using Ellie.Services.Database.Models;
 namespace Ellie.Modules.Administration;
 
 public sealed class LogCommandService : ILogCommandService, IReadyExecutor
-    #if !GLOBAL_Ellie
-    , IEService // don't load this service on global Ellie
+    #if !GLOBAL_ELLIE
+    , IEService // don't load this service on global ellie
     #endif
 {
     public ConcurrentDictionary<ulong, LogSetting> GuildLogSettings { get; }

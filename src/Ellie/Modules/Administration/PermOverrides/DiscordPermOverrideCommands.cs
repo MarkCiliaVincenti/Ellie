@@ -11,7 +11,7 @@ public partial class Administration
     public partial class DiscordPermOverrideCommands : EllieModule<DiscordPermOverrideService>
     {
         // override stats, it should require that the user has managessages guild permission
-        // 'po 'stats' add user guild managemessages
+        // .po 'stats' add user guild managemessages
         [Cmd]
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.Administrator)]
