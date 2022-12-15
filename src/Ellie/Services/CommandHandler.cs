@@ -216,7 +216,7 @@ public class CommandHandler : IEService, IReadyExecutor
         {
             try
             {
-#if !GLOBAL_ELLIE
+#if !GLOBAL_NADEKO
                 // track how many messages each user is sending
                 UserMessagesSent.AddOrUpdate(usrMsg.Author.Id, 1, (_, old) => ++old);
 #endif
