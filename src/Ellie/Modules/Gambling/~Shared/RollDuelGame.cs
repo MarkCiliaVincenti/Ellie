@@ -34,7 +34,7 @@ public class RollDuelGame
     private readonly ICurrencyService _cs;
 
     private readonly Timer _timeoutTimer;
-    private readonly EllieRandom _rng = new();
+    private readonly NadekoRandom _rng = new();
     private readonly SemaphoreSlim _locker = new(1, 1);
 
     public RollDuelGame(

@@ -113,7 +113,7 @@ public sealed class AnimalRace : IDisposable
         _ = OnStarted?.Invoke(this);
         _ = Task.Run(async () =>
         {
-            var rng = new EllieRandom();
+            var rng = new NadekoRandom();
             while (!_users.All(x => x.Progress >= 60))
             {
                 foreach (var user in _users)

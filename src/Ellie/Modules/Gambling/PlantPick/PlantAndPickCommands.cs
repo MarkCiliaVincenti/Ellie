@@ -72,7 +72,7 @@ public partial class Gambling
         [Cmd]
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.ManageMessages)]
-#if GLOBAL_ELLIE
+#if GLOBAL_NADEKO
             [OwnerOnly]
 #endif
         public async Task GenCurrency()

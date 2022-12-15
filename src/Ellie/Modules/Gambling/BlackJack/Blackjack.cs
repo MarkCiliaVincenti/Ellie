@@ -93,7 +93,7 @@ public class Blackjack
         }
         catch (Exception ex)
         {
-            Log.Error(ex, "REPORT THE MESSAGE BELOW IN Ellie's Home SERVER PLEASE");
+            Log.Error(ex, "REPORT THE MESSAGE BELOW IN #NadekoLog SERVER PLEASE");
             State = GameState.Ended;
             _ = GameEnded?.Invoke(this);
         }

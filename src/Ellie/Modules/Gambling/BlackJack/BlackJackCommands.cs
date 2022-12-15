@@ -1,5 +1,5 @@
 ﻿#nullable disable
-using Ellie.Common;
+using Ellise.Common;
 using Ellie.Modules.Gambling.Common;
 using Ellie.Modules.Gambling.Common.Blackjack;
 using Ellie.Modules.Gambling.Services;

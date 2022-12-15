@@ -46,7 +46,7 @@ Set 0 for unlimited")]
     public WaifuConfig Waifu { get; set; }
 
     [Comment(@"Amount of currency selfhosters will get PER pledged dollar CENT.
-1 = 100 currency per $. Used almost exclusively on public Ellie.")]
+1 = 100 currency per $. Used almost exclusively on public nadeko.")]
     public decimal PatreonCurrencyPerCent { get; set; } = 1;
 
     [Comment(@"Currency reward per vote.
@@ -76,7 +76,7 @@ public class CurrencyConfig
     public string Sign { get; set; } = "🌸";
 
     [Comment(@"What is the name of the currency")]
-    public string Name { get; set; } = "Ellie Coins";
+    public string Name { get; set; } = "Nadeko Flower";
 
     [Comment(@"For how long (in days) will the transactions be kept in the database (curtrs)
 Set 0 to disable cleanup (keep transactions forever)")]

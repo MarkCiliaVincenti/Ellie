@@ -1,9 +1,9 @@
 #nullable disable
 using CommandLine;
 
-namespace Ellie.Modules.Gambling.Common.Events;
+namespace NadekoBot.Modules.Gambling.Common.Events;
 
-public class EventOptions : IEllieCommandOptions
+public class EventOptions : INadekoCommandOptions
 {
     [Option('a', "amount", Required = false, Default = 100, HelpText = "Amount of currency each user receives.")]
     public long Amount { get; set; } = 100;
