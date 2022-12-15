@@ -188,7 +188,6 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
             return MarmaladeLoadResult.AlreadyLoaded;
 
         var safeName = Uri.EscapeDataString(name);
-        name = name.ToLowerInvariant();
 
         await _lock.WaitAsync();
         try
@@ -402,8 +401,6 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
 
 #pragma warning disable IDE0090 // Use 'new(...)'
     private static readonly RequireContextAttribute _reqGuild = new RequireContextAttribute(ContextType.Guild);
-#pragma warning restore IDE0090 // Use 'new(...)'
-#pragma warning disable IDE0090 // Use 'new(...)'
     private static readonly RequireContextAttribute _reqDm = new RequireContextAttribute(ContextType.DM);
 #pragma warning restore IDE0090 // Use 'new(...)'
     private Action<CommandBuilder> CreateCommandFactory(string marmaladeName, CanaryCommandData cmd)
@@ -531,7 +528,6 @@ public sealed class MarmaladeLoaderService : IMarmaladeLoaderService, IReadyExec
     [MethodImpl(MethodImplOptions.NoInlining)]
     private async Task<MarmaladeUnloadResult> InternalUnloadAsync(string name)
     {
-        name = name.ToLowerInvariant();
         if (!_resolved.Remove(name, out var lsi))
             return MarmaladeUnloadResult.NotLoaded;
 

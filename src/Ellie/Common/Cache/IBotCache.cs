@@ -15,7 +15,7 @@ public interface IBotCache
     /// <typeparam name="T">Type of the value</typeparam>
     /// <returns>Returns whether add was sucessful. Always true unless ovewrite = false</returns>
     ValueTask<bool> AddAsync<T>(TypedKey<T> key, T value, TimeSpan? expiry = null, bool overwrite = true);
-    
+
     /// <summary>
     /// Get an element from the cache
     /// </summary>
@@ -23,7 +23,7 @@ public interface IBotCache
     /// <typeparam name="T">Type of the value</typeparam>
     /// <returns>Either a value or <see cref="None"/></returns>
     ValueTask<OneOf<T, None>> GetAsync<T>(TypedKey<T> key);
-    
+
     /// <summary>
     /// Remove a key from the cache
     /// </summary>

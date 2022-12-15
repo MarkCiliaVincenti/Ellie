@@ -9,7 +9,9 @@ namespace Ellie.Common;
 public sealed class MemoryBotCache : IBotCache
 {
     // needed for overwrites and Delete return value
+#pragma warning disable IDE0090 // Use 'new(...)'
     private readonly object _cacheLock = new object();
+#pragma warning restore IDE0090 // Use 'new(...)'
     private readonly MemoryCache _cache;
 
     public MemoryBotCache()
@@ -26,12 +28,12 @@ public sealed class MemoryBotCache : IBotCache
             item.AbsoluteExpirationRelativeToNow = expiry;
             return new(true);
         }
-        
+
         lock (_cacheLock)
         {
             if (_cache.TryGetValue(key.Key, out var old) && old is not null)
                 return new(false);
-            
+
             using var item = _cache.CreateEntry(key.Key);
             item.Value = value;
             item.AbsoluteExpirationRelativeToNow = expiry;
@@ -63,7 +65,7 @@ public sealed class MemoryBotCache : IBotCache
     {
         lock (_cacheLock)
         {
-            var toReturn = _cache.TryGetValue(key.Key, out var old ) && old is not null;
+            var toReturn = _cache.TryGetValue(key.Key, out var old) && old is not null;
             _cache.Remove(key.Key);
             return new(toReturn);
         }

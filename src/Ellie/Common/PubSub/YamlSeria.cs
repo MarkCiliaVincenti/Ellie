@@ -1,4 +1,4 @@
-using Ellie.Common.Configs;
+﻿using Ellie.Common.Configs;
 using Ellie.Common.Yml;
 using System.Text.RegularExpressions;
 using YamlDotNet.Serialization;

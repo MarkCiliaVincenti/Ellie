@@ -1,4 +1,4 @@
-namespace Ellie.Common.Attributes;
+﻿namespace Ellie.Common.Attributes;
 
 [AttributeUsage(AttributeTargets.Method)]
 public sealed class EllieOptionsAttribute : Attribute

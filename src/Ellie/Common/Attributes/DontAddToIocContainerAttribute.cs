@@ -7,5 +7,5 @@ namespace Ellie.Common;
 [AttributeUsage(AttributeTargets.Class)]
 public class DontAddToIocContainerAttribute : Attribute
 {
-    
+
 }

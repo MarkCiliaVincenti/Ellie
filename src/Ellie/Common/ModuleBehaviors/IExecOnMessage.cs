@@ -1,4 +1,4 @@
-namespace Ellie.Common.ModuleBehaviors;
+﻿namespace Ellie.Common.ModuleBehaviors;
 
 /// <summary>
 ///     Implemented by modules to handle non-bot messages received

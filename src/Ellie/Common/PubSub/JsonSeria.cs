@@ -1,4 +1,4 @@
-using Ellie.Common.JsonConverters;
+﻿using Ellie.Common.JsonConverters;
 using System.Text.Json;
 
 namespace Ellie.Common;

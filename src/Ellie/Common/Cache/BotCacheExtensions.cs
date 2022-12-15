@@ -1,4 +1,4 @@
-﻿using OneOf;
+using OneOf;
 using OneOf.Types;
 
 namespace Ellie.Common;
@@ -13,7 +13,7 @@ public static class BotCacheExtensions
 
         return default;
     }
-    
+
     private static TypedKey<byte[]> GetImgKey(Uri uri)
         => new($"image:{uri}");
 

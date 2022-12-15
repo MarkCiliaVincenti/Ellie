@@ -24,8 +24,8 @@ public sealed record SmartEmbedTextArray : SmartText
     {
         if (Embeds is null)
             return;
-        
-        foreach(var eb in Embeds)
+
+        foreach (var eb in Embeds)
             eb.NormalizeFields();
     }
 }

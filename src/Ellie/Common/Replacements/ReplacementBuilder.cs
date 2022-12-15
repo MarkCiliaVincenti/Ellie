@@ -124,7 +124,7 @@ public class ReplacementBuilder
 
     public ReplacementBuilder WithRngRegex()
     {
-        var rng = new EllieRandom();
+        var rng = new NadekoRandom();
         _regex.TryAdd(_rngRegex,
             match =>
             {
@@ -156,8 +156,8 @@ public class ReplacementBuilder
     public ReplacementBuilder WithProviders(IEnumerable<IPlaceholderProvider> phProviders)
     {
         foreach (var provider in phProviders)
-        foreach (var ovr in provider.GetPlaceholders())
-            _reps.TryAdd(ovr.Name, ovr.Func);
+            foreach (var ovr in provider.GetPlaceholders())
+                _reps.TryAdd(ovr.Name, ovr.Func);
 
         return this;
     }

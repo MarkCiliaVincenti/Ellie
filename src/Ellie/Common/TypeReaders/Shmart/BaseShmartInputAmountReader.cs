@@ -1,4 +1,4 @@
-﻿using System.Text.RegularExpressions;
+using System.Text.RegularExpressions;
 using Ellie.Db;
 using Ellie.Modules.Gambling.Services;
 using NCalc;
@@ -82,10 +82,10 @@ public class BaseShmartInputAmountReader
     private async Task<long?> TryHandlePercentage(ICommandContext ctx, string input)
     {
         var m = _percentRegex.Match(input);
-        
+
         if (m.Captures.Count == 0)
             return null;
-        
+
         if (!long.TryParse(m.Groups["num"].ToString(), out var percent))
             return null;
 

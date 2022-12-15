@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using Ellie.Common.Yml;
 
 namespace Ellie.Common;
@@ -14,7 +14,7 @@ public sealed class Creds : IBotCredentials
     [Comment(@"List of Ids of the users who have bot owner permissions
 **DO NOT ADD PEOPLE YOU DON'T TRUST**")]
     public ICollection<ulong> OwnerIds { get; set; }
-    
+
     [Comment("Keep this on 'true' unless you're sure your bot shouldn't use privileged intents or you're waiting to be accepted")]
     public bool UsePrivilegedIntents { get; set; }
 
@@ -25,13 +25,13 @@ note: If you are planning to have more than one shard, then you must change botC
       Also, in that case you should be using Ellie.Coordinator to start the bot, and it will correctly override this value.")]
     public int TotalShards { get; set; }
 
-    [Comment(   
+    [Comment(
         @"Login to https://console.cloud.google.com, create a new project, go to APIs & Services -> Library -> YouTube Data API and enable it.
 Then, go to APIs and Services -> Credentials and click Create credentials -> API key.
 Used only for Youtube Data Api (at the moment).")]
     public string GoogleApiKey { get; set; }
-    
-    [Comment(   
+
+    [Comment(
         @"Create a new custom search here https://programmablesearchengine.google.com/cse/create/new
 Enable SafeSearch
 Remove all Sites to Search
@@ -41,7 +41,7 @@ Copy the 'Search Engine ID' to the SearchId field
 Do all steps again but enable image search for the ImageSearchId")]
     public GoogleApiConfig Google { get; set; }
 
-    [Comment(@"Settings for voting system for discordbots. Meant for use on global ellie.")]
+    [Comment(@"Settings for voting system for discordbots. Meant for use on global Ellie.")]
     public VotesSettings Votes { get; set; }
 
     [Comment(@"Patreon auto reward system settings.
@@ -53,12 +53,12 @@ go to https://www.patreon.com/portal -> my clients -> create client")]
 
     [Comment(@"Official cleverbot api key.")]
     public string CleverbotApiKey { get; set; }
-    
+
     [Comment(@"Which cache implementation should bot use.
 'memory' - Cache will be in memory of the bot's process itself. Only use this on bots with a single shard. When the bot is restarted the cache is reset. 
 'redis' - Uses redis (which needs to be separately downloaded and installed). The cache will persist through bot restarts. You can configure connection string in creds.yml")]
     public BotCacheImplemenation BotCache { get; set; }
-    
+
     [Comment(@"Redis connection string. Don't change if you don't know what you're doing.
 Only used if botCache is set to 'redis'")]
     public string RedisOptions { get; set; }
@@ -85,10 +85,10 @@ Used only for .time command")]
     [Comment(@"https://pro.coinmarketcap.com/account/ api key. There is a free plan for personal use.
 Used for cryptocurrency related commands.")]
     public string CoinmarketcapApiKey { get; set; }
-    
-//     [Comment(@"https://polygon.io/dashboard/api-keys api key. Free plan allows for 5 queries per minute.
-// Used for stocks related commands.")]
-//     public string PolygonIoApiKey { get; set; }
+
+    //     [Comment(@"https://polygon.io/dashboard/api-keys api key. Free plan allows for 5 queries per minute.
+    // Used for stocks related commands.")]
+    //     public string PolygonIoApiKey { get; set; }
 
     [Comment(@"Api key used for Osu related commands. Obtain this key at https://osu.ppy.sh/p/api")]
     public string OsuApiKey { get; set; }

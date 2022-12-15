@@ -1,4 +1,4 @@
-namespace Ellie.Common.ModuleBehaviors;
+﻿namespace Ellie.Common.ModuleBehaviors;
 
 /// <summary>
 /// This interface's method is executed after the command successfully finished execution.

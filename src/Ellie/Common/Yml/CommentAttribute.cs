@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 namespace Ellie.Common.Yml;
 
 [AttributeUsage(AttributeTargets.Property)]

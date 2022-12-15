@@ -1,4 +1,4 @@
-namespace Ellie.Common.Configs;
+﻿namespace Ellie.Common.Configs;
 
 /// <summary>
 ///     Base interface for available config serializers

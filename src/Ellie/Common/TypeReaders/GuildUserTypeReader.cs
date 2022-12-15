@@ -1,4 +1,4 @@
-namespace Ellie.Common.TypeReaders;
+﻿namespace Ellie.Common.TypeReaders;
 
 public sealed class GuildUserTypeReader : EllieTypeReader<IGuildUser>
 {
@@ -11,7 +11,7 @@ public sealed class GuildUserTypeReader : EllieTypeReader<IGuildUser>
         IGuildUser? user = null;
         if (MentionUtils.TryParseUser(input, out var id))
             user = await ctx.Guild.GetUserAsync(id, CacheMode.AllowDownload);
-        
+
         if (ulong.TryParse(input, out id))
             user = await ctx.Guild.GetUserAsync(id, CacheMode.AllowDownload);
 
@@ -27,7 +27,7 @@ public sealed class GuildUserTypeReader : EllieTypeReader<IGuildUser>
 
         if (user is null)
             return TypeReaderResult.FromError<IGuildUser>(CommandError.ObjectNotFound, "User not found.");
-        
+
         return TypeReaderResult.FromSuccess(user);
     }
 }

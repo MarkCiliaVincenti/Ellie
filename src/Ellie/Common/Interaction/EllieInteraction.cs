@@ -8,9 +8,9 @@ public sealed class EllieInteraction
     private readonly bool _onlyAuthor;
     public DiscordSocketClient Client { get; }
 
-    private readonly TaskCompletionSource<bool> _interactionCompletedSource;
+    private readonly TaskCompletionSource<bool> _interactionCompleteSource;
 
-    private IUserMessage message = null!;
+    private IUserMessage message = null;
 
     public EllieInteraction(DiscordSocketClient client,
         ulong authorId,
@@ -22,8 +22,8 @@ public sealed class EllieInteraction
         _button = button;
         _onClick = onClick;
         _onlyAuthor = onlyAuthor;
-        _interactionCompletedSource = new(TaskCreationOptions.RunContinuationsAsynchronously);
-        
+        _interactionCompleteSource = new(TaskCreationOptions.RunContinuationsAsynchronously);
+
         Client = client;
     }
 
@@ -32,12 +32,12 @@ public sealed class EllieInteraction
         message = msg;
 
         Client.InteractionCreated += OnInteraction;
-        await Task.WhenAny(Task.Delay(15_000), _interactionCompletedSource.Task);
+        await Task.WhenAny(Task.Delay(15_000), _interactionCompleteSource.Task);
         Client.InteractionCreated -= OnInteraction;
 
         await msg.ModifyAsync(m => m.Components = new ComponentBuilder().Build());
     }
-    
+
     private Task OnInteraction(SocketInteraction arg)
     {
         if (arg is not SocketMessageComponent smc)
@@ -55,19 +55,18 @@ public sealed class EllieInteraction
         _ = Task.Run(async () =>
         {
             await ExecuteOnActionAsync(smc);
-            
+
             // this should only be a thing on single-response buttons
-            _interactionCompletedSource.TrySetResult(true);
+            _interactionCompleteSource.TrySetResult(true);
 
             if (!smc.HasResponded)
             {
                 await smc.DeferAsync();
             }
         });
-        
+
         return Task.CompletedTask;
     }
-
 
     public MessageComponent CreateComponent()
     {

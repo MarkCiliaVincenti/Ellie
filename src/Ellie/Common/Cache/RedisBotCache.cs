@@ -8,7 +8,7 @@ namespace Ellie.Common;
 
 public sealed class RedisBotCache : IBotCache
 {
-    private static readonly Type[] _supportedTypes = new []
+    private static readonly Type[] _supportedTypes = new[]
     {
         typeof(bool), typeof(int), typeof(uint), typeof(long),
         typeof(ulong), typeof(float), typeof(double),
@@ -38,9 +38,9 @@ public sealed class RedisBotCache : IBotCache
             await RemoveAsync(key);
             return false;
         }
-        
+
         var db = _conn.GetDatabase();
-        RedisValue val = IsSupportedType(typeof(T)) 
+        RedisValue val = IsSupportedType(typeof(T))
             ? RedisValue.Unbox(value)
             : JsonSerializer.Serialize(value, _opts);
 
@@ -69,7 +69,7 @@ public sealed class RedisBotCache : IBotCache
 
         return false;
     }
-    
+
     public async ValueTask<OneOf<T, None>> GetAsync<T>(TypedKey<T> key)
     {
         var db = _conn.GetDatabase();
@@ -102,12 +102,12 @@ public sealed class RedisBotCache : IBotCache
 
                 if (factoryValue is null)
                     return default;
-                
+
                 await AddAsync(key, factoryValue, expiry);
-                
+
                 // get again to make sure it's the cached value
                 // and not the late factory value, in case there's a race condition
-                
+
                 var newResult = await GetAsync(key);
 
                 // it's fine to do this, it should blow up if something went wrong.

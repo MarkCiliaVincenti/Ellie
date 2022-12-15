@@ -1,4 +1,4 @@
-namespace Ellie.Common.ModuleBehaviors;
+﻿namespace Ellie.Common.ModuleBehaviors;
 
 /// <summary>
 /// Implemented by services which may transform input before a command is searched for

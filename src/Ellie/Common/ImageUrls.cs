@@ -5,7 +5,7 @@ using Cloneable;
 namespace Ellie.Common;
 
 [Cloneable]
-public partial class ImageUrls : ICloneable<ImageUrls> 
+public partial class ImageUrls : ICloneable<ImageUrls>
 {
     [Comment("DO NOT CHANGE")]
     public int Version { get; set; } = 3;
