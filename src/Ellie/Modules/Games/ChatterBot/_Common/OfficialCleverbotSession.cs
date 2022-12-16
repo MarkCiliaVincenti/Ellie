@@ -6,7 +6,7 @@ namespace Ellie.Modules.Games.Common.ChatterBot;
 public class OfficialCleverbotSession : IChatterBotSession
 {
     private string QueryString
-        => $"https://www.cleverbot.com/getreply?key={_apiKey}" + "&wrapper=nadekobot" + "&input={0}" + "&cs={1}";
+        => $"https://www.cleverbot.com/getreply?key={_apiKey}" + "&wrapper=ellie" + "&input={0}" + "&cs={1}";
 
     private readonly string _apiKey;
     private readonly IHttpClientFactory _httpFactory;
