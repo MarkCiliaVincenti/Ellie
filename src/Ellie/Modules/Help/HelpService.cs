@@ -15,7 +15,7 @@ public class HelpService : IExecNoCommand, IEService
     private readonly BotConfigService _bss;
     private readonly IEmbedBuilderService _eb;
     private readonly ILocalization _loc;
-    private readonly IMarmaladeLoaderService _marmalade;
+    private readonly IMarmaladeLoaderService _marmalades;
 
     public HelpService(
         CommandHandler ch,
@@ -24,7 +24,7 @@ public class HelpService : IExecNoCommand, IEService
         BotConfigService bss,
         IEmbedBuilderService eb,
         ILocalization loc,
-        IMarmaladeLoaderService marmalade)
+        IMarmaladeLoaderService marmalades)
     {
         _ch = ch;
         _strings = strings;
@@ -32,7 +32,7 @@ public class HelpService : IExecNoCommand, IEService
         _bss = bss;
         _eb = eb;
         _loc = loc;
-        _marmalade = marmalade;
+        _marmalades = marmalades;
     }
 
     public Task ExecOnNoCommandAsync(IGuild guild, IUserMessage msg)
@@ -74,7 +74,7 @@ public class HelpService : IExecNoCommand, IEService
         var culture = _loc.GetCultureInfo(guild);
         
         var em = _eb.Create()
-                    .AddField(str, $"{com.RealSummary(_strings, _marmalade, culture,  prefix)}", true);
+                    .AddField(str, $"{com.RealSummary(_strings, _marmalades, culture,  prefix)}", true);
 
         _dpos.TryGetOverrides(guild?.Id ?? 0, com.Name, out var overrides);
         var reqs = GetCommandRequirements(com, overrides);
@@ -82,7 +82,7 @@ public class HelpService : IExecNoCommand, IEService
             em.AddField(GetText(strs.requires, guild), string.Join("\n", reqs));
 
         em.AddField(_strings.GetText(strs.usage),
-              string.Join("\n", com.RealRemarksArr(_strings,_marmalade, culture, prefix).Map(arg => Format.Code(arg))))
+              string.Join("\n", com.RealRemarksArr(_strings,_marmalades, culture, prefix).Map(arg => Format.Code(arg))))
           .WithFooter(GetText(strs.module(com.Module.GetTopLevelModule().Name), guild))
           .WithOkColor();
 

@@ -14,8 +14,8 @@ namespace Ellie.Modules.Help;
 
 public partial class Help : EllieModule<HelpService>
 {
-    public const string PATREON_URL = "https://patreon.com/EmotionChild";
-    public const string PAYPAL_URL = "https://paypal.me/EmotionChild";
+    public const string PATREON_URL = "https://patreon.com/emotionchild";
+    public const string PAYPAL_URL = "https://paypal.me/EllieBotDevs";
 
     private readonly CommandService _cmds;
     private readonly BotConfigService _bss;
@@ -88,11 +88,11 @@ public partial class Help : EllieModule<HelpService>
                     embed = embed.WithOkColor().WithDescription(GetText(strs.module_page_empty));
                     return embed;
                 }
-
+                
                 localModules.OrderBy(module => module.Name)
                             .ToList()
                             .ForEach(module => embed.AddField($"{GetModuleEmoji(module.Name)} {module.Name}",
-                                GetText(GetModuleLocStr(module.Name))
+                                GetModuleDescription(module.Name)
                                 + "\n"
                                 + Format.Code(GetText(strs.module_footer(prefix, module.Name.ToLowerInvariant()))),
                                 true));
@@ -104,6 +104,25 @@ public partial class Help : EllieModule<HelpService>
             false);
     }
 
+    private string GetModuleDescription(string moduleName)
+    {
+        var key = GetModuleLocStr(moduleName);
+
+        if (key.Key == strs.module_description_missing.Key)
+        {
+            var desc = _marmalades
+                .GetLoadedMarmalades(Culture)
+                .FirstOrDefault(m => m.Canaries
+                    .Any(x => x.Name.Equals(moduleName, StringComparison.InvariantCultureIgnoreCase)))
+                ?.Description;
+
+            if (desc is not null)
+                return desc;
+        }
+
+        return GetText(key);
+    }
+    
     private LocStr GetModuleLocStr(string moduleName)
     {
         switch (moduleName.ToLowerInvariant())
@@ -364,8 +383,8 @@ public partial class Help : EllieModule<HelpService>
                                          return new CommandJsonObject
                                          {
                                              Aliases = com.Aliases.Select(alias => prefix + alias).ToArray(),
-                                             Description = com.RealSummary(_strings, _marmalade, Culture, prefix),
-                                             Usage = com.RealRemarksArr(_strings, _marmalade, Culture, prefix),
+                                             Description = com.RealSummary(_strings, _marmalades, Culture, prefix),
+                                             Usage = com.RealRemarksArr(_strings, _marmalades, Culture, prefix),
                                              Submodule = com.Module.Name,
                                              Module = com.Module.GetTopLevelModule().Name,
                                              Options = optHelpStr,
@@ -399,7 +418,7 @@ public partial class Help : EllieModule<HelpService>
             {
                 await client.PutObjectAsync(new()
                 {
-                    BucketName = "ellie",
+                    BucketName = "ellie-pictures",
                     ContentType = "application/json",
                     ContentBody = uploadData,
                     // either use a path provided in the argument or the default one for public ellie, other/cmds.json
@@ -442,7 +461,7 @@ public partial class Help : EllieModule<HelpService>
                 using var client = new AmazonS3Client(accessKey, secretAcccessKey, config);
                 await client.PutObjectAsync(new()
                 {
-                    BucketName = "ellie",
+                    BucketName = "ellie-pictures",
                     ContentType = "application/json",
                     ContentBody = versionListString,
                     // either use a path provided in the argument or the default one for public ellie, other/cmds.json
@@ -476,7 +495,7 @@ public partial class Help : EllieModule<HelpService>
 
 *Keep in mind that running the bot on your computer means that the bot will be offline when you turn off your computer*
 
-- You can find the selfhosting guides by using the `'guide` command and clicking on the second link that pops up.
+- You can find the selfhosting guides by using the `.guide` command and clicking on the second link that pops up.
 - If you decide to selfhost the bot, still consider [supporting the project](https://patreon.com/join/emotionchild) to keep the development going :)",
             true);
 
@@ -505,7 +524,7 @@ public partial class Help : EllieModule<HelpService>
 
 **Step 1:** ❤️ Pledge on Patreon ❤️
 
-`1.` Go to <https://patreon.com/join/EmotionChild> and choose a tier.
+`1.` Go to <https://patreon.com/join/emotionchild> and choose a tier.
 `2.` Make sure your payment is processed and accepted.
 
 **Step 2** 🤝 Connect your Discord account 🤝
@@ -527,7 +546,7 @@ Ellie will DM you the welcome instructions, and you may start using the patron-o
 `1.` Make sure your DMs are open to everyone. Maybe your pledge was processed successfully but the bot was unable to DM you. Use the `.patron` command to check your status.
 `2.` Make sure you've connected the CORRECT Discord account. Quite often users log in to different Discord accounts in their browser. You may also try disconnecting and reconnecting your account.
 `3.` Make sure your payment has been processed and not declined by Patreon.
-`4.` If any of the previous steps don't help, you can join the ellie support server <https://elliebot.net/discord> and ask for help in the #support channel");
+`4.` If any of the previous steps don't help, you can join the ellie support server <https://discord.elliebot.net> and ask for help in the #help channel");
 
         try
         {
