@@ -1,5 +1,4 @@
-﻿#nullable disable
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Ellie.Common.ModuleBehaviors;
 using Ellie.Db;
 
@@ -30,8 +29,11 @@ public sealed class CmdCdService : IExecPreCommand, IReadyExecutor, IEService
     public Task<bool> ExecPreCommandAsync(ICommandContext context, string moduleName, CommandInfo command)
         => TryBlock(context.Guild, context.User, command.Name.ToLowerInvariant());
 
-    public Task<bool> TryBlock(IGuild guild, IUser user, string commandName)
+    public Task<bool> TryBlock(IGuild? guild, IUser user, string commandName)
     {
+        if (guild is null)
+            return Task.FromResult(false);
+        
         if (!_settings.TryGetValue(guild.Id, out var cooldownSettings))
             return Task.FromResult(false);
 
@@ -53,7 +55,7 @@ public sealed class CmdCdService : IExecPreCommand, IReadyExecutor, IEService
         if (cooldowns.TryGetValue(user.Id, out var oldValue))
         {
             var diff = DateTime.UtcNow - oldValue;
-            if (diff.Seconds > cdSeconds)
+            if (diff.TotalSeconds > cdSeconds)
             {
                 if (cooldowns.TryUpdate(user.Id, DateTime.UtcNow, oldValue))
                     return Task.FromResult(false);
@@ -69,7 +71,6 @@ public sealed class CmdCdService : IExecPreCommand, IReadyExecutor, IEService
 
         while (await timer.WaitForNextTickAsync())
         {
-            var now = DateTime.UtcNow;
             // once per hour delete expired entries
             foreach (var ((guildId, commandName), dict) in _activeCooldowns)
             {
@@ -90,7 +91,7 @@ public sealed class CmdCdService : IExecPreCommand, IReadyExecutor, IEService
     private void Cleanup(ConcurrentDictionary<ulong, DateTime> dict, int cdSeconds)
     {
         var now = DateTime.UtcNow;
-        foreach (var (key, _) in dict.Where(x => (now - x.Value).Seconds > cdSeconds).ToArray())
+        foreach (var (key, _) in dict.Where(x => (now - x.Value).TotalSeconds > cdSeconds).ToArray())
         {
             dict.TryRemove(key, out _);
         }
