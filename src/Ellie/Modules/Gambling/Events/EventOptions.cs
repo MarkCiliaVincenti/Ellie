@@ -3,7 +3,7 @@ using CommandLine;
 
 namespace Ellie.Modules.Gambling.Common.Events;
 
-public class EventOptions : INadekoCommandOptions
+public class EventOptions : IEllieCommandOptions
 {
     [Option('a', "amount", Required = false, Default = 100, HelpText = "Amount of currency each user receives.")]
     public long Amount { get; set; } = 100;
