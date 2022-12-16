@@ -1,7 +1,7 @@
 #nullable disable
 using CommandLine;
 
-namespace NadekoBot.Modules.Gambling.Common.Events;
+namespace Ellie.Modules.Gambling.Common.Events;
 
 public class EventOptions : INadekoCommandOptions
 {
