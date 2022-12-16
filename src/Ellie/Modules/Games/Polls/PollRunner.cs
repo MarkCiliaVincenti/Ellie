@@ -35,9 +35,7 @@ public class PollRunner
             if (vote < 0 || vote >= Poll.Answers.Count)
                 return false;
 
-#pragma warning disable IDE0019 // Use pattern matching
             var usr = msg.Author as IGuildUser;
-#pragma warning restore IDE0019 // Use pattern matching
             if (usr is null)
                 return false;
 

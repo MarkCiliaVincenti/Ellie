@@ -1,7 +1,6 @@
 #nullable disable
 using System.Text.RegularExpressions;
 
-// THANKS @ShoMinamimoto for suggestions and coding help
 namespace Ellie.Modules.Games.Common.Trivia;
 
 public class TriviaQuestion

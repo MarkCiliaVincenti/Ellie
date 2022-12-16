@@ -73,9 +73,7 @@ public class ChatterBotService : IExecOnMessage
 
     public string PrepareMessage(IUserMessage msg, out IChatterBotSession cleverbot)
     {
-#pragma warning disable IDE0019 // Use pattern matching
         var channel = msg.Channel as ITextChannel;
-#pragma warning restore IDE0019 // Use pattern matching
         cleverbot = null;
 
         if (channel is null)
@@ -86,9 +84,9 @@ public class ChatterBotService : IExecOnMessage
 
         cleverbot = lazyCleverbot.Value;
 
-        var ellieId = _client.CurrentUser.Id;
-        var normalMention = $"<@{ellieId}> ";
-        var nickMention = $"<@!{ellieId}> ";
+        var nadekoId = _client.CurrentUser.Id;
+        var normalMention = $"<@{nadekoId}> ";
+        var nickMention = $"<@!{nadekoId}> ";
         string message;
         if (msg.Content.StartsWith(normalMention, StringComparison.InvariantCulture))
             message = msg.Content[normalMention.Length..].Trim();
@@ -128,7 +126,7 @@ public class ChatterBotService : IExecOnMessage
                     Log.Information("{PermissionMessage}", returnMsg);
                 }
 
-                return true;
+                return false;
             }
 
             if (await _ccs.TryBlock(sg, usrMsg.Author, CleverBotResponseStr.CLEVERBOT_RESPONSE))
