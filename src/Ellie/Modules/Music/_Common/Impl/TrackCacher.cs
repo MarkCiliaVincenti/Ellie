@@ -50,7 +50,6 @@ public sealed class TrackCacher : ITrackCacher
         => await _cache.AddAsync(GetTrackDataKey(data.Platform, data.Id), ToCachableTrackData(data));
 
     private CachableTrackData ToCachableTrackData(ICachableTrackData data)
-#pragma warning disable IDE0090 // Use 'new(...)'
         => new CachableTrackData()
         {
             Id = data.Id,
@@ -59,7 +58,6 @@ public sealed class TrackCacher : ITrackCacher
             Title = data.Title,
             Url = data.Url,
         };
-#pragma warning restore IDE0090 // Use 'new(...)'
 
     public async Task<ICachableTrackData?> GetCachedDataByIdAsync(string id, MusicPlatform platform)
         => await _cache.GetOrDefaultAsync(GetTrackDataKey(platform, id)); 
