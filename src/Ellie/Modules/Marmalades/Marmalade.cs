@@ -23,7 +23,7 @@ public partial class Marmalade : EllieModule<IMarmaladeLoaderService>
 
             if (unloaded.Length == 0)
             {
-                await ReplyPendingLocalizedAsync(strs.no_marmalades_available);
+                await ReplyPendingLocalizedAsync(strs.no_marmalade_available);
                 return;
             }
 
@@ -159,7 +159,7 @@ public partial class Marmalade : EllieModule<IMarmaladeLoaderService>
                         .WithAuthor(GetText(strs.marmalade_info))
                         .WithTitle(found.Name)
                         .WithDescription(found.Description)
-                        .AddField(GetText(strs.sneks_count(found.Canaries.Count)),
+                        .AddField(GetText(strs.canaries_count(found.Canaries.Count)),
                             found.Canaries.Count == 0
                                 ? "-"
                                 : found.Canaries.Select(x => x.Name).Join('\n'),
@@ -189,7 +189,7 @@ public partial class Marmalade : EllieModule<IMarmaladeLoaderService>
                 foreach (var marmalade in marmalades.Skip(page * 9).Take(9))
                 {
                     eb.AddField(marmalade.Name,
-                        $@"`Sneks:` {marmalade.Canaries.Count}
+                        $@"`Canaries:` {marmalade.Canaries.Count}
 `Commands:` {marmalade.Canaries.Sum(x => x.Commands.Count)}
 --
 {marmalade.Description}");
