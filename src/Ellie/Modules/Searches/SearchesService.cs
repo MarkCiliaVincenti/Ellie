@@ -128,7 +128,7 @@ public class SearchesService : IEService
     {
         query = query.Trim().ToLowerInvariant();
 
-        return await _c.GetOrAddAsync(new($"Ellie_weather_{query}"),
+        return await _c.GetOrAddAsync(new($"nadeko_weather_{query}"),
             async () => await GetWeatherDataFactory(query),
             TimeSpan.FromHours(3));
     }
@@ -158,7 +158,7 @@ public class SearchesService : IEService
     public Task<((string Address, DateTime Time, string TimeZoneName), TimeErrors?)> GetTimeDataAsync(string arg)
         => GetTimeDataFactory(arg);
 
-    //return _cache.GetOrAddCachedDataAsync($"Ellie_time_{arg}",
+    //return _cache.GetOrAddCachedDataAsync($"nadeko_time_{arg}",
     //    GetTimeDataFactory,
     //    arg,
     //    TimeSpan.FromMinutes(1));
@@ -250,7 +250,7 @@ public class SearchesService : IEService
                 break;
         }
 
-        return $"https://Ellie-pictures.nyc3.digitaloceanspaces.com/{subpath}/"
+        return $"https://nadeko-pictures.nyc3.digitaloceanspaces.com/{subpath}/"
                + _rng.Next(1, max).ToString("000")
                + ".png";
     }
@@ -407,7 +407,7 @@ public class SearchesService : IEService
     private async Task<OmdbMovie> GetMovieDataFactory(string name)
     {
         using var http = _httpFactory.CreateClient();
-        var res = await http.GetStringAsync(string.Format("https://omdbapi.Ellie.bot/"
+        var res = await http.GetStringAsync(string.Format("https://omdbapi.nadeko.bot/"
                                                           + "?t={0}"
                                                           + "&y="
                                                           + "&plot=full"

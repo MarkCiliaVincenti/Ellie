@@ -19,14 +19,16 @@ public class AnimeSearchService : IEService
     {
         if (string.IsNullOrWhiteSpace(query))
             throw new ArgumentNullException(nameof(query));
-        
+
+#pragma warning disable IDE0090 // Use 'new(...)'
         TypedKey<AnimeResult> GetKey(string link)
             => new TypedKey<AnimeResult>($"anime2:{link}");
-        
+#pragma warning restore IDE0090 // Use 'new(...)'
+
         try
         {
             var suffix = Uri.EscapeDataString(query.Replace("/", " ", StringComparison.InvariantCulture));
-            var link = $"https://aniapi.Ellie.bot/anime/{suffix}";
+            var link = $"https://aniapi.nadeko.bot/anime/{suffix}";
             link = link.ToLowerInvariant();
             var result = await _cache.GetAsync(GetKey(link));
             if (!result.TryPickT0(out var data, out _))
@@ -49,13 +51,15 @@ public class AnimeSearchService : IEService
     {
         if (string.IsNullOrWhiteSpace(query))
             throw new ArgumentNullException(nameof(query));
-        
+
+#pragma warning disable IDE0090 // Use 'new(...)'
         TypedKey<MangaResult> GetKey(string link)
             => new TypedKey<MangaResult>($"manga2:{link}");
-        
+#pragma warning restore IDE0090 // Use 'new(...)'
+
         try
         {
-            var link = "https://aniapi.Ellie.bot/manga/"
+            var link = "https://aniapi.nadeko.bot/manga/"
                        + Uri.EscapeDataString(query.Replace("/", " ", StringComparison.InvariantCulture));
             link = link.ToLowerInvariant();
             

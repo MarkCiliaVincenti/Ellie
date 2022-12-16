@@ -131,7 +131,7 @@ public class CryptoService : IEService
         await _getCryptoLock.WaitAsync();
         try
         {
-            var data = await _cache.GetOrAddAsync(new("Ellie:crypto_data"),
+            var data = await _cache.GetOrAddAsync(new("nadeko:crypto_data"),
                 async () =>
                 {
                     try
