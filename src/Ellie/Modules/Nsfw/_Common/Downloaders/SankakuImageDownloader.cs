@@ -1,6 +1,6 @@
 #nullable disable
 using System.Text.Json;
-using Ellie.Common;
+using Ellise.Common;
 
 namespace Ellie.Modules.Nsfw.Common;
 
