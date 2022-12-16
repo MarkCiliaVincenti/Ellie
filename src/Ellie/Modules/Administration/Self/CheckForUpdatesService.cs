@@ -59,7 +59,7 @@ public sealed class CheckForUpdatesService : IEService, IReadyExecutor
                     UpdateLastKnownVersion(latestVersion);
                     
                     // pull changelog
-                    var changelog = await http.GetStringAsync("https://gitlab.com/Kwoth/nadekobot/-/raw/v4/CHANGELOG.md");
+                    var changelog = await http.GetStringAsync("https://github.com/Emotions-stuff/Ellie/blob/main/CHANGELOG.md");
 
                     var thisVersionChangelog = GetVersionChangelog(latestVersion, changelog);
 
@@ -80,9 +80,9 @@ public sealed class CheckForUpdatesService : IEService, IReadyExecutor
 
                             var eb = _ebs.Create()
                                 .WithOkColor()
-                                .WithAuthor($"NadekoBot v{latestVersion} Released!")
+                                .WithAuthor($"Ellie v{latestVersion} Released!")
                                 .WithTitle("Changelog")
-                                .WithUrl("https://gitlab.com/Kwoth/nadekobot/-/blob/v4/CHANGELOG.md")
+                                .WithUrl("https://github.com/Emotions-stuff/Ellie/blob/main/CHANGELOG.md")
                                 .WithDescription(thisVersionChangelog.TrimTo(4096))
                                 .WithFooter("You may disable these messages by typing '.conf bot checkforupdates false'");
 
