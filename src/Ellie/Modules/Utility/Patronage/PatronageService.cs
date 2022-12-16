@@ -772,7 +772,7 @@ public sealed class PatronageService
 
             var eb = _eb.Create()
                         .WithOkColor()
-                        .WithTitle("❤️ Thank you for supporting Ellie0! ❤️")
+                        .WithTitle("❤️ Thank you for supporting Ellie! ❤️")
                         .WithDescription(
                             "Your donation has been processed and you will receive the rewards shortly.\n"
                             + "You can visit <https://www.patreon.com/join/emotionchild> to see rewards for your tier. 🎉")
@@ -787,7 +787,7 @@ public sealed class PatronageService
 *- You can use the `.patron` command in this chat to check your current quota usage for the Patron-only commands*
 *- **ALL** of the servers that you **own** will enjoy your Patron benefits.*
 *- You can use any of the commands available in your tier on any server (assuming you have sufficient permissions to run those commands)*
-*- Any user in any of your servers can use Patron-only commands, but they will spend **your quota**, which is why it's recommended to use Ellie's command cooldown system ('h 'cmdcd) or permission system to limit the command usage for your server members.*
+*- Any user in any of your servers can use Patron-only commands, but they will spend **your quota**, which is why it's recommended to use Ellie's command cooldown system (.h .cmdcd) or permission system to limit the command usage for your server members.*
 *- Permission guide can be found here if you're not familiar with it: <https://docs.elliebot.net/v4/permissions-system/>*",
                             isInline: false)
                         .WithFooter($"platform id: {patron.UniquePlatformUserId}");

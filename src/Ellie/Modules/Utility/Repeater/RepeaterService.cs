@@ -2,7 +2,7 @@
 using LinqToDB.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Ellie.Common.ModuleBehaviors;
-using Ellie.Services.Database.Models;
+using Ellie.Services.Database.Models;   
 
 namespace Ellie.Modules.Utility.Services;
 
