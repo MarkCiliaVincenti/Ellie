@@ -19,6 +19,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="data\pokemon\name-id_map.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AngleSharp" Version="0.17.1">
       <PrivateAssets>all</PrivateAssets>
       <Publish>True</Publish>
@@ -102,11 +106,15 @@
     <ProjectReference Include="..\Ellise.Common\Ellise.Common.csproj" />
     <ProjectReference Include="..\Ellie.Econ\Ellie.Econ.csproj" />
     <ProjectReference Include="..\Ellie.Marmalade\Ellie.Marmalade.csproj" />
-    <ProjectReference Include="..\Ellie.Generators\Ellie.Generators.csproj" />
+    <ProjectReference Include="..\Ellie.Generators\Ellie.Generators.csproj" OutputItemType="Analyzer" />
   </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="data\strings\responses\responses.en-US.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="data\pokemon\name-id_map.json" />
   </ItemGroup>
   <ItemGroup>
     <Protobuf Include="..\Ellie.Coordinator\Protos\coordinator.proto" GrpcServices="Client">

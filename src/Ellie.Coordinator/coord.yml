@@ -1,4 +1,4 @@
-# total number of shards
+﻿# total number of shards
 TotalShards: 3
 # How often do shards ping their state back to the coordinator
 RecheckIntervalMs: 5000

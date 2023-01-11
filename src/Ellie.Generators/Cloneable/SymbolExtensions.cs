@@ -1,4 +1,4 @@
-// Code temporarily yeeted from
+﻿// Code temporarily yeeted from
 // https://github.com/mostmand/Cloneable/blob/master/Cloneable/CloneableGenerator.cs
 // because of NRT issue
 using System.Collections.Generic;
