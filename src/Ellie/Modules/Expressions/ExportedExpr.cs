@@ -2,7 +2,7 @@
 using Ellise.Common;
 using Ellie.Services.Database.Models;
 
-namespace Ellie.Modules.NadekoExpressions;
+namespace Ellie.Modules.EllieExpressions;
 
 public class ExportedExpr
 {
