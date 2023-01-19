@@ -57,7 +57,7 @@ public sealed class Connect4Game : IDisposable
     private readonly SemaphoreSlim _locker = new(1, 1);
     private readonly Options _options;
     private readonly ICurrencyService _cs;
-    private readonly NadekoRandom _rng;
+    private readonly EllieRandom _rng;
 
     private Timer playerTimeoutTimer;
 
@@ -385,7 +385,7 @@ public sealed class Connect4Game : IDisposable
     }
 
 
-    public class Options : INadekoCommandOptions
+    public class Options : IEllieCommandOptions
     {
         [Option('t',
             "turn-timer",
