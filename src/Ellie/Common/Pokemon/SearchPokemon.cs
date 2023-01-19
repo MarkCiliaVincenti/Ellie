@@ -8,6 +8,8 @@ public class SearchPokemon
 {
     [JsonPropertyName("num")]
     public int Id { get; set; }
+
+    public string Species { get; set; }
     public string[] Types { get; set; }
     public GenderRatioClass GenderRatio { get; set; }
     public BaseStatsClass BaseStats { get; set; }
