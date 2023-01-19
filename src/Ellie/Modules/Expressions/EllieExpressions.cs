@@ -347,7 +347,7 @@ public partial class EllieExpressions : EllieModule<EllieExpressionsService>
     }
 
     [Cmd]
-#if GLOBAL_NADEKO
+#if GLOBAL_ELLIE
     [OwnerOnly]
 #endif
     public async Task ExprsImport([Leftover] string input = null)

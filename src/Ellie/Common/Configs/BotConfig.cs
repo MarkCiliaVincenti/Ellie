@@ -109,7 +109,7 @@ See RotatingStatuses submodule in Administration.")]
       ""inline"": false
     },
     {
-      ""name"": ""Nadeko Support Server"",
+      ""name"": ""Ellie Support Server"",
       ""value"": ""https://discord.elliebot.net/ "",
       ""inline"": true
     }

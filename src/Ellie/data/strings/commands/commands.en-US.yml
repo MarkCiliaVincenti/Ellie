@@ -1,4 +1,4 @@
-﻿h:
+h:
   desc: "Either shows a help for a single command, or DMs you help link if no parameters are specified."
   args:
     - "{0}cmds"

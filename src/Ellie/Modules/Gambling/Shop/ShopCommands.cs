@@ -165,7 +165,7 @@ public partial class Gambling
                     return;
                 }
 
-                var item = entry.Items.ToArray()[new NadekoRandom().Next(0, entry.Items.Count)];
+                var item = entry.Items.ToArray()[new EllieRandom().Next(0, entry.Items.Count)];
 
                 if (await _cs.RemoveAsync(ctx.User.Id, entry.Price, new("shop", "buy", entry.Type.ToString())))
                 {

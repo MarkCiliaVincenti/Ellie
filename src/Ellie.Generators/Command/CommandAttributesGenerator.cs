@@ -132,8 +132,8 @@
 //         
 //         foreach (var method in model.Methods)
 //         {
-//             tw.WriteLine("[NadekoCommand]");
-//             tw.WriteLine("[NadekoDescription]");
+//             tw.WriteLine("[EllieCommand]");
+//             tw.WriteLine("[EllieDescription]");
 //             tw.WriteLine("[Aliases]");
 //             tw.WriteLine($"public partial {method.ReturnType} {method.MethodName}({string.Join(", ", method.Params)});");
 //         }

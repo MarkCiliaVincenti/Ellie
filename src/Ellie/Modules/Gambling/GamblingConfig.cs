@@ -46,7 +46,7 @@ Set 0 for unlimited")]
     public WaifuConfig Waifu { get; set; }
 
     [Comment(@"Amount of currency selfhosters will get PER pledged dollar CENT.
-1 = 100 currency per $. Used almost exclusively on public nadeko.")]
+1 = 100 currency per $. Used almost exclusively on public ellie.")]
     public decimal PatreonCurrencyPerCent { get; set; } = 1;
 
     [Comment(@"Currency reward per vote.
@@ -73,10 +73,10 @@ This will work only if you've set up VotesApi and correct credentials for topgg 
 public class CurrencyConfig
 {
     [Comment(@"What is the emoji/character which represents the currency")]
-    public string Sign { get; set; } = "🌸";
+    public string Sign { get; set; } = "💵";
 
     [Comment(@"What is the name of the currency")]
-    public string Name { get; set; } = "Nadeko Flower";
+    public string Name { get; set; } = "Ellie Money";
 
     [Comment(@"For how long (in days) will the transactions be kept in the database (curtrs)
 Set 0 to disable cleanup (keep transactions forever)")]

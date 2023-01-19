@@ -84,9 +84,9 @@ public class ChatterBotService : IExecOnMessage
 
         cleverbot = lazyCleverbot.Value;
 
-        var nadekoId = _client.CurrentUser.Id;
-        var normalMention = $"<@{nadekoId}> ";
-        var nickMention = $"<@!{nadekoId}> ";
+        var ellieId = _client.CurrentUser.Id;
+        var normalMention = $"<@{ellieId}> ";
+        var nickMention = $"<@!{ellieId}> ";
         string message;
         if (msg.Content.StartsWith(normalMention, StringComparison.InvariantCulture))
             message = msg.Content[normalMention.Length..].Trim();
