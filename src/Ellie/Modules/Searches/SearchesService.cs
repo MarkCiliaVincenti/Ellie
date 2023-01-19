@@ -128,7 +128,7 @@ public class SearchesService : IEService
     {
         query = query.Trim().ToLowerInvariant();
 
-        return await _c.GetOrAddAsync(new($"nadeko_weather_{query}"),
+        return await _c.GetOrAddAsync(new($"ellie_weather_{query}"),
             async () => await GetWeatherDataFactory(query),
             TimeSpan.FromHours(3));
     }
@@ -158,7 +158,7 @@ public class SearchesService : IEService
     public Task<((string Address, DateTime Time, string TimeZoneName), TimeErrors?)> GetTimeDataAsync(string arg)
         => GetTimeDataFactory(arg);
 
-    //return _cache.GetOrAddCachedDataAsync($"nadeko_time_{arg}",
+    //return _cache.GetOrAddCachedDataAsync($"ellie_time_{arg}",
     //    GetTimeDataFactory,
     //    arg,
     //    TimeSpan.FromMinutes(1));
