@@ -1051,5 +1051,10 @@
   "patron_insuff_tier": "Your Patron Tier insufficient to perform this action.",
   "xpshop_already_owned": "You already own this item.",
   "xpshop_item_not_found": "An item with that key doesn't exist.",
-  "xpshop_website": "You can see the list of all Xp Shop items here: <https://beta.elliebot.net>"
+  "xpshop_website": "You can see the list of all Xp Shop items here: <https://beta.elliebot.net>",
+  "sticker_invalid_size": "Stickers must be exactly 300x300 pixels.",
+  "sticker_error": "You must either send a sticker along with this command, or upload a 300x300 .png or .apng image.",
+  "sticker_missing_name": "Please specify a name for the sticker.",
+  "thread_deleted": "Thread Deleted",
+  "thread_created": "Thread Created"
 }

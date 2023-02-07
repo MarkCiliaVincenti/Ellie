@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 namespace Ellie.Services.Database.Models;
 
 public class AutoCommand : DbEntity

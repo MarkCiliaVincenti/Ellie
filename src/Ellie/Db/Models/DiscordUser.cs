@@ -1,8 +1,7 @@
-#nullable disable
+﻿#nullable disable
 using Ellie.Services.Database.Models;
 
 namespace Ellie.Db.Models;
-
 
 // FUTURE remove LastLevelUp from here and UserXpStats
 public class DiscordUser : DbEntity
