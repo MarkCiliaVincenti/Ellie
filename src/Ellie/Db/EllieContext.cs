@@ -58,7 +58,7 @@ public abstract class EllieContext : DbContext
     public DbSet<PatronUser> Patrons { get; set; }
 
     public DbSet<PatronQuota> PatronQuotas { get; set; }
-    
+
     public DbSet<StreamOnlineMessage> StreamOnlineMessages { get; set; }
 
 
@@ -123,10 +123,10 @@ public abstract class EllieContext : DbContext
         var selfassignableRolesEntity = modelBuilder.Entity<SelfAssignedRole>();
 
         selfassignableRolesEntity.HasIndex(s => new
-                                 {
-                                     s.GuildId,
-                                     s.RoleId
-                                 })
+        {
+            s.GuildId,
+            s.RoleId
+        })
                                  .IsUnique();
 
         selfassignableRolesEntity.Property(x => x.Group).HasDefaultValue(0);
@@ -199,10 +199,10 @@ public abstract class EllieContext : DbContext
 
         var xps = modelBuilder.Entity<UserXpStats>();
         xps.HasIndex(x => new
-           {
-               x.UserId,
-               x.GuildId
-           })
+        {
+            x.UserId,
+            x.GuildId
+        })
            .IsUnique();
 
         xps.HasIndex(x => x.UserId);
@@ -365,10 +365,10 @@ public abstract class EllieContext : DbContext
                .IsUnique(false);
 
             rr2.HasIndex(x => new
-               {
-                   x.MessageId,
-                   x.Emote
-               })
+            {
+                x.MessageId,
+                x.Emote
+            })
                .IsUnique();
         });
 
@@ -447,7 +447,7 @@ public abstract class EllieContext : DbContext
         });
 
         #endregion
- 
+
         #region Xp Item Shop
 
         modelBuilder.Entity<XpShopOwnedItem>(
@@ -455,16 +455,16 @@ public abstract class EllieContext : DbContext
             {
                 // user can own only one of each item
                 x.HasIndex(model => new
-                    {
-                        model.UserId,
-                        model.ItemType,
-                        model.ItemKey
-                    })
+                {
+                    model.UserId,
+                    model.ItemType,
+                    model.ItemKey
+                })
                     .IsUnique();
             });
 
         #endregion
-        
+
         #region AutoPublish
 
         modelBuilder.Entity<AutoPublishChannel>(apc => apc
@@ -472,7 +472,7 @@ public abstract class EllieContext : DbContext
             .IsUnique());
 
         #endregion
-        
+
         #region GamblingStats
 
         modelBuilder.Entity<GamblingStats>(gs => gs

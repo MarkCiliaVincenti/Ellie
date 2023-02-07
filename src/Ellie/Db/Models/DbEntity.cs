@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using System.ComponentModel.DataAnnotations;
 
 namespace Ellie.Services.Database.Models;

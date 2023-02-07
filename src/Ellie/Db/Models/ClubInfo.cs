@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using Ellie.Services.Database.Models;
 using System.ComponentModel.DataAnnotations;
 
@@ -10,7 +10,7 @@ public class ClubInfo : DbEntity
     public string Name { get; set; }
     public string Description { get; set; }
     public string ImageUrl { get; set; } = string.Empty;
-    
+
     public int Xp { get; set; } = 0;
     public int? OwnerId { get; set; }
     public DiscordUser Owner { get; set; }

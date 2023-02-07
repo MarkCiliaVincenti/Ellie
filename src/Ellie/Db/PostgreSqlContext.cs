@@ -17,7 +17,7 @@ public sealed class PostgreSqlContext : EllieContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-        
+
         base.OnConfiguring(optionsBuilder);
         optionsBuilder
             .UseLowerCaseNamingConvention()
