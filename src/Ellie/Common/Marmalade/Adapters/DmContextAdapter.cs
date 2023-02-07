@@ -5,9 +5,10 @@ public sealed class DmContextAdapter : DmContext
     public override IMarmaladeStrings Strings { get; }
     public override IDMChannel Channel { get; }
     public override IUserMessage Message { get; }
+    public override ISelfUser Bot { get; }
     public override IUser User
         => Message.Author;
-    
+
     private readonly IServiceProvider _services;
     private readonly Lazy<IEmbedBuilderService> _ebs;
     private readonly Lazy<IBotStrings> _botStrings;
@@ -26,8 +27,9 @@ public sealed class DmContextAdapter : DmContext
 
         Channel = ch;
         Message = ctx.Message;
-        
-        
+        Bot = ctx.Client.CurrentUser;
+
+
         _ebs = new(_services.GetRequiredService<IEmbedBuilderService>());
         _botStrings = new(_services.GetRequiredService<IBotStrings>);
         _localization = new(_services.GetRequiredService<ILocalization>());
@@ -42,7 +44,7 @@ public sealed class DmContextAdapter : DmContext
         var output = Strings.GetText(key, cultureInfo, args ?? Array.Empty<object>());
         if (!string.IsNullOrWhiteSpace(output))
             return output;
-        
+
         return _botStrings.Value.GetText(key, cultureInfo, args);
     }
 }

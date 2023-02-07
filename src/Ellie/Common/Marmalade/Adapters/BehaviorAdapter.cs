@@ -1,4 +1,4 @@
-﻿#nullable enable
+#nullable enable
 
 [DontAddToIocContainer]
 public sealed class BehaviorAdapter : ICustomBehavior
@@ -49,7 +49,7 @@ public sealed class BehaviorAdapter : ICustomBehavior
     {
         if (!_canaryWr.TryGetTarget(out var canary))
             return null;
-        
+
         return await canary.ExecInputTransformAsync(guild, channel, user, input);
     }
 
@@ -65,7 +65,7 @@ public sealed class BehaviorAdapter : ICustomBehavior
     {
         if (!_canaryWr.TryGetTarget(out var canary))
             return;
-        
+
         await canary.ExecPostCommandAsync(ContextAdapterFactory.CreateNew(context, _strings, _services),
             moduleName,
             commandName);

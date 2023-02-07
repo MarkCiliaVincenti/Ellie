@@ -1,4 +1,4 @@
-﻿namespace Ellie.Common.ModuleBehaviors;
+namespace Ellie.Common.ModuleBehaviors;
 
 /// <summary>
 ///     All services which need to execute something after

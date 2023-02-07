@@ -12,8 +12,8 @@ public sealed class GuildTypeReader : EllieTypeReader<IGuild>
     {
         input = input.Trim().ToUpperInvariant();
         var guilds = _client.Guilds;
-        IGuild guild = guilds.FirstOrDefault(g => g.Id.ToString().Trim().ToUpperInvariant() == input) // by id
-                       ?? guilds.FirstOrDefault(g => g.Name.Trim().ToUpperInvariant() == input); // by name
+        IGuild guild = guilds.FirstOrDefault(g => g.Id.ToString().Trim().ToUpperInvariant() == input) //by id
+                       ?? guilds.FirstOrDefault(g => g.Name.Trim().ToUpperInvariant() == input); //by name
 
         if (guild is not null)
             return new(TypeReaderResult.FromSuccess(guild));

@@ -7,14 +7,15 @@ public sealed class GuildContextAdapter : GuildContext
     private readonly Lazy<IEmbedBuilderService> _ebs;
     private readonly Lazy<IBotStrings> _botStrings;
     private readonly Lazy<ILocalization> _localization;
-    
+
     public override IMarmaladeStrings Strings { get; }
     public override IGuild Guild { get; }
     public override ITextChannel Channel { get; }
+    public override ISelfUser Bot { get; }
     public override IUserMessage Message
         => _ctx.Message;
 
-    public override IGuildUser User { get; } 
+    public override IGuildUser User { get; }
 
     public override IEmbedBuilder Embed()
         => _ebs.Value.Create();
@@ -28,6 +29,7 @@ public sealed class GuildContextAdapter : GuildContext
 
         Strings = strings;
         User = (IGuildUser)ctx.User;
+        Bot = ctx.Client.CurrentUser;
 
         _services = services;
         _ebs = new(_services.GetRequiredService<IEmbedBuilderService>());
@@ -40,12 +42,12 @@ public sealed class GuildContextAdapter : GuildContext
     public override string GetText(string key, object[]? args = null)
     {
         args ??= Array.Empty<object>();
-        
+
         var cultureInfo = _localization.Value.GetCultureInfo(_ctx.Guild.Id);
         var output = Strings.GetText(key, cultureInfo, args);
         if (!string.IsNullOrWhiteSpace(output))
             return output;
-        
+
         return _botStrings.Value.GetText(key, cultureInfo, args);
     }
 }

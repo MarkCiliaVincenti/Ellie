@@ -1,4 +1,4 @@
-﻿namespace Ellie.Common;
+namespace Ellie.Common;
 
 public interface IPubSub
 {

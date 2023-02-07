@@ -1,4 +1,4 @@
-﻿#nullable enable
+#nullable enable
 using Cloneable;
 using Ellie.Common.Yml;
 
@@ -9,7 +9,7 @@ public sealed partial class MarmaladeConfig : ICloneable<MarmaladeConfig>
 {
     [Comment(@"DO NOT CHANGE")]
     public int Version { get; set; } = 1;
-    
+
     [Comment("List of marmalades automatically loaded at startup")]
     public List<string>? Loaded { get; set; }
 
