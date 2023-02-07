@@ -22,8 +22,6 @@ public sealed class MarmaladeConfigService : ConfigServiceBase<MarmaladeConfig>,
 
     public void AddLoadedMarmalade(string name)
     {
-        name = name.Trim().ToLowerInvariant();
-
         ModifyConfig(conf =>
         {
             if (conf.Loaded is null)
@@ -36,8 +34,6 @@ public sealed class MarmaladeConfigService : ConfigServiceBase<MarmaladeConfig>,
 
     public void RemoveLoadedMarmalade(string name)
     {
-        name = name.Trim().ToLowerInvariant();
-
         ModifyConfig(conf =>
         {
             if (conf.Loaded is null)

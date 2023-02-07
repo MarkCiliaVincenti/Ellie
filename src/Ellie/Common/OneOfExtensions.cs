@@ -1,4 +1,4 @@
-﻿using OneOf.Types;
+using OneOf.Types;
 using OneOf;
 
 namespace Ellie.Common;

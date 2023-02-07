@@ -16,8 +16,8 @@ public interface IMarmaladeLoaderService
 public sealed record MarmaladeStats(string Name,
     string? Description,
     IReadOnlyCollection<CanaryStats> Canaries);
-    
-public sealed record CanaryStats(string Name, 
+
+public sealed record CanaryStats(string Name,
     IReadOnlyCollection<CanaryCommandStats> Commands);
 
 public sealed record CanaryCommandStats(string Name);

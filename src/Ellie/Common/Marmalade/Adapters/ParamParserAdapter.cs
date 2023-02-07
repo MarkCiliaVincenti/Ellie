@@ -21,12 +21,12 @@
         var marmaladeContext = ContextAdapterFactory.CreateNew(context,
             _strings,
             _services);
-        
+
         var result = await _parser.TryParseAsync(marmaladeContext, input);
-        
-        if(result.IsSuccess)
+
+        if (result.IsSuccess)
             return Discord.Commands.TypeReaderResult.FromSuccess(result.Data);
-        
+
         return Discord.Commands.TypeReaderResult.FromError(CommandError.Unsuccessful, "Invalid input");
     }
 }

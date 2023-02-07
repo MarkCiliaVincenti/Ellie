@@ -94,7 +94,7 @@ See RotatingStatuses submodule in Administration.")]
   ""title"": ""To invite me to your server, use this link"",
   ""description"": ""https://discordapp.com/oauth2/authorize?client_id={0}&scope=bot&permissions=66186303"",
   ""color"": 53380,
-  ""thumbnail"": ""https://i.imgur.com/nKYyqMK.png"",
+  ""thumbnail"": ""http://elliecdn.breadcraft.xyz/Ellie.png"",
   ""fields"": [
     {
       ""name"": ""Useful help commands"",

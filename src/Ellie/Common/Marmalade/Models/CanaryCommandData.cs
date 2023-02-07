@@ -11,6 +11,7 @@ public sealed class CanaryCommandData
         MethodInfo methodInfo,
         Canary module,
         FilterAttribute[] filters,
+        MarmaladePermAttribute[] userAndBotPerms,
         CommandContextType contextType,
         IReadOnlyList<Type> injectedParams,
         IReadOnlyList<ParamData> parameters,
@@ -21,12 +22,15 @@ public sealed class CanaryCommandData
         MethodInfo = methodInfo;
         Module = module;
         Filters = filters;
+        UserAndBotPerms = userAndBotPerms;
         ContextType = contextType;
         InjectedParams = injectedParams;
         Parameters = parameters;
         Priority = priority;
         OptionalStrings = strings;
     }
+
+    public MarmaladePermAttribute[] UserAndBotPerms { get; set; }
 
     public CommandStrings OptionalStrings { get; set; }
 
