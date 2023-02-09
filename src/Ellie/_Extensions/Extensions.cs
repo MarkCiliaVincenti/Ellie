@@ -1,4 +1,4 @@
-using Humanizer.Localisation;
+﻿using Humanizer.Localisation;
 using Ellie.Marmalade;
 using System.Diagnostics;
 using System.Globalization;
@@ -96,7 +96,7 @@ public static class Extensions
         {
             description = strings.GetCommandStrings(cmd.Summary, culture).Desc;
         }
-        
+
         return string.Format(description, prefix);
     }
 
@@ -121,7 +121,7 @@ public static class Extensions
         {
             args = strings.GetCommandStrings(cmd.Summary, culture).Args;
         }
-        
+
         return args.Map(arg => GetFullUsage(cmd.Aliases.First(), arg, prefix));
     }
 
@@ -152,7 +152,8 @@ public static class Extensions
             if (logService is not null)
                 logService.AddDeleteIgnore(msg.Id);
 
-            try { await msg.DeleteAsync(); }
+            try
+            { await msg.DeleteAsync(); }
             catch { }
         });
         return msg;

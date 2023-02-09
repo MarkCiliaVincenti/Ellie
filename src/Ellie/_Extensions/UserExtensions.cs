@@ -1,4 +1,4 @@
-using Ellie.Db.Models;
+﻿using Ellie.Db.Models;
 
 namespace Ellie.Extensions;
 

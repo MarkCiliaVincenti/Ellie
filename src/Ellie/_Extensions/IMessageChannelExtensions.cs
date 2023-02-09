@@ -1,4 +1,4 @@
-using Ellise.Common;
+﻿using Ellise.Common;
 using Ellie.Modules.Xp;
 
 namespace Ellie.Extensions;
@@ -23,11 +23,7 @@ public static class MessageChannelExtensions
             embeds: embeds is null
                 ? null
                 : embeds as Embed[] ?? embeds.ToArray(),
-            components: components,
-            options: new()
-            {
-                RetryMode = RetryMode.AlwaysRetry
-            });
+            components: components);
     }
 
     public static async Task<IUserMessage> SendAsync(
@@ -43,7 +39,7 @@ public static class MessageChannelExtensions
             embeds,
             sanitizeAll,
             inter?.CreateComponent());
-        
+
         if (inter is not null)
             await inter.RunAsync(msg);
 
@@ -77,7 +73,7 @@ public static class MessageChannelExtensions
             inter,
             embed: embed?.Build(),
             embeds: embeds?.Map(x => x.Build()));
-    
+
     public static Task<IUserMessage> SendAsync(
         this IMessageChannel ch,
         IEmbedBuilderService eb,
@@ -97,14 +93,14 @@ public static class MessageChannelExtensions
 
         return ch.EmbedAsync(builder, inter: inter);
     }
-    
+
     // regular send overloads
     public static Task<IUserMessage> SendErrorAsync(this IMessageChannel ch, IEmbedBuilderService eb, string text)
         => ch.SendAsync(eb, text, MessageType.Error);
-    
+
     public static Task<IUserMessage> SendConfirmAsync(this IMessageChannel ch, IEmbedBuilderService eb, string text)
         => ch.SendAsync(eb, text, MessageType.Ok);
-    
+
     public static Task<IUserMessage> SendAsync(
         this IMessageChannel ch,
         IEmbedBuilderService eb,
@@ -131,12 +127,12 @@ public static class MessageChannelExtensions
             MessageType.Pending => embed.WithPendingColor(),
             _ => throw new ArgumentOutOfRangeException(nameof(type))
         };
-        
+
         return ch.EmbedAsync(embed);
     }
 
     // embed title and optional footer overloads
-    
+
     public static Task<IUserMessage> SendConfirmAsync(
         this IMessageChannel ch,
         IEmbedBuilderService eb,
@@ -145,7 +141,7 @@ public static class MessageChannelExtensions
         string? url = null,
         string? footer = null)
         => ch.SendAsync(eb, MessageType.Ok, title, text, url, footer);
-    
+
     public static Task<IUserMessage> SendErrorAsync(
         this IMessageChannel ch,
         IEmbedBuilderService eb,
@@ -154,27 +150,6 @@ public static class MessageChannelExtensions
         string? url = null,
         string? footer = null)
         => ch.SendAsync(eb, MessageType.Error, title, text, url, footer);
-
-    // weird stuff
-    
-    public static Task<IUserMessage> SendTableAsync<T>(
-        this IMessageChannel ch,
-        string seed,
-        IEnumerable<T> items,
-        Func<T, string> howToPrint,
-        int columns = 3)
-        => ch.SendMessageAsync($@"{seed}```css
-{items.Chunk(columns)
-      .Select(ig => string.Concat(ig.Select(howToPrint)))
-      .Join("\n")}
-```");
-
-    public static Task<IUserMessage> SendTableAsync<T>(
-        this IMessageChannel ch,
-        IEnumerable<T> items,
-        Func<T, string> howToPrint,
-        int columns = 3)
-        => ch.SendTableAsync("", items, howToPrint, columns);
 
     public static Task SendPaginatedConfirmAsync(
         this ICommandContext ctx,
@@ -191,7 +166,7 @@ public static class MessageChannelExtensions
 
     private const string BUTTON_LEFT = "BUTTON_LEFT";
     private const string BUTTON_RIGHT = "BUTTON_RIGHT";
-    
+
     private static readonly IEmote _arrowLeft = Emote.Parse("<:x:969658061805465651>");
     private static readonly IEmote _arrowRight = Emote.Parse("<:x:969658062220701746>");
 
@@ -208,7 +183,7 @@ public static class MessageChannelExtensions
             totalElements,
             itemsPerPage,
             addPaginatedFooter);
-    
+
     public static async Task SendPaginatedConfirmAsync<T>(
         this ICommandContext ctx,
         int currentPage,
@@ -219,7 +194,7 @@ public static class MessageChannelExtensions
         bool addPaginatedFooter = true)
     {
         var lastPage = (totalElements - 1) / itemsPerPage;
-        
+
         var embed = await pageFunc(currentPage);
 
         if (addPaginatedFooter)
@@ -229,7 +204,7 @@ public static class MessageChannelExtensions
         async Task<ComponentBuilder> GetComponentBuilder()
         {
             var cb = new ComponentBuilder();
-                
+
             cb.WithButton(new ButtonBuilder()
                 .WithStyle(ButtonStyle.Primary)
                 .WithCustomId(BUTTON_LEFT)
@@ -259,7 +234,7 @@ public static class MessageChannelExtensions
             var toSend = await pageFunc(currentPage);
             if (addPaginatedFooter)
                 toSend.AddPaginatedFooter(currentPage, lastPage);
-            
+
             var component = (await GetComponentBuilder()).Build();
 
             await smc.ModifyOriginalResponseAsync(x =>
@@ -268,7 +243,7 @@ public static class MessageChannelExtensions
                 x.Components = component;
             });
         }
-        
+
         var component = (await GetComponentBuilder()).Build();
         var msg = await ctx.Channel.SendAsync(null, embed: embed.Build(), components: component);
 
@@ -298,7 +273,7 @@ public static class MessageChannelExtensions
                 {
                     if (currentPage >= lastPage)
                         return;
-                    
+
                     ++currentPage;
                     _ = UpdatePageAsync(smc);
                 }
@@ -324,15 +299,13 @@ public static class MessageChannelExtensions
         await Task.Delay(30_000);
 
         client.InteractionCreated -= OnInteractionAsync;
-        
+
         await msg.ModifyAsync(mp => mp.Components = new ComponentBuilder().Build());
     }
 
-#pragma warning disable IDE0090 // Use 'new(...)'
     private static readonly Emoji _okEmoji = new Emoji("✅");
     private static readonly Emoji _warnEmoji = new Emoji("⚠️");
     private static readonly Emoji _errorEmoji = new Emoji("❌");
-#pragma warning restore IDE0090 // Use 'new(...)'
 
     public static Task ReactAsync(this ICommandContext ctx, MessageType type)
     {
