@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using Ellie.Common.Configs;
 
 namespace Ellie.Services;

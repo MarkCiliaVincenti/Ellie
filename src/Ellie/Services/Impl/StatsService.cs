@@ -7,7 +7,7 @@ namespace Ellie.Services;
 
 public sealed class StatsService : IStatsService, IReadyExecutor, IEService
 {
-    public const string BOT_VERSION = "4.3.10";
+    public const string BOT_VERSION = "4.3.12";
 
     public string Author
         => "Emotion#6522";

@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using StackExchange.Redis;
 using System.Web;
 using Ellise.Common;

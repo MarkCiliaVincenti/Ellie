@@ -1,4 +1,4 @@
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Ellie.Modules.Music;
 using Ellie.Modules.Music.Resolvers;
 using Ellie.Modules.Music.Services;

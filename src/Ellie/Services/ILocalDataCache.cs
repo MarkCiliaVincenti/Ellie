@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using Ellie.Common.Pokemon;
 using Ellie.Modules.Games.Common.Trivia;
 

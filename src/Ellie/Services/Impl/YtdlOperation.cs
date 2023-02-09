@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;

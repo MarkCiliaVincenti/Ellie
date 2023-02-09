@@ -24,7 +24,7 @@ public sealed class TriviaGame
     public TriviaQuestion? CurrentQuestion { get; set; }
 
 
-    private readonly ConcurrentDictionary<ulong, int> _users = new ();
+    private readonly ConcurrentDictionary<ulong, int> _users = new();
 
     private readonly Channel<(TriviaUser User, string Input)> _inputs
         = Channel.CreateUnbounded<(TriviaUser, string)>(new UnboundedChannelOptions
@@ -121,7 +121,7 @@ public sealed class TriviaGame
                     if (task == halfGuessTimerTask)
                     {
                         readCancel.Cancel();
-                        
+
                         // if hint is already sent, means time expired
                         // break (end the round)
                         if (hintSent)
@@ -131,9 +131,12 @@ public sealed class TriviaGame
                         hintSent = true;
                         // start a new countdown of the same length
                         halfGuessTimerTask = TimeOutFactory();
-                        // send a hint out
-                        await OnHint(this, question);
-                        
+                        if (!_opts.NoHint)
+                        {
+                            // send a hint out
+                            await OnHint(this, question);
+                        }
+
                         continue;
                     }
 
@@ -210,7 +213,7 @@ public sealed class TriviaGame
 
     public async Task TriggerQuestionAsync()
     {
-        if(CurrentQuestion is TriviaQuestion q)
+        if (CurrentQuestion is TriviaQuestion q)
             await OnQuestion(this, q);
     }
 }

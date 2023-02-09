@@ -1,4 +1,4 @@
-using Ellie.Common.Pokemon;
+﻿using Ellie.Common.Pokemon;
 using Ellie.Modules.Games.Common.Trivia;
 using System.Text.Json;
 using System.Text.Json.Serialization;

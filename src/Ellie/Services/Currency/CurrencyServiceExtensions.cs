@@ -9,7 +9,7 @@ public static class CurrencyServiceExtensions
         var wallet = await cs.GetWalletAsync(userId);
         return await wallet.GetBalance();
     }
-    
+
     // FUTURE should be a transaction
     public static async Task<bool> TransferAsync(
         this ICurrencyService cs,

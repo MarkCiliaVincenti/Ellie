@@ -49,15 +49,15 @@ public sealed class BotConfigService : ConfigServiceBase<BotConfig>
                                      .ToHashSet();
             });
         }
-        
+
         if (data.Version < 4)
             ModifyConfig(c =>
             {
                 c.Version = 4;
                 c.CheckForUpdates = true;
             });
-        
-        if(data.Version < 5)
+
+        if (data.Version < 5)
             ModifyConfig(c =>
             {
                 c.Version = 5;

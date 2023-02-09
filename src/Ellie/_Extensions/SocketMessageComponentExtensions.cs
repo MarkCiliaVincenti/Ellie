@@ -23,11 +23,7 @@ public static class SocketMessageComponentExtensions
                 ? null
                 : embeds as Embed[] ?? embeds.ToArray(),
             components: components,
-            ephemeral: ephemeral,
-            options: new()
-            {
-                RetryMode = RetryMode.AlwaysRetry
-            });
+            ephemeral: ephemeral);
     }
 
     public static Task RespondAsync(
@@ -62,7 +58,7 @@ public static class SocketMessageComponentExtensions
             embed: embed?.Build(),
             embeds: embeds?.Map(x => x.Build()),
             ephemeral: ephemeral);
-    
+
     public static Task RespondAsync(
         this SocketMessageComponent ch,
         IEmbedBuilderService eb,
@@ -83,7 +79,7 @@ public static class SocketMessageComponentExtensions
 
         return ch.EmbedAsync(builder, inter: inter, ephemeral: ephemeral);
     }
-    
+
     // embed title and optional footer overloads
 
     public static Task RespondErrorAsync(

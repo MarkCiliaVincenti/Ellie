@@ -1,4 +1,4 @@
-namespace Ellie.Extensions;
+﻿namespace Ellie.Extensions;
 
 public static class NumberExtensions
 {

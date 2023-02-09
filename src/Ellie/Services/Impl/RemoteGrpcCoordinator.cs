@@ -78,12 +78,12 @@ public class RemoteGrpcCoordinator : ICoordinator, IReadyExecutor
                 try
                 {
                     var reply = await _coordClient.HeartbeatAsync(new()
-                        {
-                            State = ToCoordConnState(_client.ConnectionState),
-                            GuildCount =
+                    {
+                        State = ToCoordConnState(_client.ConnectionState),
+                        GuildCount =
                                 _client.ConnectionState == ConnectionState.Connected ? _client.Guilds.Count : 0,
-                            ShardId = _client.ShardId
-                        },
+                        ShardId = _client.ShardId
+                    },
                         deadline: DateTime.UtcNow + TimeSpan.FromSeconds(10));
                     gracefulImminent = reply.GracefulImminent;
                 }

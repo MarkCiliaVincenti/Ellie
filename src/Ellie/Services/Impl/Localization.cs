@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using Ellie.Db;
 using Newtonsoft.Json;
 using System.Globalization;
