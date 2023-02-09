@@ -24,7 +24,12 @@ public abstract class AnyContext
     public abstract IUser User { get; }
 
     /// <summary>
-    /// Provides access to strings used by this medusa
+    /// Bot user
+    /// </summary>
+    public abstract ISelfUser Bot { get; }
+
+    /// <summary>
+    /// Provides access to strings used by this marmalade
     /// </summary>
     public abstract IMarmaladeStrings Strings { get; }
 

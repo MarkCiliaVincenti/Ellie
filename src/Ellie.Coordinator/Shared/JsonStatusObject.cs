@@ -1,4 +1,4 @@
-namespace Ellie.Coordinator
+﻿namespace Ellie.Coordinator
 {
     public class JsonStatusObject
     {

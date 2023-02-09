@@ -10,7 +10,7 @@ public static class MarmaladeExtensions
             embed: embed.Build(),
             options: new()
             {
-                RetryMode = RetryMode.AlwaysRetry
+                RetryMode = RetryMode.Retry502
             });
 
     // unlocalized
@@ -47,7 +47,7 @@ public static class MarmaladeExtensions
         => ctx.Message.AddReactionAsync(new Emoji("🤔"));
 
     public static Task<IUserMessage> ErrorLocalizedAsync(this AnyContext ctx, string key, params object[]? args)
-        => ctx.SendErrorAsync(ctx.GetText(key));
+        => ctx.SendErrorAsync(ctx.GetText(key, args));
 
     public static Task<IUserMessage> PendingLocalizedAsync(this AnyContext ctx, string key, params object[]? args)
         => ctx.SendPendingAsync(ctx.GetText(key, args));
@@ -56,11 +56,11 @@ public static class MarmaladeExtensions
         => ctx.SendConfirmAsync(ctx.GetText(key, args));
 
     public static Task<IUserMessage> ReplyErrorLocalizedAsync(this AnyContext ctx, string key, params object[]? args)
-        => ctx.SendErrorAsync($"{Format.Bold(ctx.User.ToString())} {ctx.GetText(key)}");
+        => ctx.SendErrorAsync($"{Format.Bold(ctx.User.ToString())} {ctx.GetText(key, args)}");
 
     public static Task<IUserMessage> ReplyPendingLocalizedAsync(this AnyContext ctx, string key, params object[]? args)
-        => ctx.SendPendingAsync($"{Format.Bold(ctx.User.ToString())} {ctx.GetText(key)}");
+        => ctx.SendPendingAsync($"{Format.Bold(ctx.User.ToString())} {ctx.GetText(key, args)}");
 
     public static Task<IUserMessage> ReplyConfirmLocalizedAsync(this AnyContext ctx, string key, params object[]? args)
-        => ctx.SendConfirmAsync($"{Format.Bold(ctx.User.ToString())} {ctx.GetText(key)}");
+        => ctx.SendConfirmAsync($"{Format.Bold(ctx.User.ToString())} {ctx.GetText(key, args)}");
 }
