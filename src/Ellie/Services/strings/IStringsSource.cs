@@ -1,4 +1,7 @@
-﻿/// <summary>
+﻿#nullable disable
+namespace Ellie.Services;
+
+/// <summary>
 ///     Basic interface used for classes implementing strings loading mechanism
 /// </summary>
 public interface IStringsSource

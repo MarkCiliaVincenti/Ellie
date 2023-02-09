@@ -152,17 +152,21 @@ public class HelpService : IExecNoCommand, IEService
                   .Any(x => x is OnlyPublicBotAttribute))
             toReturn.Add("Only Public Bot");
 
-        var userPerm = (UserPermAttribute)cmd.Preconditions.FirstOrDefault(ca => ca is UserPermAttribute);
+        var userPermString = cmd.Preconditions
+                                .Where(ca => ca is UserPermAttribute)
+                                .Cast<UserPermAttribute>()
+                                .Select(userPerm =>
+                                {
+                                    if (userPerm.ChannelPermission is { } cPerm)
+                                        return GetPreconditionString(cPerm);
 
-        var userPermString = string.Empty;
-        if (userPerm is not null)
-        {
-            if (userPerm.ChannelPermission is { } cPerm)
-                userPermString = GetPreconditionString(cPerm);
+                                    if (userPerm.GuildPermission is { } gPerm)
+                                        return GetPreconditionString(gPerm);
 
-            if (userPerm.GuildPermission is { } gPerm)
-                userPermString = GetPreconditionString(gPerm);
-        }
+                                    return string.Empty;
+                                })
+                                .Where(x => !string.IsNullOrWhiteSpace(x))
+                                .Join('\n');
 
         if (overrides is null)
         {

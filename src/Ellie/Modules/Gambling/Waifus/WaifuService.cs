@@ -242,7 +242,7 @@ public class WaifuService : IEService, IReadyExecutor
 
             remaining = await _cache.GetRatelimitAsync(GetAffinityKey(user.Id),
                 30.Minutes());
-            
+
             if (remaining is not null)
             {
             }
@@ -302,10 +302,10 @@ public class WaifuService : IEService, IReadyExecutor
 
     private static TypedKey<long> GetDivorceKey(ulong userId)
         => new($"waifu:divorce_cd:{userId}");
-    
+
     private static TypedKey<long> GetAffinityKey(ulong userId)
         => new($"waifu:affinity:{userId}");
-    
+
     public async Task<(WaifuInfo, DivorceResult, long, TimeSpan?)> DivorceWaifuAsync(IUser user, ulong targetId)
     {
         DivorceResult result;
@@ -414,24 +414,13 @@ public class WaifuService : IEService, IReadyExecutor
                 AffinityName = null,
                 ClaimCount = 0,
                 ClaimerName = null,
-                Claims = new(),
-                Fans = new(),
                 DivorceCount = 0,
                 FullName = null,
-                Items = new(),
                 Price = 1
             };
         }
 
         return wi;
-    }
-
-    public async Task<WaifuInfoStats> GetFullWaifuInfoAsync(IGuildUser target)
-    {
-        await using var uow = _db.GetDbContext();
-        _ = uow.GetOrCreateUser(target);
-
-        return await GetFullWaifuInfoAsync(target.Id);
     }
 
     public string GetClaimTitle(int count)
@@ -525,7 +514,7 @@ public class WaifuService : IEService, IReadyExecutor
                 var nowB = now.ToBinary();
 
                 var result = await _cache.GetAsync(_waifuDecayKey);
-                
+
                 if (result.TryGetValue(out var val))
                 {
                     var lastDecay = DateTime.FromBinary(val);
@@ -556,5 +545,39 @@ public class WaifuService : IEService, IReadyExecutor
                 await Task.Delay(1.Hours());
             }
         }
+    }
+
+    public async Task<IReadOnlyCollection<string>> GetClaimNames(int waifuId)
+    {
+        await using var ctx = _db.GetDbContext();
+        return await ctx.GetTable<DiscordUser>()
+            .Where(x => ctx.GetTable<WaifuInfo>()
+                .Where(wi => wi.ClaimerId == waifuId)
+                .Select(wi => wi.WaifuId)
+                .Contains(x.Id))
+            .Select(x => $"{x.Username}#{x.Discriminator}")
+            .ToListAsyncEF();
+    }
+    public async Task<IReadOnlyCollection<string>> GetFansNames(int waifuId)
+    {
+        await using var ctx = _db.GetDbContext();
+        return await ctx.GetTable<DiscordUser>()
+            .Where(x => ctx.GetTable<WaifuInfo>()
+                .Where(wi => wi.AffinityId == waifuId)
+                .Select(wi => wi.WaifuId)
+                .Contains(x.Id))
+            .Select(x => $"{x.Username}#{x.Discriminator}")
+            .ToListAsyncEF();
+    }
+
+    public async Task<IReadOnlyCollection<WaifuItem>> GetItems(int waifuId)
+    {
+        await using var ctx = _db.GetDbContext();
+        return await ctx.GetTable<WaifuItem>()
+            .Where(x => x.WaifuInfoId == ctx.GetTable<WaifuInfo>()
+                .Where(x => x.WaifuId == waifuId)
+                .Select(x => x.Id)
+                .FirstOrDefault())
+            .ToListAsyncEF();
     }
 }
