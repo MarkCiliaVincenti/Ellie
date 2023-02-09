@@ -1,4 +1,4 @@
-using LinqToDB;
+﻿using LinqToDB;
 using LinqToDB.EntityFrameworkCore;
 using Ellie.Services.Database;
 using Ellie.Services.Database.Models;
@@ -71,7 +71,7 @@ public class DefaultWallet : IWallet
 
         await using var ctx = _db.GetDbContext();
         var userId = UserId;
-        
+
         await using (var tran = await ctx.Database.BeginTransactionAsync())
         {
             var changed = await ctx.DiscordUser

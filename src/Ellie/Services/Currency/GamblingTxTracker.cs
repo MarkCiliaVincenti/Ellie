@@ -1,4 +1,4 @@
-using LinqToDB;
+﻿using LinqToDB;
 using LinqToDB.EntityFrameworkCore;
 using Ellie.Common.ModuleBehaviors;
 using Ellie.Services.Currency;
@@ -75,7 +75,7 @@ public sealed class GamblingTxTracker : ITxTracker, IEService, IReadyExecutor
     {
         if (txData is null)
             return Task.CompletedTask;
-        
+
         if (_gamblingTypes.Contains(txData.Type))
         {
             _stats.AddOrUpdate(txData.Type,
@@ -90,7 +90,7 @@ public sealed class GamblingTxTracker : ITxTracker, IEService, IReadyExecutor
     {
         if (txData is null)
             return Task.CompletedTask;
-        
+
         if (_gamblingTypes.Contains(txData.Type))
         {
             _stats.AddOrUpdate(txData.Type,

@@ -87,9 +87,9 @@ public class BotStrings : IBotStrings
                 };
             }
 
-//                 Log.Warning(@"'{CommandName}' command strings don't exist in '{LanguageName}' culture.
-// This message is safe to ignore, however you can ask in Ellie support server how you can contribute command translations",
-//                     commandName, cultureInfo.Name);
+            //                 Log.Warning(@"'{CommandName}' command strings don't exist in '{LanguageName}' culture.
+            // This message is safe to ignore, however you can ask in Ellie support server how you can contribute command translations",
+            //                     commandName, cultureInfo.Name);
 
             return GetCommandStrings(commandName, _usCultureInfo);
         }

@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using Ellie.Common.Configs;
 using Ellie.Common.ModuleBehaviors;
 using Ellie.Db;
@@ -260,7 +260,7 @@ public class CommandHandler : IEService, IReadyExecutor
                 isPrefixCommand ? 1 : prefix.Length,
                 _services,
                 MultiMatchHandling.Best);
-            
+
             startTime = Environment.TickCount - startTime;
 
             // if a command is found
@@ -280,10 +280,10 @@ public class CommandHandler : IEService, IReadyExecutor
                 {
                     error = HumanizeError(error);
                     LogErroredExecution(error, usrMsg, channel as ITextChannel, blockTime, startTime);
-                    
+
                     if (guild is not null)
                         await CommandErrored(info, channel as ITextChannel, error);
-                    
+
                     return;
                 }
             }
@@ -302,7 +302,7 @@ public class CommandHandler : IEService, IReadyExecutor
     }
 
     public Task<(bool Success, string Error, CommandInfo Info)> ExecuteCommandAsync(
-        CommandContext context,
+        ICommandContext context,
         string input,
         int argPos,
         IServiceProvider serviceProvider,
@@ -311,7 +311,7 @@ public class CommandHandler : IEService, IReadyExecutor
 
 
     public async Task<(bool Success, string Error, CommandInfo Info)> ExecuteCommand(
-        CommandContext context,
+        ICommandContext context,
         string input,
         IServiceProvider services,
         MultiMatchHandling multiMatchHandling = MultiMatchHandling.Exception)

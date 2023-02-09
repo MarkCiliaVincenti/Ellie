@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using Ellie.Modules.Searches;
 using SixLabors.ImageSharp.PixelFormats;
 using System.Globalization;
@@ -34,7 +34,7 @@ public static class ConfigParsers
     }
 
     public static bool InsensitiveEnum<T>(string input, out T output)
-        where T: struct
+        where T : struct
         => Enum.TryParse(input, true, out output);
 }
 

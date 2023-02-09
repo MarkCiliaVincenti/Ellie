@@ -8,7 +8,7 @@ public sealed class ImagesConfig : ConfigServiceBase<ImageUrls>
 
     private static readonly TypedKey<ImageUrls> _changeKey =
         new("config.images.updated");
-    
+
     public override string Name
         => "images";
 

@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using LinqToDB.Common;
 using LinqToDB.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +13,7 @@ public class DbService
     // these are props because creds can change at runtime
     private string DbType => _creds.GetCreds().Db.Type.ToLowerInvariant().Trim();
     private string ConnString => _creds.GetCreds().Db.ConnectionString;
-    
+
     public DbService(IBotCredsProvider creds)
     {
         LinqToDBForEFTools.Initialize();
@@ -28,13 +28,13 @@ public class DbService
         var connString = ConnString;
 
         await using var context = CreateRawDbContext(dbType, connString);
-        
+
         // make sure sqlite db is in wal journal mode
         if (context is SqliteContext)
         {
             await context.Database.ExecuteSqlRawAsync("PRAGMA journal_mode=WAL");
         }
-        
+
         await context.Database.MigrateAsync();
     }
 
@@ -54,7 +54,7 @@ public class DbService
                 throw new NotSupportedException($"The database provide type of '{dbType}' is not supported.");
         }
     }
-    
+
     private EllieContext GetDbContextInternal()
     {
         var dbType = DbType;

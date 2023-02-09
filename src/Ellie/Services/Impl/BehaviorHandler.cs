@@ -8,7 +8,7 @@ namespace Ellie.Services;
 public sealed class BehaviorHandler : IBehaviorHandler, IEService
 {
     private readonly IServiceProvider _services;
-    
+
     private IReadOnlyCollection<IExecNoCommand> noCommandExecs;
     private IReadOnlyCollection<IExecPreCommand> preCommandExecs;
     private IReadOnlyCollection<IExecOnMessage> onMessageExecs;
@@ -50,7 +50,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, IEService
             _customLock.Release();
         }
     }
-    
+
     public async Task<bool> AddAsync(ICustomBehavior behavior)
     {
         await _customLock.WaitAsync();
@@ -67,7 +67,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, IEService
             _customLock.Release();
         }
     }
-    
+
     public async Task<bool> RemoveAsync(ICustomBehavior behavior)
     {
         await _customLock.WaitAsync();
@@ -80,13 +80,13 @@ public sealed class BehaviorHandler : IBehaviorHandler, IEService
             _customLock.Release();
         }
     }
-    
+
     public async Task RemoveRangeAsync(IEnumerable<ICustomBehavior> behs)
     {
         await _customLock.WaitAsync();
         try
         {
-            foreach(var beh in behs)
+            foreach (var beh in behs)
                 _customExecs.Remove(beh);
         }
         finally
@@ -96,7 +96,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, IEService
     }
 
     #endregion
-    
+
     #region Running
 
     public async Task<bool> RunExecOnMessageAsync(SocketGuild guild, IUserMessage usrMsg)
@@ -116,7 +116,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, IEService
                             usrMsg.Author.Id,
                             usrMsg.Channel.Id,
                             usrMsg.Content?.TrimTo(10));
-                        
+
                         return true;
                     }
                 }
@@ -158,7 +158,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, IEService
 
     public async Task<bool> RunPreCommandAsync(ICommandContext ctx, CommandInfo cmd)
     {
-        async Task<bool> Exec<T>(IReadOnlyCollection<T> execs) where T: IExecPreCommand
+        async Task<bool> Exec<T>(IReadOnlyCollection<T> execs) where T : IExecPreCommand
         {
             foreach (var exec in execs)
             {
@@ -223,7 +223,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, IEService
         }
 
         await Exec(noCommandExecs);
-        
+
         await _customLock.WaitAsync();
         try
         {
@@ -266,7 +266,7 @@ public sealed class BehaviorHandler : IBehaviorHandler, IEService
         var newContent = await Exec(inputTransformers, usrMsg.Content);
         if (newContent is not null)
             return newContent;
-        
+
         await _customLock.WaitAsync();
         try
         {
@@ -299,6 +299,6 @@ public sealed class BehaviorHandler : IBehaviorHandler, IEService
             }
         }
     }
-    
+
     #endregion
 }

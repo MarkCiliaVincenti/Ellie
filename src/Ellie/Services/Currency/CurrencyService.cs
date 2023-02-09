@@ -1,4 +1,4 @@
-#nullable disable
+﻿#nullable disable
 using LinqToDB;
 using Ellie.Services.Currency;
 
@@ -88,9 +88,12 @@ public sealed class CurrencyService : ICurrencyService, IEService
         long amount,
         TxData txData)
     {
+        if (amount == 0)
+            return true;
+
         var wallet = await GetWalletAsync(userId);
         var result = await wallet.Take(amount, txData);
-        if(result) 
+        if (result)
             await _txTracker.TrackRemove(amount, txData);
         return result;
     }

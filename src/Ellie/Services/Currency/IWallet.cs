@@ -1,4 +1,4 @@
-namespace Ellie.Services.Currency;
+﻿namespace Ellie.Services.Currency;
 
 public interface IWallet
 {
@@ -21,7 +21,7 @@ public interface IWallet
             {
                 OtherId = to.UserId
             };
-        
+
         var succ = await Take(amount, txData);
 
         if (!succ)
