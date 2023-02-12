@@ -13,7 +13,7 @@ public class RemindService : IEService, IReadyExecutor
     private readonly Regex _regex =
         new(@"^(?:(?:at|on(?:\sthe)?)?\s*(?<date>(?:\d{2}:\d{2}\s)?\d{1,2}\.\d{1,2}(?:\.\d{2,4})?)|(?:in\s?)?\s*(?:(?<mo>\d+)(?:\s?(?:months?|mos?),?))?(?:(?:\sand\s|\s*)?(?<w>\d+)(?:\s?(?:weeks?|w),?))?(?:(?:\sand\s|\s*)?(?<d>\d+)(?:\s?(?:days?|d),?))?(?:(?:\sand\s|\s*)?(?<h>\d+)(?:\s?(?:hours?|h),?))?(?:(?:\sand\s|\s*)?(?<m>\d+)(?:\s?(?:minutes?|mins?|m),?))?)\s+(?:to:?\s+)?(?<what>(?:\r\n|[\r\n]|.)+)",
             RegexOptions.Compiled | RegexOptions.Multiline);
-    
+
     private readonly DiscordSocketClient _client;
     private readonly DbService _db;
     private readonly IBotCredentials _creds;
@@ -120,7 +120,7 @@ public class RemindService : IEService, IReadyExecutor
         if (!string.IsNullOrWhiteSpace(dateString))
         {
             var now = DateTime.UtcNow;
-            
+
             if (!DateTime.TryParse(dateString, _culture, DateTimeStyles.None, out var dt))
             {
                 Log.Warning("Invalid remind datetime format");
@@ -241,7 +241,7 @@ public class RemindService : IEService, IReadyExecutor
             ServerId = guildId ?? 0,
             IsPrivate = isPrivate,
             When = time,
-            Message = message, 
+            Message = message,
         };
 
         await using var ctx = _db.GetDbContext();

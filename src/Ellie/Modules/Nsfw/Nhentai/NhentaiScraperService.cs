@@ -1,8 +1,8 @@
 ﻿// using AngleSharp.Html.Dom;
 // using AngleSharp.Html.Parser;
-// using NadekoBot.Modules.Searches.Common;
+// using Ellie.Modules.Searches.Common;
 //
-// namespace NadekoBot.Modules.Nsfw;
+// namespace Ellie.Modules.Nsfw;
 //
 // public sealed class NhentaiScraperService : INhentaiService, INService
 // {
