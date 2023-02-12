@@ -1,4 +1,5 @@
 ﻿#nullable disable
+using AsyncKeyedLock;
 using Ayu.Discord.Voice;
 using System.Reflection;
 
@@ -10,7 +11,11 @@ public sealed class AyuVoiceStateService : IEService
     // public event VoiceProxyUpdatedDelegate OnVoiceProxyUpdate = delegate { return Task.CompletedTask; };
 
     private readonly ConcurrentDictionary<ulong, IVoiceProxy> _voiceProxies = new();
-    private readonly ConcurrentDictionary<ulong, SemaphoreSlim> _voiceGatewayLocks = new();
+    private readonly AsyncKeyedLocker<ulong> _voiceGatewayLocks = new(o =>
+    {
+        o.PoolSize = 20;
+        o.PoolInitialFill = 1;
+    });
 
     private readonly DiscordSocketClient _client;
     private readonly MethodInfo _sendVoiceStateUpdateMethodInfo;
@@ -63,9 +68,6 @@ public sealed class AyuVoiceStateService : IEService
     private Task SendJoinVoiceChannelInternalAsync(ulong guildId, ulong channelId)
         => InvokeSendVoiceStateUpdateAsync(guildId, channelId);
 
-    private SemaphoreSlim GetVoiceGatewayLock(ulong guildId)
-        => _voiceGatewayLocks.GetOrAdd(guildId, new SemaphoreSlim(1, 1));
-
     private async Task LeaveVoiceChannelInternalAsync(ulong guildId)
     {
         var complete = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -99,15 +101,9 @@ public sealed class AyuVoiceStateService : IEService
 
     public async Task LeaveVoiceChannel(ulong guildId)
     {
-        var gwLock = GetVoiceGatewayLock(guildId);
-        await gwLock.WaitAsync();
-        try
+        using (await _voiceGatewayLocks.LockAsync(guildId).ConfigureAwait(false))
         {
             await LeaveVoiceChannelInternalAsync(guildId);
-        }
-        finally
-        {
-            gwLock.Release();
         }
     }
 
@@ -200,16 +196,10 @@ public sealed class AyuVoiceStateService : IEService
 
     public async Task<IVoiceProxy> JoinVoiceChannel(ulong guildId, ulong channelId, bool forceReconnect = true)
     {
-        var gwLock = GetVoiceGatewayLock(guildId);
-        await gwLock.WaitAsync();
-        try
+        using (await _voiceGatewayLocks.LockAsync(guildId).ConfigureAwait(false))
         {
             await LeaveVoiceChannelInternalAsync(guildId);
             return await InternalConnectToVcAsync(guildId, channelId);
-        }
-        finally
-        {
-            gwLock.Release();
         }
     }
 
