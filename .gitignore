@@ -12,6 +12,10 @@ command_errors*.txt
 output/
 src/Ellie/output
 src/Ellie/creds.yml
+Win_x64
+Linux_x64
+Win_x64.zip
+Linux_x64.zip
 
 src/Ellie/Command Errors*.txt
 
