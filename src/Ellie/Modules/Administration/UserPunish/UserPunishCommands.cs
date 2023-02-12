@@ -402,12 +402,21 @@ public partial class Administration
         [UserPerm(GuildPerm.BanMembers)]
         [BotPerm(GuildPerm.BanMembers)]
         [Priority(1)]
-        public async Task Ban(StoopidTime time, IUser user, [Leftover] string msg = null)
+        public Task Ban(StoopidTime time, IUser user, [Leftover] string msg = null)
+            => Ban(time, user.Id, msg);
+
+        [Cmd]
+        [RequireContext(ContextType.Guild)]
+        [UserPerm(GuildPerm.BanMembers)]
+        [BotPerm(GuildPerm.BanMembers)]
+        [Priority(0)]
+        public async Task Ban(StoopidTime time, ulong userId, [Leftover] string msg = null)
         {
             if (time.Time > TimeSpan.FromDays(49))
                 return;
 
-            var guildUser = await ((DiscordSocketClient)Context.Client).Rest.GetGuildUserAsync(ctx.Guild.Id, user.Id);
+            var guildUser = await ((DiscordSocketClient)Context.Client).Rest.GetGuildUserAsync(ctx.Guild.Id, userId);
+
 
             if (guildUser is not null && !await CheckRoleHierarchy(guildUser))
                 return;
@@ -429,13 +438,14 @@ public partial class Administration
                 }
             }
 
+            var user = await ctx.Client.GetUserAsync(userId);
             var banPrune = await _service.GetBanPruneAsync(ctx.Guild.Id) ?? 7;
-            await _mute.TimedBan(ctx.Guild, user, time.Time, (ctx.User + " | " + msg).TrimTo(512), banPrune);
+            await _mute.TimedBan(ctx.Guild, userId, time.Time, (ctx.User + " | " + msg).TrimTo(512), banPrune);
             var toSend = _eb.Create()
                             .WithOkColor()
                             .WithTitle("⛔️ " + GetText(strs.banned_user))
-                            .AddField(GetText(strs.username), user.ToString(), true)
-                            .AddField("ID", user.Id.ToString(), true)
+                            .AddField(GetText(strs.username), user?.ToString() ?? userId.ToString(), true)
+                            .AddField("ID", userId.ToString(), true)
                             .AddField(GetText(strs.duration),
                                 time.Time.Humanize(3, minUnit: TimeUnit.Minute, culture: Culture),
                                 true);
@@ -518,9 +528,9 @@ public partial class Administration
                 await ReplyErrorLocalizedAsync(strs.invalid_input);
                 return;
             }
-            
+
             await _service.SetBanPruneAsync(ctx.Guild.Id, days);
-            
+
             if (days == 0)
                 await ReplyConfirmLocalizedAsync(strs.ban_prune_disabled);
             else
@@ -680,7 +690,8 @@ public partial class Administration
 
             var banPrune = await _service.GetBanPruneAsync(ctx.Guild.Id) ?? 7;
             await ctx.Guild.AddBanAsync(user, banPrune, ("Softban | " + ctx.User + " | " + msg).TrimTo(512));
-            try { await ctx.Guild.RemoveBanAsync(user); }
+            try
+            { await ctx.Guild.RemoveBanAsync(user); }
             catch { await ctx.Guild.RemoveBanAsync(user); }
 
             var toSend = _eb.Create()
@@ -746,19 +757,19 @@ public partial class Administration
 
             await ctx.Channel.EmbedAsync(toSend);
         }
-        
+
         [Cmd]
         [RequireContext(ContextType.Guild)]
         [UserPerm(GuildPerm.ModerateMembers)]
         [BotPerm(GuildPerm.ModerateMembers)]
         [Priority(2)]
-        public async Task Timeout(IUser globalUser, StoopidTime time,  [Leftover] string msg = null)
+        public async Task Timeout(IUser globalUser, StoopidTime time, [Leftover] string msg = null)
         {
             var user = await ctx.Guild.GetUserAsync(globalUser.Id);
 
             if (user is null)
                 return;
-            
+
             if (!await CheckRoleHierarchy(user))
                 return;
 
@@ -775,7 +786,7 @@ public partial class Administration
             {
                 dmFailed = true;
             }
-            
+
             await user.SetTimeOutAsync(time.Time);
 
             var toSend = _eb.Create()

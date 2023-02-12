@@ -54,6 +54,9 @@ go to https://www.patreon.com/portal -> my clients -> create client")]
     [Comment(@"Official cleverbot api key.")]
     public string CleverbotApiKey { get; set; }
 
+    [Comment(@"Official GPT-3 api key.")]
+    public string Gpt3ApiKey { get; set; }
+
     [Comment(@"Which cache implementation should bot use.
 'memory' - Cache will be in memory of the bot's process itself. Only use this on bots with a single shard. When the bot is restarted the cache is reset. 
 'redis' - Uses redis (which needs to be separately downloaded and installed). The cache will persist through bot restarts. You can configure connection string in creds.yml")]
@@ -118,7 +121,7 @@ Windows default
 
     public Creds()
     {
-        Version = 6;
+        Version = 7;
         Token = string.Empty;
         UsePrivilegedIntents = true;
         OwnerIds = new List<ulong>();

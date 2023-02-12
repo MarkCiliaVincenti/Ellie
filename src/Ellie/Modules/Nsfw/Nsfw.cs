@@ -79,23 +79,23 @@ public partial class NSFW : EllieModule<ISearchImagesService>
             return;
 
         t = new(async _ =>
+        {
+            try
             {
-                try
+                if (tags is null || tags.Length == 0)
+                    await InternalDapiCommand(null, true, _service.Hentai);
+                else
                 {
-                    if (tags is null || tags.Length == 0)
-                        await InternalDapiCommand(null, true, _service.Hentai);
-                    else
-                    {
-                        var groups = tags.Split('|');
-                        var group = groups[_rng.Next(0, groups.Length)];
-                        await InternalDapiCommand(group.Split(' '), true, _service.Hentai);
-                    }
+                    var groups = tags.Split('|');
+                    var group = groups[_rng.Next(0, groups.Length)];
+                    await InternalDapiCommand(group.Split(' '), true, _service.Hentai);
                 }
-                catch
-                {
-                    // ignored
-                }
-            },
+            }
+            catch
+            {
+                // ignored
+            }
+        },
             null,
             interval * 1000,
             interval * 1000);
@@ -133,16 +133,16 @@ public partial class NSFW : EllieModule<ISearchImagesService>
             return;
 
         t = new(async _ =>
+        {
+            try
             {
-                try
-                {
-                    await InternalBoobs();
-                }
-                catch
-                {
-                    // ignored
-                }
-            },
+                await InternalBoobs();
+            }
+            catch
+            {
+                // ignored
+            }
+        },
             null,
             interval * 1000,
             interval * 1000);
@@ -180,16 +180,16 @@ public partial class NSFW : EllieModule<ISearchImagesService>
             return;
 
         t = new(async _ =>
+        {
+            try
             {
-                try
-                {
-                    await InternalButts(ctx.Channel);
-                }
-                catch
-                {
-                    // ignored
-                }
-            },
+                await InternalButts(ctx.Channel);
+            }
+            catch
+            {
+                // ignored
+            }
+        },
             null,
             interval * 1000,
             interval * 1000);
@@ -360,67 +360,65 @@ public partial class NSFW : EllieModule<ISearchImagesService>
         }
     }
 
-    [Cmd]
-    [RequireContext(ContextType.Guild)]
-    [RequireNsfw(Group = "nsfw_or_dm")]
-    [RequireContext(ContextType.DM, Group = "nsfw_or_dm")]
-    [Priority(1)]
-    public async Task Nhentai(uint id)
-    {
-        var g = await _service.GetNhentaiByIdAsync(id);
-
-        if (g is null)
-        {
-            await ReplyErrorLocalizedAsync(strs.not_found);
-            return;
-        }
-
-        await SendNhentaiGalleryInternalAsync(g);
-    }
-
-    [Cmd]
-    [RequireContext(ContextType.Guild)]
-    [RequireNsfw(Group = "nsfw_or_dm")]
-    [RequireContext(ContextType.DM, Group = "nsfw_or_dm")]
-    [Priority(0)]
-    public async Task Nhentai([Leftover] string query)
-    {
-        var g = await _service.GetNhentaiBySearchAsync(query);
-
-        if (g is null)
-        {
-            await ReplyErrorLocalizedAsync(strs.not_found);
-            return;
-        }
-
-        await SendNhentaiGalleryInternalAsync(g);
-    }
-
-    private async Task SendNhentaiGalleryInternalAsync(Gallery g)
-    {
-        var count = 0;
-        var tagString = g.Tags.Shuffle()
-                         .Select(tag => $"[{tag.Name}]({tag.Url})")
-                         .TakeWhile(tag => (count += tag.Length) < 1000)
-                         .Join(" ");
-
-        var embed = _eb.Create()
-            .WithTitle(g.Title)
-            .WithDescription(g.FullTitle)
-            .WithImageUrl(g.Thumbnail)
-            .WithUrl(g.Url)
-            .AddField(GetText(strs.favorites), g.Likes, true)
-            .AddField(GetText(strs.pages), g.PageCount, true)
-            .AddField(GetText(strs.tags),
-                string.IsNullOrWhiteSpace(tagString)
-                    ? "?"
-                    : tagString,
-                true)
-            .WithFooter(g.UploadedAt.ToString("f"))
-            .WithOkColor();
-
-        await ctx.Channel.EmbedAsync(embed);
-    }
+    // [RequireNsfw(Group = "nsfw_or_dm")]
+    // [RequireContext(ContextType.DM, Group = "nsfw_or_dm")]
+    // [Priority(1)]
+    // public async Task Nhentai(uint id)
+    // {
+    //     var g = await _service.GetNhentaiByIdAsync(id);
+    //
+    //     if (g is null)
+    //     {
+    //         await ReplyErrorLocalizedAsync(strs.not_found);
+    //         return;
+    //     }
+    //
+    //     await SendNhentaiGalleryInternalAsync(g);
+    // }
+    //
+    // [Cmd]
+    // [RequireContext(ContextType.Guild)]
+    // [RequireNsfw(Group = "nsfw_or_dm")]
+    // [RequireContext(ContextType.DM, Group = "nsfw_or_dm")]
+    // [Priority(0)]
+    // public async Task Nhentai([Leftover] string query)
+    // {
+    //     var g = await _service.GetNhentaiBySearchAsync(query);
+    //
+    //     if (g is null)
+    //     {
+    //         await ReplyErrorLocalizedAsync(strs.not_found);
+    //         return;
+    //     }
+    //
+    //     await SendNhentaiGalleryInternalAsync(g);
+    // }
+    //
+    // private async Task SendNhentaiGalleryInternalAsync(Gallery g)
+    // {
+    //     var count = 0;
+    //     var tagString = g.Tags.Shuffle()
+    //                      .Select(tag => $"[{tag.Name}]({tag.Url})")
+    //                      .TakeWhile(tag => (count += tag.Length) < 1000)
+    //                      .Join(" ");
+    //
+    //     var embed = _eb.Create()
+    //         .WithTitle(g.Title)
+    //         .WithDescription(g.FullTitle)
+    //         .WithImageUrl(g.Thumbnail)
+    //         .WithUrl(g.Url)
+    //         .AddField(GetText(strs.favorites), g.Likes, true)
+    //         .AddField(GetText(strs.pages), g.PageCount, true)
+    //         .AddField(GetText(strs.tags),
+    //             string.IsNullOrWhiteSpace(tagString)
+    //                 ? "?"
+    //                 : tagString,
+    //             true)
+    //         .WithFooter(g.UploadedAt.ToString("f"))
+    //         .WithOkColor();
+    //
+    //     await ctx.Channel.EmbedAsync(embed);
+    // }
 
     private async Task InternalDapiCommand(
         string[] tags,

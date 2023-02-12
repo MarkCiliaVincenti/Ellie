@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Ellie.Db.Models;
 
 namespace Ellie.Services.Database;
@@ -28,7 +28,7 @@ public sealed class MysqlContext : EllieContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-
+        
         // mysql is case insensitive by default
         // we can set binary collation to change that
         modelBuilder.Entity<ClubInfo>()

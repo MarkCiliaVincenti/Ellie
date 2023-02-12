@@ -1,4 +1,4 @@
-﻿using Ellie.Services.Database.Models;
+using Ellie.Services.Database.Models;
 
 namespace Ellie.Db.Models;
 

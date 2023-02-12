@@ -1,4 +1,4 @@
-﻿#nullable disable
+#nullable disable
 namespace Ellie.Services.Database.Models;
 
 public class FeedSub : DbEntity
@@ -8,7 +8,7 @@ public class FeedSub : DbEntity
 
     public ulong ChannelId { get; set; }
     public string Url { get; set; }
-
+    
     public string Message { get; set; }
 
     public override int GetHashCode()
