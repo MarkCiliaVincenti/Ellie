@@ -14,22 +14,20 @@ public class SearchImagesService : ISearchImagesService, IEService
     public ConcurrentDictionary<ulong, Timer> AutoHentaiTimers { get; } = new();
     public ConcurrentDictionary<ulong, Timer> AutoBoobTimers { get; } = new();
     public ConcurrentDictionary<ulong, Timer> AutoButtTimers { get; } = new();
-    
+
     private readonly Random _rng;
     private readonly SearchImageCacher _cache;
     private readonly IHttpClientFactory _httpFactory;
     private readonly DbService _db;
-    private readonly INhentaiService _nh;
 
     private readonly object _taglock = new();
 
     public SearchImagesService(
         DbService db,
         SearchImageCacher cacher,
-        IHttpClientFactory httpFactory,
-        INhentaiService nh)
+        IHttpClientFactory httpFactory
+        )
     {
-        _nh = nh;
         _db = db;
         _rng = new EllieRandom();
         _cache = cacher;
@@ -277,6 +275,7 @@ public class SearchImagesService : ISearchImagesService, IEService
         }
     }
 
+    /*
     #region Nhentai
 
     public Task<Gallery?> GetNhentaiByIdAsync(uint id)
@@ -294,4 +293,5 @@ public class SearchImagesService : ISearchImagesService, IEService
     }
 
     #endregion
+    */
 }

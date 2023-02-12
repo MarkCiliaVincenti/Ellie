@@ -1,6 +1,6 @@
 #nullable disable
 using Microsoft.Extensions.Caching.Memory;
-using Ellie.Common;
+using Ellise.Common;
 using Ellie.Common.ModuleBehaviors;
 using Ellie.Modules.Games.Common;
 using Ellie.Modules.Games.Common.Acrophobia;
@@ -23,7 +23,6 @@ public class GamesService : IEService, IReadyExecutor
 
     //channelId, game
     public ConcurrentDictionary<ulong, AcrophobiaGame> AcrophobiaGames { get; } = new();
-    public ConcurrentDictionary<ulong, TriviaGame> RunningTrivias { get; } = new();
     public Dictionary<ulong, TicTacToe> TicTacToeGames { get; } = new();
     public ConcurrentDictionary<ulong, TypingGame> RunningContests { get; } = new();
     public ConcurrentDictionary<ulong, NunchiGame> NunchiGames { get; } = new();

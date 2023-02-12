@@ -99,7 +99,7 @@ public class UserPunishService : IEService, IReadyExecutor
         _ = OnUserWarned(warn);
 
         var totalCount = previousCount + weight;
-        
+
         var p = ps.Where(x => x.Count > previousCount && x.Count <= totalCount)
                   .MaxBy(x => x.Count);
 
@@ -157,7 +157,7 @@ public class UserPunishService : IEService, IReadyExecutor
                 if (minutes == 0)
                     await guild.AddBanAsync(user, reason: reason, pruneDays: banPrune);
                 else
-                    await _mute.TimedBan(user.Guild, user, TimeSpan.FromMinutes(minutes), reason, banPrune);
+                    await _mute.TimedBan(user.Guild, user.Id, TimeSpan.FromMinutes(minutes), reason, banPrune);
                 break;
             case PunishmentAction.Softban:
                 banPrune = await GetBanPruneAsync(user.GuildId) ?? 7;
@@ -246,7 +246,7 @@ public class UserPunishService : IEService, IReadyExecutor
                                                  .Any(y => y.GuildId == x.GuildId
                                                            && y.WarnExpireHours > 0
                                                            && y.WarnExpireAction == WarnExpireAction.Clear)
-                                           && x.Forgiven == false 
+                                           && x.Forgiven == false
                                            && x.DateAdded
                                            < DateTime.UtcNow.AddHours(-uow.GuildConfigs
                                                                           .Where(y => x.GuildId == y.GuildId)
@@ -499,12 +499,12 @@ public class UserPunishService : IEService, IReadyExecutor
         await ctx.BanTemplates
             .ToLinqToDBTable()
             .InsertOrUpdateAsync(() => new()
-                {
-                    GuildId = guildId,
-                    Text = null,
-                    DateAdded = DateTime.UtcNow,
-                    PruneDays = pruneDays
-                },
+            {
+                GuildId = guildId,
+                Text = null,
+                DateAdded = DateTime.UtcNow,
+                PruneDays = pruneDays
+            },
                 old => new()
                 {
                     PruneDays = pruneDays

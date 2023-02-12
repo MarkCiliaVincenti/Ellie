@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Ellie.Services.Database.Models;
 
-namespace Ellie.Db;
+namespace NadekoBot.Db;
 
 public static class ReminderExtensions
 {
